@@ -1,0 +1,46 @@
+.overlayMenu {
+  position: absolute;
+  border-radius: 5px;
+  top: 10px;
+  left: 10px;
+  z-index: 99;
+}
+
+#map-tool-heading {
+  font-size: 1.4em;
+}
+
+.ant-menu-sub.ant-menu-inline .ant-menu-item-group-title {
+  font-size: 1.3em;
+}
+
+.sub-heading {
+  font-size: larger;
+}
+
+.sub-icon {
+  padding-bottom: 1px;
+}
+
+.ant-menu-submenu-title {
+  margin: 0px;
+}
+
+.ant-menu-vertical .ant-menu-item,
+.ant-menu-vertical-left .ant-menu-item,
+.ant-menu-vertical-right .ant-menu-item,
+.ant-menu-inline .ant-menu-item,
+.ant-menu-vertical .ant-menu-submenu-title,
+.ant-menu-vertical-left .ant-menu-submenu-title,
+.ant-menu-vertical-right .ant-menu-submenu-title,
+.ant-menu-inline .ant-menu-submenu-title {
+  height: auto;
+}
+
+.ant-menu-sub.ant-menu-inline {
+  border-radius: 4px;
+}
+
+p {
+  margin: 0;
+}

@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "alias": "mundabiddi",
+  "name": "Munda Biddi",
+  "type": "cycling",
+  "startpoint": "{lat: -31.90416, lng: 116.165496}",
+  "zoomlevel": 10,
+  "buff": null
+}
