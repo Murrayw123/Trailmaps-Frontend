@@ -36,8 +36,9 @@ export default function findPath(geoJsonPath, start, finish) {
   closestFinish.geometry.coordinates = closestFinish.properties.lineCoord
 
   let pathFinder = new PathFinder(geoJsonPath)
-  // let path = pathFinder.findPath(closestStart, closestFinish)
-  // let distance = this.findDistance(path.path)
-  // let returnPath = { path: path.path, distance: distance }
-  // return returnPath
+  console.log(pathFinder)
+  let path = pathFinder.findPath(closestStart, closestFinish)
+  let distance = this.findDistance(path.path)
+  let returnPath = { path: path.path, distance: distance }
+  return returnPath
 }

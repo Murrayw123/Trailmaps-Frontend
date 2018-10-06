@@ -1,19 +1,50 @@
 export const FETCH_DATA_BEGIN = 'FETCH_PRODUCTS_BEGIN'
 export const FETCH_DATA_SUCCESS = 'FETCH_PRODUCTS_SUCCESS'
+export const FETCH_MARKERS_SUCCESS = 'FETCH_MARKERS_SUCCESS'
 export const FETCH_DATA_FAILURE = 'FETCH_PRODUCTS_FAILURE'
 export const ADD_MAP_MARKER = 'ADD_MAP_MARKER'
 export const CALC_DISTANCE = 'CALC_DISTANCE'
 export const CALC_ELEVATION = 'CALC_ELEVATION'
 
-export function fetchData() {
+export function fetchData(mapstring) {
   return dispatch => {
     dispatch(fetchDataBegin())
-    return fetch('http://5b9649ec52764b001413bc29.mockapi.io/api/TrailMaps')
+    fetch('http://localhost:8082/api/mapinfo/' + mapstring)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
-        dispatch(fetchDataSuccess(json))
-        return json
+        const data = {
+          id: json.ID,
+          map_name: json.Map_name,
+          map_alias: json.Map_alias,
+          map_type: json.Map_type,
+          map_track: json.Map_track,
+          startpointlat: json.Startpointlat,
+          startpointlng: json.Startpointlng
+        }
+        dispatch(fetchDataSuccess(data))
+        return data
+      })
+      .catch(error => dispatch(fetchDataError(error)))
+  }
+}
+
+export function fetchMarkers(mapstring) {
+  return dispatch => {
+    dispatch(fetchDataBegin())
+    fetch('http://localhost:8082/api/markers/' + mapstring)
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(json => {
+        const data = json.map(el => {
+          return {
+            marker_type: el.Marker_type,
+            marker_lat: el.Marker_lat,
+            marker_lng: el.Marker_lng
+          }
+        })
+        dispatch(fetchMarkerSuccess(data))
+        return data
       })
       .catch(error => dispatch(fetchDataError(error)))
   }
@@ -34,6 +65,11 @@ export const fetchDataBegin = () => ({
 export const fetchDataSuccess = initMapInfo => ({
   type: FETCH_DATA_SUCCESS,
   payload: { initMapInfo }
+})
+
+export const fetchMarkerSuccess = markers => ({
+  type: FETCH_MARKERS_SUCCESS,
+  payload: { markers }
 })
 
 export const fetchDataError = error => ({

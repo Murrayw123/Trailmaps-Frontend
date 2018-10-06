@@ -16,7 +16,6 @@ class MapComponent extends Component {
 
   checkMarkers = e => {
     if (this.state.markerCounter < 2) {
-      console.log(this.state.markerCounter)
       this.setState({ markerCounter: this.state.markerCounter + 1 })
       this.addMarker(e)
     }
@@ -37,7 +36,7 @@ class MapComponent extends Component {
 
   calculateInfo() {
     let distance = findPath(
-      this.props.data.track,
+      this.props.data.map_track,
       this.props.customDistance[0],
       this.props.customDistance[1]
     )
@@ -47,8 +46,8 @@ class MapComponent extends Component {
   }
 
   render() {
-    const { data, mapMarkers } = this.props
-    const position = [data.startpoint.lat, data.startpoint.lng]
+    const { data, mapMarkers, poiMarkers } = this.props
+    const position = [data.startpointlat, data.startpointlng]
     return (
       <Map
         center={position}
@@ -60,14 +59,15 @@ class MapComponent extends Component {
         <ZoomControl position="bottomright" />
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          url="http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <GeoJSON interactive={false} data={data.track} />
-        {data.markers.map(marker => {
+        <GeoJSON interactive={false} data={data.map_track} />
+        {poiMarkers.map(marker => {
+          // point of interest markers
           return (
             <Marker
               key={marker.id}
-              position={[marker.coords.lat, marker.coords.lng]}
+              position={[marker.marker_lat, marker.marker_lng]}
             >
               <Popup>
                 A pretty CSS3 popup. <br /> Easily customizable.
@@ -76,6 +76,7 @@ class MapComponent extends Component {
           )
         })}
         {mapMarkers.map(marker => {
+          //custom markers from click event
           return (
             <Marker
               key={marker.id}
@@ -107,6 +108,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   data: state.data,
   mapMarkers: state.mapMarkers,
+  poiMarkers: state.poiMarkers,
   customDistance: state.customDistance
 })
 

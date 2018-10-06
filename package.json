@@ -5,6 +5,7 @@
   "dependencies": {
     "@blueprintjs/core": "^3.5.1",
     "@turf/combine": "^6.0.1",
+    "@turf/distance": "^6.0.1",
     "@turf/helpers": "^6.1.4",
     "@turf/invariant": "^6.1.2",
     "@turf/nearest-point-on-line": "^6.0.2",
@@ -27,7 +28,8 @@
     "redux-burger-menu": "^0.2.7",
     "redux-thunk": "^2.3.0",
     "turf": "^3.0.14",
-    "turf-distance": "^3.0.12"
+    "turf-distance": "^3.0.12",
+    "turf-point": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
