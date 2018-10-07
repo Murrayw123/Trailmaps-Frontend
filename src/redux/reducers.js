@@ -5,7 +5,8 @@ import {
   FETCH_MARKERS_SUCCESS,
   ADD_MAP_MARKER,
   CALC_DISTANCE,
-  CALC_ELEVATION
+  CALC_ELEVATION,
+  STORE_CUSTOM_TRACK
 } from './actions'
 
 const initialState = {
@@ -17,7 +18,8 @@ const initialState = {
   poiMarkers: [],
   distance: 0,
   elevation: [],
-  customDistance: []
+  customDistance: [],
+  customPath: {}
 }
 
 export default function dataReducer(state = initialState, action) {
@@ -65,6 +67,11 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         mapMarkers: [...state.mapMarkers, action.payload]
+      }
+    case STORE_CUSTOM_TRACK:
+      return {
+        ...state,
+        customPath: { path: action.payload }
       }
 
     default:

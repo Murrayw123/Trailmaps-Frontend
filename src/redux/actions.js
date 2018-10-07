@@ -5,6 +5,7 @@ export const FETCH_DATA_FAILURE = 'FETCH_PRODUCTS_FAILURE'
 export const ADD_MAP_MARKER = 'ADD_MAP_MARKER'
 export const CALC_DISTANCE = 'CALC_DISTANCE'
 export const CALC_ELEVATION = 'CALC_ELEVATION'
+export const STORE_CUSTOM_TRACK = 'STORE_CUSTOM_TRACK'
 
 export function fetchData(mapstring) {
   return dispatch => {
@@ -40,7 +41,8 @@ export function fetchMarkers(mapstring) {
           return {
             marker_type: el.Marker_type,
             marker_lat: el.Marker_lat,
-            marker_lng: el.Marker_lng
+            marker_lng: el.Marker_lng,
+            marker_info: el.Marker_info
           }
         })
         dispatch(fetchMarkerSuccess(data))
@@ -90,4 +92,9 @@ export const storeDistance = marker => ({
 export const storeElevation = marker => ({
   type: CALC_ELEVATION,
   payload: marker
+})
+
+export const storeCustomTrack = path => ({
+  type: STORE_CUSTOM_TRACK,
+  payload: path
 })

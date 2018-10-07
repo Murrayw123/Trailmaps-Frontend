@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
 import * as turf from '@turf/turf'
-var PathFinder = require('geojson-path-finder')
+import { PathFinder } from './geojson-path-finder/index'
+import nearestPointOnLine from './nearest-point-on-line'
 
 function findDistance(path) {
   let distance = 0
@@ -8,7 +8,7 @@ function findDistance(path) {
   if (path.length > 1) {
     for (i = 0; i < path.length; i++) {
       if (path[i + 1]) {
-        distance += turf.Distance(path[i], path[i + 1])
+        distance += turf.distance(path[i], path[i + 1])
       }
     }
   }
@@ -23,22 +23,25 @@ export default function findPath(geoJsonPath, start, finish) {
   //turf convert to linestring
   let lineString = turf.multiLineString(line)
   //find the closest start point from mouse click to GEOJSON line
-  let closestStart = turf.nearestPointOnLine(lineString, [
-    start.latlng.lat,
-    start.latlng.lng
-  ])
+  let closestStart = nearestPointOnLine(
+    lineString,
+    turf.point([start.latlng.lng, start.latlng.lat])
+  )
   //find the closest finish point from mouse click to GEOJSON line
-  let closestFinish = turf.nearestPointOnLine(lineString, [
-    finish.latlng.lat,
-    finish.latlng.lng
-  ])
-  closestStart.geometry.coordinates = closestStart.properties.lineCoord
-  closestFinish.geometry.coordinates = closestFinish.properties.lineCoord
+  let closestFinish = nearestPointOnLine(
+    lineString,
+    turf.point([finish.latlng.lng, finish.latlng.lat])
+  )
 
-  let pathFinder = new PathFinder(geoJsonPath)
-  console.log(pathFinder)
+  //grab the actual coordinates I jammed into the index (uses a customised version of turf nearestPointOnLine)
+  closestStart = turf.point(closestStart.properties.index)
+  closestFinish = turf.point(closestFinish.properties.index)
+
+  let pathFinder = new PathFinder(geoJsonPath, { precision: 1e-5 }) //exact match is five decimal places, only leaving this in here for reference
   let path = pathFinder.findPath(closestStart, closestFinish)
-  let distance = this.findDistance(path.path)
-  let returnPath = { path: path.path, distance: distance }
+  let distance = findDistance(path.path)
+  //returns a linestring so leaflet can use it as a geojson layer
+  let linestring = turf.lineString(path.path)
+  let returnPath = { path: linestring, distance: distance }
   return returnPath
 }
