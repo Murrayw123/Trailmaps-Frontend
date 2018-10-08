@@ -42,7 +42,8 @@ export function fetchMarkers(mapstring) {
             marker_type: el.Marker_type,
             marker_lat: el.Marker_lat,
             marker_lng: el.Marker_lng,
-            marker_info: el.Marker_info
+            marker_info: el.Marker_info,
+            marker_title: el.Marker_Title
           }
         })
         dispatch(fetchMarkerSuccess(data))

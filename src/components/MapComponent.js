@@ -7,8 +7,6 @@ import {
   storeCustomTrack
 } from '../redux/actions'
 import findPath from './helpers/PathCalculator'
-import findIcon from './helpers/iconsData'
-
 import {
   Map,
   TileLayer,
@@ -18,6 +16,7 @@ import {
   GeoJSON,
   Polyline
 } from 'react-leaflet'
+import PoiMarker from './PoiMarker'
 class MapComponent extends Component {
   state = { markerCounter: 0 }
 
@@ -58,28 +57,6 @@ class MapComponent extends Component {
     }
   }
 
-  buildPOIMarker = marker => {
-    let icon = findIcon(marker.marker_type)
-    let info = Object.entries(marker.marker_info)
-    return (
-      <Marker
-        key={marker.id}
-        position={[marker.marker_lat, marker.marker_lng]}
-        icon={icon}
-      >
-        <Popup>
-          {info.map(el => {
-            return (
-              <div>
-                <b> {el[0]}: </b> {el[1]}
-              </div>
-            )
-          })}
-        </Popup>
-      </Marker>
-    )
-  }
-
   render() {
     const { data, mapMarkers, poiMarkers, customPath } = this.props
     const position = [data.startpointlat, data.startpointlng]
@@ -102,7 +79,7 @@ class MapComponent extends Component {
 
         {poiMarkers.map(marker => {
           // point of interest markers
-          return this.buildPOIMarker(marker)
+          return <PoiMarker marker={marker} />
         })}
 
         {mapMarkers.map(marker => {
