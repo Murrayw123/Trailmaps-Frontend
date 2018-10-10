@@ -33,7 +33,7 @@ class Sider extends React.Component {
                 type="setting"
                 theme="outlined"
                 className="icons-large"
-              />{' '}
+              />
               <span id="map-tool-heading">{data.name} Map Tools</span>
             </span>
           }

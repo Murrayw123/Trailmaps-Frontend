@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { AutoComplete } from 'antd'
 
 class DistanceCalculator extends Component {
   render() {
-    const { data } = this.props
-    const dataSource = []
-    data.markers.map(marker => {
-      dataSource.push({ value: marker.id, text: marker.name })
-    })
+    const { dataSource, dataSelect, startOrFinish } = this.props
 
     return (
       <div>
@@ -21,14 +16,13 @@ class DistanceCalculator extends Component {
               .toUpperCase()
               .indexOf(inputValue.toUpperCase()) !== -1
           }
+          onChange={e => {
+            dataSelect(e, startOrFinish)
+          }}
         />
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  data: state.data
-})
-
-export default connect(mapStateToProps)(DistanceCalculator)
+export default DistanceCalculator

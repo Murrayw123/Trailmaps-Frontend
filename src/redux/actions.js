@@ -39,6 +39,7 @@ export function fetchMarkers(mapstring) {
       .then(json => {
         const data = json.map(el => {
           return {
+            marker_id: el.Marker_id,
             marker_type: el.Marker_type,
             marker_lat: el.Marker_lat,
             marker_lng: el.Marker_lng,
