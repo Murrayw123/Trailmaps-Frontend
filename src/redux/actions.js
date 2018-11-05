@@ -6,6 +6,10 @@ export const ADD_MAP_MARKER = 'ADD_MAP_MARKER'
 export const CALC_DISTANCE = 'CALC_DISTANCE'
 export const CALC_ELEVATION = 'CALC_ELEVATION'
 export const STORE_CUSTOM_TRACK = 'STORE_CUSTOM_TRACK'
+export const CHANGE_ZOOM_LEVEL = 'CHANGE_ZOOM_LEVEL'
+export const CHANGE_FOCUS_POINT = 'CHANGE_FOCUS_POINT'
+export const FIND_TRAIL_MARKERS = 'FIND_TRAIL_MARKERS'
+export const FILTER_TRAIL_MARKERS = 'FILTER_TRAIL_MARKERS'
 
 export function fetchData(mapstring) {
   return dispatch => {
@@ -15,7 +19,7 @@ export function fetchData(mapstring) {
       .then(res => res.json())
       .then(json => {
         const data = {
-          id: json.ID,
+          id: json.Id,
           map_name: json.Map_name,
           map_alias: json.Map_alias,
           map_type: json.Map_type,
@@ -39,16 +43,25 @@ export function fetchMarkers(mapstring) {
       .then(json => {
         const data = json.map(el => {
           return {
-            marker_id: el.Marker_id,
+            marker_id: el.Id,
             marker_type: el.Marker_type,
             marker_lat: el.Marker_lat,
             marker_lng: el.Marker_lng,
             marker_info: el.Marker_info,
-            marker_title: el.Marker_Title
+            marker_title: el.Marker_title
           }
         })
-        dispatch(fetchMarkerSuccess(data))
         return data
+      })
+      .then(data => {
+        let mapMarkerTypes = []
+        data.forEach(marker => {
+          if (!mapMarkerTypes.includes(marker.marker_type)) {
+            mapMarkerTypes.push(marker.marker_type)
+          }
+        })
+        dispatch(findTrailMarker(mapMarkerTypes))
+        dispatch(fetchMarkerSuccess(data))
       })
       .catch(error => dispatch(fetchDataError(error)))
   }
@@ -86,6 +99,16 @@ export const addMapMarker = marker => ({
   payload: marker
 })
 
+export const changeZoomLevel = zoomLevel => ({
+  type: CHANGE_ZOOM_LEVEL,
+  payload: zoomLevel
+})
+
+export const changeFocusPoint = newLatLng => ({
+  type: CHANGE_FOCUS_POINT,
+  payload: newLatLng
+})
+
 export const storeDistance = marker => ({
   type: CALC_DISTANCE,
   payload: marker
@@ -99,4 +122,14 @@ export const storeElevation = marker => ({
 export const storeCustomTrack = path => ({
   type: STORE_CUSTOM_TRACK,
   payload: path
+})
+
+export const findTrailMarker = data => ({
+  type: FIND_TRAIL_MARKERS,
+  payload: data
+})
+
+export const filterTrailMarkers = markerTypes => ({
+  type: FILTER_TRAIL_MARKERS,
+  payload: markerTypes
 })

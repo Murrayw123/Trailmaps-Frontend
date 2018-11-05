@@ -1,21 +1,16 @@
 import React, { Component } from 'react'
 import { Checkbox } from 'antd'
+const CheckboxGroup = Checkbox.Group
 
-export default class DistanceCalculator extends Component {
+export default class Filters extends Component {
   render() {
-    const CheckboxGroup = Checkbox.Group
-    const plainOptions = ['Some Long Option', 'Another Longer Option', 'Short']
-
-    function onChange(checkedValues) {
-      console.log('checked = ', checkedValues)
-    }
+    const mapMarkerTypes = this.props.mapMarkerTypes
 
     return (
       <CheckboxGroup
         style={this.props.style}
-        options={plainOptions}
-        defaultValue={['Apple']}
-        onChange={onChange}
+        options={mapMarkerTypes}
+        onChange={this.props.filterMarkers}
       />
     )
   }

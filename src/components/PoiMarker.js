@@ -14,7 +14,7 @@ export default class PoiMarker extends Component {
   render() {
     const { marker } = this.props
     let icon = findIcon(marker.marker_type)
-    let info = Object.entries(marker.marker_info)
+    let info = marker.marker_info
 
     return (
       <Marker
@@ -51,7 +51,7 @@ export default class PoiMarker extends Component {
             {info.map(el => {
               return (
                 <div>
-                  <b> {el[0]}: </b> {el[1]}
+                  <b> {el.title}: </b> {el.value}
                 </div>
               )
             })}

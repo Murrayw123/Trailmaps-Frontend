@@ -1,21 +1,72 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { filterTrailMarkers, storeCustomTrack } from '../redux/actions'
 import { Menu, Icon, Divider } from 'antd'
 import DistanceCalculator from './DistanceCalculator'
 import DistanceCalculatorForm from './DistanceCalculatorForm'
-import Markers from './Markers'
+import FilterMarkers from './Markers'
 import CustomJourney from './CustomJourney'
+import findPath from './helpers/PathCalculator'
+import { changeZoomLevel, changeFocusPoint } from '../redux/actions'
 
 const SubMenu = Menu.SubMenu
-const MenuItemGroup = Menu.ItemGroup
 
 class Sider extends React.Component {
-  handleClick = e => {
-    console.log('click ', e)
+  state = {
+    start: [],
+    end: [],
+    startVal: '',
+    endVal: '',
+    buttonDisabled: true
+  } //holds the start and finish points for the distance calculator tab
+
+  dataSelect = (markerid, type) => {
+    let newFocus = this.props.poiMarkers.find(el => {
+      return el.marker_id === parseInt(markerid)
+    })
+    if (type === 'locate') {
+      this.props.dispatch(changeZoomLevel(13))
+      this.props.dispatch(
+        changeFocusPoint([newFocus.marker_lat, newFocus.marker_lng])
+      )
+    } else {
+      this.setState({ [type]: [newFocus.marker_lat, newFocus.marker_lng] })
+    }
+    if (this.state.start.length || this.state.end.length) {
+      this.setState({ buttonDisabled: false })
+    }
+  }
+
+  submitDistance = e => {
+    e.preventDefault()
+    let pathAndDistance = this.calculateInfo()
+    this.props.dispatch(storeCustomTrack(pathAndDistance))
+  }
+
+  calculateInfo = () => {
+    //deals with custom route finding
+    let pathObj = [
+      { latlng: { lat: this.state.start[0], lng: this.state.start[1] } },
+      { latlng: { lat: this.state.end[0], lng: this.state.end[1] } }
+    ]
+    let pathAndDistance = findPath(
+      this.props.data.map_track,
+      pathObj[0],
+      pathObj[1]
+    )
+    return pathAndDistance
+  }
+
+  inputDirty = () => {
+    this.setState({ buttonDisabled: true })
+  }
+
+  filterMarkers = markers => {
+    this.props.dispatch(filterTrailMarkers(markers))
   }
 
   render() {
-    const { data } = this.props
+    const { data, poiMarkers, mapMarkerTypes, customPath } = this.props
     return (
       <Menu
         className="overlayMenu"
@@ -49,7 +100,12 @@ class Sider extends React.Component {
             }
           >
             <div style={{ marginLeft: 48 }}>
-              <DistanceCalculator placeHolder={'Point on map'} />
+              <DistanceCalculator
+                placeHolder={'Point on map'}
+                dataSource={poiMarkers}
+                type={'locate'}
+                dataSelect={this.dataSelect}
+              />
             </div>
           </SubMenu>
           <SubMenu
@@ -61,7 +117,15 @@ class Sider extends React.Component {
               </span>
             }
           >
-            <DistanceCalculatorForm />
+            <DistanceCalculatorForm
+              dataSource={poiMarkers}
+              dataSelect={this.dataSelect}
+              buttonDisabled={this.state.buttonDisabled}
+              inputOnChange={this.inputOnChange}
+              inputDirty={this.inputDirty}
+              submitDistance={this.submitDistance}
+            />
+            {customPath ? <h1> {customPath.distance} </h1> : null}
           </SubMenu>
           <SubMenu
             key="sub3"
@@ -72,7 +136,11 @@ class Sider extends React.Component {
               </span>
             }
           >
-            <Markers style={{ marginLeft: 48, width: 200 }} />
+            <FilterMarkers
+              mapMarkerTypes={mapMarkerTypes}
+              filterMarkers={this.filterMarkers}
+              style={{ marginLeft: 48, width: 200 }}
+            />
           </SubMenu>
           <SubMenu
             key="sub4"
@@ -94,7 +162,7 @@ class Sider extends React.Component {
               </span>
             }
           >
-            <Markers
+            <FilterMarkers
               style={{ paddingBottom: 20, width: 200, marginLeft: 48 }}
             />
           </SubMenu>
@@ -105,7 +173,10 @@ class Sider extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.data
+  data: state.data,
+  poiMarkers: state.poiMarkers,
+  mapMarkerTypes: state.mapMarkerTypes,
+  customPath: state.customPath
 })
 
 export default connect(mapStateToProps)(Sider)

@@ -6,56 +6,22 @@ import DistanceCalculator from './DistanceCalculator'
 const FormItem = Form.Item
 
 class NormalLoginForm extends React.Component {
-  state = { start: '', end: '' }
-
-  dataSource = () => {
-    const dataSource = []
-    this.props.poiMarkers.map(el => {
-      dataSource.push({ value: el.marker_title, text: el.marker_title })
-    })
-    return dataSource
-  }
-  onSearchChange = (event, startOrFinish) => {
-    this.setState({ [startOrFinish]: event })
-  }
-
   onChange = checked => {
     console.log(`switch to ${checked}`)
   }
 
-  validateFields = (rule, value, callback) => {
-    const form = this.props.form.start
-    const validPoints = []
-    this.props.poiMarkers.map(el => {
-      validPoints.push(el.marker_title)
-    })
-    if (validPoints.includes(this.state[rule.field])) {
-      console.log('Valid Search')
-    } else {
-      this.props.form.setFields({
-        [rule.field]: {
-          value: 'Nooooooooo',
-          errors: [new Error('Not a valid selection')]
-        }
-      })
-    }
-    callback()
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    this.props.form.validateFields((err, values) => {
-      if (err) {
-        console.log(err)
-      } else {
-        console.log('no Error')
-      }
-    })
-  }
+  handleSubmit = e => {}
 
   render() {
-    const { getFieldDecorator } = this.props.form
-    const dataSource = this.dataSource()
+    console.log(this.props.customDistance)
+    const {
+      dataSource,
+      dataSelect,
+      buttonDisabled,
+      inputOnChange,
+      inputDirty,
+      submitDistance
+    } = this.props
     return (
       <div style={{ marginLeft: 48 }}>
         <Form
@@ -64,49 +30,41 @@ class NormalLoginForm extends React.Component {
           style={{ marginBottom: 0 }}
         >
           <FormItem id="start" style={{ marginBottom: 0 }} required={true}>
-            {getFieldDecorator('start', {
-              rules: [
-                {
-                  validator: this.validateFields
-                }
-              ]
-            })(
-              <DistanceCalculator
-                placeHolder={'Start point'}
-                dataSelect={this.onSearchChange}
-                startOrFinish={'start'}
-                dataSource={dataSource}
-              />
-            )}
+            <DistanceCalculator
+              placeHolder={'Start point'}
+              dataSelect={dataSelect}
+              type={'start'}
+              dataSource={dataSource}
+              inputOnChange={inputOnChange}
+            />
           </FormItem>
           <FormItem style={{ marginBottom: 0 }}>
-            {getFieldDecorator('end', {
-              rules: [
-                {
-                  validator: this.validateFields
-                }
-              ]
-            })(
-              <DistanceCalculator
-                placeHolder={'End point'}
-                dataSelect={this.onSearchChange}
-                startOrFinish={'end'}
-                dataSource={dataSource}
-              />
-            )}
+            <DistanceCalculator
+              placeHolder={'End point'}
+              dataSelect={dataSelect}
+              type={'end'}
+              dataSource={dataSource}
+              inputOnChange={inputOnChange}
+              inputDirty={inputDirty}
+            />
+          </FormItem>
+          <FormItem style={{ marginBottom: 0 }}>
+            {this.props.customDistance}
           </FormItem>
           <FormItem style={{ marginBottom: 0, paddingTop: 10 }}>
             <Button
+              disabled={buttonDisabled}
               icon="calculator"
               type="primary"
               htmlType="submit"
               className="login-form-button"
+              onClick={submitDistance}
             >
               Calculate
             </Button>
           </FormItem>
         </Form>
-        <div style={{ paddingTop: 10 }}>
+        {/* <div style={{ paddingTop: 10 }}>
           Enable clickable start/end points
           <Switch
             style={{ marginLeft: 10, marginBottom: 1 }}
@@ -114,7 +72,7 @@ class NormalLoginForm extends React.Component {
             defaultChecked
             onChange={this.onChange}
           />
-        </div>
+        </div> */}
         <div style={{ display: 'flex' }} />
       </div>
     )
@@ -125,7 +83,8 @@ const WrappedNormalLoginForm = Form.create()(NormalLoginForm)
 
 const mapStateToProps = state => ({
   data: state.data,
-  poiMarkers: state.poiMarkers
+  poiMarkers: state.poiMarkers,
+  customDistance: state.customDistance
 })
 
 export default connect(mapStateToProps)(WrappedNormalLoginForm)

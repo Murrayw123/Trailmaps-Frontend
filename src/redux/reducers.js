@@ -6,7 +6,11 @@ import {
   ADD_MAP_MARKER,
   CALC_DISTANCE,
   CALC_ELEVATION,
-  STORE_CUSTOM_TRACK
+  STORE_CUSTOM_TRACK,
+  CHANGE_ZOOM_LEVEL,
+  CHANGE_FOCUS_POINT,
+  FIND_TRAIL_MARKERS,
+  FILTER_TRAIL_MARKERS
 } from './actions'
 
 const initialState = {
@@ -16,10 +20,14 @@ const initialState = {
   error: null,
   mapMarkers: [],
   poiMarkers: [],
+  mapMarkerTypes: [],
   distance: 0,
   elevation: [],
   customDistance: [],
-  customPath: {}
+  customPath: {},
+  zoom: 10,
+  center: 0,
+  filters: []
 }
 
 export default function dataReducer(state = initialState, action) {
@@ -35,7 +43,11 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         loadingTrack: false,
-        data: action.payload.initMapInfo
+        data: action.payload.initMapInfo,
+        center: [
+          action.payload.initMapInfo.startpointlat,
+          action.payload.initMapInfo.startpointlng
+        ]
       }
 
     case FETCH_MARKERS_SUCCESS:
@@ -71,7 +83,33 @@ export default function dataReducer(state = initialState, action) {
     case STORE_CUSTOM_TRACK:
       return {
         ...state,
-        customPath: { path: action.payload }
+        customPath: {
+          path: action.payload.path,
+          distance: action.payload.distance
+        }
+      }
+    case CHANGE_ZOOM_LEVEL:
+      return {
+        ...state,
+        zoom: action.payload
+      }
+
+    case CHANGE_FOCUS_POINT:
+      return {
+        ...state,
+        center: action.payload
+      }
+
+    case FIND_TRAIL_MARKERS:
+      return {
+        ...state,
+        mapMarkerTypes: action.payload
+      }
+
+    case FILTER_TRAIL_MARKERS:
+      return {
+        ...state,
+        filters: action.payload
       }
 
     default:

@@ -58,5 +58,7 @@ export default function findIcon(type) {
       return hut
     case 'town':
       return town
+    default:
+      return campSite
   }
 }

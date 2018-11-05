@@ -17,6 +17,7 @@ import {
   Polyline
 } from 'react-leaflet'
 import PoiMarker from './PoiMarker'
+
 class MapComponent extends Component {
   state = { markerCounter: 0 }
 
@@ -53,17 +54,27 @@ class MapComponent extends Component {
   checkForCustomPath = () => {
     //if there is a custom route to display, display it
     if (Object.keys(this.props.customPath).length !== 0) {
-      return <GeoJSON data={this.props.customPath.path.path} color="red" />
+      return <GeoJSON data={this.props.customPath.path} color="red" />
     }
   }
 
+  filterMarkers = () => {
+    //if the marker is in the filtered list
+    let validMarkers = []
+    this.props.poiMarkers.map(marker => {
+      if (this.props.filters.includes(marker.marker_type)) {
+        validMarkers.push(<PoiMarker marker={marker} />)
+      }
+    })
+    return validMarkers
+  }
+
   render() {
-    const { data, mapMarkers, poiMarkers, customPath } = this.props
-    const position = [data.startpointlat, data.startpointlng]
+    const { data, mapMarkers, customPath, center, zoom } = this.props
     return (
       <Map
-        center={position}
-        zoom={13}
+        center={center}
+        zoom={zoom}
         className="map"
         zoomControl={false}
         onClick={this.checkMarkers}
@@ -76,10 +87,8 @@ class MapComponent extends Component {
         <GeoJSON interactive={false} data={data.map_track} />
 
         {this.checkForCustomPath()}
-
-        {poiMarkers.map(marker => {
-          // point of interest markers
-          return <PoiMarker marker={marker} />
+        {this.filterMarkers().map(marker => {
+          return marker
         })}
 
         {mapMarkers.map(marker => {
@@ -116,7 +125,10 @@ const mapStateToProps = state => ({
   mapMarkers: state.mapMarkers,
   poiMarkers: state.poiMarkers,
   customDistance: state.customDistance,
-  customPath: state.customPath
+  customPath: state.customPath,
+  center: state.center,
+  zoom: state.zoom,
+  filters: state.filters
 })
 
 export default connect(
