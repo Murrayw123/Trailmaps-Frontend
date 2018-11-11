@@ -10,7 +10,11 @@ import {
   CHANGE_ZOOM_LEVEL,
   CHANGE_FOCUS_POINT,
   FIND_TRAIL_MARKERS,
-  FILTER_TRAIL_MARKERS
+  FILTER_TRAIL_MARKERS,
+  CHANGE_TERRAIN,
+  SET_START_POINT,
+  SET_END_POINT,
+  STORE_FOCUS_MARKER
 } from './actions'
 
 const initialState = {
@@ -20,14 +24,19 @@ const initialState = {
   error: null,
   mapMarkers: [],
   poiMarkers: [],
+  distancePoint: {},
   mapMarkerTypes: [],
   distance: 0,
   elevation: [],
   customDistance: [],
   customPath: {},
+  terrain: 'topo',
   zoom: 10,
   center: 0,
-  filters: []
+  filters: [],
+  startPoint: {},
+  endPoint: {},
+  focusMarker: {}
 }
 
 export default function dataReducer(state = initialState, action) {
@@ -85,7 +94,8 @@ export default function dataReducer(state = initialState, action) {
         ...state,
         customPath: {
           path: action.payload.path,
-          distance: action.payload.distance
+          distance: action.payload.distance,
+          elevationChartData: action.payload.chartData
         }
       }
     case CHANGE_ZOOM_LEVEL:
@@ -110,6 +120,30 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         filters: action.payload
+      }
+
+    case CHANGE_TERRAIN:
+      return {
+        ...state,
+        terrain: action.payload
+      }
+
+    case SET_START_POINT:
+      return {
+        ...state,
+        startPoint: action.payload
+      }
+
+    case SET_END_POINT:
+      return {
+        ...state,
+        endPoint: action.payload
+      }
+
+    case STORE_FOCUS_MARKER:
+      return {
+        ...state,
+        focusMarker: action.payload
       }
 
     default:

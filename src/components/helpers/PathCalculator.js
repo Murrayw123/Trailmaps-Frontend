@@ -1,18 +1,24 @@
 import * as turf from '@turf/turf'
 import { PathFinder } from './geojson-path-finder/index'
 import nearestPointOnLine from './nearest-point-on-line'
+import { element } from 'prop-types'
 
 function findDistance(path) {
   let distance = 0
+  let chartData = []
+
   let i
   if (path.length > 1) {
     for (i = 0; i < path.length; i++) {
-      if (path[i + 1]) {
-        distance += turf.distance(path[i], path[i + 1])
+      if (path[i - 1]) {
+        distance += turf.distance(path[i - 1], path[i])
+        chartData.push({ elevation: path[i][2], distance: distance })
+      } else {
+        distance = 0 + turf.distance(path[i], path[i + 1])
       }
     }
   }
-  return distance
+  return { distance: distance, chartData: chartData }
 }
 
 export default function findPath(geoJsonPath, start, finish) {
@@ -42,6 +48,10 @@ export default function findPath(geoJsonPath, start, finish) {
   let distance = findDistance(path.path)
   //returns a linestring so leaflet can use it as a geojson layer
   let linestring = turf.lineString(path.path)
-  let returnPath = { path: linestring, distance: distance }
+  let returnPath = {
+    path: linestring,
+    distance: distance.distance,
+    chartData: distance.chartData
+  }
   return returnPath
 }

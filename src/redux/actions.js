@@ -10,6 +10,10 @@ export const CHANGE_ZOOM_LEVEL = 'CHANGE_ZOOM_LEVEL'
 export const CHANGE_FOCUS_POINT = 'CHANGE_FOCUS_POINT'
 export const FIND_TRAIL_MARKERS = 'FIND_TRAIL_MARKERS'
 export const FILTER_TRAIL_MARKERS = 'FILTER_TRAIL_MARKERS'
+export const CHANGE_TERRAIN = 'CHANGE_TERRAIN'
+export const SET_START_POINT = 'SET_START_POINT'
+export const SET_END_POINT = 'SET_END_POINT'
+export const STORE_FOCUS_MARKER = 'STORE_FOCUS_MARKER'
 
 export function fetchData(mapstring) {
   return dispatch => {
@@ -132,4 +136,24 @@ export const findTrailMarker = data => ({
 export const filterTrailMarkers = markerTypes => ({
   type: FILTER_TRAIL_MARKERS,
   payload: markerTypes
+})
+
+export const changeTerrain = terrainKey => ({
+  type: CHANGE_TERRAIN,
+  payload: terrainKey
+})
+
+export const setStartPoint = point => ({
+  type: SET_START_POINT,
+  payload: point
+})
+
+export const setEndPoint = point => ({
+  type: SET_END_POINT,
+  payload: point
+})
+
+export const storeFocusMarker = marker => ({
+  type: STORE_FOCUS_MARKER,
+  payload: marker
 })

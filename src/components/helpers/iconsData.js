@@ -1,12 +1,11 @@
 import L from 'leaflet'
-
-const start = new L.Icon({
+export const start = new L.Icon({
   iconUrl: require('./icons/start.svg'),
   iconSize: new L.Point(30, 35),
   className: null
 })
 
-const finish = new L.Icon({
+export const finish = new L.Icon({
   iconUrl: require('./icons/finish.svg'),
   iconSize: new L.Point(30, 35),
   className: null

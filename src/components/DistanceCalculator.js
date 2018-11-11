@@ -4,13 +4,7 @@ const Option = Select.Option
 
 class DistanceCalculator extends Component {
   render() {
-    const {
-      dataSource,
-      dataSelect,
-      type,
-      inputOnChange,
-      inputDirty
-    } = this.props
+    const { dataSource, onSelect, type, value, inputDirty } = this.props
     const options = dataSource.map(poi => (
       <Option key={poi.marker_id}>{poi.marker_title}</Option>
     ))
@@ -27,8 +21,9 @@ class DistanceCalculator extends Component {
               .indexOf(inputValue.toUpperCase()) !== -1
           }
           onSelect={e => {
-            dataSelect(e, type)
+            onSelect(e, type)
           }}
+          value={value ? value.marker_title : null}
         >
           {options}
         </Select>

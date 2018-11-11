@@ -10,6 +10,7 @@ import '../node_modules/antd/dist/antd.css'
 import './css/App.css'
 import './css/Menu.css'
 import './css/MapComponent.css'
+import './css/Chart.css'
 
 const store = createStore(dataReducer, applyMiddleware(thunk))
 

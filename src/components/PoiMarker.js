@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
+import { setStartPoint, setEndPoint } from '../redux/actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFlag } from '@fortawesome/free-regular-svg-icons'
 import { faFlagCheckered } from '@fortawesome/free-solid-svg-icons'
@@ -7,9 +8,13 @@ import { Divider } from 'antd'
 import findIcon from './helpers/iconsData'
 import { Marker, Popup } from 'react-leaflet'
 
-export default class PoiMarker extends Component {
-  markerClick = e => {
-    console.log(e)
+export class PoiMarker extends Component {
+  markerClick = point => {
+    if (point === 'startPoint') {
+      this.props.setStartPoint(this.props.marker)
+    } else {
+      this.props.setEndPoint(this.props.marker)
+    }
   }
   render() {
     const { marker } = this.props
@@ -30,8 +35,8 @@ export default class PoiMarker extends Component {
                 <FontAwesomeIcon
                   icon={faFlag}
                   className="startFlag"
-                  onClick={e => {
-                    this.markerClick(e)
+                  onClick={() => {
+                    this.markerClick('startPoint')
                   }}
                 />
               </a>
@@ -39,8 +44,8 @@ export default class PoiMarker extends Component {
                 <FontAwesomeIcon
                   icon={faFlagCheckered}
                   className="startFlag"
-                  onClick={e => {
-                    this.markerClick(e)
+                  onClick={() => {
+                    this.markerClick('endPoint')
                   }}
                 />
               </a>
@@ -61,3 +66,19 @@ export default class PoiMarker extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  setStartPoint: e => {
+    dispatch(setStartPoint(e))
+  },
+  setEndPoint: e => {
+    dispatch(setEndPoint(e))
+  }
+})
+
+const mapStateToProps = state => ({})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PoiMarker)
