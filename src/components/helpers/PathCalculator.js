@@ -3,6 +3,10 @@ import { PathFinder } from './geojson-path-finder/index'
 import nearestPointOnLine from './nearest-point-on-line'
 import { element } from 'prop-types'
 
+export function findPointAlongLine(path, distance) {
+  return turf.along(path, distance)
+}
+
 function findDistance(path) {
   let distance = 0
   let chartData = []
@@ -12,7 +16,11 @@ function findDistance(path) {
     for (i = 0; i < path.length; i++) {
       if (path[i - 1]) {
         distance += turf.distance(path[i - 1], path[i])
-        chartData.push({ elevation: path[i][2], distance: distance })
+        chartData.push({
+          elevation: path[i][2],
+          distance: distance,
+          coords: [path[i][1], path[i][0]]
+        })
       } else {
         distance = 0 + turf.distance(path[i], path[i + 1])
       }
@@ -21,7 +29,7 @@ function findDistance(path) {
   return { distance: distance, chartData: chartData }
 }
 
-export default function findPath(geoJsonPath, start, finish) {
+export function findPath(geoJsonPath, start, finish) {
   //combines FeatureCollection to MultiLineString
   let MultiLineString = turf.combine(geoJsonPath)
   //pull out the coordinates

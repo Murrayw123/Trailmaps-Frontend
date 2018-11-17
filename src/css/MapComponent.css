@@ -70,3 +70,7 @@ p {
   font-size: 17px;
   color: #00000075;
 }
+
+.leaflet-marker-draggable {
+  cursor: grab;
+}

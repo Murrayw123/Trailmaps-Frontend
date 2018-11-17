@@ -6,18 +6,25 @@ import ElevationChart from './ElevationChart'
 import { fetchData } from '../redux/actions'
 import { fetchMarkers } from '../redux/actions'
 import { Rnd as ElevationChartWrapper } from 'react-rnd'
+import { Icon, Button } from 'antd'
+
 import Sider from './Menu.js'
 
 class App extends Component {
-  state = { width: '40%', height: 125 }
+  state = { width: '40%', height: 125, showElevation: true }
   componentDidMount() {
     let currentMap = window.location.pathname.substring(1)
     this.props.dispatch(fetchData(currentMap))
     this.props.dispatch(fetchMarkers(currentMap))
   }
 
+  elevationChartStatus = state => {
+    this.setState({ showElevation: state })
+  }
+
   render() {
     const { loadingTrack, loadingMarkers } = this.props
+    const { showElevation } = this.state
     if (loadingTrack || loadingMarkers) {
       return <div>Loading...</div>
     } else {
@@ -25,7 +32,7 @@ class App extends Component {
         <div className="map">
           <MapComponent />
           <Sider />
-          {!_.isEmpty(this.props.customPath) ? (
+          {!_.isEmpty(this.props.customPath) && showElevation === true ? (
             <ElevationChartWrapper
               className="elevation-chart"
               size={{ width: this.state.width, height: this.state.height }}
@@ -38,7 +45,28 @@ class App extends Component {
               }}
             >
               <ElevationChart />
+              <Icon
+                className="minimise-chart"
+                type="down-circle"
+                onClick={() => {
+                  this.elevationChartStatus(false)
+                }}
+              />
             </ElevationChartWrapper>
+          ) : !_.isEmpty(this.props.customPath) ? (
+            <Button
+              className="show-elevation"
+              type="primary"
+              size="small"
+              onClick={() => {
+                this.elevationChartStatus(true)
+              }}
+            >
+              <span>
+                Show Elevation
+                <Icon className="minimise-chart" type="up-circle" />
+              </span>
+            </Button>
           ) : null}
         </div>
       )

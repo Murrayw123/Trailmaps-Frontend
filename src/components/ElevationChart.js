@@ -3,14 +3,27 @@ import {
   Line,
   XAxis,
   YAxis,
-  CartesianGrid,
+  Tooltip,
   Label,
   ResponsiveContainer
 } from 'recharts'
 import React, { Component } from 'react'
+import { setCustomDistanceMarker } from '../redux/actions'
+import { findPointAlongLine } from './helpers/PathCalculator'
 import { connect } from 'react-redux'
 
 class ElevationChart extends Component {
+  drawMarker = event => {
+    if (event.activePayload)
+      this.props.dispatch(
+        setCustomDistanceMarker(event.activePayload[0].payload.coords)
+      )
+  }
+
+  wipeMarker = () => {
+    this.props.dispatch(setCustomDistanceMarker([]))
+  }
+
   render() {
     let roundData = point => {
       return Math.round(point.distance)
@@ -19,7 +32,9 @@ class ElevationChart extends Component {
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={this.props.customPath.elevationChartData}
-          margin={{ top: 5, right: 15, left: 5, bottom: 12 }}
+          margin={{ top: 5, right: 20, left: 5, bottom: 12 }}
+          onMouseMove={e => this.drawMarker(e)}
+          onMouseLeave={this.wipeMarker}
         >
           <XAxis dataKey={roundData}>
             <Label
@@ -29,6 +44,11 @@ class ElevationChart extends Component {
               className="x-axis"
             />
           </XAxis>
+          <Tooltip
+            labelFormatter={name => 'distance: ' + name + 'km'}
+            formatter={value => value + 'm'}
+          />
+          />
           <YAxis allowDecimals={false} dataKey="elevation">
             <Label
               value="Elevation (meters)"

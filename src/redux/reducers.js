@@ -3,7 +3,6 @@ import {
   FETCH_DATA_SUCCESS,
   FETCH_DATA_FAILURE,
   FETCH_MARKERS_SUCCESS,
-  ADD_MAP_MARKER,
   CALC_DISTANCE,
   CALC_ELEVATION,
   STORE_CUSTOM_TRACK,
@@ -14,7 +13,10 @@ import {
   CHANGE_TERRAIN,
   SET_START_POINT,
   SET_END_POINT,
-  STORE_FOCUS_MARKER
+  STORE_FOCUS_MARKER,
+  SET_CUSTOM_DISTANCE_MARKER,
+  ADD_MAP_MARKER_START,
+  ADD_MAP_MARKER_END
 } from './actions'
 
 const initialState = {
@@ -22,7 +24,6 @@ const initialState = {
   loadingTrack: true,
   loadingMarkers: true,
   error: null,
-  mapMarkers: [],
   poiMarkers: [],
   distancePoint: {},
   mapMarkerTypes: [],
@@ -36,7 +37,10 @@ const initialState = {
   filters: [],
   startPoint: {},
   endPoint: {},
-  focusMarker: {}
+  focusMarker: {},
+  customDistanceMarker: [],
+  mapMarkerStart: null,
+  mapMarkerEnd: null
 }
 
 export default function dataReducer(state = initialState, action) {
@@ -56,7 +60,8 @@ export default function dataReducer(state = initialState, action) {
         center: [
           action.payload.initMapInfo.startpointlat,
           action.payload.initMapInfo.startpointlng
-        ]
+        ],
+        filters: action.payload.initMapInfo.filters
       }
 
     case FETCH_MARKERS_SUCCESS:
@@ -74,10 +79,16 @@ export default function dataReducer(state = initialState, action) {
         data: []
       }
 
-    case ADD_MAP_MARKER:
+    case ADD_MAP_MARKER_START:
       return {
         ...state,
-        mapMarkers: [...state.mapMarkers, action.payload]
+        mapMarkerStart: action.payload
+      }
+
+    case ADD_MAP_MARKER_END:
+      return {
+        ...state,
+        mapMarkerEnd: action.payload
       }
     case CALC_DISTANCE:
       return {
@@ -144,6 +155,12 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         focusMarker: action.payload
+      }
+
+    case SET_CUSTOM_DISTANCE_MARKER:
+      return {
+        ...state,
+        customDistanceMarker: action.payload
       }
 
     default:

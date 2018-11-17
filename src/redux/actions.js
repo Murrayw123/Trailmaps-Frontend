@@ -2,7 +2,6 @@ export const FETCH_DATA_BEGIN = 'FETCH_PRODUCTS_BEGIN'
 export const FETCH_DATA_SUCCESS = 'FETCH_PRODUCTS_SUCCESS'
 export const FETCH_MARKERS_SUCCESS = 'FETCH_MARKERS_SUCCESS'
 export const FETCH_DATA_FAILURE = 'FETCH_PRODUCTS_FAILURE'
-export const ADD_MAP_MARKER = 'ADD_MAP_MARKER'
 export const CALC_DISTANCE = 'CALC_DISTANCE'
 export const CALC_ELEVATION = 'CALC_ELEVATION'
 export const STORE_CUSTOM_TRACK = 'STORE_CUSTOM_TRACK'
@@ -14,6 +13,9 @@ export const CHANGE_TERRAIN = 'CHANGE_TERRAIN'
 export const SET_START_POINT = 'SET_START_POINT'
 export const SET_END_POINT = 'SET_END_POINT'
 export const STORE_FOCUS_MARKER = 'STORE_FOCUS_MARKER'
+export const SET_CUSTOM_DISTANCE_MARKER = 'SET_CUSTOM_DISTANCE_MARKER'
+export const ADD_MAP_MARKER_START = 'ADD_MAP_MARKER_START'
+export const ADD_MAP_MARKER_END = 'ADD_MAP_MARKER_END'
 
 export function fetchData(mapstring) {
   return dispatch => {
@@ -22,6 +24,8 @@ export function fetchData(mapstring) {
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
+        const filters = []
+        json.Default_filters.forEach(filter => filters.push(filter.type))
         const data = {
           id: json.Id,
           map_name: json.Map_name,
@@ -29,8 +33,10 @@ export function fetchData(mapstring) {
           map_type: json.Map_type,
           map_track: json.Map_track,
           startpointlat: json.Startpointlat,
-          startpointlng: json.Startpointlng
+          startpointlng: json.Startpointlng,
+          filters: filters
         }
+        console.log(data)
         dispatch(fetchDataSuccess(data))
         return data
       })
@@ -98,8 +104,13 @@ export const fetchDataError = error => ({
   payload: { error }
 })
 
-export const addMapMarker = marker => ({
-  type: ADD_MAP_MARKER,
+export const addMapMarkerStart = marker => ({
+  type: ADD_MAP_MARKER_START,
+  payload: marker
+})
+
+export const addMapMarkerEnd = marker => ({
+  type: ADD_MAP_MARKER_END,
   payload: marker
 })
 
@@ -156,4 +167,9 @@ export const setEndPoint = point => ({
 export const storeFocusMarker = marker => ({
   type: STORE_FOCUS_MARKER,
   payload: marker
+})
+
+export const setCustomDistanceMarker = latlng => ({
+  type: SET_CUSTOM_DISTANCE_MARKER,
+  payload: latlng
 })

@@ -12,7 +12,7 @@ import DistanceCalculatorForm from './DistanceCalculatorForm'
 import FilterMarkers from './Markers'
 import CustomJourney from './CustomJourney'
 import { TerrainSwitch } from './TerrainSwitch'
-import findPath from './helpers/PathCalculator'
+import { findPath } from './helpers/PathCalculator'
 import {
   changeZoomLevel,
   changeFocusPoint,
@@ -96,7 +96,8 @@ class Sider extends React.Component {
       mapMarkerTypes,
       customPath,
       terrain,
-      focusMarker
+      focusMarker,
+      filters
     } = this.props
     return (
       <Menu
@@ -169,6 +170,7 @@ class Sider extends React.Component {
             <FilterMarkers
               mapMarkerTypes={mapMarkerTypes}
               filterMarkers={this.filterMarkers}
+              currentFilters={filters}
               style={{ marginLeft: 48, width: 200 }}
             />
           </SubMenu>
@@ -215,7 +217,8 @@ const mapStateToProps = state => ({
   terrain: state.terrain,
   startPoint: state.startPoint,
   endPoint: state.endPoint,
-  focusMarker: state.focusMarker
+  focusMarker: state.focusMarker,
+  filters: state.filters
 })
 
 export default connect(mapStateToProps)(Sider)

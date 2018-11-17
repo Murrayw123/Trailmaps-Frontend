@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import {
-  addMapMarker,
+  addMapMarkerStart,
+  addMapMarkerEnd,
   storeDistance,
   storeElevation,
   storeCustomTrack
 } from '../redux/actions'
-import findPath from './helpers/PathCalculator'
+import { findPath } from './helpers/PathCalculator'
 import {
   Map,
   TileLayer,
@@ -17,7 +18,7 @@ import {
   GeoJSON,
   Polyline
 } from 'react-leaflet'
-import { start, finish } from './helpers/iconsData'
+import { start, finish, bicycle } from './helpers/iconsData'
 import PoiMarker from './PoiMarker'
 
 class MapComponent extends Component {
@@ -34,12 +35,14 @@ class MapComponent extends Component {
     if (this.state.markerCounter === 1) {
       e.startEnd = 'START'
       this.props.storeDistance(e)
-      this.props.createMarker(e)
+      this.props.addMapMarkerStart(e)
     } else {
       e.startEnd = 'END'
       this.props.storeDistance(e)
-      this.props.createMarker(e)
+      this.props.addMapMarkerEnd(e)
       this.calculateInfo()
+      // this.setState({ markerCounter: 0 })
+      // this.props.storePath(null)
     }
   }
 
@@ -55,8 +58,15 @@ class MapComponent extends Component {
 
   checkForCustomPath = () => {
     //if there is a custom route to display, display it
-    if (Object.keys(this.props.customPath).length !== 0) {
-      return <GeoJSON data={this.props.customPath.path} color="red" />
+    if (Object.keys(this.props.customPath).length) {
+      return (
+        <GeoJSON
+          key={this.props.customPath.elevationChartData.length}
+          data={this.props.customPath.path}
+          interactive={false}
+          color="red"
+        />
+      )
     }
   }
 
@@ -96,8 +106,32 @@ class MapComponent extends Component {
     return validMarkers
   }
 
+  markerDragEnd = e => {
+    e.latlng = { lat: e.target._latlng.lat, lng: e.target._latlng.lng }
+    if (e.startEnd === 'start') {
+      this.props.addMapMarkerStart(e)
+    } else {
+      this.props.addMapMarkerEnd(e)
+    }
+    let pathAndDistance = findPath(
+      this.props.data.map_track,
+      this.props.mapMarkerStart,
+      this.props.mapMarkerEnd
+    )
+    this.props.storePath(pathAndDistance)
+  }
+
   render() {
-    const { data, mapMarkers, customPath, center, zoom, terrain } = this.props
+    const {
+      data,
+      customPath,
+      center,
+      zoom,
+      terrain,
+      customDistanceMarker,
+      mapMarkerStart,
+      mapMarkerEnd
+    } = this.props
     let terrainURL =
       'https://maps.tilehosting.com/styles/' +
       terrain +
@@ -122,24 +156,51 @@ class MapComponent extends Component {
           return marker
         })}
 
-        {mapMarkers.map((marker, counter) => {
+        {mapMarkerStart ? (
           //custom markers from click event
-          return (
-            <Marker
-              key={marker.id}
-              position={[marker.latlng.lat, marker.latlng.lng]}
-              icon={counter === 0 ? start : finish}
-            />
-          )
-        })}
+          <Marker
+            key={mapMarkerStart.distance}
+            position={[mapMarkerStart.latlng.lat, mapMarkerStart.latlng.lng]}
+            icon={start}
+            draggable={true}
+            onDragEnd={e => {
+              e.startEnd = 'start'
+              return this.markerDragEnd(e)
+            }}
+            className="map-marker-custom"
+          />
+        ) : null}
+
+        {mapMarkerEnd ? (
+          //custom markers from click event
+          <Marker
+            key={mapMarkerEnd.distance}
+            position={[mapMarkerEnd.latlng.lat, mapMarkerEnd.latlng.lng]}
+            icon={finish}
+            draggable={true}
+            onDragEnd={e => {
+              e.startEnd = 'end'
+              return this.markerDragEnd(e)
+            }}
+            className="map-marker-custom"
+          />
+        ) : null}
+
+        {customDistanceMarker.length ? (
+          //custom marker from elevation click hover
+          <Marker key={1} position={customDistanceMarker} icon={bicycle} />
+        ) : null}
       </Map>
     )
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  createMarker: e => {
-    dispatch(addMapMarker(e))
+  addMapMarkerStart: e => {
+    dispatch(addMapMarkerStart(e))
+  },
+  addMapMarkerEnd: e => {
+    dispatch(addMapMarkerEnd(e))
   },
   storeDistance: distance => {
     dispatch(storeDistance(distance))
@@ -154,7 +215,6 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   data: state.data,
-  mapMarkers: state.mapMarkers,
   poiMarkers: state.poiMarkers,
   customDistance: state.customDistance,
   customPath: state.customPath,
@@ -164,7 +224,10 @@ const mapStateToProps = state => ({
   terrain: state.terrain,
   startPoint: state.startPoint,
   endPoint: state.endPoint,
-  focusMarker: state.focusMarker
+  focusMarker: state.focusMarker,
+  customDistanceMarker: state.customDistanceMarker,
+  mapMarkerStart: state.mapMarkerStart,
+  mapMarkerEnd: state.mapMarkerEnd
 })
 
 export default connect(

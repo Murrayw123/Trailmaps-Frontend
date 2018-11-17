@@ -17,7 +17,7 @@ const business = new L.Icon({
   className: null
 })
 
-const bicycle = new L.Icon({
+export const bicycle = new L.Icon({
   iconUrl: require('./icons/bicycle.svg'),
   iconSize: new L.Point(30, 35),
   className: null
@@ -41,6 +41,24 @@ const town = new L.Icon({
   className: null
 })
 
+const water = new L.Icon({
+  iconUrl: require('./icons/water.svg'),
+  iconSize: new L.Point(30, 35),
+  className: null
+})
+
+const attraction = new L.Icon({
+  iconUrl: require('./icons/attraction.svg'),
+  iconSize: new L.Point(30, 35),
+  className: null
+})
+
+const vehicle = new L.Icon({
+  iconUrl: require('./icons/vehicle.svg'),
+  iconSize: new L.Point(30, 35),
+  className: null
+})
+
 export default function findIcon(type) {
   switch (type) {
     case 'start':
@@ -57,6 +75,12 @@ export default function findIcon(type) {
       return hut
     case 'town':
       return town
+    case 'water':
+      return water
+    case 'attraction':
+      return attraction
+    case 'vehicle':
+      return vehicle
     default:
       return campSite
   }
