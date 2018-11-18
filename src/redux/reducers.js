@@ -16,7 +16,9 @@ import {
   STORE_FOCUS_MARKER,
   SET_CUSTOM_DISTANCE_MARKER,
   ADD_MAP_MARKER_START,
-  ADD_MAP_MARKER_END
+  ADD_MAP_MARKER_END,
+  WIPE_MARKERS_AND_PATH,
+  WIPE_MARKERS
 } from './actions'
 
 const initialState = {
@@ -106,6 +108,8 @@ export default function dataReducer(state = initialState, action) {
         customPath: {
           path: action.payload.path,
           distance: action.payload.distance,
+          elevationGain: action.payload.elevationGain,
+          elevationLoss: action.payload.elevationLoss,
           elevationChartData: action.payload.chartData
         }
       }
@@ -161,6 +165,24 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         customDistanceMarker: action.payload
+      }
+
+    case WIPE_MARKERS_AND_PATH:
+      return {
+        ...state,
+        mapMarkerStart: null,
+        mapMarkerEnd: null,
+        customPath: {},
+        customDistance: [],
+        startPoint: {},
+        endPoint: {}
+      }
+
+    case WIPE_MARKERS:
+      return {
+        ...state,
+        mapMarkerStart: null,
+        mapMarkerEnd: null
       }
 
     default:

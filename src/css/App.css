@@ -59,6 +59,14 @@ body {
   float: left;
 }
 
+.ant-card-body {
+  padding-left: 0px;
+}
+
+.ant-menu-submenu-title {
+  padding-left: 12px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

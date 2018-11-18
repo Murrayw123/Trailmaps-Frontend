@@ -6,7 +6,8 @@ import {
   addMapMarkerEnd,
   storeDistance,
   storeElevation,
-  storeCustomTrack
+  storeCustomTrack,
+  wipeMarkersAndPath
 } from '../redux/actions'
 import { findPath } from './helpers/PathCalculator'
 import {
@@ -25,33 +26,49 @@ class MapComponent extends Component {
   state = { markerCounter: 0 }
 
   checkMarkers = e => {
-    if (this.state.markerCounter < 2) {
+    //allow a maximum of two clicks before resetting the path
+    if (this.state.markerCounter === 0) {
       this.setState({ markerCounter: this.state.markerCounter + 1 })
-      this.addMarker(e)
+      e.startEnd = 'start'
+      this.addCustomMarker(e)
+    } else if (this.state.markerCounter === 1) {
+      this.setState({ markerCounter: this.state.markerCounter + 1 })
+      e.startEnd = 'end'
+      this.addCustomMarker(e)
+    } else {
+      e.startEnd = 'start'
+      this.props.wipeMarkersAndPath()
+      this.setState({ markerCounter: 1 })
+      this.addCustomMarker(e)
     }
   }
 
-  addMarker = e => {
-    if (this.state.markerCounter === 1) {
-      e.startEnd = 'START'
-      this.props.storeDistance(e)
+  addCustomMarker(e) {
+    if (e.startEnd === 'start') {
       this.props.addMapMarkerStart(e)
     } else {
-      e.startEnd = 'END'
-      this.props.storeDistance(e)
       this.props.addMapMarkerEnd(e)
-      this.calculateInfo()
-      // this.setState({ markerCounter: 0 })
-      // this.props.storePath(null)
+      let pathAndDistance = findPath(
+        this.props.data.map_track,
+        this.props.mapMarkerStart,
+        this.props.mapMarkerEnd
+      )
+      console.log(pathAndDistance)
+      this.props.storePath(pathAndDistance)
     }
   }
 
-  calculateInfo() {
-    //deals with custom route finding
+  draggableMarker = e => {
+    e.latlng = { lat: e.target._latlng.lat, lng: e.target._latlng.lng }
+    if (e.startEnd === 'start') {
+      this.props.addMapMarkerStart(e)
+    } else {
+      this.props.addMapMarkerEnd(e)
+    }
     let pathAndDistance = findPath(
       this.props.data.map_track,
-      this.props.customDistance[0],
-      this.props.customDistance[1]
+      this.props.mapMarkerStart,
+      this.props.mapMarkerEnd
     )
     this.props.storePath(pathAndDistance)
   }
@@ -106,21 +123,6 @@ class MapComponent extends Component {
     return validMarkers
   }
 
-  markerDragEnd = e => {
-    e.latlng = { lat: e.target._latlng.lat, lng: e.target._latlng.lng }
-    if (e.startEnd === 'start') {
-      this.props.addMapMarkerStart(e)
-    } else {
-      this.props.addMapMarkerEnd(e)
-    }
-    let pathAndDistance = findPath(
-      this.props.data.map_track,
-      this.props.mapMarkerStart,
-      this.props.mapMarkerEnd
-    )
-    this.props.storePath(pathAndDistance)
-  }
-
   render() {
     const {
       data,
@@ -165,7 +167,7 @@ class MapComponent extends Component {
             draggable={true}
             onDragEnd={e => {
               e.startEnd = 'start'
-              return this.markerDragEnd(e)
+              return this.draggableMarker(e)
             }}
             className="map-marker-custom"
           />
@@ -180,7 +182,7 @@ class MapComponent extends Component {
             draggable={true}
             onDragEnd={e => {
               e.startEnd = 'end'
-              return this.markerDragEnd(e)
+              return this.draggableMarker(e)
             }}
             className="map-marker-custom"
           />
@@ -210,6 +212,9 @@ const mapDispatchToProps = dispatch => ({
   },
   storePath: path => {
     dispatch(storeCustomTrack(path))
+  },
+  wipeMarkersAndPath: () => {
+    dispatch(wipeMarkersAndPath())
   }
 })
 

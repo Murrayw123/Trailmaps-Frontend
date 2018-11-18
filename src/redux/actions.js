@@ -16,6 +16,8 @@ export const STORE_FOCUS_MARKER = 'STORE_FOCUS_MARKER'
 export const SET_CUSTOM_DISTANCE_MARKER = 'SET_CUSTOM_DISTANCE_MARKER'
 export const ADD_MAP_MARKER_START = 'ADD_MAP_MARKER_START'
 export const ADD_MAP_MARKER_END = 'ADD_MAP_MARKER_END'
+export const WIPE_MARKERS_AND_PATH = 'WIPE_MARKERS_AND_PATH'
+export const WIPE_MARKERS = 'WIPE_MARKERS'
 
 export function fetchData(mapstring) {
   return dispatch => {
@@ -172,4 +174,12 @@ export const storeFocusMarker = marker => ({
 export const setCustomDistanceMarker = latlng => ({
   type: SET_CUSTOM_DISTANCE_MARKER,
   payload: latlng
+})
+
+export const wipeMarkersAndPath = () => ({
+  type: WIPE_MARKERS_AND_PATH
+})
+
+export const wipeMarkers = () => ({
+  type: WIPE_MARKERS
 })

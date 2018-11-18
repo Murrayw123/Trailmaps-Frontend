@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 import {
   filterTrailMarkers,
   storeCustomTrack,
-  changeTerrain
+  changeTerrain,
+  wipeMarkers,
+  wipeMarkersAndPath
 } from '../redux/actions'
-import { Menu, Icon, Divider } from 'antd'
+import { Menu, Icon, Divider, Card } from 'antd'
 import _ from 'lodash'
 import DistanceCalculator from './DistanceCalculator'
 import DistanceCalculatorForm from './DistanceCalculatorForm'
@@ -43,8 +45,14 @@ class Sider extends React.Component {
 
   submitDistance = e => {
     e.preventDefault()
+    this.props.dispatch(wipeMarkers())
     let pathAndDistance = this.calculateInfo()
     this.props.dispatch(storeCustomTrack(pathAndDistance))
+  }
+
+  clearPath = e => {
+    e.preventDefault()
+    this.props.dispatch(wipeMarkersAndPath())
   }
 
   calculateInfo = () => {
@@ -103,12 +111,13 @@ class Sider extends React.Component {
       <Menu
         className="overlayMenu"
         onClick={this.handleClick}
-        style={{ width: 350 }}
+        style={{ width: 300 }}
         defaultOpenKeys={['menu']}
         mode="inline"
       >
         <SubMenu
           key="menu"
+          className="title"
           title={
             <span>
               <Icon
@@ -131,7 +140,7 @@ class Sider extends React.Component {
               </span>
             }
           >
-            <div style={{ marginLeft: 48 }}>
+            <div style={{ marginLeft: 24 }}>
               <DistanceCalculator
                 placeHolder={'Point on map'}
                 dataSource={poiMarkers}
@@ -155,8 +164,8 @@ class Sider extends React.Component {
               dataSelect={this.dataSelect}
               buttonDisabled={this.isButtonDisabled()}
               submitDistance={this.submitDistance}
+              clearPath={this.clearPath}
             />
-            {customPath ? <h1> {customPath.distance} </h1> : null}
           </SubMenu>
           <SubMenu
             key="sub3"
@@ -171,7 +180,7 @@ class Sider extends React.Component {
               mapMarkerTypes={mapMarkerTypes}
               filterMarkers={this.filterMarkers}
               currentFilters={filters}
-              style={{ marginLeft: 48, width: 200 }}
+              style={{ marginLeft: 24, width: 200 }}
             />
           </SubMenu>
           <SubMenu
@@ -200,7 +209,7 @@ class Sider extends React.Component {
             }
           >
             <FilterMarkers
-              style={{ paddingBottom: 20, width: 200, marginLeft: 48 }}
+              style={{ paddingBottom: 20, width: 200, marginLeft: 24 }}
             />
           </SubMenu>
         </SubMenu>

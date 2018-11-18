@@ -10,23 +10,41 @@ export function findPointAlongLine(path, distance) {
 function findDistance(path) {
   let distance = 0
   let chartData = []
-
+  let elevationGain = 0
+  let elevationLoss = 0
   let i
   if (path.length > 1) {
     for (i = 0; i < path.length; i++) {
       if (path[i - 1]) {
         distance += turf.distance(path[i - 1], path[i])
+        //if the previous point is lower than the current point,
+        //it's elevation gain. Otherwise it's elevation loss
+        if (path[i - 1][2] < path[i][2]) {
+          elevationGain += path[i][2] - path[i - 1][2]
+        } else {
+          elevationLoss += path[i - 1][2] - path[i][2]
+        }
         chartData.push({
           elevation: path[i][2],
           distance: distance,
           coords: [path[i][1], path[i][0]]
         })
       } else {
-        distance = 0 + turf.distance(path[i], path[i + 1])
+        distance = 0
+        chartData.push({
+          elevation: path[i][2],
+          distance: distance,
+          coords: [path[i][1], path[i][0]]
+        })
       }
     }
   }
-  return { distance: distance, chartData: chartData }
+  return {
+    distance: distance,
+    chartData: chartData,
+    elevationGain: elevationGain,
+    elevationLoss: elevationLoss
+  }
 }
 
 export function findPath(geoJsonPath, start, finish) {
@@ -59,7 +77,9 @@ export function findPath(geoJsonPath, start, finish) {
   let returnPath = {
     path: linestring,
     distance: distance.distance,
-    chartData: distance.chartData
+    chartData: distance.chartData,
+    elevationGain: distance.elevationGain,
+    elevationLoss: distance.elevationLoss
   }
   return returnPath
 }
