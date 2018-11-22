@@ -37,6 +37,10 @@
   height: auto;
 }
 
+.ant-select-dropdown-menu-item .ant-select-dropdown-menu-item-active {
+  width: 200px;
+}
+
 .ant-menu-sub.ant-menu-inline {
   border-radius: 4px;
 }

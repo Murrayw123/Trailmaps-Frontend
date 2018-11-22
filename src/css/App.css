@@ -42,6 +42,14 @@ body {
   cursor: pointer;
 }
 
+.ant-select-selection {
+  width: 200px;
+}
+
+.ant-card-body {
+  padding: 12px;
+}
+
 .show-elevation {
   position: fixed;
   z-index: 9999;

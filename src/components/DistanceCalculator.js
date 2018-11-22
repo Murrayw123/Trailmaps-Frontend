@@ -12,7 +12,7 @@ class DistanceCalculator extends Component {
       <div>
         <Select
           showSearch
-          style={{ width: 250 }}
+          style={{ width: 200, marginBottom: 10 }}
           onInputKeyDown={inputDirty}
           placeholder={this.props.placeHolder}
           filterOption={(inputValue, option) =>

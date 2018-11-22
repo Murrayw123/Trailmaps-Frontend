@@ -25,7 +25,7 @@ class DistanceCalculatorForm extends React.Component {
       customPath
     } = this.props
     return (
-      <div style={{ marginLeft: 24 }}>
+      <div style={{ marginLeft: 48 }}>
         <div>
           <DistanceCalculator
             placeHolder={'Start point'}
@@ -33,6 +33,7 @@ class DistanceCalculatorForm extends React.Component {
             type={'start'}
             dataSource={dataSource}
             value={startPoint}
+            className="distance-calculator"
           />
           <DistanceCalculator
             placeHolder={'End point'}
@@ -57,13 +58,14 @@ class DistanceCalculatorForm extends React.Component {
               icon="delete"
               type="default"
               htmlType="submit"
-              className="login-form-button"
+              className="clear-path"
               onClick={clearPath}
             >
               Clear
             </Button>
           ) : null}
         </div>
+        {/* <Divider style={{ margin: 0, padding: 0 }} /> */}
         {customPath.path ? (
           <Card bordered={false} style={{ width: 250 }}>
             <p>

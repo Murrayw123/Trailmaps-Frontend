@@ -111,7 +111,7 @@ class Sider extends React.Component {
       <Menu
         className="overlayMenu"
         onClick={this.handleClick}
-        style={{ width: 300 }}
+        style={{ width: 300, opacity: 0.9 }}
         defaultOpenKeys={['menu']}
         mode="inline"
       >
@@ -140,7 +140,7 @@ class Sider extends React.Component {
               </span>
             }
           >
-            <div style={{ marginLeft: 24 }}>
+            <div style={{ marginLeft: 48 }}>
               <DistanceCalculator
                 placeHolder={'Point on map'}
                 dataSource={poiMarkers}
@@ -155,7 +155,7 @@ class Sider extends React.Component {
             title={
               <span>
                 <Icon type="calculator" theme="outlined" className="sub-icon" />
-                <span className="sub-heading">Distance Calculator</span>
+                <span className="sub-heading">Distance and Elevation</span>
               </span>
             }
           >
@@ -180,7 +180,7 @@ class Sider extends React.Component {
               mapMarkerTypes={mapMarkerTypes}
               filterMarkers={this.filterMarkers}
               currentFilters={filters}
-              style={{ marginLeft: 24, width: 200 }}
+              style={{ marginLeft: 48, width: 200 }}
             />
           </SubMenu>
           <SubMenu
@@ -195,21 +195,7 @@ class Sider extends React.Component {
             <TerrainSwitch
               terrain={terrain}
               terrainSwitch={this.terrainSwitch}
-            />
-          </SubMenu>
-          <SubMenu
-            key="sub5"
-            title={
-              <span>
-                <Icon type="edit" theme="outlined" className="sub-icon" />
-                <span className="sub-heading">
-                  Custom Journey / Interactivity
-                </span>
-              </span>
-            }
-          >
-            <FilterMarkers
-              style={{ paddingBottom: 20, width: 200, marginLeft: 24 }}
+              style={{ marginLeft: 48, width: 200 }}
             />
           </SubMenu>
         </SubMenu>

@@ -11,7 +11,7 @@ export class TerrainSwitch extends Component {
     return (
       <div>
         <Select
-          style={{ width: 200 }}
+          style={this.props.style}
           onChange={terrainSwitch}
           defaultValue={terrain}
           placeholder={terrain.pretty}
