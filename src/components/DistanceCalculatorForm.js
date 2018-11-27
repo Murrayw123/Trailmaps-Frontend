@@ -65,7 +65,14 @@ class DistanceCalculatorForm extends React.Component {
             </Button>
           ) : null}
         </div>
-        {/* <Divider style={{ margin: 0, padding: 0 }} /> */}
+         <Divider className='distance-divider' />
+            <Card bordered={false} style={{ width: 250 }}>
+              <span>
+                 Create Custom Path
+                <Switch size="small" style={{marginLeft: 5}} checked={this.props.allowCustomPath} onChange={this.props.toggleCustomPath} />
+              </span>
+            </Card>
+          <Divider style={{marginTop: 0}} className='distance-divider' />
         {customPath.path ? (
           <Card bordered={false} style={{ width: 250 }}>
             <p>
@@ -89,7 +96,8 @@ class DistanceCalculatorForm extends React.Component {
 const mapStateToProps = state => ({
   startPoint: state.startPoint,
   endPoint: state.endPoint,
-  customPath: state.customPath
+  customPath: state.customPath,
+  allowCustomPath: state.allowCustomPath
 })
 
 export default connect(mapStateToProps)(DistanceCalculatorForm)

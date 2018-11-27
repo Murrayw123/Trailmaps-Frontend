@@ -26,6 +26,12 @@
   margin: 0px;
 }
 
+.distance-divider{
+  margin: 10px 0px 0px 0px;
+  padding: 0px;
+  width: 80%;
+}
+
 .ant-menu-vertical .ant-menu-item,
 .ant-menu-vertical-left .ant-menu-item,
 .ant-menu-vertical-right .ant-menu-item,
