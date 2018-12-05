@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   filterTrailMarkers,
   storeCustomTrack,
   changeTerrain,
   wipeMarkers,
   wipeMarkersAndPath,
-    allowCustomPath
-} from '../redux/actions';
-import { Menu, Icon, Divider, Card } from 'antd';
-import _ from 'lodash';
-import DistanceCalculator from './DistanceCalculator';
-import DistanceCalculatorForm from './DistanceCalculatorForm';
-import FilterMarkers from './Markers';
-import { TerrainSwitch } from './TerrainSwitch';
-import { findPath } from './helpers/PathCalculator';
+  allowCustomPath
+} from "../redux/actions";
+import { Menu, Icon, Divider, Card } from "antd";
+import _ from "lodash";
+import DistanceCalculator from "./DistanceCalculator";
+import DistanceCalculatorForm from "./DistanceCalculatorForm";
+import FilterMarkers from "./Markers";
+import { TerrainSwitch } from "./TerrainSwitch";
+import { findPath } from "./helpers/PathCalculator";
 import {
   changeZoomLevel,
   changeFocusPoint,
   setStartPoint,
   setEndPoint,
-  storeFocusMarker,
-} from '../redux/actions';
+  storeFocusMarker
+} from "../redux/actions";
 
 const SubMenu = Menu.SubMenu;
 
@@ -30,13 +30,13 @@ class Sider extends React.Component {
     let newFocus = this.props.poiMarkers.find(el => {
       return el.marker_id === parseInt(markerid);
     });
-    if (type === 'locate') {
+    if (type === "locate") {
       this.props.dispatch(changeZoomLevel(13));
       this.props.dispatch(
-        changeFocusPoint([newFocus.marker_lat, newFocus.marker_lng]),
+        changeFocusPoint([newFocus.marker_lat, newFocus.marker_lng])
       );
       this.props.dispatch(storeFocusMarker(newFocus));
-    } else if (type === 'start') {
+    } else if (type === "start") {
       this.props.dispatch(setStartPoint(newFocus));
     } else {
       this.props.dispatch(setEndPoint(newFocus));
@@ -61,20 +61,20 @@ class Sider extends React.Component {
       {
         latlng: {
           lat: this.props.startPoint.marker_lat,
-          lng: this.props.startPoint.marker_lng,
-        },
+          lng: this.props.startPoint.marker_lng
+        }
       },
       {
         latlng: {
           lat: this.props.endPoint.marker_lat,
-          lng: this.props.endPoint.marker_lng,
-        },
-      },
+          lng: this.props.endPoint.marker_lng
+        }
+      }
     ];
     let pathAndDistance = findPath(
       this.props.data.map_track,
       pathObj[0],
-      pathObj[1],
+      pathObj[1]
     );
     return pathAndDistance;
   };
@@ -88,8 +88,8 @@ class Sider extends React.Component {
   };
 
   toggleCustomPath = bool => {
-    this.props.dispatch(allowCustomPath(bool))
-  }
+    this.props.dispatch(allowCustomPath(bool));
+  };
 
   isButtonDisabled = () => {
     let startEmpty = _.isEmpty(this.props.startPoint);
@@ -106,17 +106,18 @@ class Sider extends React.Component {
       data,
       poiMarkers,
       mapMarkerTypes,
-      customPath,
+      sideBarImage,
+      sideBarBlurb,
       terrain,
       focusMarker,
-      filters,
+      filters
     } = this.props;
     return (
       <Menu
         className="overlayMenu"
         onClick={this.handleClick}
         style={{ width: 300, opacity: 0.9 }}
-        defaultOpenKeys={['menu']}
+        defaultOpenKeys={["menu"]}
         mode="inline"
       >
         <SubMenu
@@ -125,7 +126,7 @@ class Sider extends React.Component {
           title={
             <span>
               <Icon
-                style={{ fontSize: '1.4em' }}
+                style={{ fontSize: "1.4em" }}
                 type="setting"
                 theme="outlined"
                 className="icons-large"
@@ -146,9 +147,9 @@ class Sider extends React.Component {
           >
             <div style={{ marginLeft: 48 }}>
               <DistanceCalculator
-                placeHolder={'Point on map'}
+                placeHolder={"Point on map"}
                 dataSource={poiMarkers}
-                type={'locate'}
+                type={"locate"}
                 onSelect={this.dataSelect}
                 value={focusMarker}
               />
@@ -203,6 +204,47 @@ class Sider extends React.Component {
               style={{ marginLeft: 48, width: 200 }}
             />
           </SubMenu>
+          <SubMenu
+            key="sub5"
+            title={
+              <span>
+                <Icon type="picture" theme="outlined" className="sub-icon" />
+                <span className="sub-heading">Map & Marker Information</span>
+              </span>
+            }
+          >
+            <Card bordered={false} className="info-card">
+              <span>
+                <img
+                  className="map-blurb-img"
+                  src={sideBarImage ? sideBarImage : null}
+                />
+              </span>
+              <Divider className="map-info-divider" />
+
+              <p>
+                <b> Map Information: </b>
+                {_.isEmpty(focusMarker)
+                  ? sideBarBlurb
+                  : focusMarker.marker_blurb}
+                }
+              </p>
+              <p>
+                <Divider className="map-info-divider" />
+                <div>
+                  {data.map_stats
+                    ? data.map_stats.map(el => {
+                        return (
+                          <div>
+                            <b>{el.key}</b> : {el.value}
+                          </div>
+                        );
+                      })
+                    : null}
+                </div>
+              </p>
+            </Card>
+          </SubMenu>
         </SubMenu>
       </Menu>
     );
@@ -219,6 +261,8 @@ const mapStateToProps = state => ({
   endPoint: state.endPoint,
   focusMarker: state.focusMarker,
   filters: state.filters,
+  sideBarImage: state.sideBarImage,
+  sideBarBlurb: state.sideBarBlurb
 });
 
 export default connect(mapStateToProps)(Sider);

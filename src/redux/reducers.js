@@ -19,7 +19,8 @@ import {
   ADD_MAP_MARKER_END,
   WIPE_MARKERS_AND_PATH,
   WIPE_MARKERS,
-  ALLOW_CUSTOM_PATH
+  ALLOW_CUSTOM_PATH,
+  CHANGE_SIDEBAR_DATA
 } from "./actions";
 
 const initialState = {
@@ -44,7 +45,9 @@ const initialState = {
   customDistanceMarker: [],
   mapMarkerStart: null,
   mapMarkerEnd: null,
-  allowCustomPath: false
+  allowCustomPath: false,
+  sideBarImage: null,
+  sideBarBlurb: null
 };
 
 export default function dataReducer(state = initialState, action) {
@@ -191,6 +194,13 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         allowCustomPath: action.payload
+      };
+
+    case CHANGE_SIDEBAR_DATA:
+      return {
+        ...state,
+        sideBarImage: action.payload.image,
+        sideBarBlurb: action.payload.blurb
       };
 
     default:

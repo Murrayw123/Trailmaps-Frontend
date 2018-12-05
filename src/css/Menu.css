@@ -4,6 +4,19 @@
   top: 10px;
   left: 10px;
   z-index: 99;
+  max-height: 80%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
 #map-tool-heading {
@@ -26,7 +39,7 @@
   margin: 0px;
 }
 
-.distance-divider{
+.distance-divider {
   margin: 10px 0px 0px 0px;
   padding: 0px;
   width: 80%;
@@ -47,12 +60,32 @@
   width: 200px;
 }
 
+.map-blurb-img {
+  border: 1px solid dimgrey;
+  border-radius: 5px;
+}
+
 .ant-menu-sub.ant-menu-inline {
   border-radius: 4px;
 }
 
 .ant-menu-submenu-title {
   padding-left: 24px !important;
+}
+
+.info-card {
+  margin-left: 48px;
+  width: 250px;
+  padding-top: 0px;
+}
+
+.info-card .ant-card-body {
+  padding-top: 0px;
+}
+
+.map-info-divider {
+  margin: 10px 0px 0px 0px;
+  width: 90%;
 }
 
 p {

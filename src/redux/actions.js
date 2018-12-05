@@ -19,6 +19,7 @@ export const ADD_MAP_MARKER_END = "ADD_MAP_MARKER_END";
 export const WIPE_MARKERS_AND_PATH = "WIPE_MARKERS_AND_PATH";
 export const WIPE_MARKERS = "WIPE_MARKERS";
 export const ALLOW_CUSTOM_PATH = "ALLOW_CUSTOM_PATH";
+export const CHANGE_SIDEBAR_DATA = "CHANGE_SIDEBAR_DATA";
 
 export function fetchData(mapstring) {
   return dispatch => {
@@ -37,8 +38,14 @@ export function fetchData(mapstring) {
           map_track: json.Map_track,
           startpointlat: json.Startpointlat,
           startpointlng: json.Startpointlng,
-          filters: filters
+          filters: filters,
+          map_blurb: json.Map_blurb,
+          default_image: json.Default_image,
+          map_stats: json.Map_stats,
+          zoom_level: json.Zoom_level
         };
+        dispatch(changeZoomLevel(data.zoom_level));
+        dispatch(changeSideBarData(data.map_blurb, data.default_image));
         dispatch(fetchDataSuccess(data));
         return data;
       })
@@ -60,7 +67,8 @@ export function fetchMarkers(mapstring) {
             marker_lat: el.Marker_lat,
             marker_lng: el.Marker_lng,
             marker_info: el.Marker_info,
-            marker_title: el.Marker_title
+            marker_title: el.Marker_title,
+            marker_blurb: el.Marker_blurb
           };
         });
         return data;
@@ -187,4 +195,9 @@ export const wipeMarkers = () => ({
 export const allowCustomPath = bool => ({
   type: ALLOW_CUSTOM_PATH,
   payload: bool
+});
+
+export const changeSideBarData = (map_blurb, default_image) => ({
+  type: CHANGE_SIDEBAR_DATA,
+  payload: {blurb: map_blurb, image: default_image}
 });
