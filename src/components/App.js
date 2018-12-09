@@ -1,35 +1,36 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import _ from 'lodash'
-import MapComponent from './MapComponent'
-import ElevationChart from './ElevationChart'
-import { fetchData } from '../redux/actions'
-import { fetchMarkers } from '../redux/actions'
-import { Rnd as ElevationChartWrapper } from 'react-rnd'
-import { Icon, Button } from 'antd'
-
-import Sider from './Menu.js'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import _ from "lodash";
+import MapComponent from "./MapComponent";
+import ElevationChart from "./ElevationChart";
+import MapSelect from "./MapSelect";
+import { fetchData, fetchMarkers, fetchOtherMaps } from "../redux/actions";
+import { Rnd as ElevationChartWrapper } from "react-rnd";
+import { Icon, Button } from "antd";
+import Sider from "./Menu.js";
 
 class App extends Component {
-  state = { width: '40%', height: 125, showElevation: true }
+  state = { width: "40%", height: 125, showElevation: true };
   componentDidMount() {
-    let currentMap = window.location.pathname.substring(1)
-    this.props.dispatch(fetchData(currentMap))
-    this.props.dispatch(fetchMarkers(currentMap))
+    let currentMap = window.location.pathname.substring(1);
+    this.props.dispatch(fetchData(currentMap));
+    this.props.dispatch(fetchMarkers(currentMap));
+    this.props.dispatch(fetchOtherMaps());
   }
 
   elevationChartStatus = state => {
-    this.setState({ showElevation: state })
-  }
+    this.setState({ showElevation: state });
+  };
 
   render() {
-    const { loadingTrack, loadingMarkers } = this.props
-    const { showElevation } = this.state
+    const { loadingTrack, loadingMarkers } = this.props;
+    const { showElevation } = this.state;
     if (loadingTrack || loadingMarkers) {
-      return <div>Loading...</div>
+      return <div>Loading...</div>;
     } else {
       return (
         <div className="map">
+          <MapSelect />
           <MapComponent />
           <Sider />
           {!_.isEmpty(this.props.customPath) && showElevation === true ? (
@@ -41,7 +42,7 @@ class App extends Component {
                   width: ref.style.width,
                   height: ref.style.height,
                   ...position
-                })
+                });
               }}
             >
               <ElevationChart />
@@ -49,7 +50,7 @@ class App extends Component {
                 className="minimise-chart"
                 type="down-circle"
                 onClick={() => {
-                  this.elevationChartStatus(false)
+                  this.elevationChartStatus(false);
                 }}
               />
             </ElevationChartWrapper>
@@ -59,7 +60,7 @@ class App extends Component {
               type="primary"
               size="small"
               onClick={() => {
-                this.elevationChartStatus(true)
+                this.elevationChartStatus(true);
               }}
             >
               <span>
@@ -69,7 +70,7 @@ class App extends Component {
             </Button>
           ) : null}
         </div>
-      )
+      );
     }
   }
 }
@@ -82,6 +83,6 @@ const mapStateToProps = state => ({
   poiMarkers: state.poiMarkers,
   customPath: state.customPath,
   elevationChartData: state.elevationChartData
-})
+});
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(App);

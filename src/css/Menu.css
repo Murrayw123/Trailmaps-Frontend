@@ -6,17 +6,6 @@
   z-index: 99;
   max-height: 80%;
   overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 7px;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
 #map-tool-heading {
@@ -26,6 +15,20 @@
 .ant-menu-sub.ant-menu-inline .ant-menu-item-group-title {
   font-size: 1.3em;
 }
+
+.title > div.ant-menu-submenu-title {
+  position: fixed;
+  height: 40px;
+  width: 300px;
+  z-index: 150;
+  margin-top: 0px;
+  background-color: #f1efef;
+  border-radius: 5px;
+}
+
+/*.ant-menu-sub > li.ant-menu-submenu {*/
+  /*padding-top: 40px;*/
+/*}*/
 
 .sub-heading {
   font-size: larger;

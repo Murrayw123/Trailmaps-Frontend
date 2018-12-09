@@ -1,31 +1,32 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { setStartPoint, setEndPoint } from '../redux/actions'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFlag } from '@fortawesome/free-regular-svg-icons'
-import { faFlagCheckered } from '@fortawesome/free-solid-svg-icons'
-import { Divider } from 'antd'
-import findIcon from './helpers/iconsData'
-import { Marker, Popup } from 'react-leaflet'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { setStartPoint, setEndPoint } from "../redux/actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFlag } from "@fortawesome/free-regular-svg-icons";
+import { faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
+import { Divider } from "antd";
+import findIcon from "./helpers/iconsData";
+import { Marker, Popup } from "react-leaflet";
 
 export class PoiMarker extends Component {
   markerClick = point => {
-    if (point === 'startPoint') {
-      this.props.setStartPoint(this.props.marker)
+    if (point === "startPoint") {
+      this.props.setStartPoint(this.props.marker);
     } else {
-      this.props.setEndPoint(this.props.marker)
+      this.props.setEndPoint(this.props.marker);
     }
-  }
+  };
   render() {
-    const { marker } = this.props
-    let icon = findIcon(marker.marker_type)
-    let info = marker.marker_info
+    const { marker } = this.props;
+    let icon = findIcon(marker.marker_type);
+    let info = marker.marker_info;
 
     return (
       <Marker
         key={marker.id}
         position={[marker.marker_lat, marker.marker_lng]}
         icon={icon}
+        onClick={this.props.onClick}
       >
         <Popup>
           <div className="titleDiv">
@@ -36,7 +37,7 @@ export class PoiMarker extends Component {
                   icon={faFlag}
                   className="startFlag"
                   onClick={() => {
-                    this.markerClick('startPoint')
+                    this.markerClick("startPoint");
                   }}
                 />
               </a>
@@ -45,7 +46,7 @@ export class PoiMarker extends Component {
                   icon={faFlagCheckered}
                   className="startFlag"
                   onClick={() => {
-                    this.markerClick('endPoint')
+                    this.markerClick("endPoint");
                   }}
                 />
               </a>
@@ -58,27 +59,27 @@ export class PoiMarker extends Component {
                 <div>
                   <b> {el.title}: </b> {el.value}
                 </div>
-              )
+              );
             })}
           </div>
         </Popup>
       </Marker>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   setStartPoint: e => {
-    dispatch(setStartPoint(e))
+    dispatch(setStartPoint(e));
   },
   setEndPoint: e => {
-    dispatch(setEndPoint(e))
+    dispatch(setEndPoint(e));
   }
-})
+});
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PoiMarker)
+)(PoiMarker);

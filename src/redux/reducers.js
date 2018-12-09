@@ -20,9 +20,11 @@ import {
   WIPE_MARKERS_AND_PATH,
   WIPE_MARKERS,
   ALLOW_CUSTOM_PATH,
-  CHANGE_SIDEBAR_DATA
+  CHANGE_SIDEBAR_DATA,
+  SET_OPEN_MENUS,
+  OPEN_DISTANCE_TAB,
+  FETCH_MAPS_SUCCESS
 } from "./actions";
-
 const initialState = {
   data: [],
   loadingTrack: true,
@@ -47,7 +49,9 @@ const initialState = {
   mapMarkerEnd: null,
   allowCustomPath: false,
   sideBarImage: null,
-  sideBarBlurb: null
+  sideBarBlurb: null,
+  openKeys: [],
+  allMaps: []
 };
 
 export default function dataReducer(state = initialState, action) {
@@ -76,6 +80,13 @@ export default function dataReducer(state = initialState, action) {
         ...state,
         loadingMarkers: false,
         poiMarkers: action.payload.markers
+      };
+
+    case FETCH_MAPS_SUCCESS:
+      return {
+        ...state,
+        loadingMarkers: false,
+        allMaps: action.payload.maps
       };
 
     case FETCH_DATA_FAILURE:
@@ -203,6 +214,17 @@ export default function dataReducer(state = initialState, action) {
         sideBarBlurb: action.payload.blurb
       };
 
+    case SET_OPEN_MENUS:
+      return {
+        ...state,
+        openKeys: action.payload
+      };
+
+    case OPEN_DISTANCE_TAB:
+      return {
+        ...state,
+        openKeys: [...state.openKeys, "distanceTab"]
+      };
     default:
       return state;
   }

@@ -7,7 +7,9 @@ import {
   storeDistance,
   storeElevation,
   storeCustomTrack,
-  wipeMarkersAndPath
+  wipeMarkersAndPath,
+  openDistanceTab,
+  changeSideBarData
 } from "../redux/actions";
 import { findPath, isMarkersValid } from "./helpers/PathCalculator";
 import {
@@ -64,6 +66,9 @@ class MapComponent extends Component {
           this.props.mapMarkerEnd
         );
         this.props.storePath(pathAndDistance);
+        if (!this.props.openKeys.includes("distanceTab")) {
+          this.props.openDistanceTab();
+        }
       } else {
         this.props.wipeMarkersAndPath();
       }
@@ -87,7 +92,10 @@ class MapComponent extends Component {
 
   checkForCustomPath = () => {
     //if there is a custom route to display, display it
-    if (Object.keys(this.props.customPath).length) {
+    if (
+      Object.keys(this.props.customPath).length &&
+      this.props.customPath.path
+    ) {
       return (
         <GeoJSON
           key={this.props.customPath.elevationChartData.length}
@@ -121,6 +129,10 @@ class MapComponent extends Component {
     return false;
   };
 
+  onClickMarker = marker => {
+    changeSideBarData(marker.marker_blurb, marker.default_image);
+  };
+
   filterMarkers = () => {
     //if the marker is in the filtered list
     let validMarkers = [];
@@ -129,7 +141,9 @@ class MapComponent extends Component {
         this.props.filters.includes(marker.marker_type) ||
         this.shouldShowMarker(marker)
       ) {
-        validMarkers.push(<PoiMarker marker={marker} />);
+        validMarkers.push(
+          <PoiMarker marker={marker} onClick={this.onClickMarker} />
+        );
       }
     });
     return validMarkers;
@@ -227,6 +241,12 @@ const mapDispatchToProps = dispatch => ({
   },
   wipeMarkersAndPath: () => {
     dispatch(wipeMarkersAndPath());
+  },
+  openDistanceTab: () => {
+    dispatch(openDistanceTab());
+  },
+  changeSideBarData: (blurb, image) => {
+    dispatch(changeSideBarData(blurb, image));
   }
 });
 
@@ -245,7 +265,8 @@ const mapStateToProps = state => ({
   customDistanceMarker: state.customDistanceMarker,
   mapMarkerStart: state.mapMarkerStart,
   mapMarkerEnd: state.mapMarkerEnd,
-  allowCustomPath: state.allowCustomPath
+  allowCustomPath: state.allowCustomPath,
+  openKeys: state.openKeys
 });
 
 export default connect(

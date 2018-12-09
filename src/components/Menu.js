@@ -6,7 +6,8 @@ import {
   changeTerrain,
   wipeMarkers,
   wipeMarkersAndPath,
-  allowCustomPath
+  allowCustomPath,
+  setOpenMenus
 } from "../redux/actions";
 import { Menu, Icon, Divider, Card } from "antd";
 import _ from "lodash";
@@ -22,6 +23,7 @@ import {
   setEndPoint,
   storeFocusMarker
 } from "../redux/actions";
+export const DISTANCE_KEY = "distanceTab";
 
 const SubMenu = Menu.SubMenu;
 
@@ -101,6 +103,10 @@ class Sider extends React.Component {
     }
   };
 
+  handleMenuOpen = menuKeys => {
+    this.props.dispatch(setOpenMenus(menuKeys));
+  };
+
   render() {
     const {
       data,
@@ -110,14 +116,16 @@ class Sider extends React.Component {
       sideBarBlurb,
       terrain,
       focusMarker,
-      filters
+      filters,
+      openKeys
     } = this.props;
     return (
       <Menu
         className="overlayMenu"
-        onClick={this.handleClick}
+        onOpenChange={this.handleMenuOpen}
         style={{ width: 300, opacity: 0.9 }}
-        defaultOpenKeys={["menu"]}
+        defaultOpenKeys={["menu", "sub5"]}
+        openKeys={openKeys}
         mode="inline"
       >
         <SubMenu
@@ -131,12 +139,13 @@ class Sider extends React.Component {
                 theme="outlined"
                 className="icons-large"
               />
-              <span id="map-tool-heading">{data.name} Map Tools</span>
+              <span id="map-tool-heading"> Map Tools</span>
             </span>
           }
         >
           <Divider style={{ margin: 0 }} />
           <SubMenu
+            style={{ paddingTop: 40 }}
             key="sub1"
             title={
               <span>
@@ -156,7 +165,7 @@ class Sider extends React.Component {
             </div>
           </SubMenu>
           <SubMenu
-            key="sub2"
+            key={DISTANCE_KEY}
             title={
               <span>
                 <Icon type="calculator" theme="outlined" className="sub-icon" />
@@ -262,7 +271,8 @@ const mapStateToProps = state => ({
   focusMarker: state.focusMarker,
   filters: state.filters,
   sideBarImage: state.sideBarImage,
-  sideBarBlurb: state.sideBarBlurb
+  sideBarBlurb: state.sideBarBlurb,
+  openKeys: state.openKeys
 });
 
 export default connect(mapStateToProps)(Sider);

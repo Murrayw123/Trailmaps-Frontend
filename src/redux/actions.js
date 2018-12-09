@@ -20,6 +20,9 @@ export const WIPE_MARKERS_AND_PATH = "WIPE_MARKERS_AND_PATH";
 export const WIPE_MARKERS = "WIPE_MARKERS";
 export const ALLOW_CUSTOM_PATH = "ALLOW_CUSTOM_PATH";
 export const CHANGE_SIDEBAR_DATA = "CHANGE_SIDEBAR_DATA";
+export const SET_OPEN_MENUS = "SET_OPEN_MENUS";
+export const OPEN_DISTANCE_TAB = "OPEN_DISTANCE_TAB";
+export const FETCH_MAPS_SUCCESS = "FETCH_MAPS_SUCCESS";
 
 export function fetchData(mapstring) {
   return dispatch => {
@@ -42,7 +45,10 @@ export function fetchData(mapstring) {
           map_blurb: json.Map_blurb,
           default_image: json.Default_image,
           map_stats: json.Map_stats,
-          zoom_level: json.Zoom_level
+          zoom_level: json.Zoom_level,
+          walking: json.Walking,
+          cycling: json.Cycling,
+          horseriding: json.Horseriding
         };
         dispatch(changeZoomLevel(data.zoom_level));
         dispatch(changeSideBarData(data.map_blurb, data.default_image));
@@ -68,7 +74,8 @@ export function fetchMarkers(mapstring) {
             marker_lng: el.Marker_lng,
             marker_info: el.Marker_info,
             marker_title: el.Marker_title,
-            marker_blurb: el.Marker_blurb
+            marker_blurb: el.Marker_blurb,
+            default_image: el.Default_image
           };
         });
         return data;
@@ -82,6 +89,31 @@ export function fetchMarkers(mapstring) {
         });
         dispatch(findTrailMarker(mapMarkerTypes));
         dispatch(fetchMarkerSuccess(data));
+      })
+      .catch(error => dispatch(fetchDataError(error)));
+  };
+}
+
+export function fetchOtherMaps() {
+  return dispatch => {
+    dispatch(fetchDataBegin());
+    fetch("http://localhost:8082/api/maps/getmany")
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(json => {
+        const data = json.map(el => {
+          return {
+            map_name: el.Map_name,
+            map_alias: el.Map_alias,
+            walking: el.Walking,
+            cycling: el.Cycling,
+            horseriding: el.Horseriding
+          };
+        });
+        return data;
+      })
+      .then(data => {
+        dispatch(fetchMapsSuccess(data));
       })
       .catch(error => dispatch(fetchDataError(error)));
   };
@@ -107,6 +139,11 @@ export const fetchDataSuccess = initMapInfo => ({
 export const fetchMarkerSuccess = markers => ({
   type: FETCH_MARKERS_SUCCESS,
   payload: { markers }
+});
+
+export const fetchMapsSuccess = maps => ({
+  type: FETCH_MAPS_SUCCESS,
+  payload: { maps }
 });
 
 export const fetchDataError = error => ({
@@ -197,7 +234,16 @@ export const allowCustomPath = bool => ({
   payload: bool
 });
 
-export const changeSideBarData = (map_blurb, default_image) => ({
+export const changeSideBarData = (blurb, default_image) => ({
   type: CHANGE_SIDEBAR_DATA,
-  payload: {blurb: map_blurb, image: default_image}
+  payload: { blurb: blurb, image: default_image }
+});
+
+export const setOpenMenus = menuKeys => ({
+  type: SET_OPEN_MENUS,
+  payload: menuKeys
+});
+
+export const openDistanceTab = () => ({
+  type: OPEN_DISTANCE_TAB
 });
