@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
 import _ from "lodash";
 import MapComponent from "./MapComponent";
 import ElevationChart from "./ElevationChart";
 import MapSelect from "./MapSelect";
-import { fetchData, fetchMarkers, fetchOtherMaps } from "../redux/actions";
-import { Rnd as ElevationChartWrapper } from "react-rnd";
-import { Icon, Button } from "antd";
+import {fetchData, fetchMarkers, fetchOtherMaps} from "../redux/actions";
+import {Rnd as ElevationChartWrapper} from "react-rnd";
+import {Button, Icon} from "antd";
 import Sider from "./Menu.js";
 
-class App extends Component {
+class MapParent extends Component {
   state = { width: "40%", height: 125, showElevation: true };
   componentDidMount() {
     let currentMap = window.location.pathname.substring(1);
@@ -25,6 +25,7 @@ class App extends Component {
   render() {
     const { loadingTrack, loadingMarkers } = this.props;
     const { showElevation } = this.state;
+
     if (loadingTrack || loadingMarkers) {
       return <div>Loading...</div>;
     } else {
@@ -85,4 +86,4 @@ const mapStateToProps = state => ({
   elevationChartData: state.elevationChartData
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(MapParent);

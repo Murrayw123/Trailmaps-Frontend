@@ -1,28 +1,27 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
+import {connect} from "react-redux";
 import {
-  filterTrailMarkers,
-  storeCustomTrack,
-  changeTerrain,
-  wipeMarkers,
-  wipeMarkersAndPath,
-  allowCustomPath,
-  setOpenMenus
+    allowCustomPath,
+    changeFocusPoint,
+    changeTerrain,
+    changeZoomLevel,
+    filterTrailMarkers,
+    setEndPoint,
+    setOpenMenus,
+    setStartPoint,
+    storeCustomTrack,
+    storeFocusMarker,
+    wipeMarkers,
+    wipeMarkersAndPath
 } from "../redux/actions";
-import { Menu, Icon, Divider, Card } from "antd";
+import {Card, Divider, Icon, Menu} from "antd";
 import _ from "lodash";
 import DistanceCalculator from "./DistanceCalculator";
 import DistanceCalculatorForm from "./DistanceCalculatorForm";
 import FilterMarkers from "./Markers";
-import { TerrainSwitch } from "./TerrainSwitch";
-import { findPath } from "./helpers/PathCalculator";
-import {
-  changeZoomLevel,
-  changeFocusPoint,
-  setStartPoint,
-  setEndPoint,
-  storeFocusMarker
-} from "../redux/actions";
+import {TerrainSwitch} from "./TerrainSwitch";
+import {findPath} from "./helpers/PathCalculator";
+
 export const DISTANCE_KEY = "distanceTab";
 
 const SubMenu = Menu.SubMenu;
@@ -119,6 +118,8 @@ class Sider extends React.Component {
       filters,
       openKeys
     } = this.props;
+    console.log(focusMarker);
+    console.log(_.isEmpty(focusMarker));
     return (
       <Menu
         className="overlayMenu"
@@ -232,16 +233,15 @@ class Sider extends React.Component {
               <Divider className="map-info-divider" />
 
               <p>
-                <b> Map Information: </b>
+                <b> Information: </b>
                 {_.isEmpty(focusMarker)
                   ? sideBarBlurb
                   : focusMarker.marker_blurb}
-                }
               </p>
               <p>
                 <Divider className="map-info-divider" />
                 <div>
-                  {data.map_stats
+                  {!_.isEmpty(data.map_stats) && _.isEmpty(focusMarker)
                     ? data.map_stats.map(el => {
                         return (
                           <div>

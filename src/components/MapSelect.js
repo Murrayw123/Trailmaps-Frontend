@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import connect from "react-redux/es/connect/connect";
 import { TreeSelect, Icon } from "antd";
+
 const TreeNode = TreeSelect.TreeNode;
 
 export class MapSelect extends Component {
   onMapSelect = value => {
-    window.location.href = value;
+      window.location.href = value;
   };
   render() {
     const { allMaps } = this.props;
@@ -13,8 +14,10 @@ export class MapSelect extends Component {
       <TreeSelect
         className="map-select"
         value={this.props.data.map_name}
+        placeholder={"Select a Map"}
         dropdownStyle={{ maxHeight: 400, overflow: "auto" }}
         allowClear
+        size={"large"}
         onSelect={this.onMapSelect}
       >
         <TreeNode

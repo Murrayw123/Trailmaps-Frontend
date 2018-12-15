@@ -1,23 +1,24 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import dataReducer from './redux/reducers'
-import thunk from 'redux-thunk'
-import App from './components/App'
-import registerServiceWorker from './registerServiceWorker'
-import '../node_modules/antd/dist/antd.css'
-import './css/App.css'
-import './css/Menu.css'
-import './css/MapComponent.css'
-import './css/Chart.css'
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import dataReducer from "./redux/reducers";
+import thunk from "redux-thunk";
+import Router from "./components/Router";
+import registerServiceWorker from "./registerServiceWorker";
+import "../node_modules/antd/dist/antd.css";
+import "./css/App.css";
+import "./css/Menu.css";
+import "./css/MapComponent.css";
+import "./css/Chart.css";
+import "./css/LandingPage.css";
 
-const store = createStore(dataReducer, applyMiddleware(thunk))
+const store = createStore(dataReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router />
   </Provider>,
-  document.getElementById('root')
-)
-registerServiceWorker()
+  document.getElementById("root")
+);
+registerServiceWorker();

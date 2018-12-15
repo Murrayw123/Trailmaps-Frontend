@@ -26,7 +26,9 @@ export class PoiMarker extends Component {
         key={marker.id}
         position={[marker.marker_lat, marker.marker_lng]}
         icon={icon}
-        onClick={this.props.onClick}
+        onClick={() => {
+          this.props.onClick(marker);
+        }}
       >
         <Popup>
           <div className="titleDiv">

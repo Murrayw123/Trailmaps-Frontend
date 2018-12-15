@@ -1,27 +1,20 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
 import _ from "lodash";
 import {
-  addMapMarkerStart,
-  addMapMarkerEnd,
-  storeDistance,
-  storeElevation,
-  storeCustomTrack,
-  wipeMarkersAndPath,
-  openDistanceTab,
-  changeSideBarData
+    addMapMarkerEnd,
+    addMapMarkerStart,
+    changeSideBarData,
+    openDistanceTab,
+    storeCustomTrack,
+    storeDistance,
+    storeElevation,
+    storeFocusMarker,
+    wipeMarkersAndPath
 } from "../redux/actions";
-import { findPath, isMarkersValid } from "./helpers/PathCalculator";
-import {
-  Map,
-  TileLayer,
-  Marker,
-  Popup,
-  ZoomControl,
-  GeoJSON,
-  Polyline
-} from "react-leaflet";
-import { start, finish, bicycle } from "./helpers/iconsData";
+import {findPath, isMarkersValid} from "./helpers/PathCalculator";
+import {GeoJSON, Map, Marker, TileLayer, ZoomControl} from "react-leaflet";
+import {bicycle, finish, start, walking} from "./helpers/iconsData";
 import PoiMarker from "./PoiMarker";
 
 class MapComponent extends Component {
@@ -130,7 +123,8 @@ class MapComponent extends Component {
   };
 
   onClickMarker = marker => {
-    changeSideBarData(marker.marker_blurb, marker.default_image);
+    this.props.storeFocusMarker(marker);
+    this.props.changeSideBarData(marker.marker_blurb, marker.default_image);
   };
 
   filterMarkers = () => {
@@ -216,7 +210,15 @@ class MapComponent extends Component {
 
         {customDistanceMarker.length ? (
           //custom marker from elevation click hover
-          <Marker key={1} position={customDistanceMarker} icon={bicycle} />
+          <Marker
+            key={1}
+            position={customDistanceMarker}
+            icon={
+              this.props.data.map_type.toLowerCase() === "cycling"
+                ? bicycle
+                : walking
+            }
+          />
         ) : null}
       </Map>
     );
@@ -247,6 +249,9 @@ const mapDispatchToProps = dispatch => ({
   },
   changeSideBarData: (blurb, image) => {
     dispatch(changeSideBarData(blurb, image));
+  },
+  storeFocusMarker: marker => {
+    dispatch(storeFocusMarker(marker));
   }
 });
 

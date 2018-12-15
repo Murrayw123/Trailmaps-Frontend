@@ -1,0 +1,35 @@
+.landing-page {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../media/background-landingpage.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.map-switcher-block {
+  padding-top: 10%;
+}
+
+.map-switcher-block > h1 {
+  font-family: "Shadows Into Light", cursive;
+  color: #d0d0d0;
+  font-size: 130px;
+}
+
+.map-switcher-block > .map-switcher-div > .map-select {
+  z-index: 100;
+  width: 300px;
+  position: absolute;
+  margin: 10px 10px 0px 0px;
+  border-radius: 5px;
+  opacity: 0.9;
+}
+
+.map-switcher-block > .map-switcher-div {
+  margin-left: 22%;
+}
+
+.map-switcher-block > .map-switcher-div > .map-select .ant-select-selection {
+  width: 300px;
+}

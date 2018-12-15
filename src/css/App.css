@@ -27,7 +27,7 @@ body {
   background: white;
 }
 
-.map-select {
+.map > .map-select {
   z-index: 100;
   width: 200px;
   position: absolute;
