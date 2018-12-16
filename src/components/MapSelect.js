@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import connect from "react-redux/es/connect/connect";
-import { TreeSelect, Icon } from "antd";
+import {TreeSelect} from "antd";
 
 const TreeNode = TreeSelect.TreeNode;
 
 export class MapSelect extends Component {
   onMapSelect = value => {
-      window.location.href = value;
+      window.location.href = "/maps/"+ value;
   };
   render() {
     const { allMaps } = this.props;

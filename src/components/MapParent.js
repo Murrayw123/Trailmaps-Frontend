@@ -1,18 +1,18 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import _ from "lodash";
 import MapComponent from "./MapComponent";
 import ElevationChart from "./ElevationChart";
 import MapSelect from "./MapSelect";
-import {fetchData, fetchMarkers, fetchOtherMaps} from "../redux/actions";
-import {Rnd as ElevationChartWrapper} from "react-rnd";
-import {Button, Icon} from "antd";
+import { fetchData, fetchMarkers, fetchOtherMaps } from "../redux/actions";
+import { Rnd as ElevationChartWrapper } from "react-rnd";
+import { Button, Icon } from "antd";
 import Sider from "./Menu.js";
 
 class MapParent extends Component {
   state = { width: "40%", height: 125, showElevation: true };
   componentDidMount() {
-    let currentMap = window.location.pathname.substring(1);
+    let currentMap = window.location.pathname.substring(6);
     this.props.dispatch(fetchData(currentMap));
     this.props.dispatch(fetchMarkers(currentMap));
     this.props.dispatch(fetchOtherMaps());
