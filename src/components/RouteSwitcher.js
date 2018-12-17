@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import MapParent from "./MapParent";
 import LandingPage from "./LandingPage";
 
@@ -9,6 +9,7 @@ export class RouteSwitcher extends Component {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path="/maps/" component={MapParent} />
+        <Link to="/admin" target="_self" />
       </Switch>
     );
   }
