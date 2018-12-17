@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from "redux";
 import dataReducer from "./redux/reducers";
 import thunk from "redux-thunk";
 import Router from "./components/Router";
-import registerServiceWorker from "./registerServiceWorker";
+import unregister from "./registerServiceWorker";
 import "../node_modules/antd/dist/antd.css";
 import "./css/App.css";
 import "./css/Menu.css";
@@ -14,11 +14,11 @@ import "./css/Chart.css";
 import "./css/LandingPage.css";
 
 const store = createStore(dataReducer, applyMiddleware(thunk));
-
+unregister();
 ReactDOM.render(
   <Provider store={store}>
     <Router />
   </Provider>,
   document.getElementById("root")
 );
-registerServiceWorker();
+// registerServiceWorker();

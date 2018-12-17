@@ -8,7 +8,7 @@ export class RouteSwitcher extends Component {
     return (
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route path="/maps" component={MapParent} />
+        <Route path="/maps/" component={MapParent} />
       </Switch>
     );
   }
