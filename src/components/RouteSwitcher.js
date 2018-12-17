@@ -9,7 +9,6 @@ export class RouteSwitcher extends Component {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path="/maps/" component={MapParent} />
-        <Link to="/admin" target="_self" />
       </Switch>
     );
   }

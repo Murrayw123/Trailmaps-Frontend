@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from "redux";
 import dataReducer from "./redux/reducers";
 import thunk from "redux-thunk";
 import Router from "./components/Router";
-import unregister from "./registerServiceWorker";
+import unregister from "./_registerServiceWorker";
 import "../node_modules/antd/dist/antd.css";
 import "./css/App.css";
 import "./css/Menu.css";
