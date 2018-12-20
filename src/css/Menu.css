@@ -66,6 +66,7 @@
 .map-blurb-img {
   border: 1px solid dimgrey;
   border-radius: 5px;
+  max-width: 210px;
 }
 
 .ant-menu-sub.ant-menu-inline {

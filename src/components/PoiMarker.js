@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setStartPoint, setEndPoint } from "../redux/actions";
+import { setStartPoint, setEndPoint, openDistanceTab } from "../redux/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFlag } from "@fortawesome/free-regular-svg-icons";
 import { faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +10,7 @@ import { Marker, Popup } from "react-leaflet";
 
 export class PoiMarker extends Component {
   markerClick = point => {
+    this.props.dispatch(openDistanceTab);
     if (point === "startPoint") {
       this.props.setStartPoint(this.props.marker);
     } else {

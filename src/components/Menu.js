@@ -118,8 +118,6 @@ class Sider extends React.Component {
       filters,
       openKeys
     } = this.props;
-    console.log(focusMarker);
-    console.log(_.isEmpty(focusMarker));
     return (
       <Menu
         className="overlayMenu"
