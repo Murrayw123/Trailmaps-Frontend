@@ -2,7 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/precache-manifest.2866d75bfe7d25a6998063b45eb419e1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/service-worker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/1.ca3bbae1.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/1.ca3bbae1.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/main.6040b1ff.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/main.6040b1ff.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/1.19fdabd7.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/1.19fdabd7.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.b81498a1.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.b81498a1.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/runtime~main.229c360f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/runtime~main.229c360f.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/attraction.cb8356bf.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/background-landingpage.9aa4630f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/bicycle.971f6a4f.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/business.e87899ae.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/finish.b336a83d.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/hiking.eb071ea3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/hut.4687401e.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/start.2b3a6e15.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/tent.051bcc3a.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/town.1b07dea6.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/vehicle.10d97375.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/media/water.1006b328.svg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/redux/actions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="100" column="25" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
+            <state relative-caret-position="411">
+              <caret line="105" column="18" lean-forward="true" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -200,8 +225,8 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="840" />
-    <option name="y" value="23" />
+    <option name="x" value="839" />
+    <option name="y" value="24" />
     <option name="width" value="840" />
     <option name="height" value="967" />
   </component>
@@ -273,7 +298,7 @@
     <property name="SearchEverywhereHistoryKey" value="config.js&#9;FILE&#9;file:///Users/murraybishop/projects/TrailmapsFE/src/config.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545389456596" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545389679596" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -328,15 +353,15 @@
       <workItem from="1544831773303" duration="13680000" />
       <workItem from="1544883787426" duration="8167000" />
       <workItem from="1545316313152" duration="1291000" />
-      <workItem from="1545376450291" duration="10116000" />
+      <workItem from="1545376450291" duration="10246000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69990000" />
+    <option name="totallyTimeSpent" value="70120000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="840" y="23" width="840" height="967" extended-state="0" />
+    <frame x="839" y="24" width="840" height="967" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.37468672" />
@@ -687,8 +712,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="100" column="25" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
+        <state relative-caret-position="411">
+          <caret line="105" column="18" lean-forward="true" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
         </state>
       </provider>
     </entry>
