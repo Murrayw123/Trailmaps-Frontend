@@ -2,34 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/precache-manifest.36896a90ba65621360aa7c196e02ed96.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/service-worker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/1.f118d58f.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/1.f118d58f.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.8af870eb.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.8af870eb.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/1.e26409fa.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/1.e26409fa.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.68e94bc6.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.68e94bc6.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/runtime~main.229c360f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/runtime~main.229c360f.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/attraction.cb8356bf.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/background-landingpage.9aa4630f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/bicycle.971f6a4f.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/business.e87899ae.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/finish.b336a83d.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/hiking.eb071ea3.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/hut.4687401e.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/start.2b3a6e15.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/tent.051bcc3a.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/town.1b07dea6.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/vehicle.10d97375.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/water.1006b328.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Menu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PoiMarker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PoiMarker.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,7 +16,7 @@
         <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1524">
-              <caret line="18" column="32" lean-forward="true" selection-end-line="275" />
+              <caret line="18" column="32" selection-end-line="275" />
             </state>
           </provider>
         </entry>
@@ -53,16 +25,16 @@
         <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="20" lean-forward="true" selection-end-line="91" />
+              <caret line="5" column="20" selection-end-line="91" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/PoiMarker.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="78" column="33" lean-forward="true" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+            <state relative-caret-position="160">
+              <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -70,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Menu.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="4125">
-              <caret line="275" lean-forward="true" selection-start-line="275" selection-end-line="275" />
+              <caret line="275" selection-start-line="275" selection-end-line="275" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -243,7 +215,7 @@
     <property name="SearchEverywhereHistoryKey" value="config.js&#9;FILE&#9;file:///Users/murraybishop/projects/TrailmapsFE/src/config.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545350381138" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545351616015" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -302,10 +274,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59475000" />
+    <option name="totallyTimeSpent" value="59665000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18070818" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -593,33 +566,33 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1524">
-          <caret line="18" column="32" lean-forward="true" selection-end-line="275" />
+          <caret line="18" column="32" selection-end-line="275" />
         </state>
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="20" lean-forward="true" selection-end-line="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/PoiMarker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="78" column="33" lean-forward="true" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+          <caret line="5" column="20" selection-end-line="91" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Menu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4125">
-          <caret line="275" lean-forward="true" selection-start-line="275" selection-end-line="275" />
+          <caret line="275" selection-start-line="275" selection-end-line="275" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PoiMarker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>

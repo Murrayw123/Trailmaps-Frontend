@@ -10,7 +10,7 @@ import { Marker, Popup } from "react-leaflet";
 
 export class PoiMarker extends Component {
     markerClick = point => {
-        this.props.dispatch(openDistanceTab);
+        this.props.openDistanceTab();
         if (point === "startPoint") {
             this.props.setStartPoint(this.props.marker);
         } else {
