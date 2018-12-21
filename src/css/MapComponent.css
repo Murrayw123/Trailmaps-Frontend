@@ -79,3 +79,7 @@ p {
   margin-left: 4px;
   padding-right: 11px;
 }
+
+.leaflet-popup-close-button {
+  margin-right: 3px;
+}

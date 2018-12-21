@@ -8,6 +8,7 @@ import { fetchData, fetchMarkers, fetchOtherMaps } from "../redux/actions";
 import { Rnd as ElevationChartWrapper } from "react-rnd";
 import { Button, Icon } from "antd";
 import Sider from "./Menu.js";
+import { InfoPopover } from "./InfoPopover";
 
 class MapParent extends Component {
   state = { width: "40%", height: 125, showElevation: true };
@@ -31,7 +32,7 @@ class MapParent extends Component {
     } else {
       return (
         <div className="map">
-          <MapSelect />
+          <MapSelect parentNode={"map"} />
           <MapComponent />
           <Sider />
           {!_.isEmpty(this.props.customPath) && showElevation === true ? (
@@ -70,6 +71,7 @@ class MapParent extends Component {
               </span>
             </Button>
           ) : null}
+          <InfoPopover />
         </div>
       );
     }

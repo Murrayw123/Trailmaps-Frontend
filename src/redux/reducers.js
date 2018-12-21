@@ -50,7 +50,7 @@ const initialState = {
   allowCustomPath: false,
   sideBarImage: null,
   sideBarBlurb: null,
-  openKeys: [],
+  openKeys: ["menu", "sub5"],
   allMaps: []
 };
 

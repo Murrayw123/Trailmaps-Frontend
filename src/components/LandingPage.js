@@ -14,7 +14,10 @@ export class LandingPage extends Component {
         <div className="map-switcher-block">
           <h1> Trail Maps </h1>
           <div className="map-switcher-div">
-            <MapSelect placeholder={"Select a Map"} />
+            <MapSelect
+              placeholder={"Select a Map"}
+              parentNode={"map-switcher-block"}
+            />
           </div>
         </div>
       </div>

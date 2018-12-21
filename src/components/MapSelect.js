@@ -1,64 +1,52 @@
 import React, { Component } from "react";
 import connect from "react-redux/es/connect/connect";
-import { TreeSelect } from "antd";
-
-const TreeNode = TreeSelect.TreeNode;
+import { Cascader } from "antd";
 
 export class MapSelect extends Component {
   onMapSelect = value => {
-    window.location.href = "/maps/" + value;
+    window.location.href = "/maps/" + value[1];
+  };
+
+  buildChildren = type => {
+    let children = [];
+    this.props.allMaps.map(map => {
+      if (map[type]) {
+        children.push({ value: map.map_alias, label: map.map_name });
+      }
+    });
+    return children;
   };
   render() {
-    const { allMaps } = this.props;
+    const options = [
+      {
+        value: "cycling",
+        label: "Cycling",
+        children: this.buildChildren("cycling")
+      },
+      {
+        value: "walking",
+        label: "Bushwalking",
+        children: this.buildChildren("walking")
+      }
+    ];
     return (
-      <TreeSelect
-        className="map-select"
-        value={this.props.data.map_name}
-        placeholder={"Select a Map"}
-        dropdownStyle={{ maxHeight: 400, overflow: "auto" }}
-        allowClear
+      <Cascader
+        options={options}
+        className={"map-select"}
+        onChange={this.onMapSelect}
+        placeholder={
+          this.props.data.map_name
+            ? this.props.data.map_name +
+              " | " +
+              this.props.data.map_type.charAt(0).toUpperCase() +
+              this.props.data.map_type.slice(1)
+            : "Please Select"
+        }
         size={"large"}
-        onSelect={this.onMapSelect}
-      >
-        <TreeNode
-          selectable={false}
-          isLeaf={false}
-          value="cycling"
-          title="Cycle Trails"
-          key="0-0"
-        >
-          {allMaps.map((map, index) => {
-            if (map.cycling) {
-              return (
-                <TreeNode
-                  value={map.map_alias}
-                  title={map.map_name}
-                  key={"0" + index}
-                />
-              );
-            }
-          })}
-        </TreeNode>
-        <TreeNode
-          selectable={false}
-          isLeaf={false}
-          value="hiking"
-          title="Bushwalking Trails"
-          key="1-0"
-        >
-          {allMaps.map((map, index) => {
-            if (map.walking) {
-              return (
-                <TreeNode
-                  value={map.map_alias}
-                  title={map.map_name}
-                  key={"1" + index}
-                />
-              );
-            }
-          })}
-        </TreeNode>
-      </TreeSelect>
+        getPopupContainer={() =>
+          document.getElementsByClassName(this.props.parentNode)[0]
+        }
+      />
     );
   }
 }

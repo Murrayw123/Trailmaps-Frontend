@@ -146,7 +146,6 @@ class MapComponent extends Component {
   render() {
     const {
       data,
-      customPath,
       center,
       zoom,
       terrain,

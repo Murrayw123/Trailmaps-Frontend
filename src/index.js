@@ -12,6 +12,7 @@ import "./css/Menu.css";
 import "./css/MapComponent.css";
 import "./css/Chart.css";
 import "./css/LandingPage.css";
+import "./css/MapSwitcher.css";
 
 const store = createStore(dataReducer, applyMiddleware(thunk));
 unregister();
