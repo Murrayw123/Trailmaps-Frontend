@@ -28,7 +28,7 @@ export const FETCH_MAPS_SUCCESS = "FETCH_MAPS_SUCCESS";
 export function fetchData(mapstring) {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch("/api/mapinfo/" + mapstring)
+    fetch("http://localhost:8082/api/mapinfo/" + mapstring)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
@@ -63,7 +63,7 @@ export function fetchData(mapstring) {
 export function fetchMarkers(mapstring) {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch("/api/markers/" + mapstring)
+    fetch("http://localhost:8082/api/markers/" + mapstring)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
@@ -98,7 +98,7 @@ export function fetchMarkers(mapstring) {
 export function fetchOtherMaps() {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch("/api/maps/getmany")
+    fetch("http://localhost:8082/api/maps/getmany")
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {

@@ -232,7 +232,7 @@ class Sider extends React.Component {
               ) : null}
               <Divider className="map-info-divider" />
 
-              <p>
+              <p style={{marginRight: 20}}>
                 <b> Information: </b>
                 {_.isEmpty(focusMarker)
                   ? sideBarBlurb
