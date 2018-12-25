@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFlag } from "@fortawesome/free-regular-svg-icons";
 import { faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from "antd";
-import findIcon from "./helpers/iconsData";
+import { findIcon, selected } from "./helpers/iconsData";
 import { Marker, Popup } from "react-leaflet";
 import ScaleText from "react-scale-text";
 
@@ -18,9 +18,17 @@ export class PoiMarker extends Component {
       this.props.setEndPoint(this.props.marker);
     }
   };
+
+  switchIcon = marker => {
+    if (this.props.startPoint === marker || this.props.endPoint === marker) {
+      return selected;
+    } else {
+      return findIcon(marker.marker_type);
+    }
+  };
   render() {
     const { marker } = this.props;
-    const icon = findIcon(marker.marker_type);
+    const icon = this.switchIcon(marker);
     const info = marker.marker_info;
     const title = marker.marker_title;
     return (
@@ -88,7 +96,10 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  startPoint: state.startPoint,
+  endPoint: state.endPoint
+});
 
 export default connect(
   mapStateToProps,

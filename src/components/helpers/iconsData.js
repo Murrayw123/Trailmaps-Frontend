@@ -13,59 +13,65 @@ export const finish = new L.Icon({
 
 const business = new L.Icon({
   iconUrl: require("./icons/business.svg"),
-  iconSize: new L.Point(30, 35),
+  iconSize: new L.Point(25, 30),
   className: null
 });
 
 export const bicycle = new L.Icon({
   iconUrl: require("./icons/bicycle.svg"),
-  iconSize: new L.Point(30, 35),
+  iconSize: new L.Point(25, 30),
   className: null
 });
 
 export const walking = new L.Icon({
     iconUrl: require("./icons/hiking.svg"),
-    iconSize: new L.Point(30, 35),
+    iconSize: new L.Point(25, 30),
     className: null
 });
 
 const campSite = new L.Icon({
   iconUrl: require("./icons/tent.svg"),
-  iconSize: new L.Point(30, 35),
+  iconSize: new L.Point(25, 30),
   className: null
 });
 
 const hut = new L.Icon({
   iconUrl: require("./icons/hut.svg"),
-  iconSize: new L.Point(30, 35),
+  iconSize: new L.Point(25, 30),
   className: null
 });
 
 const town = new L.Icon({
   iconUrl: require("./icons/town.svg"),
-  iconSize: new L.Point(30, 35),
+  iconSize: new L.Point(25, 30),
   className: null
 });
 
 const water = new L.Icon({
   iconUrl: require("./icons/water.svg"),
-  iconSize: new L.Point(30, 35),
+  iconSize: new L.Point(25, 30),
   className: null
 });
 
 const attraction = new L.Icon({
   iconUrl: require("./icons/attraction.svg"),
-  iconSize: new L.Point(30, 35),
+  iconSize: new L.Point(25, 30),
   className: null
 });
 
 const vehicle = new L.Icon({
-  iconUrl: require("./icons/vehicle.svg"),
-  iconSize: new L.Point(30, 35),
-  className: null
+    iconUrl: require("./icons/vehicle.svg"),
+    iconSize: new L.Point(25, 30),
+    className: null
 });
 
-export default function findIcon(type) {
+export const selected = new L.Icon({
+    iconUrl: require("./icons/selected.svg"),
+    iconSize: new L.Point(25, 30),
+    className: null
+});
+
+export function findIcon(type) {
   switch (type) {
     case "start":
       return start;

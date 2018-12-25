@@ -1,86 +1,90 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import _ from "lodash";
 import {
-    addMapMarkerEnd,
-    addMapMarkerStart,
-    changeSideBarData,
-    openDistanceTab,
-    storeCustomTrack,
-    storeDistance,
-    storeElevation,
-    storeFocusMarker,
-    wipeMarkersAndPath
+  addMapMarkerEnd,
+  addMapMarkerStart,
+  changeSideBarData,
+  openDistanceTab,
+  storeCustomTrack,
+  storeDistance,
+  storeElevation,
+  storeFocusMarker,
+  wipeMarkersAndPath,
+  setStartPoint,
+  setEndPoint
 } from "../redux/actions";
-import {findPath, isMarkersValid} from "./helpers/PathCalculator";
-import {GeoJSON, Map, Marker, TileLayer, ZoomControl} from "react-leaflet";
-import {bicycle, finish, start, walking} from "./helpers/iconsData";
+import { findPath, isMarkersValid } from "./helpers/PathCalculator";
+import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
+import { bicycle, finish, start, walking } from "./helpers/iconsData";
 import PoiMarker from "./PoiMarker";
 
 class MapComponent extends Component {
-  state = { markerCounter: 0 };
-
   checkMarkers = e => {
+    let startPointCheckEmpty = _.isEmpty(this.props.startPoint);
+    let endPointCheckEmpty = _.isEmpty(this.props.endPoint);
     //allow a maximum of two clicks before resetting the path
     if (this.props.allowCustomPath) {
-      if (this.state.markerCounter === 0) {
-        this.setState({ markerCounter: this.state.markerCounter + 1 });
+      if (startPointCheckEmpty) {
         e.startEnd = "start";
         this.addCustomMarker(e);
-      } else if (this.state.markerCounter === 1) {
-        this.setState({ markerCounter: this.state.markerCounter + 1 });
+      } else if (endPointCheckEmpty) {
         e.startEnd = "end";
         this.addCustomMarker(e);
       } else {
         e.startEnd = "start";
         this.props.wipeMarkersAndPath();
-        this.setState({ markerCounter: 1 });
         this.addCustomMarker(e);
       }
     }
   };
 
   addCustomMarker(e) {
+    let newMarker = {
+      marker_title: "Custom Map Point",
+      marker_lat: e.latlng.lat,
+      marker_lng: e.latlng.lng
+    };
+    if (!this.props.openKeys.includes("distanceTab")) {
+      this.props.openDistanceTab();
+    }
     if (e.startEnd === "start") {
-      this.props.addMapMarkerStart(e);
+      this.props.addMapMarkerStart(newMarker);
+      this.props.setStartPoint(newMarker);
     } else {
-      this.props.addMapMarkerEnd(e);
-      if (
-        isMarkersValid(
-          this.props.data.map_track,
-          this.props.mapMarkerStart,
-          this.props.mapMarkerEnd
-        )
-      ) {
-        //if the markers aren't too far away
-        let pathAndDistance = findPath(
-          this.props.data.map_track,
-          this.props.mapMarkerStart,
-          this.props.mapMarkerEnd
-        );
-        this.props.storePath(pathAndDistance);
-        if (!this.props.openKeys.includes("distanceTab")) {
-          this.props.openDistanceTab();
-        }
-      } else {
-        this.props.wipeMarkersAndPath();
-      }
+      this.props.addMapMarkerEnd(newMarker);
+      this.props.setEndPoint(newMarker);
     }
   }
 
-  draggableMarker = e => {
-    e.latlng = { lat: e.target._latlng.lat, lng: e.target._latlng.lng };
-    if (e.startEnd === "start") {
-      this.props.addMapMarkerStart(e);
+  draggableMarker = marker => {
+    let startPointCheckEmpty = _.isEmpty(this.props.startPoint);
+    let endPointCheckEmpty = _.isEmpty(this.props.endPoint);
+    const updatedMarker = {
+      marker_title: "Custom Map Point",
+      marker_lat: marker.target._latlng.lat,
+      marker_lng: marker.target._latlng.lng
+    };
+    if (marker.startEnd === "start") {
+      this.props.addMapMarkerStart(updatedMarker);
+      this.props.setStartPoint(updatedMarker);
     } else {
-      this.props.addMapMarkerEnd(e);
+      this.props.addMapMarkerEnd(updatedMarker);
+      this.props.setEndPoint(updatedMarker);
     }
+    if (!startPointCheckEmpty && !endPointCheckEmpty) {
+      //if the draggable marker is being updated on an existing path
+      this.updatePath();
+    }
+  };
+
+  updatePath = () => {
     let pathAndDistance = findPath(
       this.props.data.map_track,
-      this.props.mapMarkerStart,
-      this.props.mapMarkerEnd
+      this.props.startPoint,
+      this.props.endPoint
     );
-    this.props.storePath(pathAndDistance);
+    this.props.storeCustomTrack(pathAndDistance);
   };
 
   checkForCustomPath = () => {
@@ -181,7 +185,7 @@ class MapComponent extends Component {
           //custom markers from click event
           <Marker
             key={mapMarkerStart.distance}
-            position={[mapMarkerStart.latlng.lat, mapMarkerStart.latlng.lng]}
+            position={[mapMarkerStart.marker_lat, mapMarkerStart.marker_lng]}
             icon={start}
             draggable={true}
             onDragEnd={e => {
@@ -196,7 +200,7 @@ class MapComponent extends Component {
           //custom markers from click event
           <Marker
             key={mapMarkerEnd.distance}
-            position={[mapMarkerEnd.latlng.lat, mapMarkerEnd.latlng.lng]}
+            position={[mapMarkerEnd.marker_lat, mapMarkerEnd.marker_lng]}
             icon={finish}
             draggable={true}
             onDragEnd={e => {
@@ -237,7 +241,7 @@ const mapDispatchToProps = dispatch => ({
   calcElevation: elevation => {
     dispatch(storeElevation(elevation));
   },
-  storePath: path => {
+  storeCustomTrack: path => {
     dispatch(storeCustomTrack(path));
   },
   wipeMarkersAndPath: () => {
@@ -251,6 +255,12 @@ const mapDispatchToProps = dispatch => ({
   },
   storeFocusMarker: marker => {
     dispatch(storeFocusMarker(marker));
+  },
+  setStartPoint: marker => {
+    dispatch(setStartPoint(marker));
+  },
+  setEndPoint: marker => {
+    dispatch(setEndPoint(marker));
   }
 });
 

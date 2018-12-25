@@ -4,7 +4,6 @@ import {lineString, multiLineString, point} from "@turf/helpers";
 import combine from "@turf/combine";
 import {PathFinder} from "./geojson-path-finder/index";
 import nearestPointOnLine from "./nearest-point-on-line";
-import {element} from "prop-types";
 import _ from "lodash";
 
 export function findPointAlongLine(path, distance) {
@@ -65,14 +64,14 @@ export function isMarkersValid(geoJsonPath, start, finish) {
       closestStart.geometry.coordinates[1],
       closestStart.geometry.coordinates[0]
     ],
-    [start.latlng.lat, start.latlng.lng]
+    [start.marker_lat, start.marker_lng]
   );
   let endDistance = distance(
     [
       closestFinish.geometry.coordinates[1],
       closestFinish.geometry.coordinates[0]
     ],
-    [finish.latlng.lat, finish.latlng.lng]
+    [finish.marker_lat, finish.marker_lng]
   );
   return startDistance < 10 && endDistance < 10;
 }
@@ -86,12 +85,12 @@ function closest(geoJsonPath, start, finish) {
   //find the closest start point from mouse click to GEOJSON line
   let closestStart = nearestPointOnLine(
     lineString,
-    point([start.latlng.lng, start.latlng.lat])
+    point([start.marker_lng, start.marker_lat])
   );
 
   let closestFinish = nearestPointOnLine(
     lineString,
-    point([finish.latlng.lng, finish.latlng.lat])
+    point([finish.marker_lng, finish.marker_lat])
   );
   return { closestStart: closestStart, closestFinish: closestFinish };
 }

@@ -26,7 +26,6 @@ class MapParent extends Component {
   render() {
     const { loadingTrack, loadingMarkers } = this.props;
     const { showElevation } = this.state;
-
     if (loadingTrack || loadingMarkers) {
       return <div>Loading...</div>;
     } else {
@@ -35,7 +34,9 @@ class MapParent extends Component {
           <MapSelect parentNode={"map"} />
           <MapComponent />
           <Sider />
-          {!_.isEmpty(this.props.customPath) && showElevation === true ? (
+          {!_.isEmpty(this.props.customPath) &&
+          showElevation === true &&
+          this.props.customPath.distance > 0 ? (
             <ElevationChartWrapper
               className="elevation-chart"
               size={{ width: this.state.width, height: this.state.height }}
@@ -56,7 +57,8 @@ class MapParent extends Component {
                 }}
               />
             </ElevationChartWrapper>
-          ) : !_.isEmpty(this.props.customPath) ? (
+          ) : !_.isEmpty(this.props.customPath) &&
+            this.props.customPath.distance > 0 ? (
             <Button
               className="show-elevation"
               type="primary"

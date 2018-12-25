@@ -23,7 +23,9 @@ import {
   CHANGE_SIDEBAR_DATA,
   SET_OPEN_MENUS,
   OPEN_DISTANCE_TAB,
-  FETCH_MAPS_SUCCESS
+  FETCH_MAPS_SUCCESS,
+  WIPE_START_MARKER,
+  WIPE_END_MARKER
 } from "./actions";
 const initialState = {
   data: [],
@@ -198,6 +200,18 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         mapMarkerStart: null,
+        mapMarkerEnd: null
+      };
+
+    case WIPE_START_MARKER:
+      return {
+        ...state,
+        mapMarkerStart: null
+      };
+
+    case WIPE_END_MARKER:
+      return {
+        ...state,
         mapMarkerEnd: null
       };
 

@@ -6,28 +6,28 @@ import {
   Tooltip,
   Label,
   ResponsiveContainer
-} from 'recharts'
-import React, { Component } from 'react'
-import { setCustomDistanceMarker } from '../redux/actions'
-import { findPointAlongLine } from './helpers/PathCalculator'
-import { connect } from 'react-redux'
+} from "recharts";
+import React, { Component } from "react";
+import { setCustomDistanceMarker } from "../redux/actions";
+import { findPointAlongLine } from "./helpers/PathCalculator";
+import { connect } from "react-redux";
 
 class ElevationChart extends Component {
   drawMarker = event => {
     if (event.activePayload)
       this.props.dispatch(
         setCustomDistanceMarker(event.activePayload[0].payload.coords)
-      )
-  }
+      );
+  };
 
   wipeMarker = () => {
-    this.props.dispatch(setCustomDistanceMarker([]))
-  }
+    this.props.dispatch(setCustomDistanceMarker([]));
+  };
 
   render() {
     let roundData = point => {
-      return Math.round(point.distance)
-    }
+      return point.distance.toFixed(1);
+    };
     return (
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
@@ -45,8 +45,8 @@ class ElevationChart extends Component {
             />
           </XAxis>
           <Tooltip
-            labelFormatter={name => 'distance: ' + name + 'km'}
-            formatter={value => value + 'm'}
+            labelFormatter={name => "distance: " + name + "km"}
+            formatter={value => value + "m"}
           />
           />
           <YAxis allowDecimals={false} dataKey="elevation">
@@ -56,7 +56,7 @@ class ElevationChart extends Component {
               position="insideLeft"
               offset={10}
               dy={60}
-              style={{ color: 'red' }}
+              style={{ color: "red" }}
               className="y-axis"
             />
           </YAxis>
@@ -68,12 +68,12 @@ class ElevationChart extends Component {
           />
         </LineChart>
       </ResponsiveContainer>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   customPath: state.customPath
-})
+});
 
-export default connect(mapStateToProps)(ElevationChart)
+export default connect(mapStateToProps)(ElevationChart);

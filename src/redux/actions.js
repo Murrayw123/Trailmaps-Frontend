@@ -23,7 +23,8 @@ export const CHANGE_SIDEBAR_DATA = "CHANGE_SIDEBAR_DATA";
 export const SET_OPEN_MENUS = "SET_OPEN_MENUS";
 export const OPEN_DISTANCE_TAB = "OPEN_DISTANCE_TAB";
 export const FETCH_MAPS_SUCCESS = "FETCH_MAPS_SUCCESS";
-
+export const WIPE_START_MARKER = "WIPE_START_MARKER";
+export const WIPE_END_MARKER = "WIPE_END_MARKER";
 
 export function fetchData(mapstring) {
   return dispatch => {
@@ -228,6 +229,14 @@ export const wipeMarkersAndPath = () => ({
 
 export const wipeMarkers = () => ({
   type: WIPE_MARKERS
+});
+
+export const wipeStartMarker = () => ({
+  type: WIPE_START_MARKER
+});
+
+export const wipeEndMarker = () => ({
+  type: WIPE_END_MARKER
 });
 
 export const allowCustomPath = bool => ({

@@ -12,6 +12,8 @@ import {
   storeCustomTrack,
   storeFocusMarker,
   wipeMarkers,
+  wipeStartMarker,
+  wipeEndMarker,
   wipeMarkersAndPath
 } from "../redux/actions";
 import { Card, Divider, Icon, Menu } from "antd";
@@ -38,15 +40,16 @@ class Sider extends React.Component {
       );
       this.props.dispatch(storeFocusMarker(newFocus));
     } else if (type === "start") {
+      this.props.dispatch(wipeStartMarker());
       this.props.dispatch(setStartPoint(newFocus));
     } else {
+      this.props.dispatch(wipeEndMarker());
       this.props.dispatch(setEndPoint(newFocus));
     }
   };
 
   submitDistance = e => {
     e.preventDefault();
-    this.props.dispatch(wipeMarkers());
     let pathAndDistance = this.calculateInfo();
     this.props.dispatch(storeCustomTrack(pathAndDistance));
   };
@@ -60,22 +63,22 @@ class Sider extends React.Component {
     //deals with custom route finding
     let pathObj = [
       {
-        latlng: {
-          lat: this.props.startPoint.marker_lat,
-          lng: this.props.startPoint.marker_lng
+        start: {
+          marker_lat: this.props.startPoint.marker_lat,
+          marker_lng: this.props.startPoint.marker_lng
         }
       },
       {
-        latlng: {
-          lat: this.props.endPoint.marker_lat,
-          lng: this.props.endPoint.marker_lng
+        finish: {
+          marker_lat: this.props.endPoint.marker_lat,
+          marker_lng: this.props.endPoint.marker_lng
         }
       }
     ];
     let pathAndDistance = findPath(
       this.props.data.map_track,
-      pathObj[0],
-      pathObj[1]
+      pathObj[0].start,
+      pathObj[1].finish
     );
     return pathAndDistance;
   };
@@ -89,6 +92,13 @@ class Sider extends React.Component {
   };
 
   toggleCustomPath = bool => {
+    this.props.dispatch(wipeMarkers());
+    if (this.props.startPoint.marker_title === "Custom Map Point") {
+      this.props.dispatch(setStartPoint({}));
+    }
+    if (this.props.endPoint.marker_title === "Custom Map Point") {
+      this.props.dispatch(setEndPoint({}));
+    }
     this.props.dispatch(allowCustomPath(bool));
   };
 
@@ -98,6 +108,7 @@ class Sider extends React.Component {
     if (startEmpty || endEmpty) {
       return true;
     } else {
+      //both are not empty
       return false;
     }
   };
@@ -107,7 +118,6 @@ class Sider extends React.Component {
   };
 
   render() {
-    console.log(openKeys);
     const {
       data,
       poiMarkers,
@@ -232,7 +242,7 @@ class Sider extends React.Component {
               ) : null}
               <Divider className="map-info-divider" />
 
-              <p style={{marginRight: 20}}>
+              <p style={{ marginRight: 20 }}>
                 <b> Information: </b>
                 {_.isEmpty(focusMarker)
                   ? sideBarBlurb
