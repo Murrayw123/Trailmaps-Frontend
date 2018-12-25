@@ -30,7 +30,7 @@ export const WIPE_END_MARKER = "WIPE_END_MARKER";
 export function fetchData(mapstring) {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch("api/mapinfo/" + mapstring)
+    fetch("/api/mapinfo/" + mapstring)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
