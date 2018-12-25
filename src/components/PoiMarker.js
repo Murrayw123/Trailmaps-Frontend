@@ -1,21 +1,33 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setStartPoint, setEndPoint, openDistanceTab } from "../redux/actions";
+import _ from "lodash";
+import {
+  setStartPoint,
+  setEndPoint,
+  openDistanceTab,
+  wipeStartMarker,
+  wipeEndMarker
+} from "../redux/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFlag } from "@fortawesome/free-regular-svg-icons";
 import { faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from "antd";
 import { findIcon, selected } from "./helpers/iconsData";
 import { Marker, Popup } from "react-leaflet";
-import ScaleText from "react-scale-text";
+import { Textfit } from "react-textfit";
 
 export class PoiMarker extends Component {
   markerClick = point => {
-    this.props.openDistanceTab();
+    let marker = _.cloneDeep(this.props.marker);
+    if (!this.props.openKeys.includes("distanceTab")) {
+      this.props.openDistanceTab();
+    }
     if (point === "startPoint") {
-      this.props.setStartPoint(this.props.marker);
+      this.props.wipeMarkerStart();
+      this.props.setStartPoint(marker);
     } else {
-      this.props.setEndPoint(this.props.marker);
+      this.props.wipeMarkerEnd();
+      this.props.setEndPoint(marker);
     }
   };
 
@@ -42,11 +54,12 @@ export class PoiMarker extends Component {
       >
         <Popup>
           <div className="titleDiv">
-            <div style={{ width: 120 }} className="title-parent">
-              <ScaleText>
-                <p> {title} </p>
-              </ScaleText>
-            </div>
+            <Textfit
+              style={{ width: 120, height: 30 }}
+              className="title-parent"
+            >
+              <h1> {title} </h1>
+            </Textfit>
             <div className="titleSpan">
               <a>
                 <FontAwesomeIcon
@@ -85,20 +98,27 @@ export class PoiMarker extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setStartPoint: e => {
-    dispatch(setStartPoint(e));
+  setStartPoint: marker => {
+    dispatch(setStartPoint(marker));
   },
-  setEndPoint: e => {
-    dispatch(setEndPoint(e));
+  setEndPoint: marker => {
+    dispatch(setEndPoint(marker));
   },
   openDistanceTab: e => {
     dispatch(openDistanceTab(e));
+  },
+  wipeMarkerStart: () => {
+    dispatch(wipeStartMarker());
+  },
+  wipeMarkerEnd: () => {
+    dispatch(wipeEndMarker());
   }
 });
 
 const mapStateToProps = state => ({
   startPoint: state.startPoint,
-  endPoint: state.endPoint
+  endPoint: state.endPoint,
+  openKeys: state.openKeys
 });
 
 export default connect(

@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/404.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ElevationChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ElevationChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MapComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MapParent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapParent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DistanceCalculatorForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DistanceCalculatorForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PoiMarker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PoiMarker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RouteSwitcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RouteSwitcher.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/PathCalculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/helpers/PathCalculator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/town.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/helpers/icons/town.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/iconsData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/helpers/iconsData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/MapComponent.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/MapComponent.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +21,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/redux/reducers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
+            <state relative-caret-position="675">
               <caret line="45" column="12" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="12" />
               <folding>
                 <element signature="e#0#600#0" expanded="true" />
@@ -38,10 +31,30 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/DistanceCalculatorForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/DistanceCalculator.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Menu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="263" column="16" selection-start-line="263" selection-start-column="16" selection-end-line="263" selection-end-column="16" />
+            <state relative-caret-position="305">
+              <caret line="185" column="27" selection-start-line="185" selection-start-column="27" selection-end-line="185" selection-end-column="27" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -50,10 +63,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/PoiMarker.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="564">
+              <caret line="58" column="38" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/redux/actions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="617">
-              <caret line="43" column="44" lean-forward="true" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+            <state relative-caret-position="160">
+              <caret line="85" column="32" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/MapComponent.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="174" column="26" selection-start-line="174" selection-start-column="26" selection-end-line="174" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,17 +108,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Clear</find>
-      <find>Calculate</find>
-      <find>ButtonDisabled</find>
-      <find>openKeys</find>
-      <find>openDistance</find>
-      <find>checkAndAddDistanceMarker</find>
-      <find>custom marker from clic</find>
-      <find>Submit</find>
-      <find>lat</find>
-      <find>ButtonDisa</find>
-      <find>console.log</find>
       <find>buttonDisabled</find>
       <find>addCustomMarker</find>
       <find>.lat</find>
@@ -96,11 +122,22 @@
       <find>submitDistance</find>
       <find>isEmpty</find>
       <find>custom path creation</find>
-      <find>icon</find>
-      <find>findIcon</find>
       <find>wipeMarkers</find>
       <find>marker.marker</find>
       <find>regi</find>
+      <find>poiMarker</find>
+      <find>openDistance</find>
+      <find>this.props.startPOint</find>
+      <find>icon=</find>
+      <find>icon</find>
+      <find>findIcon</find>
+      <find>OpenDISTANCE</find>
+      <find>comp</find>
+      <find>compare with</find>
+      <find>var fontSize = Math.min(Math.max(Math.min(Number(el.offsetWidth) / (factor * 10), maxFontSize), minFontSize));</find>
+      <find>startPoint</find>
+      <find>title-parent</find>
+      <find>titleDiv</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -116,7 +153,6 @@
         <option value="$PROJECT_DIR$/src/components/package.json" />
         <option value="$PROJECT_DIR$/src/components/App.js" />
         <option value="$PROJECT_DIR$/src/components/RouterSwitcher.tsx.js" />
-        <option value="$PROJECT_DIR$/src/components/DistanceCalculatorForm.js" />
         <option value="$PROJECT_DIR$/src/components/RouterSwitcher.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/admin/actions.js" />
@@ -136,7 +172,6 @@
         <option value="$PROJECT_DIR$/src/components/MapSelect.js" />
         <option value="$PROJECT_DIR$/src/css/App.css" />
         <option value="$PROJECT_DIR$/src/components/InfoPopover.js" />
-        <option value="$PROJECT_DIR$/src/css/MapComponent.css" />
         <option value="$PROJECT_DIR$/src/components/MapParent.js" />
         <option value="$PROJECT_DIR$/src/components/ElevationChart.js" />
         <option value="$PROJECT_DIR$/src/components/RouteSwitcher.java" />
@@ -147,9 +182,11 @@
         <option value="$PROJECT_DIR$/src/components/MapComponent.js" />
         <option value="$PROJECT_DIR$/src/components/Menu.js" />
         <option value="$PROJECT_DIR$/src/components/helpers/iconsData.js" />
-        <option value="$PROJECT_DIR$/src/components/PoiMarker.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/redux/actions.js" />
+        <option value="$PROJECT_DIR$/src/components/DistanceCalculatorForm.js" />
+        <option value="$PROJECT_DIR$/src/components/PoiMarker.js" />
+        <option value="$PROJECT_DIR$/src/css/MapComponent.css" />
       </list>
     </option>
   </component>
@@ -217,7 +254,7 @@
     <property name="SearchEverywhereHistoryKey" value="config.js&#9;FILE&#9;file:///Users/murraybishop/projects/TrailmapsFE/src/config.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545705319993" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545740762420" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -272,16 +309,15 @@
       <workItem from="1544831773303" duration="13680000" />
       <workItem from="1544883787426" duration="8167000" />
       <workItem from="1545316313152" duration="1291000" />
-      <workItem from="1545376450291" duration="28343000" />
+      <workItem from="1545376450291" duration="32955000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88217000" />
+    <option name="totallyTimeSpent" value="92829000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18253969" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -355,8 +391,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/admin/logo.svg" />
-    <entry file="file://$PROJECT_DIR$/src/admin/index.js" />
     <entry file="file://$PROJECT_DIR$/src/admin/App.test.js" />
     <entry file="file://$PROJECT_DIR$/src/admin/Maps.js" />
     <entry file="file://$PROJECT_DIR$/src/admin/Renamed App.css" />
@@ -577,26 +611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/MapComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="275" selection-start-line="275" selection-end-line="276" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/PoiMarker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-312">
-          <caret line="30" column="41" lean-forward="true" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/_registerServiceWorker.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -614,10 +628,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DistanceCalculator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="263" column="16" selection-start-line="263" selection-start-column="16" selection-end-line="263" selection-end-column="16" />
+        <state relative-caret-position="305">
+          <caret line="185" column="27" selection-start-line="185" selection-start-column="27" selection-end-line="185" selection-end-column="27" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -626,7 +649,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/reducers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
+        <state relative-caret-position="675">
           <caret line="45" column="12" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="12" />
           <folding>
             <element signature="e#0#600#0" expanded="true" />
@@ -634,10 +657,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/MapComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="174" column="26" selection-start-line="174" selection-start-column="26" selection-end-line="174" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="43" column="44" lean-forward="true" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+        <state relative-caret-position="160">
+          <caret line="85" column="32" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DistanceCalculatorForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PoiMarker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="58" column="38" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
