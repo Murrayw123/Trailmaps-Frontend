@@ -26,10 +26,11 @@ export const FETCH_MAPS_SUCCESS = "FETCH_MAPS_SUCCESS";
 export const WIPE_START_MARKER = "WIPE_START_MARKER";
 export const WIPE_END_MARKER = "WIPE_END_MARKER";
 
+
 export function fetchData(mapstring) {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch("http://localhost:8082/api/mapinfo/" + mapstring)
+    fetch("api/mapinfo/" + mapstring)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
@@ -64,7 +65,7 @@ export function fetchData(mapstring) {
 export function fetchMarkers(mapstring) {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch("http://localhost:8082/api/markers/" + mapstring)
+    fetch("/api/markers/" + mapstring)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
@@ -99,7 +100,7 @@ export function fetchMarkers(mapstring) {
 export function fetchOtherMaps() {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch("http://localhost:8082/api/maps/getmany")
+    fetch("/api/maps/getmany")
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
@@ -232,11 +233,11 @@ export const wipeMarkers = () => ({
 });
 
 export const wipeStartMarker = () => ({
-  type: WIPE_START_MARKER
+    type: WIPE_START_MARKER
 });
 
 export const wipeEndMarker = () => ({
-  type: WIPE_END_MARKER
+    type: WIPE_END_MARKER
 });
 
 export const allowCustomPath = bool => ({
