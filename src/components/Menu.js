@@ -233,9 +233,9 @@ class Sider extends React.Component {
             }
           >
             <Card bordered={false} className="info-card">
-              {!_.isEmpty(sideBarImage) ||
-              sideBarImage === "" ||
-              sideBarImage === null ? (
+              {!_.isEmpty(sideBarImage) &&
+              sideBarImage !== "" &&
+              sideBarImage != null ? (
                 <span>
                   <img className="map-blurb-img" src={sideBarImage} />
                 </span>

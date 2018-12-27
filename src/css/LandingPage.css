@@ -8,15 +8,15 @@
 }
 
 .map-switcher-block {
+  max-width: 600px;
   padding-top: 10%;
 }
 
 .map-switcher-block > h1 {
   font-family: "Shadows Into Light", cursive;
-  color: #d0d0d0;
+  color: #fafafa;
   font-size: 130px;
 }
-
 
 .ant-cascader-menu {
   height: initial;
@@ -24,4 +24,13 @@
 
 .ant-cascader-menus > div {
   width: 300px;
+}
+
+.disclaimer {
+  padding-top: 100px;
+}
+
+.disclaimer > p {
+  color: white;
+  font-size: 8px;
 }

@@ -19,6 +19,16 @@ export class LandingPage extends Component {
               parentNode={"map-switcher-block"}
             />
           </div>
+          <div className="disclaimer">
+            <p>
+              <b> Disclaimer:</b> Trailmaps is not intended for navigation
+              purposes and should be used for route planning only. Trailmaps
+              relies on third party track files which may contain errors. No
+              responsibility is accepted for personal injury or property damage
+              from your reliance on any of the information contained on this
+              site.
+            </p>
+          </div>
         </div>
       </div>
     );

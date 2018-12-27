@@ -14,6 +14,7 @@ import {
   setStartPoint,
   setEndPoint
 } from "../redux/actions";
+import { food_groupings, business_groupings } from "./helpers/iconsData";
 import { findPath, isMarkersValid } from "./helpers/PathCalculator";
 import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import { bicycle, finish, start, walking } from "./helpers/iconsData";
@@ -135,8 +136,14 @@ class MapComponent extends Component {
     //if the marker is in the filtered list
     let validMarkers = [];
     this.props.poiMarkers.map(marker => {
+      console.log(marker);
+      let business = business_groupings.includes(marker.marker_type);
+      console.log(business);
+      let food = food_groupings.includes(marker.marker_type);
       if (
         this.props.filters.includes(marker.marker_type) ||
+        (business && this.props.filters.includes("Trail Businesses")) ||
+        (food && this.props.filters.includes("Drinks and Dining")) ||
         this.shouldShowMarker(marker)
       ) {
         validMarkers.push(

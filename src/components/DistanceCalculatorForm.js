@@ -15,7 +15,6 @@ class DistanceCalculatorForm extends React.Component {
       clearPath,
       customPath
     } = this.props;
-    console.log(startPoint, endPoint)
     return (
       <div style={{ marginLeft: 48 }}>
         <div>

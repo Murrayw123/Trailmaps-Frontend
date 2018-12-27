@@ -1,3 +1,7 @@
+import {
+  food_groupings,
+  business_groupings
+} from "../components/helpers/iconsData";
 export const FETCH_DATA_BEGIN = "FETCH_PRODUCTS_BEGIN";
 export const FETCH_DATA_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
 export const FETCH_MARKERS_SUCCESS = "FETCH_MARKERS_SUCCESS";
@@ -25,7 +29,6 @@ export const OPEN_DISTANCE_TAB = "OPEN_DISTANCE_TAB";
 export const FETCH_MAPS_SUCCESS = "FETCH_MAPS_SUCCESS";
 export const WIPE_START_MARKER = "WIPE_START_MARKER";
 export const WIPE_END_MARKER = "WIPE_END_MARKER";
-
 
 export function fetchData(mapstring) {
   return dispatch => {
@@ -86,7 +89,11 @@ export function fetchMarkers(mapstring) {
       .then(data => {
         let mapMarkerTypes = [];
         data.forEach(marker => {
-          if (!mapMarkerTypes.includes(marker.marker_type)) {
+          if (food_groupings.includes(marker.marker_type)) {
+            mapMarkerTypes.push("Drinks and Dining");
+          } else if (business_groupings.includes(marker.marker_type)) {
+            mapMarkerTypes.push("Trail Businesses");
+          } else if (!mapMarkerTypes.includes(marker.marker_type)) {
             mapMarkerTypes.push(marker.marker_type);
           }
         });
@@ -233,11 +240,11 @@ export const wipeMarkers = () => ({
 });
 
 export const wipeStartMarker = () => ({
-    type: WIPE_START_MARKER
+  type: WIPE_START_MARKER
 });
 
 export const wipeEndMarker = () => ({
-    type: WIPE_END_MARKER
+  type: WIPE_END_MARKER
 });
 
 export const allowCustomPath = bool => ({

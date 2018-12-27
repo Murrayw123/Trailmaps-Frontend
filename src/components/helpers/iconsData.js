@@ -24,9 +24,9 @@ export const bicycle = new L.Icon({
 });
 
 export const walking = new L.Icon({
-    iconUrl: require("./icons/hiking.svg"),
-    iconSize: new L.Point(25, 30),
-    className: null
+  iconUrl: require("./icons/hiking.svg"),
+  iconSize: new L.Point(25, 30),
+  className: null
 });
 
 const campSite = new L.Icon({
@@ -60,15 +60,57 @@ const attraction = new L.Icon({
 });
 
 const vehicle = new L.Icon({
-    iconUrl: require("./icons/vehicle.svg"),
-    iconSize: new L.Point(25, 30),
-    className: null
+  iconUrl: require("./icons/vehicle.svg"),
+  iconSize: new L.Point(25, 30),
+  className: null
 });
 
 export const selected = new L.Icon({
-    iconUrl: require("./icons/selected.svg"),
-    iconSize: new L.Point(25, 30),
-    className: null
+  iconUrl: require("./icons/selected.svg"),
+  iconSize: new L.Point(25, 30),
+  className: null
+});
+
+export const cafe = new L.Icon({
+  iconUrl: require("./icons/cafe.svg"),
+  iconSize: new L.Point(25, 30),
+  className: null
+});
+
+export const restaurant = new L.Icon({
+  iconUrl: require("./icons/food.svg"),
+  iconSize: new L.Point(25, 30),
+  className: null
+});
+
+export const lighthouse = new L.Icon({
+  iconUrl: require("./icons/lighthouse.svg"),
+  iconSize: new L.Point(25, 30),
+  className: null
+});
+
+export const picnicArea = new L.Icon({
+  iconUrl: require("./icons/picnic.svg"),
+  iconSize: new L.Point(25, 30),
+  className: null
+});
+
+export const pub = new L.Icon({
+  iconUrl: require("./icons/pub.svg"),
+  iconSize: new L.Point(25, 30),
+  className: null
+});
+
+export const warning = new L.Icon({
+  iconUrl: require("./icons/warning.svg"),
+  iconSize: new L.Point(25, 30),
+  className: null
+});
+
+export const taxi = new L.Icon({
+  iconUrl: require("./icons/taxi.svg"),
+  iconSize: new L.Point(25, 30),
+  className: null
 });
 
 export function findIcon(type) {
@@ -93,7 +135,24 @@ export function findIcon(type) {
       return attraction;
     case "vehicle":
       return vehicle;
+    case "cafe":
+      return cafe;
+    case "restaurant":
+      return restaurant;
+    case "lighthouse":
+      return lighthouse;
+    case "picnic_area":
+      return picnicArea;
+    case "pub":
+      return pub;
+    case "warning":
+      return warning;
+    case "taxi":
+      return taxi;
     default:
-      return campSite;
+      return attraction;
   }
 }
+
+export const food_groupings = ["restaurant", "pub", "cafe"];
+export const business_groupings = ["taxi"];
