@@ -136,9 +136,7 @@ class MapComponent extends Component {
     //if the marker is in the filtered list
     let validMarkers = [];
     this.props.poiMarkers.map(marker => {
-      console.log(marker);
       let business = business_groupings.includes(marker.marker_type);
-      console.log(business);
       let food = food_groupings.includes(marker.marker_type);
       if (
         this.props.filters.includes(marker.marker_type) ||
