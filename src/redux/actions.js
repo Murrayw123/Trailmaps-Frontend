@@ -2,6 +2,7 @@ import {
   food_groupings,
   business_groupings
 } from "../components/helpers/iconsData";
+import { URLPREFIX } from "../config.js";
 export const FETCH_DATA_BEGIN = "FETCH_PRODUCTS_BEGIN";
 export const FETCH_DATA_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
 export const FETCH_MARKERS_SUCCESS = "FETCH_MARKERS_SUCCESS";
@@ -33,7 +34,7 @@ export const WIPE_END_MARKER = "WIPE_END_MARKER";
 export function fetchData(mapstring) {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch("/api/mapinfo/" + mapstring)
+    fetch(URLPREFIX+ "/api/mapinfo/" + mapstring)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
@@ -68,7 +69,7 @@ export function fetchData(mapstring) {
 export function fetchMarkers(mapstring) {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch("/api/markers/" + mapstring)
+    fetch(URLPREFIX + "/api/markers/" + mapstring)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
@@ -90,9 +91,9 @@ export function fetchMarkers(mapstring) {
         let mapMarkerTypes = [];
         data.forEach(marker => {
           if (food_groupings.includes(marker.marker_type)) {
-            mapMarkerTypes.push("Drinks and Dining");
+            mapMarkerTypes.push("drinks & dining");
           } else if (business_groupings.includes(marker.marker_type)) {
-            mapMarkerTypes.push("Trail Businesses");
+            mapMarkerTypes.push("trail businesses");
           } else if (!mapMarkerTypes.includes(marker.marker_type)) {
             mapMarkerTypes.push(marker.marker_type);
           }
@@ -107,7 +108,7 @@ export function fetchMarkers(mapstring) {
 export function fetchOtherMaps() {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch("/api/maps/getmany")
+    fetch(URLPREFIX + "/api/maps/getmany")
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {

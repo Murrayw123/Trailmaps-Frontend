@@ -16,6 +16,7 @@ import {
 } from "../redux/actions";
 import { food_groupings, business_groupings } from "./helpers/iconsData";
 import { findPath, isMarkersValid } from "./helpers/PathCalculator";
+import 'leaflet/dist/leaflet.css';
 import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import { bicycle, finish, start, walking } from "./helpers/iconsData";
 import PoiMarker from "./PoiMarker";
