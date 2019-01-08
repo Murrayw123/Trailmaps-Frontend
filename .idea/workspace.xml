@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/mundabiddireact.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mundabiddireact.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MapComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/LandingPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/LandingPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/precache-manifest.883b36a4a7b5ae984d5830f14741a138.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/1.1e0b8c88.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/1.1e0b8c88.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/main.b12d6c85.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/main.b12d6c85.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/1.9f1e0007.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/1.9f1e0007.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.a219ecae.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.a219ecae.chunk.js.map" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,39 +26,15 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/RouteSwitcher.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/PoiMarker.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -61,7 +43,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/LandingPage.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
@@ -98,7 +80,7 @@
         <entry file="file://$PROJECT_DIR$/src/redux/actions.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="845">
-              <caret line="92" column="34" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+              <caret line="92" column="34" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
               <folding>
                 <element signature="e#0#89#0" expanded="true" />
               </folding>
@@ -172,6 +154,7 @@
       <find>FILTER_TRAIL_MARKERS</find>
     </findStrings>
   </component>
+  <component name="GOROOT" path="/usr/local/Cellar/go/1.11.2/libexec" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -251,7 +234,56 @@
             <path>
               <item name="TrailmapsFE" type="b2602c69:ProjectViewProjectNode" />
               <item name="TrailmapsFE" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrailmapsFE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrailmapsFE" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrailmapsFE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrailmapsFE" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrailmapsFE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrailmapsFE" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrailmapsFE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrailmapsFE" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrailmapsFE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrailmapsFE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrailmapsFE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrailmapsFE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrailmapsFE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrailmapsFE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrailmapsFE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrailmapsFE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="redux" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -264,8 +296,9 @@
     <property name="SearchEverywhereHistoryKey" value="config.js&#9;FILE&#9;file:///Users/murraybishop/projects/TrailmapsFE/src/config.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546857302715" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546864801120" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path" value="node" />
@@ -323,12 +356,12 @@
       <workItem from="1546168490912" duration="905000" />
       <workItem from="1546220298025" duration="1786000" />
       <workItem from="1546661984943" duration="565000" />
-      <workItem from="1546854308523" duration="2168000" />
+      <workItem from="1546854308523" duration="3271000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107374000" />
+    <option name="totallyTimeSpent" value="108477000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
@@ -406,8 +439,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/admin/providers/errors.js" />
-    <entry file="file://$PROJECT_DIR$/src/admin/index.css" />
     <entry file="file://$PROJECT_DIR$/src/admin/providers/default-settings.js" />
     <entry file="file://$PROJECT_DIR$/src/admin/Helpers.js" />
     <entry file="file://$PROJECT_DIR$/src/admin/Markers.js" />
@@ -648,16 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/LandingPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="36" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/css/LandingPage.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -668,7 +689,7 @@
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
     </entry>
@@ -685,17 +706,35 @@
     <entry file="file://$PROJECT_DIR$/src/redux/actions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="845">
-          <caret line="92" column="34" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+          <caret line="92" column="34" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
           <folding>
             <element signature="e#0#89#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/build/static/js/main.ce1a19d7.chunk.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/static/js/1.331cba88.chunk.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-183299" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" selection-start-line="10" selection-start-column="3" selection-end-line="11" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/LandingPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
