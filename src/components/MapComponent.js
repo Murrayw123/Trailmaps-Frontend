@@ -187,6 +187,8 @@ class MapComponent extends Component {
           return marker;
         })}
 
+
+
         {mapMarkerStart ? (
           //custom markers from click event
           <Marker

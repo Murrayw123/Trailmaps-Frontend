@@ -16,7 +16,7 @@ import {
   wipeEndMarker,
   wipeMarkersAndPath
 } from "../redux/actions";
-import { Card, Divider, Icon, Menu } from "antd";
+import { Card, Divider, Icon, Menu, Select, Switch, Tooltip } from "antd";
 import _ from "lodash";
 import DistanceCalculator from "./DistanceCalculator";
 import DistanceCalculatorForm from "./DistanceCalculatorForm";
@@ -212,6 +212,42 @@ class Sider extends React.Component {
             key="sub4"
             title={
               <span>
+                <Icon type="user" theme="outlined" className="sub-icon" />
+                <span className="sub-heading"> Live Trail Users</span>
+              </span>
+            }
+          >
+            <div style={{ marginLeft: 48 }}>
+              <Card className="filter-trail-users" bordered={false} style={{ width: 250}}>
+                <span>
+                  Show all live trail users
+                  <Tooltip title="Find users with a registered SPOT GPS device">
+                    <Icon
+                      style={{ paddingLeft: 4, fontSize: 12 }}
+                      type="question-circle"
+                    />
+                  </Tooltip>
+                  <Switch
+                    size="small"
+                    style={{ marginLeft: 5 }}
+                    checked={this.props.allowCustomPath}
+                    onChange={this.props.toggleCustomPath}
+                  />
+                </span>
+              </Card>
+              <DistanceCalculator
+                placeHolder={"Find Trail User"}
+                dataSource={poiMarkers}
+                type={"locate"}
+                onSelect={this.dataSelect}
+                value={focusMarker}
+              />
+            </div>
+          </SubMenu>
+          <SubMenu
+            key="sub5"
+            title={
+              <span>
                 <Icon type="picture" theme="outlined" className="sub-icon" />
                 <span className="sub-heading">Change Map Terrain</span>
               </span>
@@ -224,7 +260,7 @@ class Sider extends React.Component {
             />
           </SubMenu>
           <SubMenu
-            key="sub5"
+            key="sub6"
             title={
               <span>
                 <Icon type="info-circle" />
@@ -241,7 +277,6 @@ class Sider extends React.Component {
                 </span>
               ) : null}
               <Divider className="map-info-divider" />
-
               <p style={{ marginRight: 20 }}>
                 <b> Information: </b>
                 {_.isEmpty(focusMarker)

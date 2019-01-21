@@ -34,6 +34,10 @@
   font-size: larger;
 }
 
+.filter-trail-users div{
+  padding-top: 0px;
+}
+
 .sub-icon {
   padding-bottom: 1px;
 }

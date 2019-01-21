@@ -130,6 +130,32 @@ export function fetchOtherMaps() {
   };
 }
 
+export function fetchTrailUsers(mapstring) {
+    return dispatch => {
+        dispatch(fetchDataBegin());
+        fetch(URLPREFIX + "/api/spotusers/" + mapstring)
+            .then(handleErrors)
+            .then(res => res.json())
+            .then(json => {
+                const data = json.map(el => {
+                    return {
+                        id: el.Id,
+                        user_name: el.User_name,
+                        user_picture: el.User_picture,
+                        user_blurb: el.User_blurb,
+                        latitude: el.Latitude,
+                        longitude: el.Longitude
+                    };
+                });
+                return data;
+            })
+            .then(data => {
+                dispatch(fetchUsersSuccess(data));
+            })
+            .catch(error => dispatch(fetchUsersError(error)));
+    };
+}
+
 // Handle HTTP errors since fetch won't.
 function handleErrors(response) {
   if (!response.ok) {
@@ -157,9 +183,19 @@ export const fetchMapsSuccess = maps => ({
   payload: { maps }
 });
 
+export const fetchUsersSuccess = maps => ({
+    type: FETCH_USERS_SUCCESS,
+    payload: { users }
+});
+
 export const fetchDataError = error => ({
   type: FETCH_DATA_FAILURE,
   payload: { error }
+});
+
+export const fetchUsersError = error => ({
+    type: FETCH_USERS_FAILURE,
+    payload: { error }
 });
 
 export const addMapMarkerStart = marker => ({

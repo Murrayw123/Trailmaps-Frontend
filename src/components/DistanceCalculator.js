@@ -7,11 +7,12 @@ class DistanceCalculator extends Component {
     const { dataSource, onSelect, type, value, inputDirty } = this.props
     const options = dataSource.map(poi => (
       <Option key={poi.marker_id}>{poi.marker_title}</Option>
-    ))
+    ));
     return (
       <div>
         <Select
           showSearch
+          mode={this.props.mode}
           style={{ width: 200, marginBottom: 10 }}
           onInputKeyDown={inputDirty}
           placeholder={this.props.placeHolder}
