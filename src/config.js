@@ -8,8 +8,8 @@ export const mapStyles = [
 // export const DEV = true;
 // export const URLPREFIX = "http://localhost:8082";
 
-export const DEV = true;
-export const URLPREFIX = "https://trailmaps.site";
+// export const DEV = true;
+// export const URLPREFIX = "https://trailmaps.site";
 
-// export const DEV = false;
-// export const URLPREFIX = "";
+export const DEV = false;
+export const URLPREFIX = "";

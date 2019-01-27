@@ -53,7 +53,6 @@ function nearestPointOnLine(lines, pt, options) {
     var coords = getCoords(line)
 
     for (var i = 0; i < coords.length - 1; i++) {
-      console.log('kasjhdkasjhdkajshds')
       //start
       var start = point(coords[i])
       start.properties.dist = distance(pt, start, options)

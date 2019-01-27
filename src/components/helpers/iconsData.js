@@ -113,6 +113,18 @@ export const taxi = new L.Icon({
   className: null
 });
 
+export const rider = new L.Icon({
+    iconUrl: require("./icons/rider.svg"),
+    iconSize: new L.Point(25, 30),
+    className: null
+});
+
+export const hiker = new L.Icon({
+    iconUrl: require("./icons/hiker.svg"),
+    iconSize: new L.Point(25, 30),
+    className: null
+});
+
 export function findIcon(type) {
   switch (type) {
     case "start":
@@ -149,6 +161,10 @@ export function findIcon(type) {
       return warning;
     case "taxi":
       return taxi;
+    case "cyclist":
+          return rider;
+    case "hiker":
+          return hiker;
     default:
       return attraction;
   }

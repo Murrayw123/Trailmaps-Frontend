@@ -6,19 +6,27 @@ import {
   addMapMarkerStart,
   changeSideBarData,
   openDistanceTab,
+  setEndPoint,
+  setStartPoint,
   storeCustomTrack,
   storeDistance,
   storeElevation,
   storeFocusMarker,
-  wipeMarkersAndPath,
-  setStartPoint,
-  setEndPoint
+  wipeMarkersAndPath
 } from "../redux/actions";
-import { food_groupings, business_groupings } from "./helpers/iconsData";
-import { findPath, isMarkersValid } from "./helpers/PathCalculator";
-import 'leaflet/dist/leaflet.css';
+import {
+  bicycle,
+  business_groupings,
+  finish,
+  food_groupings,
+  start,
+  walking,
+  rider,
+  hiker
+} from "./helpers/iconsData";
+import { findPath } from "./helpers/PathCalculator";
+import "leaflet/dist/leaflet.css";
 import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
-import { bicycle, finish, start, walking } from "./helpers/iconsData";
 import PoiMarker from "./PoiMarker";
 
 class MapComponent extends Component {
@@ -121,7 +129,14 @@ class MapComponent extends Component {
       }
     }
     if (!_.isEmpty(focusMarker)) {
-      if (focusMarker.marker_id === marker.marker_id) {
+      let business = business_groupings.includes(marker.marker_type);
+      let food = food_groupings.includes(marker.marker_type);
+      if (
+        (focusMarker.marker_id === marker.marker_id &&
+          this.props.filters.includes(focusMarker.marker_type)) ||
+        (business && this.props.filters.includes("trail businesses")) ||
+        (food && this.props.filters.includes("drinks & dining"))
+      ) {
         return true;
       }
     }
@@ -141,8 +156,8 @@ class MapComponent extends Component {
       let food = food_groupings.includes(marker.marker_type);
       if (
         this.props.filters.includes(marker.marker_type) ||
-        (business && this.props.filters.includes("Trail Businesses")) ||
-        (food && this.props.filters.includes("Drinks and Dining")) ||
+        (business && this.props.filters.includes("trail businesses")) ||
+        (food && this.props.filters.includes("drinks & dining")) ||
         this.shouldShowMarker(marker)
       ) {
         validMarkers.push(
@@ -161,7 +176,9 @@ class MapComponent extends Component {
       terrain,
       customDistanceMarker,
       mapMarkerStart,
-      mapMarkerEnd
+      mapMarkerEnd,
+      liveTrailUsers,
+      showLiveTrailUsers
     } = this.props;
     let terrainURL =
       "https://maps.tilehosting.com/styles/" +
@@ -187,7 +204,14 @@ class MapComponent extends Component {
           return marker;
         })}
 
-
+        {showLiveTrailUsers
+          ? //Spot users
+            liveTrailUsers.map(trailUser => {
+              return (
+                <PoiMarker marker={trailUser} onClick={this.onClickMarker} />
+              );
+            })
+          : null}
 
         {mapMarkerStart ? (
           //custom markers from click event
@@ -288,7 +312,9 @@ const mapStateToProps = state => ({
   mapMarkerStart: state.mapMarkerStart,
   mapMarkerEnd: state.mapMarkerEnd,
   allowCustomPath: state.allowCustomPath,
-  openKeys: state.openKeys
+  openKeys: state.openKeys,
+  showLiveTrailUsers: state.showLiveTrailUsers,
+  liveTrailUsers: state.liveTrailUsers
 });
 
 export default connect(

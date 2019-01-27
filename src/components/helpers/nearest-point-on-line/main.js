@@ -58,7 +58,6 @@ function nearestPointOnLine(lines, pt, options) {
     var coords = invariant.getCoords(line)
 
     for (var i = 0; i < coords.length - 1; i++) {
-      console.log('LKAJSLDKJASLKDJASDSD')
 
       //start
       var start = helpers.point(coords[i])

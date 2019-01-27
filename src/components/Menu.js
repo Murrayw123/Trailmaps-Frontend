@@ -11,12 +11,13 @@ import {
   setStartPoint,
   storeCustomTrack,
   storeFocusMarker,
-  wipeMarkers,
-  wipeStartMarker,
+  toggleLiveTrailUsers,
   wipeEndMarker,
-  wipeMarkersAndPath
+  wipeMarkers,
+  wipeMarkersAndPath,
+  wipeStartMarker
 } from "../redux/actions";
-import { Card, Divider, Icon, Menu, Select, Switch, Tooltip } from "antd";
+import { Card, Divider, Icon, Menu, Switch, Tooltip } from "antd";
 import _ from "lodash";
 import DistanceCalculator from "./DistanceCalculator";
 import DistanceCalculatorForm from "./DistanceCalculatorForm";
@@ -30,9 +31,11 @@ const SubMenu = Menu.SubMenu;
 
 class Sider extends React.Component {
   dataSelect = (markerid, type) => {
-    let newFocus = this.props.poiMarkers.find(el => {
-      return el.marker_id === parseInt(markerid);
-    });
+    let newFocus = this.props.poiMarkers
+      .concat(this.props.liveTrailUsers)
+      .find(el => {
+        return el.marker_id === parseInt(markerid);
+      });
     if (type === "locate") {
       this.props.dispatch(changeZoomLevel(13));
       this.props.dispatch(
@@ -102,6 +105,10 @@ class Sider extends React.Component {
     this.props.dispatch(allowCustomPath(bool));
   };
 
+  toggleShowLiveTrailUsers = bool => {
+    this.props.dispatch(toggleLiveTrailUsers(bool));
+  };
+
   isButtonDisabled = () => {
     let startEmpty = _.isEmpty(this.props.startPoint);
     let endEmpty = _.isEmpty(this.props.endPoint);
@@ -127,7 +134,8 @@ class Sider extends React.Component {
       terrain,
       focusMarker,
       filters,
-      openKeys
+      openKeys,
+      liveTrailUsers
     } = this.props;
     return (
       <Menu
@@ -218,7 +226,11 @@ class Sider extends React.Component {
             }
           >
             <div style={{ marginLeft: 48 }}>
-              <Card className="filter-trail-users" bordered={false} style={{ width: 250}}>
+              <Card
+                className="filter-trail-users"
+                bordered={false}
+                style={{ width: 250 }}
+              >
                 <span>
                   Show all live trail users
                   <Tooltip title="Find users with a registered SPOT GPS device">
@@ -230,14 +242,14 @@ class Sider extends React.Component {
                   <Switch
                     size="small"
                     style={{ marginLeft: 5 }}
-                    checked={this.props.allowCustomPath}
-                    onChange={this.props.toggleCustomPath}
+                    checked={this.props.showLiveTrailUsers}
+                    onChange={this.toggleShowLiveTrailUsers}
                   />
                 </span>
               </Card>
               <DistanceCalculator
                 placeHolder={"Find Trail User"}
-                dataSource={poiMarkers}
+                dataSource={liveTrailUsers}
                 type={"locate"}
                 onSelect={this.dataSelect}
                 value={focusMarker}
@@ -317,7 +329,9 @@ const mapStateToProps = state => ({
   filters: state.filters,
   sideBarImage: state.sideBarImage,
   sideBarBlurb: state.sideBarBlurb,
-  openKeys: state.openKeys
+  openKeys: state.openKeys,
+  showLiveTrailUsers: state.showLiveTrailUsers,
+  liveTrailUsers: state.liveTrailUsers
 });
 
 export default connect(mapStateToProps)(Sider);

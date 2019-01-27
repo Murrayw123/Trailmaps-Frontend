@@ -30,11 +30,14 @@ export const OPEN_DISTANCE_TAB = "OPEN_DISTANCE_TAB";
 export const FETCH_MAPS_SUCCESS = "FETCH_MAPS_SUCCESS";
 export const WIPE_START_MARKER = "WIPE_START_MARKER";
 export const WIPE_END_MARKER = "WIPE_END_MARKER";
+export const FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS";
+export const FETCH_USERS_FAILURE = "FETCH_USERS_FAILURE";
+export const TOGGLE_LIVE_TRAIL_USERS = "TOGGLE_LIVE_TRAIL_USERS";
 
 export function fetchData(mapstring) {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch(URLPREFIX+ "/api/mapinfo/" + mapstring)
+    fetch(URLPREFIX + "/api/mapinfo/" + mapstring)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
@@ -62,7 +65,10 @@ export function fetchData(mapstring) {
         dispatch(fetchDataSuccess(data));
         return data;
       })
-      .catch(error => dispatch(fetchDataError(error)));
+      .catch(error => {
+        console.error(error, "MapInfo");
+        dispatch(fetchDataError(error));
+      });
   };
 }
 
@@ -90,18 +96,31 @@ export function fetchMarkers(mapstring) {
       .then(data => {
         let mapMarkerTypes = [];
         data.forEach(marker => {
-          if (food_groupings.includes(marker.marker_type)) {
+          if (
+            food_groupings.includes(marker.marker_type) &&
+            !mapMarkerTypes.includes("drinks & dining")
+          ) {
             mapMarkerTypes.push("drinks & dining");
-          } else if (business_groupings.includes(marker.marker_type)) {
+          } else if (
+            business_groupings.includes(marker.marker_type) &&
+            !mapMarkerTypes.includes("trail businesses")
+          ) {
             mapMarkerTypes.push("trail businesses");
-          } else if (!mapMarkerTypes.includes(marker.marker_type)) {
+          } else if (
+            !mapMarkerTypes.includes(marker.marker_type) &&
+            !business_groupings.includes(marker.marker_type) &&
+            !food_groupings.includes(marker.marker_type)
+          ) {
             mapMarkerTypes.push(marker.marker_type);
           }
         });
         dispatch(findTrailMarker(mapMarkerTypes));
         dispatch(fetchMarkerSuccess(data));
       })
-      .catch(error => dispatch(fetchDataError(error)));
+      .catch(error => {
+        console.error(error, "Markers");
+        dispatch(fetchDataError(error));
+      });
   };
 }
 
@@ -126,34 +145,42 @@ export function fetchOtherMaps() {
       .then(data => {
         dispatch(fetchMapsSuccess(data));
       })
-      .catch(error => dispatch(fetchDataError(error)));
+      .catch(error => {
+        console.error(error, "Many Maps Info");
+        dispatch(fetchDataError(error));
+      });
   };
 }
 
 export function fetchTrailUsers(mapstring) {
-    return dispatch => {
-        dispatch(fetchDataBegin());
-        fetch(URLPREFIX + "/api/spotusers/" + mapstring)
-            .then(handleErrors)
-            .then(res => res.json())
-            .then(json => {
-                const data = json.map(el => {
-                    return {
-                        id: el.Id,
-                        user_name: el.User_name,
-                        user_picture: el.User_picture,
-                        user_blurb: el.User_blurb,
-                        latitude: el.Latitude,
-                        longitude: el.Longitude
-                    };
-                });
-                return data;
-            })
-            .then(data => {
-                dispatch(fetchUsersSuccess(data));
-            })
-            .catch(error => dispatch(fetchUsersError(error)));
-    };
+  return dispatch => {
+    dispatch(fetchDataBegin());
+    fetch(URLPREFIX + "/api/spotusers/map/" + mapstring)
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(json => {
+        const data = json.map(el => {
+          return {
+            marker_id: el.Id,
+            marker_title: el.User_name,
+            marker_image: el.User_picture,
+            marker_blurb: el.User_blurb,
+            marker_lat: el.Latitude,
+            marker_lng: el.Longitude,
+            marker_type: el.User_type,
+            marker_info: []
+          };
+        });
+        return data;
+      })
+      .then(data => {
+        dispatch(fetchUsersSuccess(data));
+      })
+      .catch(error => {
+        console.error(error, "Trail Users");
+        dispatch(fetchDataError(error));
+      });
+  };
 }
 
 // Handle HTTP errors since fetch won't.
@@ -183,19 +210,19 @@ export const fetchMapsSuccess = maps => ({
   payload: { maps }
 });
 
-export const fetchUsersSuccess = maps => ({
-    type: FETCH_USERS_SUCCESS,
-    payload: { users }
-});
-
 export const fetchDataError = error => ({
   type: FETCH_DATA_FAILURE,
   payload: { error }
 });
 
+export const fetchUsersSuccess = users => ({
+  type: FETCH_USERS_SUCCESS,
+  payload: { users }
+});
+
 export const fetchUsersError = error => ({
-    type: FETCH_USERS_FAILURE,
-    payload: { error }
+  type: FETCH_USERS_FAILURE,
+  payload: { error }
 });
 
 export const addMapMarkerStart = marker => ({
@@ -301,4 +328,9 @@ export const setOpenMenus = menuKeys => ({
 
 export const openDistanceTab = () => ({
   type: OPEN_DISTANCE_TAB
+});
+
+export const toggleLiveTrailUsers = bool => ({
+  type: TOGGLE_LIVE_TRAIL_USERS,
+  payload: bool
 });

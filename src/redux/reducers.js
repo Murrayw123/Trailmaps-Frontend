@@ -25,7 +25,10 @@ import {
   OPEN_DISTANCE_TAB,
   FETCH_MAPS_SUCCESS,
   WIPE_START_MARKER,
-  WIPE_END_MARKER
+  WIPE_END_MARKER,
+  FETCH_USERS_SUCCESS,
+  FETCH_USERS_FAILURE,
+  TOGGLE_LIVE_TRAIL_USERS
 } from "./actions";
 const initialState = {
   data: [],
@@ -52,8 +55,10 @@ const initialState = {
   allowCustomPath: false,
   sideBarImage: null,
   sideBarBlurb: null,
-  openKeys: ["menu", "sub5"],
-  allMaps: []
+  openKeys: ["menu", "sub6"],
+  allMaps: [],
+  showLiveTrailUsers: true,
+  liveTrailUsers: []
 };
 
 export default function dataReducer(state = initialState, action) {
@@ -87,12 +92,25 @@ export default function dataReducer(state = initialState, action) {
     case FETCH_MAPS_SUCCESS:
       return {
         ...state,
-        loadingMarkers: false,
         allMaps: action.payload.maps
       };
 
-    case FETCH_DATA_FAILURE:
+    case FETCH_USERS_SUCCESS:
       return {
+        ...state,
+          loadingMarkers: false,
+          liveTrailUsers: action.payload.users
+      };
+
+    case FETCH_USERS_FAILURE:
+      return {
+        ...state,
+        error: action.payload.error,
+        liveTrailUsers: []
+      };
+
+    case FETCH_DATA_FAILURE:
+        return {
         ...state,
         loading: false,
         error: action.payload.error,
@@ -241,5 +259,11 @@ export default function dataReducer(state = initialState, action) {
       };
     default:
       return state;
+
+    case TOGGLE_LIVE_TRAIL_USERS:
+      return {
+        ...state,
+        showLiveTrailUsers: action.payload
+      };
   }
 }
