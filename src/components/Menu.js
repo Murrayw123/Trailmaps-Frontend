@@ -135,14 +135,15 @@ class Sider extends React.Component {
       focusMarker,
       filters,
       openKeys,
-      liveTrailUsers
+      liveTrailUsers,
+      focusTrailUser
     } = this.props;
     return (
       <Menu
         className="overlayMenu"
         onOpenChange={this.handleMenuOpen}
         style={{ width: 300, opacity: 0.9 }}
-        defaultOpenKeys={["menu", "sub5"]}
+        defaultOpenKeys={["menu", "sub6"]}
         openKeys={openKeys}
         mode="inline"
       >
@@ -205,7 +206,7 @@ class Sider extends React.Component {
             title={
               <span>
                 <Icon type="select" theme="outlined" className="sub-icon" />
-                <span className="sub-heading"> Filter Markers</span>
+                <span className="sub-heading"> Filter Visible Markers</span>
               </span>
             }
           >
@@ -252,7 +253,7 @@ class Sider extends React.Component {
                 dataSource={liveTrailUsers}
                 type={"locate"}
                 onSelect={this.dataSelect}
-                value={focusMarker}
+                value={focusTrailUser}
               />
             </div>
           </SubMenu>
@@ -331,7 +332,8 @@ const mapStateToProps = state => ({
   sideBarBlurb: state.sideBarBlurb,
   openKeys: state.openKeys,
   showLiveTrailUsers: state.showLiveTrailUsers,
-  liveTrailUsers: state.liveTrailUsers
+  liveTrailUsers: state.liveTrailUsers,
+  focusTrailUser: state.focusTrailUser
 });
 
 export default connect(mapStateToProps)(Sider);

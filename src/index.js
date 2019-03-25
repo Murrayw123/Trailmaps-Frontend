@@ -12,6 +12,8 @@ import "./css/MapComponent.css";
 import "./css/Chart.css";
 import "./css/LandingPage.css";
 import "./css/MapSwitcher.css";
+import "./css/context-menu.css";
+import "./css/marker-modal.css";
 
 const store = createStore(dataReducer, applyMiddleware(thunk));
 ReactDOM.render(

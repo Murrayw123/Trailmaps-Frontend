@@ -82,3 +82,7 @@ p {
 .leaflet-popup-close-button {
   margin-right: 3px;
 }
+
+.marker-modal {
+  z-index: 9999;
+}

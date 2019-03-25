@@ -19,7 +19,12 @@ export class LandingPage extends Component {
               parentNode={"map-switcher-block"}
             />
           </div>
+
           <div className="disclaimer">
+            <p className="title">
+              Interactive Bushwalking and Bikepacking maps. View distance,
+              elevation, towns and campsites + more!
+            </p>
             <p>
               <b> Disclaimer:</b> Trailmaps is not intended for navigation
               purposes and should be used for route planning only. Trailmaps

@@ -1,35 +1,41 @@
 import {
-  FETCH_DATA_BEGIN,
-  FETCH_DATA_SUCCESS,
-  FETCH_DATA_FAILURE,
-  FETCH_MARKERS_SUCCESS,
+  ADD_MAP_MARKER_END,
+  ADD_MAP_MARKER_START,
+  ALLOW_CUSTOM_PATH,
   CALC_DISTANCE,
   CALC_ELEVATION,
-  STORE_CUSTOM_TRACK,
-  CHANGE_ZOOM_LEVEL,
+  CHANGE_ELEVATION_DATA,
   CHANGE_FOCUS_POINT,
-  FIND_TRAIL_MARKERS,
-  FILTER_TRAIL_MARKERS,
-  CHANGE_TERRAIN,
-  SET_START_POINT,
-  SET_END_POINT,
-  STORE_FOCUS_MARKER,
-  SET_CUSTOM_DISTANCE_MARKER,
-  ADD_MAP_MARKER_START,
-  ADD_MAP_MARKER_END,
-  WIPE_MARKERS_AND_PATH,
-  WIPE_MARKERS,
-  ALLOW_CUSTOM_PATH,
   CHANGE_SIDEBAR_DATA,
-  SET_OPEN_MENUS,
-  OPEN_DISTANCE_TAB,
+  CHANGE_TERRAIN,
+  CHANGE_ZOOM_LEVEL,
+  FETCH_DATA_BEGIN,
+  FETCH_DATA_FAILURE,
+  FETCH_DATA_SUCCESS,
+  FETCH_ELEVATION_LOADING,
   FETCH_MAPS_SUCCESS,
-  WIPE_START_MARKER,
-  WIPE_END_MARKER,
-  FETCH_USERS_SUCCESS,
+  FETCH_MARKERS_SUCCESS,
   FETCH_USERS_FAILURE,
-  TOGGLE_LIVE_TRAIL_USERS
+  FETCH_USERS_SUCCESS,
+  FILTER_TRAIL_MARKERS,
+  FIND_TRAIL_MARKERS,
+  LAT_LNG_FROM_CONTEXT,
+  OPEN_DISTANCE_TAB,
+  SET_CUSTOM_DISTANCE_MARKER,
+  SET_END_POINT,
+  SET_OPEN_MENUS,
+  SET_START_POINT,
+  SHOULD_SHOW_CONTEXT_MENU,
+  SHOW_MARKER_ADD_MODAL,
+  STORE_CUSTOM_TRACK,
+  STORE_FOCUS_MARKER,
+  TOGGLE_LIVE_TRAIL_USERS,
+  WIPE_END_MARKER,
+  WIPE_MARKERS,
+  WIPE_MARKERS_AND_PATH,
+  WIPE_START_MARKER
 } from "./actions";
+
 const initialState = {
   data: [],
   loadingTrack: true,
@@ -58,7 +64,13 @@ const initialState = {
   openKeys: ["menu", "sub6"],
   allMaps: [],
   showLiveTrailUsers: true,
-  liveTrailUsers: []
+  liveTrailUsers: [],
+  focusTrailUser: null,
+  shouldShowModal: false,
+  latLngFromContext: { lat: 0, lng: 0 },
+  shouldShowContextMenuStatus: false,
+  fetchElevationLoading: true,
+  elevationData: 0,
 };
 
 export default function dataReducer(state = initialState, action) {
@@ -98,8 +110,8 @@ export default function dataReducer(state = initialState, action) {
     case FETCH_USERS_SUCCESS:
       return {
         ...state,
-          loadingMarkers: false,
-          liveTrailUsers: action.payload.users
+        loadingMarkers: false,
+        liveTrailUsers: action.payload.users
       };
 
     case FETCH_USERS_FAILURE:
@@ -110,7 +122,7 @@ export default function dataReducer(state = initialState, action) {
       };
 
     case FETCH_DATA_FAILURE:
-        return {
+      return {
         ...state,
         loading: false,
         error: action.payload.error,
@@ -264,6 +276,36 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         showLiveTrailUsers: action.payload
+      };
+
+    case SHOW_MARKER_ADD_MODAL:
+      return {
+        ...state,
+          shouldShowModal: action.payload
+      };
+
+    case LAT_LNG_FROM_CONTEXT:
+      return {
+        ...state,
+        latLngFromContext: action.payload
+      };
+
+    case SHOULD_SHOW_CONTEXT_MENU:
+      return {
+        ...state,
+        shouldShowContextMenuStatus: action.payload
+      };
+
+    case FETCH_ELEVATION_LOADING:
+      return {
+        ...state,
+        fetchElevationLoading: action.payload
+      };
+
+    case CHANGE_ELEVATION_DATA:
+      return {
+        ...state,
+        elevationData: action.payload
       };
   }
 }

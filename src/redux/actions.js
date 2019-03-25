@@ -2,6 +2,8 @@ import {
   food_groupings,
   business_groupings
 } from "../components/helpers/iconsData";
+import * as _ from "lodash";
+
 import { URLPREFIX } from "../config.js";
 export const FETCH_DATA_BEGIN = "FETCH_PRODUCTS_BEGIN";
 export const FETCH_DATA_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
@@ -33,37 +35,48 @@ export const WIPE_END_MARKER = "WIPE_END_MARKER";
 export const FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS";
 export const FETCH_USERS_FAILURE = "FETCH_USERS_FAILURE";
 export const TOGGLE_LIVE_TRAIL_USERS = "TOGGLE_LIVE_TRAIL_USERS";
+export const SHOW_MARKER_ADD_MODAL = "SHOW_MARKER_ADD_MODAL";
+export const LAT_LNG_FROM_CONTEXT = "LAT_LNG_FROM_CONTEXT";
+export const SHOULD_SHOW_CONTEXT_MENU = "SHOULD_SHOW_CONTEXT_MENU";
+export const FETCH_ELEVATION_LOADING = "FETCH_ELEVATION_LOADING";
+export const CHANGE_ELEVATION_DATA = "CHANGE_ELEVATION_DATA";
+
+export function fetchElevation(lat, lng) {
+  return dispatch => {
+    dispatch(fetchElevationLoading(true));
+    fetch(
+      `http://dev.virtualearth.net/REST/v1/Elevation/List?points=${lat},${lng}&key=Ahj6mcvlG04XGZyebUbWKYsWBAXBF18DeXctHOmwCrcxj-C4TvQKGCBmPVfnq0Z2`
+    )
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(json => {
+        let elevationData = json.resourceSets[0].resources[0].elevations[0];
+        dispatch(changeElevationData(elevationData));
+        dispatch(fetchElevationLoading(false));
+      })
+      .catch(error => {
+        console.error(error, "Get elevations error");
+      });
+  };
+}
 
 export function fetchData(mapstring) {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch(URLPREFIX + "/api/mapinfo/" + mapstring)
+    fetch(URLPREFIX + "/api/maps/" + mapstring)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
-        const filters = [];
-        json.Default_filters.forEach(filter => filters.push(filter.type));
-        const data = {
-          id: json.Id,
-          map_name: json.Map_name,
-          map_alias: json.Map_alias,
-          map_type: json.Map_type,
-          map_track: json.Map_track,
-          startpointlat: json.Startpointlat,
-          startpointlng: json.Startpointlng,
-          filters: filters,
-          map_blurb: json.Map_blurb,
-          default_image: json.Default_image,
-          map_stats: json.Map_stats,
-          zoom_level: json.Zoom_level,
-          walking: json.Walking,
-          cycling: json.Cycling,
-          horseriding: json.Horseriding
-        };
-        dispatch(changeZoomLevel(data.zoom_level));
-        dispatch(changeSideBarData(data.map_blurb, data.default_image));
-        dispatch(fetchDataSuccess(data));
-        return data;
+        let clonedJson = _.cloneDeep(json);
+        let filters = [];
+        clonedJson.default_filters.forEach(filter => filters.push(filter.type));
+        clonedJson.filters = filters;
+        dispatch(changeZoomLevel(clonedJson.zoom_level));
+        dispatch(
+          changeSideBarData(clonedJson.map_blurb, clonedJson.default_image)
+        );
+        dispatch(fetchDataSuccess(clonedJson));
+        return clonedJson;
       })
       .catch(error => {
         console.error(error, "MapInfo");
@@ -75,20 +88,20 @@ export function fetchData(mapstring) {
 export function fetchMarkers(mapstring) {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch(URLPREFIX + "/api/markers/" + mapstring)
+    fetch(URLPREFIX + "/api/markers?map_alias=" + mapstring)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
         const data = json.map(el => {
           return {
-            marker_id: el.Id,
-            marker_type: el.Marker_type,
-            marker_lat: el.Marker_lat,
-            marker_lng: el.Marker_lng,
-            marker_info: el.Marker_info,
-            marker_title: el.Marker_title,
-            marker_blurb: el.Marker_blurb,
-            default_image: el.Default_image
+            marker_id: el.id,
+            marker_type: el.marker_type,
+            marker_lat: el.marker_lat,
+            marker_lng: el.marker_lng,
+            marker_info: el.marker_info,
+            marker_title: el.marker_title,
+            marker_blurb: el.marker_blurb,
+            default_image: el.default_image
           };
         });
         return data;
@@ -127,21 +140,9 @@ export function fetchMarkers(mapstring) {
 export function fetchOtherMaps() {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch(URLPREFIX + "/api/maps/getmany")
+    fetch(URLPREFIX + "/api/map_preview")
       .then(handleErrors)
       .then(res => res.json())
-      .then(json => {
-        const data = json.map(el => {
-          return {
-            map_name: el.Map_name,
-            map_alias: el.Map_alias,
-            walking: el.Walking,
-            cycling: el.Cycling,
-            horseriding: el.Horseriding
-          };
-        });
-        return data;
-      })
       .then(data => {
         dispatch(fetchMapsSuccess(data));
       })
@@ -152,27 +153,12 @@ export function fetchOtherMaps() {
   };
 }
 
-export function fetchTrailUsers(mapstring) {
+export function fetchTrailUsers(mapString) {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch(URLPREFIX + "/api/spotusers/map/" + mapstring)
+    fetch(URLPREFIX + "/api/spotuserswithlocation?=map_alias=" + mapString)
       .then(handleErrors)
       .then(res => res.json())
-      .then(json => {
-        const data = json.map(el => {
-          return {
-            marker_id: el.Id,
-            marker_title: el.User_name,
-            marker_image: el.User_picture,
-            marker_blurb: el.User_blurb,
-            marker_lat: el.Latitude,
-            marker_lng: el.Longitude,
-            marker_type: el.User_type,
-            marker_info: []
-          };
-        });
-        return data;
-      })
       .then(data => {
         dispatch(fetchUsersSuccess(data));
       })
@@ -218,11 +204,6 @@ export const fetchDataError = error => ({
 export const fetchUsersSuccess = users => ({
   type: FETCH_USERS_SUCCESS,
   payload: { users }
-});
-
-export const fetchUsersError = error => ({
-  type: FETCH_USERS_FAILURE,
-  payload: { error }
 });
 
 export const addMapMarkerStart = marker => ({
@@ -333,4 +314,29 @@ export const openDistanceTab = () => ({
 export const toggleLiveTrailUsers = bool => ({
   type: TOGGLE_LIVE_TRAIL_USERS,
   payload: bool
+});
+
+export const showMarkerAddModal = bool => ({
+  type: SHOW_MARKER_ADD_MODAL,
+  payload: bool
+});
+
+export const setLatLngFromContextClick = object => ({
+  type: LAT_LNG_FROM_CONTEXT,
+  payload: object
+});
+
+export const shouldShowContextMenu = bool => ({
+  type: SHOULD_SHOW_CONTEXT_MENU,
+  payload: bool
+});
+
+export const fetchElevationLoading = bool => ({
+  type: FETCH_ELEVATION_LOADING,
+  payload: bool
+});
+
+export const changeElevationData = data => ({
+  type: CHANGE_ELEVATION_DATA,
+  payload: data
 });

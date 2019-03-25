@@ -12,7 +12,10 @@ import {
   storeDistance,
   storeElevation,
   storeFocusMarker,
-  wipeMarkersAndPath
+  wipeMarkersAndPath,
+  setLatLngFromContextClick,
+  shouldShowContextMenu,
+  fetchElevation
 } from "../redux/actions";
 import {
   bicycle,
@@ -20,17 +23,20 @@ import {
   finish,
   food_groupings,
   start,
-  walking,
-  rider,
-  hiker
+  walking
 } from "./helpers/iconsData";
 import { findPath } from "./helpers/PathCalculator";
 import "leaflet/dist/leaflet.css";
 import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import PoiMarker from "./PoiMarker";
+import ContextMenu from "./ContextMenuApp";
 
 class MapComponent extends Component {
+  state = { context: false, x: 0, y: 0 };
   checkMarkers = e => {
+    if (e.originalEvent.target["type"] !== "button") {
+      this.props.shouldShowContextMenu(false);
+    }
     let startPointCheckEmpty = _.isEmpty(this.props.startPoint);
     let endPointCheckEmpty = _.isEmpty(this.props.endPoint);
     //allow a maximum of two clicks before resetting the path
@@ -168,6 +174,19 @@ class MapComponent extends Component {
     return validMarkers;
   };
 
+  rightClick = event => {
+    this.setState({
+      x: event.containerPoint.x,
+      y: event.containerPoint.y
+    });
+    this.props.setLatLngFromContextClick({
+      lat: event.latlng.lat,
+      lng: event.latlng.lng
+    });
+    this.props.fetchElevation(event.latlng.lat, event.latlng.lng);
+    this.props.shouldShowContextMenu(true);
+  };
+
   render() {
     const {
       data,
@@ -178,7 +197,8 @@ class MapComponent extends Component {
       mapMarkerStart,
       mapMarkerEnd,
       liveTrailUsers,
-      showLiveTrailUsers
+      showLiveTrailUsers,
+      shouldShowContextMenuStatus
     } = this.props;
     let terrainURL =
       "https://maps.tilehosting.com/styles/" +
@@ -191,6 +211,7 @@ class MapComponent extends Component {
         className="map"
         zoomControl={false}
         onClick={this.checkMarkers}
+        onContextMenu={this.rightClick}
       >
         <ZoomControl position="bottomright" />
         <TileLayer
@@ -212,6 +233,10 @@ class MapComponent extends Component {
               );
             })
           : null}
+
+        {shouldShowContextMenuStatus ? (
+          <ContextMenu x={this.state.x} y={this.state.y} />
+        ) : null}
 
         {mapMarkerStart ? (
           //custom markers from click event
@@ -293,6 +318,15 @@ const mapDispatchToProps = dispatch => ({
   },
   setEndPoint: marker => {
     dispatch(setEndPoint(marker));
+  },
+  setLatLngFromContextClick: latLng => {
+    dispatch(setLatLngFromContextClick(latLng));
+  },
+  shouldShowContextMenu: bool => {
+    dispatch(shouldShowContextMenu(bool));
+  },
+  fetchElevation: (lat, lng) => {
+    dispatch(fetchElevation(lat, lng));
   }
 });
 
@@ -314,7 +348,9 @@ const mapStateToProps = state => ({
   allowCustomPath: state.allowCustomPath,
   openKeys: state.openKeys,
   showLiveTrailUsers: state.showLiveTrailUsers,
-  liveTrailUsers: state.liveTrailUsers
+  liveTrailUsers: state.liveTrailUsers,
+  shouldShowContextMenuStatus: state.shouldShowContextMenuStatus,
+  shouldShowModal: state.shouldShowModal
 });
 
 export default connect(

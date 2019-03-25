@@ -1,0 +1,38 @@
+.context-menu {
+  z-index: 999;
+  position: absolute;
+  max-width: 200px;
+}
+
+.context-menu .ant-card-head-title {
+  text-align: center;
+  padding: 0px;
+}
+
+.context-menu .ant-card {
+  opacity: 0.9;
+  border-radius: 5px;
+}
+
+.context-menu .ant-card-head {
+  min-height: initial;
+}
+
+.context-menu .ant-card-head {
+  min-height: initial;
+}
+
+.context-menu .ant-card-body {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.context-menu .marker-add {
+  margin-top: 12px;
+}
+
+.context-menu .ant-card-extra {
+  padding: 0px;
+  position: absolute;
+  right: 10px;
+}

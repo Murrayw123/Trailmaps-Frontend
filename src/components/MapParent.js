@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
 import MapComponent from "./MapComponent";
+import MarkerModal from "./Modal";
 import ElevationChart from "./ElevationChart";
 import MapSelect from "./MapSelect";
 import {
@@ -39,7 +40,12 @@ class MapParent extends Component {
   };
 
   render() {
-    const { loadingTrack, loadingMarkers } = this.props;
+    const {
+      loadingTrack,
+      loadingMarkers,
+      customPath,
+      shouldShowModal
+    } = this.props;
     const { showElevation } = this.state;
     if (loadingTrack || loadingMarkers) {
       return <div>Loading...</div>;
@@ -48,10 +54,11 @@ class MapParent extends Component {
         <div className="map">
           <MapSelect parentNode={"map"} />
           <MapComponent />
+          {shouldShowModal ? <MarkerModal /> : null}
           <Sider />
-          {!_.isEmpty(this.props.customPath) &&
+          {!_.isEmpty(customPath) &&
           showElevation === true &&
-          this.props.customPath.distance > 0 ? (
+          customPath.distance > 0 ? (
             <ElevationChartWrapper
               className="elevation-chart"
               size={{ width: this.state.width, height: this.state.height }}
@@ -72,8 +79,7 @@ class MapParent extends Component {
                 }}
               />
             </ElevationChartWrapper>
-          ) : !_.isEmpty(this.props.customPath) &&
-            this.props.customPath.distance > 0 ? (
+          ) : !_.isEmpty(customPath) && customPath.distance > 0 ? (
             <Button
               className="show-elevation"
               type="primary"
@@ -102,7 +108,8 @@ const mapStateToProps = state => ({
   filters: state.filters,
   poiMarkers: state.poiMarkers,
   customPath: state.customPath,
-  elevationChartData: state.elevationChartData
+  elevationChartData: state.elevationChartData,
+  shouldShowModal: state.shouldShowModal
 });
 
 export default connect(mapStateToProps)(MapParent);

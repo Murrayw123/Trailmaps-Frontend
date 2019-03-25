@@ -1,4 +1,22 @@
 import L from "leaflet";
+
+export const markerChoices = [
+  { id: "taxi", name: "Taxi Service" },
+  { id: "campsite", name: "Campsite" },
+  { id: "hut", name: "Hut/Shelter" },
+  { id: "town", name: "Town" },
+  { id: "water", name: "Water" },
+  { id: "attraction", name: "Tourist Attraction / Point of Interest" },
+  { id: "vehicle", name: "Vehicle Access Point" },
+  { id: "cafe", name: "Cafe" },
+  { id: "pub", name: "Pub" },
+  { id: "restaurant", name: "Restaurant" },
+  { id: "lighthouse", name: "Lighthouse" },
+  { id: "picnic_area", name: "Picnic Area" },
+  { id: "warning", name: "Warning" }
+];
+
+
 export const start = new L.Icon({
   iconUrl: require("./icons/start.svg"),
   iconSize: new L.Point(30, 35),
