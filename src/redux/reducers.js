@@ -70,7 +70,7 @@ const initialState = {
   latLngFromContext: { lat: 0, lng: 0 },
   shouldShowContextMenuStatus: false,
   fetchElevationLoading: true,
-  elevationData: 0,
+  elevationData: 0
 };
 
 export default function dataReducer(state = initialState, action) {
@@ -281,7 +281,7 @@ export default function dataReducer(state = initialState, action) {
     case SHOW_MARKER_ADD_MODAL:
       return {
         ...state,
-          shouldShowModal: action.payload
+        shouldShowModal: action.payload
       };
 
     case LAT_LNG_FROM_CONTEXT:

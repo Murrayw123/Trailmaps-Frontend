@@ -6,10 +6,10 @@ export const mapStyles = [
 ]
 
 export const DEV = true;
-export const URLPREFIX = "http://localhost:8000";
+// export const URLPREFIX = "http://localhost:8000";
 
 // export const DEV = true;
-// export const URLPREFIX = "https://trailmaps.site";
+export const URLPREFIX = "http://trailmaps.site:8000";
 
 // export const DEV = false;
 // export const URLPREFIX = "";

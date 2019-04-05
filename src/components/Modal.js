@@ -26,15 +26,11 @@ const CollectionCreateForm = Form.create({ name: "form_in_modal" })(
       const { getFieldDecorator } = form;
 
       const normFile = e => {
-        console.log("Upload event:", e);
         if (Array.isArray(e)) {
           return e;
         }
         return e && e.fileList;
       };
-
-      {
-      }
 
       return (
         <Modal
@@ -215,7 +211,6 @@ class MarkerModal extends Component {
     const form = this.formRef.props.form;
     form.validateFields(async (err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
         values.marker_lat = parseFloat(values.lat);
         values.marker_lng = parseFloat(values.lng);
         values.map = this.props.data.id;
