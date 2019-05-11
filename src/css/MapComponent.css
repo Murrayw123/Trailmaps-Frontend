@@ -99,4 +99,8 @@ p {
   .leaflet-control-zoom {
     display: none;
   }
+
+  .elevation-chart {
+    display: none;
+  }
 }
