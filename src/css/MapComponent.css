@@ -86,3 +86,17 @@ p {
 .marker-modal {
   z-index: 9999;
 }
+
+@media only screen and (max-width: 600px) {
+  .map .map-select {
+    display: none;
+  }
+
+  .info-icon {
+    display: none;
+  }
+
+  .leaflet-control-zoom {
+    display: none;
+  }
+}

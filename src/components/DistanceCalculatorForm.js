@@ -25,6 +25,7 @@ class DistanceCalculatorForm extends React.Component {
             dataSource={dataSource}
             value={startPoint}
             className="distance-calculator"
+            markerType="distance"
           />
           <DistanceCalculator
             placeHolder={"End point"}
@@ -32,6 +33,7 @@ class DistanceCalculatorForm extends React.Component {
             type={"end"}
             dataSource={dataSource}
             value={endPoint}
+            markerType="distance"
           />
           {this.props.customDistance}
           <Button

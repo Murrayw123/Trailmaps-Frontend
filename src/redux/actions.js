@@ -45,7 +45,7 @@ export function fetchElevation(lat, lng) {
   return dispatch => {
     dispatch(fetchElevationLoading(true));
     fetch(
-      `http://dev.virtualearth.net/REST/v1/Elevation/List?points=${lat},${lng}&key=Ahj6mcvlG04XGZyebUbWKYsWBAXBF18DeXctHOmwCrcxj-C4TvQKGCBmPVfnq0Z2`
+      `https://dev.virtualearth.net/REST/v1/Elevation/List?points=${lat},${lng}&key=Ahj6mcvlG04XGZyebUbWKYsWBAXBF18DeXctHOmwCrcxj-C4TvQKGCBmPVfnq0Z2`
     )
       .then(handleErrors)
       .then(res => res.json())
@@ -156,9 +156,49 @@ export function fetchOtherMaps() {
 export function fetchTrailUsers(mapString) {
   return dispatch => {
     dispatch(fetchDataBegin());
-    fetch(URLPREFIX + "/api/spotuserswithlocation?=map_alias=" + mapString)
+    fetch(URLPREFIX + "/api/spotuserswithlocation?map_alias=" + mapString)
       .then(handleErrors)
       .then(res => res.json())
+      .then(json => {
+        let data = [];
+        json.map(trail_user => {
+          if (trail_user.locations[0]) {
+            let difference =
+              Date.now() -
+              Date.parse(trail_user.locations[0].recorded_timestamp);
+            if (difference < 86400000 * 3 || true) {
+              //less than 3 days
+              var datestr = trail_user.locations[0].recorded_timestamp.split(
+                /[-T.]/
+              );
+              var safdat = new Date(
+                datestr.slice(0, 3).join("/") + " " + datestr[3]
+              );
+              let date = new Date(
+                safdat
+                // Date.parse(trail_user.locations[0].recorded_timestamp)
+              );
+              data.push({
+                marker_id: trail_user.id,
+                marker_type: trail_user.user_type,
+                marker_lat: trail_user.locations[0].latitude,
+                marker_lng: trail_user.locations[0].longitude,
+                default_image: trail_user.user_picture,
+                marker_blurb: trail_user.user_blurb,
+                marker_info: [
+                  {
+                    title: "Latest GPS Location Timestamp",
+                    value: date.toString()
+                  }
+                ],
+                marker_title: trail_user.user_name,
+                gps_locations: trail_user.locations
+              });
+            }
+          }
+        });
+        return data;
+      })
       .then(data => {
         dispatch(fetchUsersSuccess(data));
       })

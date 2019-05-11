@@ -17,7 +17,7 @@ import {
   wipeMarkersAndPath,
   wipeStartMarker
 } from "../redux/actions";
-import { Card, Divider, Icon, Menu, Switch, Tooltip } from "antd";
+import { Card, Divider, Icon, Menu, Switch, Tooltip, Button } from "antd";
 import _ from "lodash";
 import DistanceCalculator from "./DistanceCalculator";
 import DistanceCalculatorForm from "./DistanceCalculatorForm";
@@ -30,12 +30,18 @@ export const DISTANCE_KEY = "distanceTab";
 const SubMenu = Menu.SubMenu;
 
 class Sider extends React.Component {
-  dataSelect = (markerid, type) => {
-    let newFocus = this.props.poiMarkers
-      .concat(this.props.liveTrailUsers)
-      .find(el => {
+  dataSelect = (markerid, type, markerType) => {
+    let newFocus;
+    if (markerType === "distance") {
+      newFocus = this.props.poiMarkers.find(el => {
         return el.marker_id === parseInt(markerid);
       });
+    }
+    if (markerType === "liveTrailUser") {
+      newFocus = this.props.liveTrailUsers.find(el => {
+        return el.marker_id === parseInt(markerid);
+      });
+    }
     if (type === "locate") {
       this.props.dispatch(changeZoomLevel(13));
       this.props.dispatch(
@@ -135,8 +141,7 @@ class Sider extends React.Component {
       focusMarker,
       filters,
       openKeys,
-      liveTrailUsers,
-      focusTrailUser
+      liveTrailUsers
     } = this.props;
     return (
       <Menu
@@ -180,6 +185,7 @@ class Sider extends React.Component {
                 type={"locate"}
                 onSelect={this.dataSelect}
                 value={focusMarker}
+                markerType={"distance"}
               />
             </div>
           </SubMenu>
@@ -234,7 +240,7 @@ class Sider extends React.Component {
               >
                 <span>
                   Show all live trail users
-                  <Tooltip title="Find users with a registered SPOT GPS device">
+                  <Tooltip title="Find users with a registered SPOT or Garmin GPS device">
                     <Icon
                       style={{ paddingLeft: 4, fontSize: 12 }}
                       type="question-circle"
@@ -253,8 +259,15 @@ class Sider extends React.Component {
                 dataSource={liveTrailUsers}
                 type={"locate"}
                 onSelect={this.dataSelect}
-                value={focusTrailUser}
+                value={_.has(focusMarker, "gps_locations") ? focusMarker : null}
+                markerType={"liveTrailUser"}
               />
+              <Button
+                href={"https://forms.gle/ajMvSzBzQg83XE5F7"}
+                target={"_blank"}
+              >
+                Link a GPS Tracker
+              </Button>
             </div>
           </SubMenu>
           <SubMenu

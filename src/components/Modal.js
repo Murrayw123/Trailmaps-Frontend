@@ -192,6 +192,7 @@ class MarkerModal extends Component {
         "X-Requested-With": "XMLHttpRequest",
         "Content-Type": "application/json"
       },
+      credentials: "include",
       body: JSON.stringify(formData)
     };
     return await fetch(URLPREFIX + "/api/submit_marker", settings).then(

@@ -137,7 +137,7 @@ export const rider = new L.Icon({
     className: null
 });
 
-export const hiker = new L.Icon({
+export const hiker  = new L.Icon({
     iconUrl: require("./icons/hiker.svg"),
     iconSize: new L.Point(25, 30),
     className: null
