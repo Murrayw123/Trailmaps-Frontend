@@ -201,7 +201,7 @@ class MapComponent extends Component {
       shouldShowContextMenuStatus
     } = this.props;
     let terrainURL =
-      "https://maps.tilehosting.com/styles/" +
+      "https://api.maptiler.com/maps/" +
       terrain +
       "/{z}/{x}/{y}.png?key=7qrAZ6R0EFPZMiyEp2m4";
     return (
