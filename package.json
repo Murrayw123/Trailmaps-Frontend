@@ -33,6 +33,8 @@
     "react-dom": "^16.5.0",
     "react-fittext": "^1.0.0",
     "react-leaflet": "^2.0.1",
+    "react-leaflet-bing": "^4.1.0",
+    "react-leaflet-bing-v2": "^5.0.1",
     "react-leaflet-context-menu": "github:fullhdpixel/react-leaflet-context-menu#master",
     "react-leaflet-control": "^1.4.1",
     "react-redux": "^5.0.7",

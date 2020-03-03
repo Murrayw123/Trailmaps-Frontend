@@ -200,10 +200,7 @@ class MapComponent extends Component {
       showLiveTrailUsers,
       shouldShowContextMenuStatus
     } = this.props;
-    let terrainURL =
-      "https://api.maptiler.com/maps/" +
-      terrain +
-      "/{z}/{x}/{y}.png?key=7qrAZ6R0EFPZMiyEp2m4";
+    const imageryUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     return (
       <Map
         center={center}
@@ -215,8 +212,8 @@ class MapComponent extends Component {
       >
         <ZoomControl position="bottomright" />
         <TileLayer
-          attribution='<a href="https://www.maptiler.com/license/maps/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>'
-          url={terrainURL}
+            url={imageryUrl}
+            attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
         />
         <GeoJSON interactive={false} data={data.map_track} />
 

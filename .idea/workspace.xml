@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="minor fixes">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MapComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
@@ -46,12 +45,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="840" />
-    <option name="y" value="23" />
-    <option name="width" value="840" />
-    <option name="height" value="974" />
-  </component>
+  <component name="ProjectId" id="1Yc5nazY5uHAJZpwoWP2cSV9xMy" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="compactDirectories" value="true" />
@@ -60,6 +54,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="config.js&#9;FILE&#9;file:///Users/murraybishop/projects/TrailmapsFE/src/config.js&#10;package&#9;FILE&#9;file:///Users/murraybishop/projects/TrailmapsFE/package.json&#10;reducers&#9;FILE&#9;file:///Users/murraybishop/projects/TrailmapsFE/src/redux/reducers.js&#10;Poimarker&#9;FILE&#9;file:///Users/murraybishop/projects/TrailmapsFE/src/components/PoiMarker.js&#10;actions&#9;FILE&#9;file:///Users/murraybishop/projects/TrailmapsFE/src/redux/actions.js&#10;modal.css&#9;FILE&#9;file:///Users/murraybishop/projects/TrailmapsFE/src/css/marker-modal.css&#10;index&#9;FILE&#9;file:///Users/murraybishop/projects/TrailmapsFE/src/index.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -130,6 +126,7 @@
       <workItem from="1549365017362" duration="390000" />
       <workItem from="1549678396173" duration="1076000" />
       <workItem from="1551572029383" duration="17025000" />
+      <workItem from="1583229214128" duration="2082000" />
     </task>
     <task id="LOCAL-00001" summary="minor fixes">
       <created>1554508583637</created>
@@ -145,7 +142,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557547917595</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="changed url">
+      <created>1583106675781</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1583106675781</updated>
+    </task>
+    <task id="LOCAL-00004" summary="hopefully this works?">
+      <created>1583106908090</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1583106908090</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,16 +164,34 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor fixes" />
+    <MESSAGE value="changed url" />
+    <MESSAGE value="hopefully this works?" />
+    <option name="LAST_COMMIT_MESSAGE" value="hopefully this works?" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="423" y="112" key="CommitChangelistDialog2" timestamp="1583106481566">
+    <state x="439" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583107224485">
       <screen x="0" y="23" width="1680" height="975" />
     </state>
-    <state x="423" y="112" key="CommitChangelistDialog2/0.23.1680.975@0.23.1680.975" timestamp="1583106481566" />
+    <state x="439" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.975@0.23.1680.975" timestamp="1583107224485" />
+    <state x="423" y="112" key="CommitChangelistDialog2" timestamp="1583106907964">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state x="423" y="112" key="CommitChangelistDialog2/0.23.1680.975@0.23.1680.975" timestamp="1583106907964" />
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1583230634667">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1583230634667" />
     <state x="628" y="228" key="RollbackChangesDialog" timestamp="1583105738002">
       <screen x="0" y="23" width="1680" height="975" />
     </state>
     <state x="628" y="228" key="RollbackChangesDialog/0.23.1680.975@0.23.1680.975" timestamp="1583105738002" />
+    <state x="440" y="250" key="Vcs.Push.Dialog.v2" timestamp="1583106911194">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state x="440" y="250" key="Vcs.Push.Dialog.v2/0.23.1680.975@0.23.1680.975" timestamp="1583106911194" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1583230549513">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1583230549513" />
   </component>
 </project>
