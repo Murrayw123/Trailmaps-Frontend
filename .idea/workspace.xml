@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MapComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapComponent.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +126,8 @@
       <workItem from="1549678396173" duration="1076000" />
       <workItem from="1551572029383" duration="17025000" />
       <workItem from="1583229214128" duration="2273000" />
-      <workItem from="1585652018410" duration="715000" />
+      <workItem from="1585652018410" duration="1710000" />
+      <workItem from="1585824916450" duration="39000" />
     </task>
     <task id="LOCAL-00001" summary="minor fixes">
       <created>1554508583637</created>
@@ -176,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585652493634</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="please work">
+      <created>1585652796370</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1585652796370</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,41 +196,44 @@
     <MESSAGE value="changed url" />
     <MESSAGE value="hopefully this works?" />
     <MESSAGE value="Changed over trail URL" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed over trail URL" />
+    <MESSAGE value="please work" />
+    <option name="LAST_COMMIT_MESSAGE" value="please work" />
   </component>
   <component name="WindowStateProjectService">
     <state x="439" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583107224485">
       <screen x="0" y="23" width="1680" height="975" />
     </state>
     <state x="439" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.975@0.23.1680.975" timestamp="1583107224485" />
-    <state x="-548" y="-960" key="CommitChangelistDialog2" timestamp="1585652493534">
+    <state x="-548" y="-965" key="CommitChangelistDialog2" timestamp="1585652796049">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-548" y="-960" key="CommitChangelistDialog2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1585652493534" />
+    <state x="-548" y="-965" key="CommitChangelistDialog2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1585652796049" />
     <state x="423" y="96" key="CommitChangelistDialog2/-1031.-1080.1920.1080/889.-1080.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1585652263465" />
     <state x="423" y="96" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1583231899937" />
     <state x="423" y="112" key="CommitChangelistDialog2/0.23.1680.975@0.23.1680.975" timestamp="1583106907964" />
-    <state x="-917" y="-961" width="1692" height="814" key="DiffContextDialog" timestamp="1585652733622">
-      <screen x="-1031" y="-1057" width="1920" height="1005" />
+    <state x="-917" y="-956" width="1692" height="857" key="DiffContextDialog" timestamp="1585824954314">
+      <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
     <state x="-917" y="-961" width="1692" height="814" key="DiffContextDialog/-1031.-1057.1920.1005/889.-1057.1920.1057/0.23.1680.1027@-1031.-1057.1920.1005" timestamp="1585652733622" />
+    <state x="-917" y="-956" width="1692" height="857" key="DiffContextDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1585824954314" />
     <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/-1031.-1080.1920.1080/889.-1080.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1585652159804" />
     <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1583230634667" />
     <state x="628" y="228" key="RollbackChangesDialog" timestamp="1583105738002">
       <screen x="0" y="23" width="1680" height="975" />
     </state>
     <state x="628" y="228" key="RollbackChangesDialog/0.23.1680.975@0.23.1680.975" timestamp="1583105738002" />
-    <state x="-528" y="-811" key="Vcs.Push.Dialog.v2" timestamp="1585652495626">
+    <state x="-528" y="-811" key="Vcs.Push.Dialog.v2" timestamp="1585652798608">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-528" y="-811" key="Vcs.Push.Dialog.v2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1585652495626" />
+    <state x="-528" y="-811" key="Vcs.Push.Dialog.v2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1585652798608" />
     <state x="440" y="244" key="Vcs.Push.Dialog.v2/-1031.-1080.1920.1080/889.-1080.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1585652269976" />
     <state x="440" y="244" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1583231902289" />
     <state x="440" y="250" key="Vcs.Push.Dialog.v2/0.23.1680.975@0.23.1680.975" timestamp="1583106911194" />
-    <state x="-454" y="-834" width="766" height="648" key="search.everywhere.popup" timestamp="1585652715140">
-      <screen x="-1031" y="-1057" width="1920" height="1005" />
+    <state x="-454" y="-822" width="766" height="682" key="search.everywhere.popup" timestamp="1585824944880">
+      <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
     <state x="-454" y="-834" width="766" height="648" key="search.everywhere.popup/-1031.-1057.1920.1005/889.-1057.1920.1057/0.23.1680.1027@-1031.-1057.1920.1005" timestamp="1585652715140" />
+    <state x="-454" y="-822" width="766" height="682" key="search.everywhere.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1585824944880" />
     <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/-1031.-1080.1920.1080/889.-1080.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1585652155028" />
     <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1583230549513" />
   </component>
