@@ -23,6 +23,7 @@ export class MapInitialiser {
     (this._store.dispatch as Dispatch)(fetchMarkers(currentMap));
     (this._store.dispatch as Dispatch)(fetchOtherMaps());
     (this._store.dispatch as Dispatch)(fetchTrailUsers(currentMap));
+
     this._interval = setInterval(
       () => (this._store.dispatch as Dispatch)(fetchTrailUsers(currentMap)),
       20000

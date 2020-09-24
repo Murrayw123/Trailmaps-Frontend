@@ -23,71 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ServiceInit.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TestComponent.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/MapInitialiser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mundabiddireact.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mundabiddireact.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/404.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/404.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ContextMenuApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContextMenuApp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DistanceCalculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DistanceCalculator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DistanceCalculatorForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DistanceCalculatorForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ElevationChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ElevationChart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InfoPopover.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InfoPopover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LandingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LandingPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MapComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MapParent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapParent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MapSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Markers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Markers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PoiMarker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PoiMarker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RouteSwitcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RouteSwitcher.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TerrainSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TerrainSwitch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/PathCalculator.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/geojson-path-finder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/alert.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/attraction.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/bicycle.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/business.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/cafe.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/carblue.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/finish.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/food.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/forest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/forest.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/hiker.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/hiking.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/hut.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/lighthouse.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/picnic.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/pub.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/rider.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/selected.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/start.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/taxi.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/tent.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/town.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/vehicle.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/warning.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/water.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/iconsData.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/nearest-point-on-line/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/nearest-point-on-line/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/nearest-point-on-line/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/nearest-point-on-line/main.es.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/nearest-point-on-line/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/helpers/nearest-point-on-line/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServiceInit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServiceInit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MapParent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapParent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/MapInitialiser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/MapInitialiser.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +163,7 @@
       <workItem from="1585652018410" duration="1710000" />
       <workItem from="1585824916450" duration="758000" />
       <workItem from="1600689738906" duration="29307000" />
-      <workItem from="1600860226720" duration="3705000" />
+      <workItem from="1600860226720" duration="4118000" />
     </task>
     <task id="LOCAL-00001" summary="minor fixes">
       <created>1554508583637</created>
@@ -289,7 +228,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585825069694</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="typescript + services layer beginning">
+      <created>1600908495747</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1600908495747</updated>
+    </task>
+    <task id="LOCAL-00011" summary="icons">
+      <created>1600908514175</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1600908514175</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,13 +267,19 @@
     <MESSAGE value="Changed over trail URL" />
     <MESSAGE value="please work" />
     <MESSAGE value="osm" />
-    <option name="LAST_COMMIT_MESSAGE" value="osm" />
+    <MESSAGE value="typescript + services layer beginning" />
+    <MESSAGE value="icons" />
+    <option name="LAST_COMMIT_MESSAGE" value="icons" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-607" y="-867" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600753165613">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
     <state x="-607" y="-867" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600753165613" />
+    <state x="-519" y="-942" key="CommitChangelistDialog2" timestamp="1600908514061">
+      <screen x="-1031" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="-519" y="-942" key="CommitChangelistDialog2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600908514061" />
     <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog" timestamp="1600819454081">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>

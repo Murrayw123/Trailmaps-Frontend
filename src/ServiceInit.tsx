@@ -2,6 +2,10 @@ import React from "react";
 import { MapInitialiser } from "services/MapInitialiser";
 import { Store } from "redux";
 
+export interface Context {
+  mapInitialiser: MapInitialiser;
+}
+
 export class Services {
   private _services: any;
   private _dataStore: Store;
