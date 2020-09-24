@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFlag } from "@fortawesome/free-regular-svg-icons";
 import { faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from "antd";
-import { findIcon, selected } from "./helpers/iconsData";
+import { findIcon, selected } from "../helpers/iconsData";
 import { Marker, Popup } from "react-leaflet";
 import { Textfit } from "react-textfit";
 

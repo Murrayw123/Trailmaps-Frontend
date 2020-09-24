@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { connect } from "react-redux";
 import { Button, Card, Divider, Icon, Switch, Tooltip } from "antd";
 import DistanceCalculator from "./DistanceCalculator";

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { connect } from "react-redux";
 import {
   allowCustomPath,
@@ -16,14 +16,14 @@ import {
   wipeMarkers,
   wipeMarkersAndPath,
   wipeStartMarker
-} from "../redux/actions";
+} from "redux/actions";
 import { Card, Divider, Icon, Menu, Switch, Tooltip, Button } from "antd";
 import _ from "lodash";
 import DistanceCalculator from "./DistanceCalculator";
 import DistanceCalculatorForm from "./DistanceCalculatorForm";
 import FilterMarkers from "./Markers";
-import { TerrainSwitch } from "./TerrainSwitch";
-import { findPath } from "./helpers/PathCalculator";
+import { findPath } from "../helpers/PathCalculator";
+import {TerrainSwitch} from "components/TerrainSwitch";
 
 export const DISTANCE_KEY = "distanceTab";
 

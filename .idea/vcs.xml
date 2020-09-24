@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/components/helpers/geojson-path-finder" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/helpers/geojson-path-finder" vcs="Git" />
   </component>
 </project>

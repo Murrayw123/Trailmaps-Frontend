@@ -5,11 +5,11 @@ export const mapStyles = [
   { key: "topo", pretty: "Topographical" }
 ];
 
-export const DEV = false;
-export const URLPREFIX = "";
+// export const DEV = false;
+// export const URLPREFIX = "";
 
-// export const DEV = true;
-// export const URLPREFIX = "http://trailmaps.site:8000";
+export const DEV = true;
+export const URLPREFIX = "http://trailmaps.site:8000";
 
 // export const DEV = false;
 // export const URLPREFIX = "";

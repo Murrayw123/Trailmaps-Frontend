@@ -1,9 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ServiceInit.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TestComponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/helpers/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/MapInitialiser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mundabiddireact.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mundabiddireact.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MapComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/404.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/404.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ContextMenuApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContextMenuApp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DistanceCalculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DistanceCalculator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DistanceCalculatorForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DistanceCalculatorForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ElevationChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ElevationChart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InfoPopover.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InfoPopover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LandingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LandingPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MapComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MapParent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapParent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MapSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapSelect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Markers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Markers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PoiMarker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PoiMarker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RouteSwitcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RouteSwitcher.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TerrainSwitch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TerrainSwitch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/PathCalculator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/geojson-path-finder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/alert.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/attraction.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/bicycle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/business.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/cafe.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/carblue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/finish.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/food.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/forest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/forest.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/hiker.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/hiking.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/hut.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/lighthouse.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/picnic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/pub.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/rider.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/selected.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/start.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/taxi.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/tent.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/town.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/vehicle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/warning.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/icons/water.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/iconsData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/nearest-point-on-line/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/nearest-point-on-line/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/nearest-point-on-line/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/nearest-point-on-line/main.es.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/nearest-point-on-line/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/helpers/nearest-point-on-line/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +119,14 @@
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.11.2/libexec" />
   <component name="Git.Settings">
-    <option name="ROOT_SYNC" value="SYNC" />
+    <option name="RECENT_COMMON_BRANCH" value="master" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <bower-package value="" />
+    <bower.json value="" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -44,6 +134,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
+  <component name="JupyterTrust" id="c70b711b-da4e-44ba-8ef1-1a933486431f" />
   <component name="ProjectId" id="1Yc5nazY5uHAJZpwoWP2cSV9xMy" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -75,9 +166,10 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.NodeInterpreter" value="project" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="$USER_HOME$/.nvm/versions/node/v8.9.1/lib/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.tslint" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -85,11 +177,14 @@
       <recent name="$PROJECT_DIR$/src/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/" />
+      <recent name="$PROJECT_DIR$/src/helpers" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/admin/providers" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -127,7 +222,9 @@
       <workItem from="1551572029383" duration="17025000" />
       <workItem from="1583229214128" duration="2273000" />
       <workItem from="1585652018410" duration="1710000" />
-      <workItem from="1585824916450" duration="39000" />
+      <workItem from="1585824916450" duration="758000" />
+      <workItem from="1600689738906" duration="29307000" />
+      <workItem from="1600860226720" duration="3705000" />
     </task>
     <task id="LOCAL-00001" summary="minor fixes">
       <created>1554508583637</created>
@@ -185,11 +282,30 @@
       <option name="project" value="LOCAL" />
       <updated>1585652796370</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="osm">
+      <created>1585825069694</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1585825069694</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="minor fixes" />
@@ -197,44 +313,45 @@
     <MESSAGE value="hopefully this works?" />
     <MESSAGE value="Changed over trail URL" />
     <MESSAGE value="please work" />
-    <option name="LAST_COMMIT_MESSAGE" value="please work" />
+    <MESSAGE value="osm" />
+    <option name="LAST_COMMIT_MESSAGE" value="osm" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="439" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583107224485">
-      <screen x="0" y="23" width="1680" height="975" />
-    </state>
-    <state x="439" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.975@0.23.1680.975" timestamp="1583107224485" />
-    <state x="-548" y="-965" key="CommitChangelistDialog2" timestamp="1585652796049">
+    <state x="-607" y="-867" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600753165613">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-548" y="-965" key="CommitChangelistDialog2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1585652796049" />
-    <state x="423" y="96" key="CommitChangelistDialog2/-1031.-1080.1920.1080/889.-1080.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1585652263465" />
-    <state x="423" y="96" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1583231899937" />
-    <state x="423" y="112" key="CommitChangelistDialog2/0.23.1680.975@0.23.1680.975" timestamp="1583106907964" />
-    <state x="-917" y="-956" width="1692" height="857" key="DiffContextDialog" timestamp="1585824954314">
+    <state x="-607" y="-867" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600753165613" />
+    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog" timestamp="1600819454081">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-917" y="-961" width="1692" height="814" key="DiffContextDialog/-1031.-1057.1920.1005/889.-1057.1920.1057/0.23.1680.1027@-1031.-1057.1920.1005" timestamp="1585652733622" />
-    <state x="-917" y="-956" width="1692" height="857" key="DiffContextDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1585824954314" />
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/-1031.-1080.1920.1080/889.-1080.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1585652159804" />
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1583230634667" />
-    <state x="628" y="228" key="RollbackChangesDialog" timestamp="1583105738002">
-      <screen x="0" y="23" width="1680" height="975" />
-    </state>
-    <state x="628" y="228" key="RollbackChangesDialog/0.23.1680.975@0.23.1680.975" timestamp="1583105738002" />
-    <state x="-528" y="-811" key="Vcs.Push.Dialog.v2" timestamp="1585652798608">
+    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600819454081" />
+    <state width="1878" height="290" key="GridCell.Tab.0.bottom" timestamp="1600769087636">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-528" y="-811" key="Vcs.Push.Dialog.v2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1585652798608" />
-    <state x="440" y="244" key="Vcs.Push.Dialog.v2/-1031.-1080.1920.1080/889.-1080.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1585652269976" />
-    <state x="440" y="244" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1583231902289" />
-    <state x="440" y="250" key="Vcs.Push.Dialog.v2/0.23.1680.975@0.23.1680.975" timestamp="1583106911194" />
-    <state x="-454" y="-822" width="766" height="682" key="search.everywhere.popup" timestamp="1585824944880">
+    <state width="1878" height="290" key="GridCell.Tab.0.bottom/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600769087636" />
+    <state width="1878" height="290" key="GridCell.Tab.0.center" timestamp="1600769087635">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-454" y="-834" width="766" height="648" key="search.everywhere.popup/-1031.-1057.1920.1005/889.-1057.1920.1057/0.23.1680.1027@-1031.-1057.1920.1005" timestamp="1585652715140" />
-    <state x="-454" y="-822" width="766" height="682" key="search.everywhere.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1585824944880" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/-1031.-1080.1920.1080/889.-1080.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1585652155028" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1583230549513" />
+    <state width="1878" height="290" key="GridCell.Tab.0.center/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600769087635" />
+    <state width="1878" height="290" key="GridCell.Tab.0.left" timestamp="1600769087634">
+      <screen x="-1031" y="-1057" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="290" key="GridCell.Tab.0.left/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600769087634" />
+    <state width="1878" height="290" key="GridCell.Tab.0.right" timestamp="1600769087635">
+      <screen x="-1031" y="-1057" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="290" key="GridCell.Tab.0.right/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600769087635" />
+    <state x="-562" y="-890" key="SettingsEditor" timestamp="1600757411675">
+      <screen x="-1031" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="-562" y="-890" key="SettingsEditor/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600757411675" />
+    <state x="-364" y="-803" width="628" height="580" key="find.popup" timestamp="1600907524230">
+      <screen x="-1031" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="-364" y="-803" width="628" height="580" key="find.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600907524230" />
+    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup" timestamp="1600770271252">
+      <screen x="-1031" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600770271252" />
   </component>
 </project>

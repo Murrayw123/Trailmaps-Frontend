@@ -1,16 +1,7 @@
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Label,
-  ResponsiveContainer
-} from "recharts";
-import React, { Component } from "react";
-import { setCustomDistanceMarker } from "../redux/actions";
-import { findPointAlongLine } from "./helpers/PathCalculator";
-import { connect } from "react-redux";
+import {Label, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import React, {Component} from "react";
+import {setCustomDistanceMarker} from "../redux/actions";
+import {connect} from "react-redux";
 
 class ElevationChart extends Component {
   drawMarker = event => {
@@ -47,7 +38,6 @@ class ElevationChart extends Component {
           <Tooltip
             labelFormatter={name => "distance: " + name + "km"}
             formatter={value => value + "m"}
-          />
           />
           <YAxis allowDecimals={false} dataKey="elevation">
             <Label

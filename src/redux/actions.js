@@ -1,7 +1,7 @@
 import {
   food_groupings,
   business_groupings
-} from "../components/helpers/iconsData";
+} from "../helpers/iconsData";
 import * as _ from "lodash";
 
 import { URLPREFIX } from "../config.js";

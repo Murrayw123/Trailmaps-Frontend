@@ -11,7 +11,7 @@ import {
   Tooltip
 } from "antd";
 import React, { Component } from "react";
-import { markerChoices } from "./helpers/iconsData";
+import { markerChoices } from "../helpers/iconsData";
 import { shouldShowContextMenu, showMarkerAddModal } from "../redux/actions";
 import connect from "react-redux/es/connect/connect";
 import { URLPREFIX } from "../config";

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Card, Icon } from "antd";
 import connect from "react-redux/es/connect/connect";
-import { shouldShowContextMenu, showMarkerAddModal } from "../redux/actions";
+import { shouldShowContextMenu, showMarkerAddModal } from "redux/actions";
 
 export class ContextMenuApp extends Component {
   state = { loading: true, elevation: 0 };

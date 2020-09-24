@@ -15,25 +15,25 @@ import {
   wipeMarkersAndPath,
   setLatLngFromContextClick,
   shouldShowContextMenu,
-  fetchElevation
-} from "../redux/actions";
+  fetchElevation,
+} from "redux/actions";
 import {
   bicycle,
   business_groupings,
   finish,
   food_groupings,
   start,
-  walking
-} from "./helpers/iconsData";
-import { findPath } from "./helpers/PathCalculator";
+  walking,
+} from "../helpers/iconsData";
+import { findPath } from "../helpers/PathCalculator";
 import "leaflet/dist/leaflet.css";
 import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
-import PoiMarker from "./PoiMarker";
 import ContextMenu from "./ContextMenuApp";
+import PoiMarker from "components/PoiMarker";
 
 class MapComponent extends Component {
   state = { context: false, x: 0, y: 0 };
-  checkMarkers = e => {
+  checkMarkers = (e) => {
     if (e.originalEvent.target["type"] !== "button") {
       this.props.shouldShowContextMenu(false);
     }
@@ -59,7 +59,7 @@ class MapComponent extends Component {
     let newMarker = {
       marker_title: "Custom Map Point",
       marker_lat: e.latlng.lat,
-      marker_lng: e.latlng.lng
+      marker_lng: e.latlng.lng,
     };
     if (!this.props.openKeys.includes("distanceTab")) {
       this.props.openDistanceTab();
@@ -73,13 +73,13 @@ class MapComponent extends Component {
     }
   }
 
-  draggableMarker = marker => {
+  draggableMarker = (marker) => {
     let startPointCheckEmpty = _.isEmpty(this.props.startPoint);
     let endPointCheckEmpty = _.isEmpty(this.props.endPoint);
     const updatedMarker = {
       marker_title: "Custom Map Point",
       marker_lat: marker.target._latlng.lat,
-      marker_lng: marker.target._latlng.lng
+      marker_lng: marker.target._latlng.lng,
     };
     if (marker.startEnd === "start") {
       this.props.addMapMarkerStart(updatedMarker);
@@ -120,7 +120,7 @@ class MapComponent extends Component {
     }
   };
 
-  shouldShowMarker = marker => {
+  shouldShowMarker = (marker) => {
     let startPoint = this.props.startPoint;
     let endPoint = this.props.endPoint;
     let focusMarker = this.props.focusMarker;
@@ -149,7 +149,7 @@ class MapComponent extends Component {
     return false;
   };
 
-  onClickMarker = marker => {
+  onClickMarker = (marker) => {
     this.props.storeFocusMarker(marker);
     this.props.changeSideBarData(marker.marker_blurb, marker.default_image);
   };
@@ -157,7 +157,7 @@ class MapComponent extends Component {
   filterMarkers = () => {
     //if the marker is in the filtered list
     let validMarkers = [];
-    this.props.poiMarkers.map(marker => {
+    this.props.poiMarkers.map((marker) => {
       let business = business_groupings.includes(marker.marker_type);
       let food = food_groupings.includes(marker.marker_type);
       if (
@@ -174,14 +174,14 @@ class MapComponent extends Component {
     return validMarkers;
   };
 
-  rightClick = event => {
+  rightClick = (event) => {
     this.setState({
       x: event.containerPoint.x,
-      y: event.containerPoint.y
+      y: event.containerPoint.y,
     });
     this.props.setLatLngFromContextClick({
       lat: event.latlng.lat,
-      lng: event.latlng.lng
+      lng: event.latlng.lng,
     });
     this.props.fetchElevation(event.latlng.lat, event.latlng.lng);
     this.props.shouldShowContextMenu(true);
@@ -198,9 +198,9 @@ class MapComponent extends Component {
       mapMarkerEnd,
       liveTrailUsers,
       showLiveTrailUsers,
-      shouldShowContextMenuStatus
+      shouldShowContextMenuStatus,
     } = this.props;
-    const imageryUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    const imageryUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
     return (
       <Map
         center={center}
@@ -212,19 +212,19 @@ class MapComponent extends Component {
       >
         <ZoomControl position="bottomright" />
         <TileLayer
-            url={imageryUrl}
-            attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          url={imageryUrl}
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <GeoJSON interactive={false} data={data.map_track} />
 
         {this.checkForCustomPath()}
-        {this.filterMarkers().map(marker => {
+        {this.filterMarkers().map((marker) => {
           return marker;
         })}
 
         {showLiveTrailUsers
           ? //Spot users
-            liveTrailUsers.map(trailUser => {
+            liveTrailUsers.map((trailUser) => {
               return (
                 <PoiMarker marker={trailUser} onClick={this.onClickMarker} />
               );
@@ -242,7 +242,7 @@ class MapComponent extends Component {
             position={[mapMarkerStart.marker_lat, mapMarkerStart.marker_lng]}
             icon={start}
             draggable={true}
-            onDragEnd={e => {
+            onDragEnd={(e) => {
               e.startEnd = "start";
               return this.draggableMarker(e);
             }}
@@ -257,7 +257,7 @@ class MapComponent extends Component {
             position={[mapMarkerEnd.marker_lat, mapMarkerEnd.marker_lng]}
             icon={finish}
             draggable={true}
-            onDragEnd={e => {
+            onDragEnd={(e) => {
               e.startEnd = "end";
               return this.draggableMarker(e);
             }}
@@ -282,20 +282,20 @@ class MapComponent extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  addMapMarkerStart: e => {
+const mapDispatchToProps = (dispatch) => ({
+  addMapMarkerStart: (e) => {
     dispatch(addMapMarkerStart(e));
   },
-  addMapMarkerEnd: e => {
+  addMapMarkerEnd: (e) => {
     dispatch(addMapMarkerEnd(e));
   },
-  storeDistance: distance => {
+  storeDistance: (distance) => {
     dispatch(storeDistance(distance));
   },
-  calcElevation: elevation => {
+  calcElevation: (elevation) => {
     dispatch(storeElevation(elevation));
   },
-  storeCustomTrack: path => {
+  storeCustomTrack: (path) => {
     dispatch(storeCustomTrack(path));
   },
   wipeMarkersAndPath: () => {
@@ -307,27 +307,27 @@ const mapDispatchToProps = dispatch => ({
   changeSideBarData: (blurb, image) => {
     dispatch(changeSideBarData(blurb, image));
   },
-  storeFocusMarker: marker => {
+  storeFocusMarker: (marker) => {
     dispatch(storeFocusMarker(marker));
   },
-  setStartPoint: marker => {
+  setStartPoint: (marker) => {
     dispatch(setStartPoint(marker));
   },
-  setEndPoint: marker => {
+  setEndPoint: (marker) => {
     dispatch(setEndPoint(marker));
   },
-  setLatLngFromContextClick: latLng => {
+  setLatLngFromContextClick: (latLng) => {
     dispatch(setLatLngFromContextClick(latLng));
   },
-  shouldShowContextMenu: bool => {
+  shouldShowContextMenu: (bool) => {
     dispatch(shouldShowContextMenu(bool));
   },
   fetchElevation: (lat, lng) => {
     dispatch(fetchElevation(lat, lng));
-  }
+  },
 });
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   data: state.data,
   poiMarkers: state.poiMarkers,
   customDistance: state.customDistance,
@@ -347,10 +347,7 @@ const mapStateToProps = state => ({
   showLiveTrailUsers: state.showLiveTrailUsers,
   liveTrailUsers: state.liveTrailUsers,
   shouldShowContextMenuStatus: state.shouldShowContextMenuStatus,
-  shouldShowModal: state.shouldShowModal
+  shouldShowModal: state.shouldShowModal,
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MapComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(MapComponent);

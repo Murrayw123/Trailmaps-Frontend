@@ -1,6 +1,6 @@
 import { Popover, Icon } from "antd";
 import { Component } from "react";
-import React from "react";
+import * as React from "react";
 
 export class InfoPopover extends Component {
   content = (
