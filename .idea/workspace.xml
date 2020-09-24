@@ -22,11 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="">
+    <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="Fixing up">
+      <change afterPath="$PROJECT_DIR$/src/components/ElevationChartHOC.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/MapHOC.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ServiceInit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServiceInit.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MapParent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapParent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/MapInitialiser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/MapInitialiser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ElevationChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ElevationChart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MapParent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RouteSwitcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RouteSwitcher.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +166,7 @@
       <workItem from="1585652018410" duration="1710000" />
       <workItem from="1585824916450" duration="758000" />
       <workItem from="1600689738906" duration="29307000" />
-      <workItem from="1600860226720" duration="4118000" />
+      <workItem from="1600860226720" duration="7830000" />
     </task>
     <task id="LOCAL-00001" summary="minor fixes">
       <created>1554508583637</created>
@@ -242,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600908514175</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="More typings - map broken">
+      <created>1600909024342</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1600909024342</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,21 +279,26 @@
     <MESSAGE value="osm" />
     <MESSAGE value="typescript + services layer beginning" />
     <MESSAGE value="icons" />
-    <option name="LAST_COMMIT_MESSAGE" value="icons" />
+    <MESSAGE value="More typings - map broken" />
+    <option name="LAST_COMMIT_MESSAGE" value="More typings - map broken" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-607" y="-867" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600753165613">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
     <state x="-607" y="-867" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600753165613" />
-    <state x="-519" y="-942" key="CommitChangelistDialog2" timestamp="1600908514061">
+    <state x="-343" y="-720" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600910413342">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-519" y="-942" key="CommitChangelistDialog2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600908514061" />
-    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog" timestamp="1600819454081">
+    <state x="-343" y="-720" key="#com.intellij.fileTypes.FileTypeChooser/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600910413342" />
+    <state x="-519" y="-942" key="CommitChangelistDialog2" timestamp="1600912244864">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600819454081" />
+    <state x="-519" y="-942" key="CommitChangelistDialog2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600912244864" />
+    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog" timestamp="1600911801361">
+      <screen x="-1031" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600911801361" />
     <state width="1878" height="290" key="GridCell.Tab.0.bottom" timestamp="1600769087636">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
@@ -308,9 +323,9 @@
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
     <state x="-364" y="-803" width="628" height="580" key="find.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600907524230" />
-    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup" timestamp="1600770271252">
+    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup" timestamp="1600911723694">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600770271252" />
+    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600911723694" />
   </component>
 </project>

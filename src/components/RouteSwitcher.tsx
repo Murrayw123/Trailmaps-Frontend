@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import { NotFound } from "./404";
 import LandingPage from "./LandingPage";
-import { MapParent } from "components/MapParent";
+import { MapHOC } from "components/MapHOC";
 
 export class RouteSwitcher extends Component {
   onMapSelect = () => {
@@ -14,7 +14,7 @@ export class RouteSwitcher extends Component {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/mundabiddi" component={this.onMapSelect} />
-        <Route path="/maps/" component={MapParent} />
+        <Route path="/maps/" component={MapHOC} />
         <Route component={NotFound} />
       </Switch>
     );
