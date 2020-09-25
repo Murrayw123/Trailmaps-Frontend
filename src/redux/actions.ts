@@ -41,7 +41,7 @@ export const SHOULD_SHOW_CONTEXT_MENU = "SHOULD_SHOW_CONTEXT_MENU";
 export const FETCH_ELEVATION_LOADING = "FETCH_ELEVATION_LOADING";
 export const CHANGE_ELEVATION_DATA = "CHANGE_ELEVATION_DATA";
 
-export function fetchElevation(lat, lng) {
+export function fetchElevation(lat: any, lng: any) {
   return dispatch => {
     dispatch(fetchElevationLoading(true));
     fetch(

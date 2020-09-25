@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import { NotFound } from "./404";
-import LandingPage from "./LandingPage";
+import { NotFound } from "components/404";
+import LandingPage from "components/LandingPage";
 import { MapHOC } from "components/MapHOC";
 
 export class RouteSwitcher extends Component {

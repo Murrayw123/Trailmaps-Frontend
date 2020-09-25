@@ -7,7 +7,7 @@ import {
   openDistanceTab,
   wipeStartMarker,
   wipeEndMarker
-} from "../redux/actions";
+} from "redux/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFlag } from "@fortawesome/free-regular-svg-icons";
 import { faFlagCheckered } from "@fortawesome/free-solid-svg-icons";

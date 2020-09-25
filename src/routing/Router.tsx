@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { RouteSwitcher } from "components/RouteSwitcher";
+import { RouteSwitcher } from "routing/RouteSwitcher";
 import { ServicesContext } from "ServiceInit";
 import { services } from "index";
 

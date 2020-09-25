@@ -23,13 +23,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="Fixing up">
-      <change afterPath="$PROJECT_DIR$/src/components/ElevationChartHOC.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MapHOC.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/MarkerAdd.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ElevationChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ElevationChart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MapParent.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RouteSwitcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RouteSwitcher.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServiceInit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServiceInit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MapComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PoiMarker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PoiMarker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RouteSwitcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routing/RouteSwitcher.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routing/Router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,16 +118,16 @@
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/admin" />
-      <recent name="$PROJECT_DIR$/src/components" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/routing" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/" />
       <recent name="$PROJECT_DIR$/src/helpers" />
       <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/src/admin/providers" />
-      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/admin" />
+      <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -295,10 +299,10 @@
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
     <state x="-519" y="-942" key="CommitChangelistDialog2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600912244864" />
-    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog" timestamp="1600911801361">
+    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog" timestamp="1600997839089">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600911801361" />
+    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600997839089" />
     <state width="1878" height="290" key="GridCell.Tab.0.bottom" timestamp="1600769087636">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
@@ -319,13 +323,13 @@
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
     <state x="-562" y="-890" key="SettingsEditor/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600757411675" />
-    <state x="-364" y="-803" width="628" height="580" key="find.popup" timestamp="1600907524230">
+    <state x="-364" y="-803" width="628" height="580" key="find.popup" timestamp="1600996758655">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-364" y="-803" width="628" height="580" key="find.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600907524230" />
-    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup" timestamp="1600911723694">
+    <state x="-364" y="-803" width="628" height="580" key="find.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600996758655" />
+    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup" timestamp="1601002935109">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600911723694" />
+    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1601002935109" />
   </component>
 </project>

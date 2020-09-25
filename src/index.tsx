@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
-import dataReducer from "./redux/reducers";
+import dataReducer from "redux/reducers";
 import thunk from "redux-thunk";
 import "../node_modules/antd/dist/antd.css";
 import "./css/App.css";
@@ -13,7 +13,7 @@ import "./css/LandingPage.css";
 import "./css/MapSwitcher.css";
 import "./css/context-menu.css";
 import "./css/marker-modal.css";
-import { Router } from "components/Router";
+import { Router } from "routing/Router";
 import { Services } from "ServiceInit";
 
 export const dataStore = createStore(

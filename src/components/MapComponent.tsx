@@ -24,84 +24,26 @@ import {
   food_groupings,
   start,
   walking,
-} from "../helpers/iconsData";
-import { findPath } from "../helpers/PathCalculator";
+} from "helpers/iconsData";
 import "leaflet/dist/leaflet.css";
 import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import ContextMenu from "./ContextMenuApp";
 import PoiMarker from "components/PoiMarker";
+import { Context, ServicesContext } from "ServiceInit";
+import { END, START } from "services/MarkerAdd";
 
-class MapComponent extends Component {
-  state = { context: false, x: 0, y: 0 };
-  checkMarkers = (e) => {
-    if (e.originalEvent.target["type"] !== "button") {
-      this.props.shouldShowContextMenu(false);
-    }
-    let startPointCheckEmpty = _.isEmpty(this.props.startPoint);
-    let endPointCheckEmpty = _.isEmpty(this.props.endPoint);
-    //allow a maximum of two clicks before resetting the path
-    if (this.props.allowCustomPath) {
-      if (startPointCheckEmpty) {
-        e.startEnd = "start";
-        this.addCustomMarker(e);
-      } else if (endPointCheckEmpty) {
-        e.startEnd = "end";
-        this.addCustomMarker(e);
-      } else {
-        e.startEnd = "start";
-        this.props.wipeMarkersAndPath();
-        this.addCustomMarker(e);
-      }
-    }
-  };
+interface Props {}
 
-  addCustomMarker(e) {
-    let newMarker = {
-      marker_title: "Custom Map Point",
-      marker_lat: e.latlng.lat,
-      marker_lng: e.latlng.lng,
-    };
-    if (!this.props.openKeys.includes("distanceTab")) {
-      this.props.openDistanceTab();
-    }
-    if (e.startEnd === "start") {
-      this.props.addMapMarkerStart(newMarker);
-      this.props.setStartPoint(newMarker);
-    } else {
-      this.props.addMapMarkerEnd(newMarker);
-      this.props.setEndPoint(newMarker);
-    }
-  }
+interface State {
+  rightClickXCoord: number;
+  rightClickYCoord: number;
+}
 
-  draggableMarker = (marker) => {
-    let startPointCheckEmpty = _.isEmpty(this.props.startPoint);
-    let endPointCheckEmpty = _.isEmpty(this.props.endPoint);
-    const updatedMarker = {
-      marker_title: "Custom Map Point",
-      marker_lat: marker.target._latlng.lat,
-      marker_lng: marker.target._latlng.lng,
-    };
-    if (marker.startEnd === "start") {
-      this.props.addMapMarkerStart(updatedMarker);
-      this.props.setStartPoint(updatedMarker);
-    } else {
-      this.props.addMapMarkerEnd(updatedMarker);
-      this.props.setEndPoint(updatedMarker);
-    }
-    if (!startPointCheckEmpty && !endPointCheckEmpty) {
-      //if the draggable marker is being updated on an existing path
-      this.updatePath();
-    }
-  };
+class MapComponent extends Component<any, State> {
+  public context: Context;
 
-  updatePath = () => {
-    let pathAndDistance = findPath(
-      this.props.data.map_track,
-      this.props.startPoint,
-      this.props.endPoint
-    );
-    this.props.storeCustomTrack(pathAndDistance);
-  };
+  state = { rightClickXCoord: 0, rightClickYCoord: 0 };
+  static contextType = ServicesContext;
 
   checkForCustomPath = () => {
     //if there is a custom route to display, display it
@@ -176,15 +118,23 @@ class MapComponent extends Component {
 
   rightClick = (event) => {
     this.setState({
-      x: event.containerPoint.x,
-      y: event.containerPoint.y,
+      rightClickXCoord: event.containerPoint.x,
+      rightClickYCoord: event.containerPoint.y,
     });
-    this.props.setLatLngFromContextClick({
-      lat: event.latlng.lat,
-      lng: event.latlng.lng,
-    });
-    this.props.fetchElevation(event.latlng.lat, event.latlng.lng);
-    this.props.shouldShowContextMenu(true);
+
+    this.context.markerAdd.onMapRightClick(event);
+  };
+
+  checkMarkers = (event: any): void => {
+    this.context.markerAdd.checkMarkers(event);
+  };
+
+  draggableMarkerStart = (event: any): void => {
+    this.context.markerAdd.createDraggableMarker(event, START);
+  };
+
+  draggableMarkerEnd = (event: any): void => {
+    this.context.markerAdd.createDraggableMarker(event, END);
   };
 
   render() {
@@ -201,6 +151,7 @@ class MapComponent extends Component {
       shouldShowContextMenuStatus,
     } = this.props;
     const imageryUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+
     return (
       <Map
         center={center}
@@ -232,7 +183,10 @@ class MapComponent extends Component {
           : null}
 
         {shouldShowContextMenuStatus ? (
-          <ContextMenu x={this.state.x} y={this.state.y} />
+          <ContextMenu
+            x={this.state.rightClickXCoord}
+            y={this.state.rightClickYCoord}
+          />
         ) : null}
 
         {mapMarkerStart ? (
@@ -243,8 +197,7 @@ class MapComponent extends Component {
             icon={start}
             draggable={true}
             onDragEnd={(e) => {
-              e.startEnd = "start";
-              return this.draggableMarker(e);
+              return this.draggableMarkerStart(e);
             }}
             className="map-marker-custom"
           />
@@ -258,8 +211,7 @@ class MapComponent extends Component {
             icon={finish}
             draggable={true}
             onDragEnd={(e) => {
-              e.startEnd = "end";
-              return this.draggableMarker(e);
+              return this.draggableMarkerEnd(e);
             }}
             className="map-marker-custom"
           />
