@@ -23,8 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/tests/MarkerAddTests.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MapComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/MarkerAdd.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/MarkerAdd.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +165,7 @@
       <workItem from="1585824916450" duration="758000" />
       <workItem from="1600689738906" duration="29307000" />
       <workItem from="1600860226720" duration="7830000" />
-      <workItem from="1601101032160" duration="1492000" />
+      <workItem from="1601101032160" duration="8092000" />
     </task>
     <task id="LOCAL-00001" summary="minor fixes">
       <created>1554508583637</created>
@@ -262,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601102473575</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="git ignore this guy">
+      <created>1601102620542</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1601102620542</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,14 +317,14 @@
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
     <state x="-383" y="-786" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1601099561715" />
-    <state x="-519" y="-942" key="CommitChangelistDialog2" timestamp="1601102473419">
+    <state x="-519" y="-942" key="CommitChangelistDialog2" timestamp="1601102620420">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-519" y="-942" key="CommitChangelistDialog2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1601102473419" />
-    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog" timestamp="1600997839089">
+    <state x="-519" y="-942" key="CommitChangelistDialog2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1601102620420" />
+    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog" timestamp="1601109058527">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600997839089" />
+    <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1601109058527" />
     <state width="1878" height="290" key="GridCell.Tab.0.bottom" timestamp="1600769087636">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
@@ -335,13 +345,13 @@
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
     <state x="-562" y="-890" key="SettingsEditor/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600757411675" />
-    <state x="-364" y="-803" width="628" height="580" key="find.popup" timestamp="1600996758655">
+    <state x="-364" y="-803" width="628" height="580" key="find.popup" timestamp="1601109190933">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-364" y="-803" width="628" height="580" key="find.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600996758655" />
-    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup" timestamp="1601002935109">
+    <state x="-364" y="-803" width="628" height="580" key="find.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1601109190933" />
+    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup" timestamp="1601109038317">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1601002935109" />
+    <state x="-406" y="-822" width="670" height="676" key="search.everywhere.popup/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1601109038317" />
   </component>
 </project>

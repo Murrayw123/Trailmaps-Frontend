@@ -4,6 +4,7 @@ import { GlobalState, GlobalStateStore } from "redux/reducers";
 import {
   addMapMarkerEnd,
   addMapMarkerStart,
+  changeSideBarData,
   fetchElevation,
   openDistanceTab,
   setEndPoint,
@@ -11,23 +12,31 @@ import {
   setStartPoint,
   shouldShowContextMenu,
   storeCustomTrack,
+  storeFocusMarker,
   wipeMarkersAndPath,
 } from "redux/actions";
 import { findPath } from "helpers/PathCalculator";
+import { business_groupings, food_groupings } from "helpers/iconsData";
 
 const BUTTON = "button";
 const CUSTOM_MAP_POINT = "Custom Map Point";
-export const START = "START";
-export const END = "END";
+export const START = "start";
+export const END = "end";
 const DISTANCE_TAB = "distanceTab";
+
+const TRAIL_BUSINESSES = "trail businesses";
+const DRINKS_DINING = "drinks & dining";
 
 export class MarkerAddService {
   private _store: GlobalStateStore;
   private _allowCustomPath: Boolean;
   private _startPoint: GlobalState["startPoint"];
   private _endPoint: GlobalState["endPoint"];
+  private _poiMarkers: GlobalState["poiMarkers"];
   private _openKeys: GlobalState["openKeys"];
   private _data: GlobalState["data"];
+  private _focusMarker: GlobalState["focusMarker"];
+  private _filters: GlobalState["filters"];
 
   constructor(store: Store) {
     this._store = store;
@@ -38,7 +47,12 @@ export class MarkerAddService {
       this._allowCustomPath = state.allowCustomPath;
       this._startPoint = state.startPoint;
       this._endPoint = state.endPoint;
+      this._focusMarker = state.focusMarker;
+      this._poiMarkers = state.poiMarkers;
+
       this._openKeys = state.openKeys;
+
+      this._filters = state.filters;
       this._data = state.data;
     });
   }
@@ -117,7 +131,7 @@ export class MarkerAddService {
     this._store.dispatch(storeCustomTrack(pathAndDistance));
   }
 
-  public onMapRightClick(event: any) {
+  public onMapRightClick(event: any): void {
     this._store.dispatch(
       setLatLngFromContextClick({
         lat: event.latlng.lat,
@@ -130,5 +144,51 @@ export class MarkerAddService {
     );
 
     this._store.dispatch(shouldShowContextMenu(true));
+  }
+
+  public onMarkerClick(marker: any): void {
+    this._store.dispatch(storeFocusMarker(marker));
+    this._store.dispatch(
+      changeSideBarData(marker.marker_blurb, marker.default_image)
+    );
+  }
+
+  public get markersInFilteredList(): Array<any> {
+    return this._poiMarkers.filter((marker) => this._shouldShowMarker(marker));
+  }
+
+  private _shouldShowMarker(marker: any): boolean {
+    const business = business_groupings.includes(marker.marker_type);
+    const food = food_groupings.includes(marker.marker_type);
+
+    if (
+      this._filters.includes(marker.marker_type) ||
+      (business && this._filters.includes(TRAIL_BUSINESSES)) ||
+      (food && this._filters.includes(DRINKS_DINING))
+    ) {
+      return true;
+    }
+
+    if (!_.isEmpty(this._startPoint)) {
+      if (this._startPoint.marker_id === marker.marker_id) {
+        return true;
+      }
+    }
+    if (!_.isEmpty(this._endPoint)) {
+      if (this._endPoint.marker_id === marker.marker_id) {
+        return true;
+      }
+    }
+    if (!_.isEmpty(this._focusMarker)) {
+      if (
+        (this._focusMarker.marker_id === marker.marker_id &&
+          this._filters.includes(this._focusMarker.marker_type)) ||
+        (business && this._filters.includes(TRAIL_BUSINESSES)) ||
+        (food && this._filters.includes(DRINKS_DINING))
+      ) {
+        return true;
+      }
+    }
+    return false;
   }
 }
