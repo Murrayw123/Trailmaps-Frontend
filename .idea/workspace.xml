@@ -22,18 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="Fixing up">
-      <change afterPath="$PROJECT_DIR$/src/services/MarkerAdd.ts" afterDir="false" />
+    <list default="true" id="9ec01070-e0fb-42c1-a020-2323c8134ddc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ServiceInit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServiceInit.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MapComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MapComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PoiMarker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PoiMarker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RouteSwitcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routing/RouteSwitcher.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routing/Router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,6 +162,7 @@
       <workItem from="1585824916450" duration="758000" />
       <workItem from="1600689738906" duration="29307000" />
       <workItem from="1600860226720" duration="7830000" />
+      <workItem from="1601101032160" duration="1345000" />
     </task>
     <task id="LOCAL-00001" summary="minor fixes">
       <created>1554508583637</created>
@@ -256,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600909024342</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="working on MapComponent.tsx and MarkerAdd service. Typescript plus refactor">
+      <created>1601002964654</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1601002964654</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +283,8 @@
     <MESSAGE value="typescript + services layer beginning" />
     <MESSAGE value="icons" />
     <MESSAGE value="More typings - map broken" />
-    <option name="LAST_COMMIT_MESSAGE" value="More typings - map broken" />
+    <MESSAGE value="working on MapComponent.tsx and MarkerAdd service. Typescript plus refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on MapComponent.tsx and MarkerAdd service. Typescript plus refactor" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-607" y="-867" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600753165613">
@@ -295,10 +295,14 @@
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
     <state x="-343" y="-720" key="#com.intellij.fileTypes.FileTypeChooser/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600910413342" />
-    <state x="-519" y="-942" key="CommitChangelistDialog2" timestamp="1600912244864">
+    <state x="-383" y="-786" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1601099561715">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-519" y="-942" key="CommitChangelistDialog2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1600912244864" />
+    <state x="-383" y="-786" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1601099561715" />
+    <state x="-519" y="-942" key="CommitChangelistDialog2" timestamp="1601002964487">
+      <screen x="-1031" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="-519" y="-942" key="CommitChangelistDialog2/-1031.-1057.1920.1057/889.-1057.1920.1057/0.23.1680.975@-1031.-1057.1920.1057" timestamp="1601002964487" />
     <state x="-931" y="-957" width="1720" height="857" key="DiffContextDialog" timestamp="1600997839089">
       <screen x="-1031" y="-1057" width="1920" height="1057" />
     </state>
