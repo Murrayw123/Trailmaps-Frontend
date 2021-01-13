@@ -66,12 +66,12 @@ function closest(geoJsonPath, start, finish) {
   //find the closest start point from mouse click to GEOJSON line
   let closestStart = nearestPointOnLine(
     lineString,
-    point([start[1], start[0]])
+    point([start.marker_lng, start.marker_lat])
   );
 
   let closestFinish = nearestPointOnLine(
     lineString,
-    point([finish[1], finish[0]])
+    point([finish.marker_lng, finish.marker_lat])
   );
   return { closestStart: closestStart, closestFinish };
 }
