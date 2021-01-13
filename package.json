@@ -8,7 +8,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.3.1",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/react-fontawesome": "^0.1.3",
-    "@murrayw123/geojsonpathfinderamended": "1.0.0",
+    "@murrayw123/geojsonpathfinderamended": "1.0.1",
     "@turf/bearing": "^6.2.0",
     "@turf/combine": "^6.0.1",
     "@turf/destination": "^6.2.0",
