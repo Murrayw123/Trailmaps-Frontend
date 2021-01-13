@@ -1,10 +1,10 @@
 import distance from "@turf/distance";
 import along from "@turf/along";
-import {lineString, multiLineString, point} from "@turf/helpers";
+import { lineString, multiLineString, point } from "@turf/helpers";
 import combine from "@turf/combine";
-import {PathFinder} from "./geojson-path-finder/index";
-import nearestPointOnLine from "./nearest-point-on-line";
 import _ from "lodash";
+import PathFinder from "@murrayw123/geojsonpathfinderamended/index";
+import { nearestPointOnLine } from "./closest-point";
 
 export function findPointAlongLine(path, distance) {
   return along(path, distance);
@@ -37,14 +37,14 @@ function findDistance(path) {
         chartData.push({
           elevation: path[i][2],
           distance: customDistance,
-          coords: [path[i][1], path[i][0]]
+          coords: [path[i][1], path[i][0]],
         });
       } else {
         customDistance = 0;
         chartData.push({
           elevation: path[i][2],
           distance: customDistance,
-          coords: [path[i][1], path[i][0]]
+          coords: [path[i][1], path[i][0]],
         });
       }
     }
@@ -53,27 +53,8 @@ function findDistance(path) {
     distance: customDistance,
     chartData: chartData,
     elevationGain: elevationGain,
-    elevationLoss: elevationLoss
+    elevationLoss: elevationLoss,
   };
-}
-
-export function isMarkersValid(geoJsonPath, start, finish) {
-  let { closestStart, closestFinish } = closest(geoJsonPath, start, finish);
-  let startDistance = distance(
-    [
-      closestStart.geometry.coordinates[1],
-      closestStart.geometry.coordinates[0]
-    ],
-    [start.marker_lat, start.marker_lng]
-  );
-  let endDistance = distance(
-    [
-      closestFinish.geometry.coordinates[1],
-      closestFinish.geometry.coordinates[0]
-    ],
-    [finish.marker_lat, finish.marker_lng]
-  );
-  return startDistance < 10 && endDistance < 10;
 }
 
 function closest(geoJsonPath, start, finish) {
@@ -85,41 +66,59 @@ function closest(geoJsonPath, start, finish) {
   //find the closest start point from mouse click to GEOJSON line
   let closestStart = nearestPointOnLine(
     lineString,
-    point([start.marker_lng, start.marker_lat])
+    point([start[1], start[0]])
   );
 
   let closestFinish = nearestPointOnLine(
     lineString,
-    point([finish.marker_lng, finish.marker_lat])
+    point([finish[1], finish[0]])
   );
-  return { closestStart: closestStart, closestFinish: closestFinish };
+  return { closestStart: closestStart, closestFinish };
 }
 
 export function findPath(geoJsonPath, start, finish) {
   let { closestStart, closestFinish } = closest(geoJsonPath, start, finish);
-  //grab the actual coordinates I jammed into the index (uses a customised version of turf nearestPointOnLine)
-  closestStart = point(closestStart.properties.index);
-  closestFinish = point(closestFinish.properties.index);
+
+  const closestStartWithoutElevation = [
+    closestStart.properties.coords[0],
+    closestStart.properties.coords[1],
+  ];
+  const closestEndWithoutElevation = [
+    closestFinish.properties.coords[0],
+    closestFinish.properties.coords[1],
+  ];
+
+  closestStart = point(closestStartWithoutElevation);
+  closestFinish = point(closestEndWithoutElevation);
+
   if (_.isEqual(closestStart, closestFinish)) {
     return {
       path: null,
       distance: 0,
       chartData: null,
       elevationGain: 0,
-      elevationLoss: 0
+      elevationLoss: 0,
     };
   }
   let pathFinder = new PathFinder(geoJsonPath, { precision: 1e-5 }); //exact match is five decimal places, only leaving this in here for reference
   let path = pathFinder.findPath(closestStart, closestFinish);
+  if (!path) {
+    return {
+      path: null,
+      distance: 0,
+      chartData: null,
+      elevationGain: 0,
+      elevationLoss: 0,
+    };
+  }
   let customDistance = findDistance(path.path);
   //returns a linestring so leaflet can use it as a geojson layer
   let linestring = lineString(path.path);
-  let returnPath = {
+  return {
     path: linestring,
     distance: customDistance.distance,
     chartData: customDistance.chartData,
     elevationGain: customDistance.elevationGain,
-    elevationLoss: customDistance.elevationLoss
+    elevationLoss: customDistance.elevationLoss,
   };
-  return returnPath;
 }
