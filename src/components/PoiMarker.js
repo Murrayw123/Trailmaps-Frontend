@@ -6,7 +6,7 @@ import {
   setEndPoint,
   openDistanceTab,
   wipeStartMarker,
-  wipeEndMarker
+  wipeEndMarker,
 } from "../redux/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFlag } from "@fortawesome/free-regular-svg-icons";
@@ -17,7 +17,7 @@ import { Marker, Popup } from "react-leaflet";
 import { Textfit } from "react-textfit";
 
 export class PoiMarker extends Component {
-  markerClick = point => {
+  markerClick = (point) => {
     let marker = _.cloneDeep(this.props.marker);
     if (!this.props.openKeys.includes("distanceTab")) {
       this.props.openDistanceTab();
@@ -31,7 +31,7 @@ export class PoiMarker extends Component {
     }
   };
 
-  switchIcon = marker => {
+  switchIcon = (marker) => {
     if (this.props.startPoint === marker || this.props.endPoint === marker) {
       return selected;
     } else {
@@ -83,7 +83,7 @@ export class PoiMarker extends Component {
           </div>
           <Divider style={{ marginTop: 0, marginBottom: 5 }} />
           <div className="popupText">
-            {info.map(el => {
+            {info.map((el) => {
               return (
                 <div>
                   <b> {el.title}: </b> {el.value}
@@ -97,14 +97,14 @@ export class PoiMarker extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  setStartPoint: marker => {
+const mapDispatchToProps = (dispatch) => ({
+  setStartPoint: (marker) => {
     dispatch(setStartPoint(marker));
   },
-  setEndPoint: marker => {
+  setEndPoint: (marker) => {
     dispatch(setEndPoint(marker));
   },
-  openDistanceTab: e => {
+  openDistanceTab: (e) => {
     dispatch(openDistanceTab(e));
   },
   wipeMarkerStart: () => {
@@ -112,16 +112,13 @@ const mapDispatchToProps = dispatch => ({
   },
   wipeMarkerEnd: () => {
     dispatch(wipeEndMarker());
-  }
+  },
 });
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   startPoint: state.startPoint,
   endPoint: state.endPoint,
-  openKeys: state.openKeys
+  openKeys: state.openKeys,
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PoiMarker);
+export default connect(mapStateToProps, mapDispatchToProps)(PoiMarker);

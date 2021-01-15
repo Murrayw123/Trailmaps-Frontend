@@ -17,13 +17,14 @@ import {
   wipeMarkersAndPath,
   wipeStartMarker
 } from "../redux/actions";
-import { Card, Divider, Icon, Menu, Switch, Tooltip, Button } from "antd";
+import { Card, Divider, Menu, Switch, Tooltip, Button } from "antd";
 import _ from "lodash";
 import DistanceCalculator from "./DistanceCalculator";
 import DistanceCalculatorForm from "./DistanceCalculatorForm";
 import FilterMarkers from "./Markers";
 import { TerrainSwitch } from "./TerrainSwitch";
 import { findPath } from "./helpers/PathCalculator";
+import Icon from "@ant-design/icons";
 
 export const DISTANCE_KEY = "distanceTab";
 

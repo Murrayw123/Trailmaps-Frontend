@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button, Card, Divider, Icon, Switch, Tooltip } from "antd";
+import { Button, Card, Divider, Switch, Tooltip } from "antd";
 import DistanceCalculator from "./DistanceCalculator";
+import Icon, { CalculatorOutlined, DeleteOutlined } from '@ant-design/icons';
 
 class DistanceCalculatorForm extends React.Component {
   render() {
@@ -13,7 +14,7 @@ class DistanceCalculatorForm extends React.Component {
       startPoint,
       endPoint,
       clearPath,
-      customPath
+      customPath,
     } = this.props;
     return (
       <div style={{ marginLeft: 48 }}>
@@ -38,7 +39,7 @@ class DistanceCalculatorForm extends React.Component {
           {this.props.customDistance}
           <Button
             disabled={buttonDisabled}
-            icon="calculator"
+            icon={<CalculatorOutlined />}
             type="primary"
             htmlType="submit"
             className="login-form-button"
@@ -48,7 +49,7 @@ class DistanceCalculatorForm extends React.Component {
           </Button>
           {customPath.path ? (
             <Button
-              icon="delete"
+              icon={<DeleteOutlined />}
               type="default"
               htmlType="submit"
               className="clear-path"
@@ -97,11 +98,11 @@ class DistanceCalculatorForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   startPoint: state.startPoint,
   endPoint: state.endPoint,
   customPath: state.customPath,
-  allowCustomPath: state.allowCustomPath
+  allowCustomPath: state.allowCustomPath,
 });
 
 export default connect(mapStateToProps)(DistanceCalculatorForm);
