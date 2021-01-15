@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Button, Card, Divider, Switch, Tooltip } from "antd";
 import DistanceCalculator from "./DistanceCalculator";
-import Icon from "@ant-design/icons";
+import Icon, { CalculatorOutlined, DeleteOutlined } from '@ant-design/icons';
 
 class DistanceCalculatorForm extends React.Component {
   render() {
@@ -39,7 +39,7 @@ class DistanceCalculatorForm extends React.Component {
           {this.props.customDistance}
           <Button
             disabled={buttonDisabled}
-            icon="calculator"
+            icon={<CalculatorOutlined />}
             type="primary"
             htmlType="submit"
             className="login-form-button"
@@ -49,7 +49,7 @@ class DistanceCalculatorForm extends React.Component {
           </Button>
           {customPath.path ? (
             <Button
-              icon="delete"
+              icon={<DeleteOutlined />}
               type="default"
               htmlType="submit"
               className="clear-path"

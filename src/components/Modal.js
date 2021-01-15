@@ -1,14 +1,6 @@
-import {
-  Form,
-  InputNumber,
-  Input,
-  Modal,
-  Select,
-  Upload,
-  message,
-  Button,
-  Tooltip,
-} from "antd";
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { InputNumber, Input, Modal, Select, Upload, message, Button, Tooltip } from "antd";
 import React, { Component } from "react";
 import { markerChoices } from "./helpers/iconsData";
 import { shouldShowContextMenu, showMarkerAddModal } from "../redux/actions";
