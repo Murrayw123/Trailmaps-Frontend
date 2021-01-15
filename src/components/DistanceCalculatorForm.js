@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button, Card, Divider, Icon, Switch, Tooltip } from "antd";
+import { Button, Card, Divider, Switch, Tooltip } from "antd";
 import DistanceCalculator from "./DistanceCalculator";
+import Icon from "@ant-design/icons";
 
 class DistanceCalculatorForm extends React.Component {
   render() {
@@ -13,7 +14,7 @@ class DistanceCalculatorForm extends React.Component {
       startPoint,
       endPoint,
       clearPath,
-      customPath
+      customPath,
     } = this.props;
     return (
       <div style={{ marginLeft: 48 }}>
@@ -97,11 +98,11 @@ class DistanceCalculatorForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   startPoint: state.startPoint,
   endPoint: state.endPoint,
   customPath: state.customPath,
-  allowCustomPath: state.allowCustomPath
+  allowCustomPath: state.allowCustomPath,
 });
 
 export default connect(mapStateToProps)(DistanceCalculatorForm);
