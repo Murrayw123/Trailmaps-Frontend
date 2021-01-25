@@ -92,7 +92,7 @@ export function fetchMarkers(mapstring) {
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
-        const data = json.map(el => {
+        const data = json.results.map(el => {
           return {
             marker_id: el.id,
             marker_type: el.marker_type,
