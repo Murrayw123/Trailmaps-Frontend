@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 import { Cascader } from "antd";
 
 export class MapSelect extends Component {

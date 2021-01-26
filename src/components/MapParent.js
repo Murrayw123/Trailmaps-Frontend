@@ -5,23 +5,23 @@ import MapComponent from "./MapComponent";
 import MarkerModal from "./Modal";
 import ElevationChart from "./ElevationChart";
 import MapSelect from "./MapSelect";
-import {
-  fetchData,
-  fetchMarkers,
-  fetchOtherMaps,
-  fetchTrailUsers,
-} from "../redux/actions";
 import { Rnd as ElevationChartWrapper } from "react-rnd";
 import { Button } from "antd";
 import Sider from "./Menu.js";
 import { InfoPopover } from "./InfoPopover";
 import Icon from "@ant-design/icons";
+import {
+  fetchData,
+  fetchMarkers,
+  fetchOtherMaps,
+  fetchTrailUsers,
+} from "../redux/requests";
 
 class MapParent extends Component {
   state = { width: "40%", height: 125, showElevation: true };
 
   componentDidMount() {
-    let currentMap = window.location.pathname.substring(6);
+    const currentMap = this.props.pathName || window.location.pathname.substring(6);
     this.props.dispatch(fetchData(currentMap));
     this.props.dispatch(fetchMarkers(currentMap));
     this.props.dispatch(fetchOtherMaps());

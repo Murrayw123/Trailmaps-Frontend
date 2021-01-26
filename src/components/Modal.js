@@ -4,7 +4,7 @@ import { InputNumber, Input, Modal, Select, Upload, message, Button, Tooltip } f
 import React, { Component } from "react";
 import { markerChoices } from "./helpers/iconsData";
 import { shouldShowContextMenu, showMarkerAddModal } from "../redux/actions";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 import { URLPREFIX } from "../config";
 import Icon from "@ant-design/icons";
 

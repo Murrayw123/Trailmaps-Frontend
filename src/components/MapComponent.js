@@ -14,8 +14,7 @@ import {
   storeFocusMarker,
   wipeMarkersAndPath,
   setLatLngFromContextClick,
-  shouldShowContextMenu,
-  fetchElevation
+  shouldShowContextMenu
 } from "../redux/actions";
 import {
   bicycle,
@@ -30,6 +29,7 @@ import "leaflet/dist/leaflet.css";
 import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import PoiMarker from "./PoiMarker";
 import ContextMenu from "./ContextMenuApp";
+import {fetchElevation} from "../redux/requests";
 
 class MapComponent extends Component {
   state = { context: false, x: 0, y: 0 };
