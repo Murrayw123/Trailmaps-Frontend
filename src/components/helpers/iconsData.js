@@ -1,4 +1,25 @@
 import L from "leaflet";
+import townI from "./icons/town.svg";
+import finishI from "./icons/finish.svg"
+import businessI from "./icons/business.svg"
+import bicycleI from "./icons/bicycle.svg"
+import hikingI from "./icons/hiking.svg"
+import tentI from "./icons/tent.svg"
+import hutI from "./icons/hut.svg"
+import waterI from "./icons/water.svg"
+import attractionI from "./icons/attraction.svg"
+import vehicleI from "./icons/vehicle.svg"
+import selectedI from "./icons/selected.svg"
+import cafeI from "./icons/cafe.svg"
+import foodI from "./icons/food.svg"
+import lighthouseI from "./icons/lighthouse.svg"
+import picnicI from "./icons/picnic.svg"
+import pubI from "./icons/pub.svg"
+import warningI from "./icons/warning.svg"
+import taxiI from "./icons/taxi.svg"
+import riderI from "./icons/rider.svg"
+import hikerI from "./icons/hiker.svg"
+import startI from "./icons/start.svg"
 
 export const markerChoices = [
   { id: "taxi", name: "Taxi Service" },
@@ -13,134 +34,133 @@ export const markerChoices = [
   { id: "restaurant", name: "Restaurant" },
   { id: "lighthouse", name: "Lighthouse" },
   { id: "picnic_area", name: "Picnic Area" },
-  { id: "warning", name: "Warning" }
+  { id: "warning", name: "Warning" },
 ];
 
-
 export const start = new L.Icon({
-  iconUrl: require("./icons/start.svg"),
+  iconUrl: startI ,
   iconSize: new L.Point(30, 35),
-  className: null
+  className: null,
 });
 
 export const finish = new L.Icon({
-  iconUrl: require("./icons/finish.svg"),
+  iconUrl: finishI,
   iconSize: new L.Point(30, 35),
-  className: null
+  className: null,
 });
 
 const business = new L.Icon({
-  iconUrl: require("./icons/business.svg"),
+  iconUrl: businessI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 export const bicycle = new L.Icon({
-  iconUrl: require("./icons/bicycle.svg"),
+  iconUrl: bicycleI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 export const walking = new L.Icon({
-  iconUrl: require("./icons/hiking.svg"),
+  iconUrl: hikingI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 const campSite = new L.Icon({
-  iconUrl: require("./icons/tent.svg"),
+  iconUrl: tentI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 const hut = new L.Icon({
-  iconUrl: require("./icons/hut.svg"),
+  iconUrl: hutI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 const town = new L.Icon({
-  iconUrl: require("./icons/town.svg"),
+  iconUrl: townI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 const water = new L.Icon({
-  iconUrl: require("./icons/water.svg"),
+  iconUrl: waterI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 const attraction = new L.Icon({
-  iconUrl: require("./icons/attraction.svg"),
+  iconUrl: attractionI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 const vehicle = new L.Icon({
-  iconUrl: require("./icons/vehicle.svg"),
+  iconUrl: vehicleI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 export const selected = new L.Icon({
-  iconUrl: require("./icons/selected.svg"),
+  iconUrl: selectedI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 export const cafe = new L.Icon({
-  iconUrl: require("./icons/cafe.svg"),
+  iconUrl: cafeI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 export const restaurant = new L.Icon({
-  iconUrl: require("./icons/food.svg"),
+  iconUrl: foodI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 export const lighthouse = new L.Icon({
-  iconUrl: require("./icons/lighthouse.svg"),
+  iconUrl: lighthouseI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 export const picnicArea = new L.Icon({
-  iconUrl: require("./icons/picnic.svg"),
+  iconUrl: picnicI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 export const pub = new L.Icon({
-  iconUrl: require("./icons/pub.svg"),
+  iconUrl: pubI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 export const warning = new L.Icon({
-  iconUrl: require("./icons/warning.svg"),
+  iconUrl: warningI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 export const taxi = new L.Icon({
-  iconUrl: require("./icons/taxi.svg"),
+  iconUrl: taxiI,
   iconSize: new L.Point(25, 30),
-  className: null
+  className: null,
 });
 
 export const rider = new L.Icon({
-    iconUrl: require("./icons/rider.svg"),
-    iconSize: new L.Point(25, 30),
-    className: null
+  iconUrl: riderI,
+  iconSize: new L.Point(25, 30),
+  className: null,
 });
 
-export const hiker  = new L.Icon({
-    iconUrl: require("./icons/hiker.svg"),
-    iconSize: new L.Point(25, 30),
-    className: null
+export const hiker = new L.Icon({
+  iconUrl: hikerI,
+  iconSize: new L.Point(25, 30),
+  className: null,
 });
 
 export function findIcon(type) {
@@ -180,9 +200,9 @@ export function findIcon(type) {
     case "taxi":
       return taxi;
     case "cyclist":
-          return rider;
+      return rider;
     case "hiker":
-          return hiker;
+      return hiker;
     default:
       return attraction;
   }

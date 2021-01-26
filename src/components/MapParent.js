@@ -9,12 +9,13 @@ import {
   fetchData,
   fetchMarkers,
   fetchOtherMaps,
-  fetchTrailUsers
+  fetchTrailUsers,
 } from "../redux/actions";
 import { Rnd as ElevationChartWrapper } from "react-rnd";
-import { Button, Icon } from "antd";
+import { Button } from "antd";
 import Sider from "./Menu.js";
 import { InfoPopover } from "./InfoPopover";
+import Icon from "@ant-design/icons";
 
 class MapParent extends Component {
   state = { width: "40%", height: 125, showElevation: true };
@@ -35,7 +36,7 @@ class MapParent extends Component {
     clearInterval(this.interval);
   }
 
-  elevationChartStatus = state => {
+  elevationChartStatus = (state) => {
     this.setState({ showElevation: state });
   };
 
@@ -44,7 +45,7 @@ class MapParent extends Component {
       loadingTrack,
       loadingMarkers,
       customPath,
-      shouldShowModal
+      shouldShowModal,
     } = this.props;
     const { showElevation } = this.state;
     if (loadingTrack || loadingMarkers) {
@@ -66,7 +67,7 @@ class MapParent extends Component {
                 this.setState({
                   width: ref.style.width,
                   height: ref.style.height,
-                  ...position
+                  ...position,
                 });
               }}
             >
@@ -101,7 +102,7 @@ class MapParent extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   data: state.data,
   loadingTrack: state.loadingTrack,
   loadingMarkers: state.loadingMarkers,
@@ -109,7 +110,7 @@ const mapStateToProps = state => ({
   poiMarkers: state.poiMarkers,
   customPath: state.customPath,
   elevationChartData: state.elevationChartData,
-  shouldShowModal: state.shouldShowModal
+  shouldShowModal: state.shouldShowModal,
 });
 
 export default connect(mapStateToProps)(MapParent);

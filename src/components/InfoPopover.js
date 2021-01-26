@@ -1,6 +1,7 @@
-import { Popover, Icon } from "antd";
+import { Popover } from "antd";
 import { Component } from "react";
 import React from "react";
+import Icon from "@ant-design/icons";
 
 export class InfoPopover extends Component {
   content = (
