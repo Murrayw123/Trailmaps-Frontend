@@ -15,16 +15,23 @@ import {
   wipeEndMarker,
   wipeMarkers,
   wipeMarkersAndPath,
-  wipeStartMarker
+  wipeStartMarker,
 } from "../redux/actions";
 import { Card, Divider, Menu, Switch, Tooltip, Button } from "antd";
 import _ from "lodash";
 import DistanceCalculator from "./DistanceCalculator";
 import DistanceCalculatorForm from "./DistanceCalculatorForm";
 import FilterMarkers from "./Markers";
-import { TerrainSwitch } from "./TerrainSwitch";
 import { findPath } from "../helpers/PathCalculator";
-import Icon from "@ant-design/icons";
+import Icon, {
+  CalculatorOutlined,
+  InfoCircleOutlined,
+  QuestionCircleOutlined,
+  SearchOutlined,
+  SelectOutlined,
+  SettingOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
 export const DISTANCE_KEY = "distanceTab";
 
@@ -34,12 +41,12 @@ class Sider extends React.Component {
   dataSelect = (markerid, type, markerType) => {
     let newFocus;
     if (markerType === "distance") {
-      newFocus = this.props.poiMarkers.find(el => {
+      newFocus = this.props.poiMarkers.find((el) => {
         return el.marker_id === parseInt(markerid);
       });
     }
     if (markerType === "liveTrailUser") {
-      newFocus = this.props.liveTrailUsers.find(el => {
+      newFocus = this.props.liveTrailUsers.find((el) => {
         return el.marker_id === parseInt(markerid);
       });
     }
@@ -58,13 +65,13 @@ class Sider extends React.Component {
     }
   };
 
-  submitDistance = e => {
+  submitDistance = (e) => {
     e.preventDefault();
     let pathAndDistance = this.calculateInfo();
     this.props.dispatch(storeCustomTrack(pathAndDistance));
   };
 
-  clearPath = e => {
+  clearPath = (e) => {
     e.preventDefault();
     this.props.dispatch(wipeMarkersAndPath());
   };
@@ -75,15 +82,15 @@ class Sider extends React.Component {
       {
         start: {
           marker_lat: this.props.startPoint.marker_lat,
-          marker_lng: this.props.startPoint.marker_lng
-        }
+          marker_lng: this.props.startPoint.marker_lng,
+        },
       },
       {
         finish: {
           marker_lat: this.props.endPoint.marker_lat,
-          marker_lng: this.props.endPoint.marker_lng
-        }
-      }
+          marker_lng: this.props.endPoint.marker_lng,
+        },
+      },
     ];
     let pathAndDistance = findPath(
       this.props.data.map_track,
@@ -93,15 +100,15 @@ class Sider extends React.Component {
     return pathAndDistance;
   };
 
-  filterMarkers = markers => {
+  filterMarkers = (markers) => {
     this.props.dispatch(filterTrailMarkers(markers));
   };
 
-  terrainSwitch = value => {
+  terrainSwitch = (value) => {
     this.props.dispatch(changeTerrain(value));
   };
 
-  toggleCustomPath = bool => {
+  toggleCustomPath = (bool) => {
     this.props.dispatch(wipeMarkers());
     if (this.props.startPoint.marker_title === "Custom Map Point") {
       this.props.dispatch(setStartPoint({}));
@@ -112,7 +119,7 @@ class Sider extends React.Component {
     this.props.dispatch(allowCustomPath(bool));
   };
 
-  toggleShowLiveTrailUsers = bool => {
+  toggleShowLiveTrailUsers = (bool) => {
     this.props.dispatch(toggleLiveTrailUsers(bool));
   };
 
@@ -127,7 +134,7 @@ class Sider extends React.Component {
     }
   };
 
-  handleMenuOpen = menuKeys => {
+  handleMenuOpen = (menuKeys) => {
     this.props.dispatch(setOpenMenus(menuKeys));
   };
 
@@ -142,7 +149,7 @@ class Sider extends React.Component {
       focusMarker,
       filters,
       openKeys,
-      liveTrailUsers
+      liveTrailUsers,
     } = this.props;
     return (
       <Menu
@@ -158,12 +165,7 @@ class Sider extends React.Component {
           className="title"
           title={
             <span>
-              <Icon
-                style={{ fontSize: "1.4em" }}
-                type="setting"
-                theme="outlined"
-                className="icons-large"
-              />
+              <SettingOutlined style={{ fontSize: "1.4em" }} />
               <span id="map-tool-heading"> Map Tools</span>
             </span>
           }
@@ -174,7 +176,7 @@ class Sider extends React.Component {
             key="sub1"
             title={
               <span>
-                <Icon type="search" theme="outlined" className="sub-icon" />
+                <SearchOutlined />
                 <span className="sub-heading">Locate Point on Map</span>
               </span>
             }
@@ -194,7 +196,7 @@ class Sider extends React.Component {
             key={DISTANCE_KEY}
             title={
               <span>
-                <Icon type="calculator" theme="outlined" className="sub-icon" />
+                <CalculatorOutlined />
                 <span className="sub-heading">Distance and Elevation</span>
               </span>
             }
@@ -212,7 +214,7 @@ class Sider extends React.Component {
             key="sub3"
             title={
               <span>
-                <Icon type="select" theme="outlined" className="sub-icon" />
+                <SelectOutlined />
                 <span className="sub-heading"> Filter Visible Markers</span>
               </span>
             }
@@ -228,7 +230,7 @@ class Sider extends React.Component {
             key="sub4"
             title={
               <span>
-                <Icon type="user" theme="outlined" className="sub-icon" />
+                <UserOutlined />
                 <span className="sub-heading"> Live Trail Users</span>
               </span>
             }
@@ -242,9 +244,8 @@ class Sider extends React.Component {
                 <span>
                   Show all live trail users
                   <Tooltip title="Find users with a registered SPOT or Garmin GPS device">
-                    <Icon
+                    <QuestionCircleOutlined
                       style={{ paddingLeft: 4, fontSize: 12 }}
-                      type="question-circle"
                     />
                   </Tooltip>
                   <Switch
@@ -272,25 +273,10 @@ class Sider extends React.Component {
             </div>
           </SubMenu>
           <SubMenu
-            key="sub5"
-            title={
-              <span>
-                <Icon type="picture" theme="outlined" className="sub-icon" />
-                <span className="sub-heading">Change Map Terrain</span>
-              </span>
-            }
-          >
-            <TerrainSwitch
-              terrain={terrain}
-              terrainSwitch={this.terrainSwitch}
-              style={{ marginLeft: 48, width: 200 }}
-            />
-          </SubMenu>
-          <SubMenu
             key="sub6"
             title={
               <span>
-                <Icon type="info-circle" />
+                <InfoCircleOutlined />
                 <span className="sub-heading">Map & Marker Information</span>
               </span>
             }
@@ -314,7 +300,7 @@ class Sider extends React.Component {
                 <Divider className="map-info-divider" />
                 <div>
                   {!_.isEmpty(data.map_stats) && _.isEmpty(focusMarker)
-                    ? data.map_stats.map(el => {
+                    ? data.map_stats.map((el) => {
                         return (
                           <div>
                             <b>{el.key}</b> : {el.value}
@@ -332,7 +318,7 @@ class Sider extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   data: state.data,
   poiMarkers: state.poiMarkers,
   mapMarkerTypes: state.mapMarkerTypes,
@@ -347,7 +333,7 @@ const mapStateToProps = state => ({
   openKeys: state.openKeys,
   showLiveTrailUsers: state.showLiveTrailUsers,
   liveTrailUsers: state.liveTrailUsers,
-  focusTrailUser: state.focusTrailUser
+  focusTrailUser: state.focusTrailUser,
 });
 
 export default connect(mapStateToProps)(Sider);
