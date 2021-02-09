@@ -19,7 +19,6 @@ class MapParentComponent extends Component<Props, Record<string, never>> {
   static contextType = ServicesContext;
 
   componentDidMount() {
-    console.log("DID THE THING");
     this.context.mapInitialiser.init();
   }
 
