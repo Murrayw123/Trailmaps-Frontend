@@ -5,6 +5,7 @@ import { applyMiddleware, createStore } from "redux";
 import dataReducer from "./redux/reducers";
 import thunk from "redux-thunk";
 import "../node_modules/antd/dist/antd.css";
+import "leaflet/dist/leaflet.css";
 import "./css/App.css";
 import "./css/Menu.css";
 import "./css/MapComponent.css";

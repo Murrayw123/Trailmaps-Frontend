@@ -7,14 +7,14 @@ import {
   changeSideBarData,
   openDistanceTab,
   setEndPoint,
+  setLatLngFromContextClick,
   setStartPoint,
+  shouldShowContextMenu,
   storeCustomTrack,
   storeDistance,
   storeElevation,
   storeFocusMarker,
   wipeMarkersAndPath,
-  setLatLngFromContextClick,
-  shouldShowContextMenu
 } from "../redux/actions";
 import {
   bicycle,
@@ -25,18 +25,10 @@ import {
   walking,
 } from "../helpers/iconsData";
 import { findPath } from "../helpers/PathCalculator";
-import "leaflet/dist/leaflet.css";
-import {
-  GeoJSON,
-  Map,
-  Marker,
-  TileLayer,
-  WMSTileLayer,
-  ZoomControl,
-} from "react-leaflet";
+import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import PoiMarker from "./PoiMarker";
 import ContextMenu from "./ContextMenuApp";
-import {fetchElevation} from "../redux/requests";
+import { fetchElevation } from "../redux/requests";
 
 class MapComponent extends Component {
   state = { context: false, x: 0, y: 0 };
