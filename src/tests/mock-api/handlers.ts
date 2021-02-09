@@ -1,37 +1,10 @@
 import { rest } from "msw";
 
-const map = rest.get("/maps", async (req, res, ctx) => {
-  return res(
-    ctx.json([
-      {
-        id: 1,
-        map_name: "Munda Biddi",
-        map_alias: "mundabiddi",
-        map_type: "cycling",
-        map_track: {
-          type: "FeatureCollection",
-          features: [
-            {
-              type: "Feature",
-              geometry: {
-                type: "LineString",
-                coordinates: [
-                  [116.16541, -31.90418, 302.929],
-                  [116.16597, -31.90439, 304.38],
-                  [116.16632, -31.90457, 309.836],
-                  [116.16684, -31.90479, 308.844],
-                  [116.16725, -31.90493, 306.495],
-                ],
-              },
-            },
-          ],
-        },
-      },
-    ])
-  );
+const map = rest.get("/api/maps/mundabiddi",  (req, res, ctx) => {
+  return res(ctx.json({ firstName: "John", age: 38 }));
 });
 
-const markers = rest.get("/markers", async (req, res, ctx) => {
+const markers = rest.get("/api/markers/", async (req, res, ctx) => {
   return res(
     ctx.json([
       {
@@ -135,7 +108,7 @@ const markers = rest.get("/markers", async (req, res, ctx) => {
   );
 });
 
-const mapPreview = rest.get("/map_preview", async (req, res, ctx) => {
+const mapPreview = rest.get("api/map_preview", async (req, res, ctx) => {
   return res(
     ctx.json([
       {
@@ -160,7 +133,7 @@ const mapPreview = rest.get("/map_preview", async (req, res, ctx) => {
   );
 });
 
-const spotUsers = rest.get("/spotusers", async (req, res, ctx) => {
+const spotUsers = rest.get("/api/spotusers/", async (req, res, ctx) => {
   return res(ctx.json([]));
 });
 

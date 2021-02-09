@@ -43,165 +43,165 @@ export function handleErrors(response) {
 }
 
 export const fetchDataBegin = () => ({
-  type: FETCH_DATA_BEGIN
+  type: FETCH_DATA_BEGIN,
 });
 
-export const fetchDataSuccess = initMapInfo => ({
+export const fetchDataSuccess = (initMapInfo) => ({
   type: FETCH_DATA_SUCCESS,
-  payload: { initMapInfo }
+  payload: { initMapInfo },
 });
 
-export const fetchMarkerSuccess = markers => ({
+export const fetchMarkerSuccess = (markers) => ({
   type: FETCH_MARKERS_SUCCESS,
-  payload: { markers }
+  payload: { markers },
 });
 
-export const fetchMapsSuccess = maps => ({
+export const fetchMapsSuccess = (maps) => ({
   type: FETCH_MAPS_SUCCESS,
-  payload: { maps }
+  payload: { maps },
 });
 
-export const fetchDataError = error => ({
+export const fetchDataError = (error) => ({
   type: FETCH_DATA_FAILURE,
-  payload: { error }
+  payload: { error },
 });
 
-export const fetchUsersSuccess = users => ({
+export const fetchUsersSuccess = (users) => ({
   type: FETCH_USERS_SUCCESS,
-  payload: { users }
+  payload: { users },
 });
 
-export const addMapMarkerStart = marker => ({
+export const addMapMarkerStart = (marker) => ({
   type: ADD_MAP_MARKER_START,
-  payload: marker
+  payload: marker,
 });
 
-export const addMapMarkerEnd = marker => ({
+export const addMapMarkerEnd = (marker) => ({
   type: ADD_MAP_MARKER_END,
-  payload: marker
+  payload: marker,
 });
 
-export const changeZoomLevel = zoomLevel => ({
+export const changeZoomLevel = (zoomLevel) => ({
   type: CHANGE_ZOOM_LEVEL,
-  payload: zoomLevel
+  payload: zoomLevel,
 });
 
-export const changeFocusPoint = newLatLng => ({
+export const changeFocusPoint = (newLatLng) => ({
   type: CHANGE_FOCUS_POINT,
-  payload: newLatLng
+  payload: newLatLng,
 });
 
-export const storeDistance = marker => ({
+export const storeDistance = (marker) => ({
   type: CALC_DISTANCE,
-  payload: marker
+  payload: marker,
 });
 
-export const storeElevation = marker => ({
+export const storeElevation = (marker) => ({
   type: CALC_ELEVATION,
-  payload: marker
+  payload: marker,
 });
 
-export const storeCustomTrack = path => ({
+export const storeCustomTrack = (path) => ({
   type: STORE_CUSTOM_TRACK,
-  payload: path
+  payload: path,
 });
 
-export const findTrailMarker = data => ({
+export const findTrailMarker = (data) => ({
   type: FIND_TRAIL_MARKERS,
-  payload: data
+  payload: data,
 });
 
-export const filterTrailMarkers = markerTypes => ({
+export const filterTrailMarkers = (markerTypes) => ({
   type: FILTER_TRAIL_MARKERS,
-  payload: markerTypes
+  payload: markerTypes,
 });
 
-export const changeTerrain = terrainKey => ({
+export const changeTerrain = (terrainKey) => ({
   type: CHANGE_TERRAIN,
-  payload: terrainKey
+  payload: terrainKey,
 });
 
-export const setStartPoint = point => ({
+export const setStartPoint = (point) => ({
   type: SET_START_POINT,
-  payload: point
+  payload: point,
 });
 
-export const setEndPoint = point => ({
+export const setEndPoint = (point) => ({
   type: SET_END_POINT,
-  payload: point
+  payload: point,
 });
 
-export const storeFocusMarker = marker => ({
+export const storeFocusMarker = (marker) => ({
   type: STORE_FOCUS_MARKER,
-  payload: marker
+  payload: marker,
 });
 
-export const setCustomDistanceMarker = latlng => ({
+export const setCustomDistanceMarker = (latlng) => ({
   type: SET_CUSTOM_DISTANCE_MARKER,
-  payload: latlng
+  payload: latlng,
 });
 
 export const wipeMarkersAndPath = () => ({
-  type: WIPE_MARKERS_AND_PATH
+  type: WIPE_MARKERS_AND_PATH,
 });
 
 export const wipeMarkers = () => ({
-  type: WIPE_MARKERS
+  type: WIPE_MARKERS,
 });
 
 export const wipeStartMarker = () => ({
-  type: WIPE_START_MARKER
+  type: WIPE_START_MARKER,
 });
 
 export const wipeEndMarker = () => ({
-  type: WIPE_END_MARKER
+  type: WIPE_END_MARKER,
 });
 
-export const allowCustomPath = bool => ({
+export const allowCustomPath = (bool) => ({
   type: ALLOW_CUSTOM_PATH,
-  payload: bool
+  payload: bool,
 });
 
 export const changeSideBarData = (blurb, default_image) => ({
   type: CHANGE_SIDEBAR_DATA,
-  payload: { blurb: blurb, image: default_image }
+  payload: { blurb: blurb, image: default_image },
 });
 
-export const setOpenMenus = menuKeys => ({
+export const setOpenMenus = (menuKeys) => ({
   type: SET_OPEN_MENUS,
-  payload: menuKeys
+  payload: menuKeys,
 });
 
 export const openDistanceTab = () => ({
-  type: OPEN_DISTANCE_TAB
+  type: OPEN_DISTANCE_TAB,
 });
 
-export const toggleLiveTrailUsers = bool => ({
+export const toggleLiveTrailUsers = (bool) => ({
   type: TOGGLE_LIVE_TRAIL_USERS,
-  payload: bool
+  payload: bool,
 });
 
-export const showMarkerAddModal = bool => ({
+export const showMarkerAddModal = (bool) => ({
   type: SHOW_MARKER_ADD_MODAL,
-  payload: bool
+  payload: bool,
 });
 
-export const setLatLngFromContextClick = object => ({
+export const setLatLngFromContextClick = (object) => ({
   type: LAT_LNG_FROM_CONTEXT,
-  payload: object
+  payload: object,
 });
 
-export const shouldShowContextMenu = bool => ({
+export const shouldShowContextMenu = (bool) => ({
   type: SHOULD_SHOW_CONTEXT_MENU,
-  payload: bool
+  payload: bool,
 });
 
-export const fetchElevationLoading = bool => ({
+export const fetchElevationLoading = (bool) => ({
   type: FETCH_ELEVATION_LOADING,
-  payload: bool
+  payload: bool,
 });
 
-export const changeElevationData = data => ({
+export const changeElevationData = (data) => ({
   type: CHANGE_ELEVATION_DATA,
-  payload: data
+  payload: data,
 });

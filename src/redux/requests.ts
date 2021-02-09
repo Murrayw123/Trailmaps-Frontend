@@ -1,9 +1,6 @@
-import { URLPREFIX } from "../config";
+import { URLPREFIX } from "config";
 import * as _ from "lodash";
-import {
-  business_groupings,
-  food_groupings,
-} from "../components/helpers/iconsData";
+import { business_groupings, food_groupings } from "helpers/iconsData";
 import {
   changeElevationData,
   changeSideBarData,
@@ -144,21 +141,21 @@ export function fetchTrailUsers(mapString) {
       .then(handleErrors)
       .then((res) => res.json())
       .then((json) => {
-        let data = [];
+        const data = [];
         json.map((trail_user) => {
           if (trail_user.locations[0]) {
-            let difference =
+            const difference =
               Date.now() -
               Date.parse(trail_user.locations[0].recorded_timestamp);
             if (difference < 86400000 * 3 || true) {
               //less than 3 days
-              var datestr = trail_user.locations[0].recorded_timestamp.split(
+              const datestr = trail_user.locations[0].recorded_timestamp.split(
                 /[-T.]/
               );
-              var safdat = new Date(
+              const safdat = new Date(
                 datestr.slice(0, 3).join("/") + " " + datestr[3]
               );
-              let date = new Date(
+              const date = new Date(
                 safdat
                 // Date.parse(trail_user.locations[0].recorded_timestamp)
               );

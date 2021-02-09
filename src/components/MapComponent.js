@@ -23,8 +23,8 @@ import {
   food_groupings,
   start,
   walking
-} from "./helpers/iconsData";
-import { findPath } from "./helpers/PathCalculator";
+} from "../helpers/iconsData";
+import { findPath } from "../helpers/PathCalculator";
 import "leaflet/dist/leaflet.css";
 import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import PoiMarker from "./PoiMarker";
