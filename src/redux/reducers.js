@@ -7,7 +7,6 @@ import {
   CHANGE_ELEVATION_DATA,
   CHANGE_FOCUS_POINT,
   CHANGE_SIDEBAR_DATA,
-  CHANGE_TERRAIN,
   CHANGE_ZOOM_LEVEL,
   FETCH_DATA_BEGIN,
   FETCH_DATA_FAILURE,
@@ -48,7 +47,6 @@ const initialState = {
   elevation: [],
   customDistance: [],
   customPath: {},
-  terrain: "topo",
   zoom: 10,
   center: 0,
   filters: [],
@@ -183,12 +181,6 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         filters: action.payload
-      };
-
-    case CHANGE_TERRAIN:
-      return {
-        ...state,
-        terrain: action.payload
       };
 
     case SET_START_POINT:

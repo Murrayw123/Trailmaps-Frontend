@@ -197,6 +197,8 @@ export function findIcon(type) {
       return pub;
     case "warning":
       return warning;
+    case "problem":
+      return warning;
     case "taxi":
       return taxi;
     case "cyclist":

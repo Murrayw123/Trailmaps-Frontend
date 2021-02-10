@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MapSelect from "./MapSelect";
-import { fetchOtherMaps } from "../redux/actions";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
+import {fetchOtherMaps} from "../redux/requests";
 
 export class LandingPage extends Component {
   componentDidMount() {
