@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import {
   allowCustomPath,
   changeFocusPoint,
-  changeTerrain,
   changeZoomLevel,
   filterTrailMarkers,
   setEndPoint,
@@ -17,13 +16,13 @@ import {
   wipeMarkersAndPath,
   wipeStartMarker,
 } from "../redux/actions";
-import { Card, Divider, Menu, Switch, Tooltip, Button } from "antd";
+import { Button, Card, Divider, Menu, Switch, Tooltip } from "antd";
 import _ from "lodash";
 import DistanceCalculator from "./DistanceCalculator";
 import DistanceCalculatorForm from "./DistanceCalculatorForm";
 import FilterMarkers from "./Markers";
-import { findPath } from "./helpers/PathCalculator";
-import Icon, {
+import { findPath } from "../helpers/PathCalculator";
+import {
   CalculatorOutlined,
   InfoCircleOutlined,
   QuestionCircleOutlined,
@@ -42,12 +41,12 @@ class Sider extends React.Component {
     let newFocus;
     if (markerType === "distance") {
       newFocus = this.props.poiMarkers.find((el) => {
-        return el.marker_id === parseInt(markerid);
+        return el.id === parseInt(markerid);
       });
     }
     if (markerType === "liveTrailUser") {
       newFocus = this.props.liveTrailUsers.find((el) => {
-        return el.marker_id === parseInt(markerid);
+        return el.id === parseInt(markerid);
       });
     }
     if (type === "locate") {
@@ -102,10 +101,6 @@ class Sider extends React.Component {
 
   filterMarkers = (markers) => {
     this.props.dispatch(filterTrailMarkers(markers));
-  };
-
-  terrainSwitch = (value) => {
-    this.props.dispatch(changeTerrain(value));
   };
 
   toggleCustomPath = (bool) => {

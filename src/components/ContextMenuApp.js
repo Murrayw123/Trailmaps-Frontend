@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Button, Card } from "antd";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 import { shouldShowContextMenu, showMarkerAddModal } from "../redux/actions";
 import Icon from "@ant-design/icons";
 
 export class ContextMenuApp extends Component {
   state = { loading: true, elevation: 0 };
 
-  enableMarkerAdd = e => {
+  enableMarkerAdd = (e) => {
     e.stopPropagation();
     this.props.showMarkerAddModal(true);
   };
@@ -43,7 +43,7 @@ export class ContextMenuApp extends Component {
           </p>
           <Button
             className="marker-add"
-            onClick={e => {
+            onClick={(e) => {
               return this.enableMarkerAdd(e);
             }}
           >
@@ -55,23 +55,20 @@ export class ContextMenuApp extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  showMarkerAddModal: bool => {
+const mapDispatchToProps = (dispatch) => ({
+  showMarkerAddModal: (bool) => {
     dispatch(showMarkerAddModal(bool));
   },
-  shouldShowContextMenu: bool => {
+  shouldShowContextMenu: (bool) => {
     dispatch(shouldShowContextMenu(bool));
-  }
+  },
 });
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   lat: state.latLngFromContext.lat,
   lng: state.latLngFromContext.lng,
   loading: state.fetchElevationLoading,
-  elevationData: state.elevationData
+  elevationData: state.elevationData,
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ContextMenuApp);
+export default connect(mapStateToProps, mapDispatchToProps)(ContextMenuApp);

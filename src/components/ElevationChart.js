@@ -1,19 +1,18 @@
 import {
-  LineChart,
+  Label,
   Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  Label,
-  ResponsiveContainer
 } from "recharts";
 import React, { Component } from "react";
 import { setCustomDistanceMarker } from "../redux/actions";
-import { findPointAlongLine } from "./helpers/PathCalculator";
 import { connect } from "react-redux";
 
 class ElevationChart extends Component {
-  drawMarker = event => {
+  drawMarker = (event) => {
     if (event.activePayload)
       this.props.dispatch(
         setCustomDistanceMarker(event.activePayload[0].payload.coords)
@@ -25,7 +24,7 @@ class ElevationChart extends Component {
   };
 
   render() {
-    let roundData = point => {
+    let roundData = (point) => {
       return point.distance.toFixed(1);
     };
     return (
@@ -33,7 +32,7 @@ class ElevationChart extends Component {
         <LineChart
           data={this.props.customPath.elevationChartData}
           margin={{ top: 5, right: 20, left: 5, bottom: 12 }}
-          onMouseMove={e => this.drawMarker(e)}
+          onMouseMove={(e) => this.drawMarker(e)}
           onMouseLeave={this.wipeMarker}
         >
           <XAxis dataKey={roundData}>
@@ -45,9 +44,8 @@ class ElevationChart extends Component {
             />
           </XAxis>
           <Tooltip
-            labelFormatter={name => "distance: " + name + "km"}
-            formatter={value => value + "m"}
-          />
+            labelFormatter={(name) => "distance: " + name + "km"}
+            formatter={(value) => value + "m"}
           />
           <YAxis allowDecimals={false} dataKey="elevation">
             <Label
@@ -72,8 +70,8 @@ class ElevationChart extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  customPath: state.customPath
+const mapStateToProps = (state) => ({
+  customPath: state.customPath,
 });
 
 export default connect(mapStateToProps)(ElevationChart);
