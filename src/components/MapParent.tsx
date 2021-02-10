@@ -18,8 +18,8 @@ class MapParentComponent extends Component<Props, Record<string, never>> {
   public context: Context;
   static contextType = ServicesContext;
 
-  componentDidMount() {
-    this.context.mapInitialiser.init();
+  async componentDidMount() {
+    await this.context.mapInitialiser.init(window.location.pathname.substring(6));
   }
 
   componentWillUnmount() {

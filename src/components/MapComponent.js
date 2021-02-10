@@ -124,12 +124,12 @@ class MapComponent extends Component {
     let endPoint = this.props.endPoint;
     let focusMarker = this.props.focusMarker;
     if (!_.isEmpty(startPoint)) {
-      if (startPoint.marker_id === marker.marker_id) {
+      if (startPoint.id === marker.id) {
         return true;
       }
     }
     if (!_.isEmpty(endPoint)) {
-      if (endPoint.marker_id === marker.marker_id) {
+      if (endPoint.id === marker.id) {
         return true;
       }
     }
@@ -137,7 +137,7 @@ class MapComponent extends Component {
       let business = business_groupings.includes(marker.marker_type);
       let food = food_groupings.includes(marker.marker_type);
       if (
-        (focusMarker.marker_id === marker.marker_id &&
+        (focusMarker.id === marker.id &&
           this.props.filters.includes(focusMarker.marker_type)) ||
         (business && this.props.filters.includes("trail businesses")) ||
         (food && this.props.filters.includes("drinks & dining"))

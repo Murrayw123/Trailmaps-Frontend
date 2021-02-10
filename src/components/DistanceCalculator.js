@@ -6,7 +6,7 @@ class DistanceCalculator extends Component {
   render() {
     const { dataSource, onSelect, type, value, inputDirty, markerType } = this.props
     const options = dataSource.map(poi => (
-      <Option key={poi.marker_id}>{poi.marker_title}</Option>
+      <Option key={poi.id}>{poi.marker_title}</Option>
     ));
     return (
       <div>

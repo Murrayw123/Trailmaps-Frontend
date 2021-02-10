@@ -16,6 +16,7 @@ import {
   handleErrors,
 } from "./actions";
 import { Dispatch } from "redux";
+import { processMarkerGroupings } from "redux/requests_helpers";
 
 export function fetchElevation(
   lat: number,
@@ -40,81 +41,44 @@ export function fetchElevation(
 }
 
 export function fetchData(mapString: string): (dispatch: Dispatch) => void {
-  return (dispatch) => {
-    dispatch(fetchDataBegin());
-    fetch(URLPREFIX + "/api/maps/" + mapString)
-      .then(handleErrors)
-      .then((res) => res.json())
-      .then((json) => {
-        const clonedJson = _.cloneDeep(json);
-        const filters = [];
-        clonedJson.default_filters.forEach((filter) =>
-          filters.push(filter.type)
-        );
-        clonedJson.filters = filters;
-        dispatch(changeZoomLevel(clonedJson.zoom_level));
-        dispatch(
-          changeSideBarData(clonedJson.map_blurb, clonedJson.default_image)
-        );
-        dispatch(fetchDataSuccess(clonedJson));
-        return clonedJson;
-      })
-      .catch((error) => {
-        console.error(error, "MapInfo");
-        dispatch(fetchDataError(error));
-      });
+  return async (dispatch) => {
+    try {
+      dispatch(fetchDataBegin());
+      const res = await fetch(URLPREFIX + "/api/maps/" + mapString);
+      const json = await res.json();
+      const clone = _.cloneDeep(json);
+      const filters = [];
+      clone.default_filters.forEach((filter) => filters.push(filter.type));
+      clone.filters = filters;
+      dispatch(changeZoomLevel(clone.zoom_level));
+      dispatch(
+        changeSideBarData(clone.map_blurb, clone.default_image)
+      );
+      dispatch(fetchDataSuccess(clone));
+      return clone;
+    } catch (e) {
+      console.error(e, "MapInfo");
+      dispatch(fetchDataError(e));
+      return e;
+    }
   };
 }
 
 export function fetchMarkers(mapString: string): (dispatch: Dispatch) => void {
-  return (dispatch) => {
-    dispatch(fetchDataBegin());
-    fetch(URLPREFIX + "/api/markers?map_alias=" + mapString)
-      .then(handleErrors)
-      .then((res) => res.json())
-      .then((json) => {
-        return json.map((el) => {
-          return {
-            marker_id: el.id,
-            marker_type: el.marker_type,
-            marker_lat: el.marker_lat,
-            marker_lng: el.marker_lng,
-            marker_info: el.marker_info,
-            marker_title: el.marker_title,
-            marker_blurb: el.marker_blurb,
-            default_image: el.default_image,
-          };
-        });
-      })
-      .then((data) => {
-        const mapMarkerTypes = [];
-        data.forEach((marker) => {
-          if (
-            food_groupings.includes(marker.marker_type) &&
-            !mapMarkerTypes.includes("drinks & dining")
-          ) {
-            mapMarkerTypes.push("drinks & dining");
-          } else if (
-            business_groupings.includes(marker.marker_type) &&
-            !mapMarkerTypes.includes("trail businesses")
-          ) {
-            mapMarkerTypes.push("trail businesses");
-          } else if (
-            !mapMarkerTypes.includes(marker.marker_type) &&
-            !business_groupings.includes(marker.marker_type) &&
-            !food_groupings.includes(marker.marker_type)
-          ) {
-            console.log(marker.marker_type);
-            mapMarkerTypes.push(marker.marker_type);
-          }
-        });
-        dispatch(findTrailMarker(mapMarkerTypes));
-        dispatch(fetchMarkerSuccess(data));
-      })
-      .catch((error) => {
-        console.error(error, "Markers");
-        dispatch(fetchDataError(error));
-      });
+  return async (dispatch) => {
+    try {
+      dispatch(fetchDataBegin());
+      const result = await fetch(
+        URLPREFIX + "/api/markers?map_alias=" + mapString
+      );
+      const markers = await result.json();
+      const mapMarkerTypes = processMarkerGroupings(markers);
+      dispatch(findTrailMarker(mapMarkerTypes));
+      dispatch(fetchMarkerSuccess(markers));
+    } catch (e) {
+      console.error(e, "Markers");
+      dispatch(fetchDataError(e));
+    }
   };
 }
 
@@ -160,7 +124,7 @@ export function fetchTrailUsers(mapString) {
                 // Date.parse(trail_user.locations[0].recorded_timestamp)
               );
               data.push({
-                marker_id: trail_user.id,
+                id: trail_user.id,
                 marker_type: trail_user.user_type,
                 marker_lat: trail_user.locations[0].latitude,
                 marker_lng: trail_user.locations[0].longitude,

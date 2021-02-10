@@ -6,8 +6,12 @@ export interface Context {
   mapInitialiser: MapInitialiser;
 }
 
+export interface IServices {
+  mapInitialiser: MapInitialiser;
+}
+
 export class Services {
-  private _services: any;
+  private _services: IServices;
   private _dataStore: Store;
 
   constructor(dataStore: Store) {
@@ -17,7 +21,7 @@ export class Services {
     };
   }
 
-  public getServices() {
+  public getServices(): IServices {
     return this._services;
   }
 }
