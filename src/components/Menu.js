@@ -29,6 +29,7 @@ import Icon, {
   QuestionCircleOutlined,
   SearchOutlined,
   SelectOutlined,
+  SettingOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 
@@ -164,12 +165,7 @@ class Sider extends React.Component {
           className="title"
           title={
             <span>
-              <Icon
-                style={{ fontSize: "1.4em" }}
-                type="setting"
-                theme="outlined"
-                className="icons-large"
-              />
+              <SettingOutlined style={{ fontSize: "1.4em" }} />
               <span id="map-tool-heading"> Map Tools</span>
             </span>
           }
