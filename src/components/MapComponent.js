@@ -7,15 +7,14 @@ import {
   changeSideBarData,
   openDistanceTab,
   setEndPoint,
+  setLatLngFromContextClick,
   setStartPoint,
+  shouldShowContextMenu,
   storeCustomTrack,
   storeDistance,
   storeElevation,
   storeFocusMarker,
   wipeMarkersAndPath,
-  setLatLngFromContextClick,
-  shouldShowContextMenu,
-  fetchElevation,
 } from "../redux/actions";
 import {
   bicycle,
@@ -24,19 +23,12 @@ import {
   food_groupings,
   start,
   walking,
-} from "./helpers/iconsData";
-import { findPath } from "./helpers/PathCalculator";
-import "leaflet/dist/leaflet.css";
-import {
-  GeoJSON,
-  Map,
-  Marker,
-  TileLayer,
-  WMSTileLayer,
-  ZoomControl,
-} from "react-leaflet";
+} from "../helpers/iconsData";
+import { findPath } from "../helpers/PathCalculator";
+import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import PoiMarker from "./PoiMarker";
 import ContextMenu from "./ContextMenuApp";
+import { fetchElevation } from "../redux/requests";
 
 class MapComponent extends Component {
   state = { context: false, x: 0, y: 0 };
@@ -132,12 +124,12 @@ class MapComponent extends Component {
     let endPoint = this.props.endPoint;
     let focusMarker = this.props.focusMarker;
     if (!_.isEmpty(startPoint)) {
-      if (startPoint.marker_id === marker.marker_id) {
+      if (startPoint.id === marker.id) {
         return true;
       }
     }
     if (!_.isEmpty(endPoint)) {
-      if (endPoint.marker_id === marker.marker_id) {
+      if (endPoint.id === marker.id) {
         return true;
       }
     }
@@ -145,7 +137,7 @@ class MapComponent extends Component {
       let business = business_groupings.includes(marker.marker_type);
       let food = food_groupings.includes(marker.marker_type);
       if (
-        (focusMarker.marker_id === marker.marker_id &&
+        (focusMarker.id === marker.id &&
           this.props.filters.includes(focusMarker.marker_type)) ||
         (business && this.props.filters.includes("trail businesses")) ||
         (food && this.props.filters.includes("drinks & dining"))
