@@ -12,9 +12,9 @@ export class RouteSwitcher extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/" render={(props) => <LandingPage {...props} />} />
         <Route exact path="/mundabiddi" component={this.onMapSelect} />
-        <Route path="/maps/" component={MapHOC} />
+        <Route path="/maps/" render={(props) => <MapHOC {...props} />} />
         <Route component={NotFound} />
       </Switch>
     );

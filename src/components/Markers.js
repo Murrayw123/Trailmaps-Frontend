@@ -11,6 +11,7 @@ export default class Filters extends Component {
         options={mapMarkerTypes}
         onChange={this.props.filterMarkers}
         defaultValue={this.props.currentFilters}
+        className={"filters-checkbox"}
       />
     );
   }

@@ -156,7 +156,7 @@ class MapComponent extends Component {
   filterMarkers = () => {
     //if the marker is in the filtered list
     let validMarkers = [];
-    this.props.poiMarkers.map((marker) => {
+    this.props.poiMarkers.forEach((marker, index) => {
       let business = business_groupings.includes(marker.marker_type);
       let food = food_groupings.includes(marker.marker_type);
       if (
@@ -166,7 +166,7 @@ class MapComponent extends Component {
         this.shouldShowMarker(marker)
       ) {
         validMarkers.push(
-          <PoiMarker marker={marker} onClick={this.onClickMarker} />
+          <PoiMarker key={index} marker={marker} onClick={this.onClickMarker} />
         );
       }
     });
@@ -223,9 +223,13 @@ class MapComponent extends Component {
 
         {showLiveTrailUsers
           ? //Spot users
-            liveTrailUsers.map((trailUser) => {
+            liveTrailUsers.forEach((trailUser, index) => {
               return (
-                <PoiMarker marker={trailUser} onClick={this.onClickMarker} />
+                <PoiMarker
+                  key={index}
+                  marker={trailUser}
+                  onClick={this.onClickMarker}
+                />
               );
             })
           : null}

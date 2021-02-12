@@ -31,12 +31,15 @@ import {
   SettingOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import { SpotMenuComponent } from "components/SpotMenuComponent";
+import { MapStatsComponent } from "components/MenuComponents/MapStatsComponent";
+import {MapBlurbComponent} from "components/MenuComponents/MapBlurbComponent";
 
 export const DISTANCE_KEY = "distanceTab";
 
 const SubMenu = Menu.SubMenu;
 
-class Sider extends React.Component {
+class Sider extends React.Component<any, any> {
   dataSelect = (markerid, type, markerType) => {
     let newFocus;
     if (markerType === "distance") {
@@ -66,7 +69,7 @@ class Sider extends React.Component {
 
   submitDistance = (e) => {
     e.preventDefault();
-    let pathAndDistance = this.calculateInfo();
+    const pathAndDistance = this.calculateInfo();
     this.props.dispatch(storeCustomTrack(pathAndDistance));
   };
 
@@ -77,7 +80,7 @@ class Sider extends React.Component {
 
   calculateInfo = () => {
     //deals with custom route finding
-    let pathObj = [
+    const pathObj = [
       {
         start: {
           marker_lat: this.props.startPoint.marker_lat,
@@ -91,7 +94,7 @@ class Sider extends React.Component {
         },
       },
     ];
-    let pathAndDistance = findPath(
+    const pathAndDistance = findPath(
       this.props.data.map_track,
       pathObj[0].start,
       pathObj[1].finish
@@ -119,8 +122,8 @@ class Sider extends React.Component {
   };
 
   isButtonDisabled = () => {
-    let startEmpty = _.isEmpty(this.props.startPoint);
-    let endEmpty = _.isEmpty(this.props.endPoint);
+    const startEmpty = _.isEmpty(this.props.startPoint);
+    const endEmpty = _.isEmpty(this.props.endPoint);
     if (startEmpty || endEmpty) {
       return true;
     } else {
@@ -140,7 +143,6 @@ class Sider extends React.Component {
       mapMarkerTypes,
       sideBarImage,
       sideBarBlurb,
-      terrain,
       focusMarker,
       filters,
       openKeys,
@@ -148,6 +150,7 @@ class Sider extends React.Component {
     } = this.props;
     return (
       <Menu
+        key={1}
         className="overlayMenu"
         onOpenChange={this.handleMenuOpen}
         style={{ width: 300, opacity: 0.9 }}
@@ -206,6 +209,7 @@ class Sider extends React.Component {
             />
           </SubMenu>
           <SubMenu
+            className={"filter-option"}
             key="sub3"
             title={
               <span>
@@ -222,7 +226,7 @@ class Sider extends React.Component {
             />
           </SubMenu>
           <SubMenu
-            key="sub4"
+            key="trail-users"
             title={
               <span>
                 <UserOutlined />
@@ -230,42 +234,13 @@ class Sider extends React.Component {
               </span>
             }
           >
-            <div style={{ marginLeft: 48 }}>
-              <Card
-                className="filter-trail-users"
-                bordered={false}
-                style={{ width: 250 }}
-              >
-                <span>
-                  Show all live trail users
-                  <Tooltip title="Find users with a registered SPOT or Garmin GPS device">
-                    <QuestionCircleOutlined
-                      style={{ paddingLeft: 4, fontSize: 12 }}
-                    />
-                  </Tooltip>
-                  <Switch
-                    size="small"
-                    style={{ marginLeft: 5 }}
-                    checked={this.props.showLiveTrailUsers}
-                    onChange={this.toggleShowLiveTrailUsers}
-                  />
-                </span>
-              </Card>
-              <DistanceCalculator
-                placeHolder={"Find Trail User"}
-                dataSource={liveTrailUsers}
-                type={"locate"}
-                onSelect={this.dataSelect}
-                value={_.has(focusMarker, "gps_locations") ? focusMarker : null}
-                markerType={"liveTrailUser"}
-              />
-              <Button
-                href={"https://forms.gle/ajMvSzBzQg83XE5F7"}
-                target={"_blank"}
-              >
-                Link a GPS Tracker
-              </Button>
-            </div>
+            <SpotMenuComponent
+              showLiveTrailUsers={this.toggleShowLiveTrailUsers}
+              focusMarker={focusMarker}
+              liveTrailUsers={liveTrailUsers}
+              dataSelect={this.dataSelect}
+              toggleShowLiveTrailUsers={this.toggleShowLiveTrailUsers}
+            />
           </SubMenu>
           <SubMenu
             key="sub6"
@@ -285,26 +260,8 @@ class Sider extends React.Component {
                 </span>
               ) : null}
               <Divider className="map-info-divider" />
-              <p style={{ marginRight: 20 }}>
-                <b> Information: </b>
-                {_.isEmpty(focusMarker)
-                  ? sideBarBlurb
-                  : focusMarker.marker_blurb}
-              </p>
-              <p>
-                <Divider className="map-info-divider" />
-                <div>
-                  {!_.isEmpty(data.map_stats) && _.isEmpty(focusMarker)
-                    ? data.map_stats.map((el) => {
-                        return (
-                          <div>
-                            <b>{el.key}</b> : {el.value}
-                          </div>
-                        );
-                      })
-                    : null}
-                </div>
-              </p>
+              <MapBlurbComponent focusMarker={focusMarker} sideBarBlurb={sideBarBlurb}/>
+              <MapStatsComponent focusMarker={focusMarker} data={data} />
             </Card>
           </SubMenu>
         </SubMenu>
