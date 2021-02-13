@@ -1,8 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
-import { Button, Card, Divider, Switch, Tooltip } from "antd";
+import {connect} from "react-redux";
+import {Button, Card, Divider, Switch, Tooltip} from "antd";
 import DistanceCalculator from "./DistanceCalculator";
-import Icon, { CalculatorOutlined, DeleteOutlined } from '@ant-design/icons';
+import {CalculatorOutlined, DeleteOutlined, QuestionCircleOutlined,} from "@ant-design/icons";
 
 class DistanceCalculatorForm extends React.Component {
   render() {
@@ -17,57 +17,52 @@ class DistanceCalculatorForm extends React.Component {
       customPath,
     } = this.props;
     return (
-      <div style={{ marginLeft: 48 }}>
-        <div>
-          <DistanceCalculator
-            placeHolder={"Start point"}
-            onSelect={dataSelect}
-            type={"start"}
-            dataSource={dataSource}
-            value={startPoint}
-            className="distance-calculator"
-            markerType="distance"
-          />
-          <DistanceCalculator
-            placeHolder={"End point"}
-            onSelect={dataSelect}
-            type={"end"}
-            dataSource={dataSource}
-            value={endPoint}
-            markerType="distance"
-          />
-          {this.props.customDistance}
+      <>
+        <DistanceCalculator
+          placeHolder={"Start point"}
+          onSelect={dataSelect}
+          type={"start"}
+          dataSource={dataSource}
+          value={startPoint}
+          className="distance-calculator"
+          markerType="distance"
+        />
+        <DistanceCalculator
+          placeHolder={"End point"}
+          onSelect={dataSelect}
+          type={"end"}
+          dataSource={dataSource}
+          value={endPoint}
+          markerType="distance"
+        />
+        {this.props.customDistance}
+        <Button
+          disabled={buttonDisabled}
+          icon={<CalculatorOutlined />}
+          type="primary"
+          htmlType="submit"
+          className="login-form-button"
+          onClick={submitDistance}
+        >
+          Calculate
+        </Button>
+        {customPath.path ? (
           <Button
-            disabled={buttonDisabled}
-            icon={<CalculatorOutlined />}
-            type="primary"
+            icon={<DeleteOutlined />}
+            type="default"
             htmlType="submit"
-            className="login-form-button"
-            onClick={submitDistance}
+            className="clear-path"
+            onClick={clearPath}
           >
-            Calculate
+            Clear
           </Button>
-          {customPath.path ? (
-            <Button
-              icon={<DeleteOutlined />}
-              type="default"
-              htmlType="submit"
-              className="clear-path"
-              onClick={clearPath}
-            >
-              Clear
-            </Button>
-          ) : null}
-        </div>
+        ) : null}
         <Divider className="distance-divider" />
         <Card bordered={false} style={{ width: 250 }}>
           <span>
             Custom Path Creation
             <Tooltip title="Click on the map to define a custom start and end point ">
-              <Icon
-                style={{ paddingLeft: 4, fontSize: 12 }}
-                type="question-circle"
-              />
+              <QuestionCircleOutlined style={{ paddingLeft: 4, fontSize: 12 }} />
             </Tooltip>
             <Switch
               size="small"
@@ -93,7 +88,7 @@ class DistanceCalculatorForm extends React.Component {
             </p>
           </Card>
         ) : null}
-      </div>
+      </>
     );
   }
 }

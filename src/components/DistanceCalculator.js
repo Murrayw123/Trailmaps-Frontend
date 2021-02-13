@@ -1,19 +1,27 @@
-import React, { Component } from 'react'
-import { Select } from 'antd'
-const Option = Select.Option
+import React, { Component } from "react";
+import { Select } from "antd";
+const Option = Select.Option;
 
 class DistanceCalculator extends Component {
   render() {
-    const { dataSource, onSelect, type, value, inputDirty, markerType } = this.props
-    const options = dataSource.map(poi => (
+    const {
+      dataSource,
+      onSelect,
+      type,
+      value,
+      inputDirty,
+      markerType,
+    } = this.props;
+    const options = dataSource.map((poi) => (
       <Option key={poi.id}>{poi.marker_title}</Option>
     ));
     return (
-      <div>
+      <>
         <Select
           showSearch
           mode={this.props.mode}
-          style={{ width: 200, marginBottom: 10 }}
+          style={{ width: 200 }}
+          className={"distance-select"}
           onInputKeyDown={inputDirty}
           placeholder={this.props.placeHolder}
           filterOption={(inputValue, option) =>
@@ -21,16 +29,16 @@ class DistanceCalculator extends Component {
               .toUpperCase()
               .indexOf(inputValue.toUpperCase()) !== -1
           }
-          onSelect={e => {
-            onSelect(e, type, markerType)
+          onSelect={(e) => {
+            onSelect(e, type, markerType);
           }}
           value={value ? value.marker_title : null}
         >
           {options}
         </Select>
-      </div>
-    )
+      </>
+    );
   }
 }
 
-export default DistanceCalculator
+export default DistanceCalculator;

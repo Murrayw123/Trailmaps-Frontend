@@ -51,9 +51,7 @@ export function fetchData(mapString: string): (dispatch: Dispatch) => void {
       clone.default_filters.forEach((filter) => filters.push(filter.type));
       clone.filters = filters;
       dispatch(changeZoomLevel(clone.zoom_level));
-      dispatch(
-        changeSideBarData(clone.map_blurb, clone.default_image)
-      );
+      dispatch(changeSideBarData(clone.map_blurb, clone.default_image));
       dispatch(fetchDataSuccess(clone));
       return clone;
     } catch (e) {
@@ -82,8 +80,22 @@ export function fetchMarkers(mapString: string): (dispatch: Dispatch) => void {
   };
 }
 
+export function postNewMarker(formData: unknown): Promise<boolean> {
+  const settings = {
+    method: "POST",
+    headers: {
+      "X-Requested-With": "XMLHttpRequest",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  };
+  return fetch(URLPREFIX + "/api/submit_marker", settings).then((response) => {
+    return response.status === 201;
+  });
+}
+
 export function fetchOtherMaps() {
-  return (dispatch) => {
+  return (dispatch: Dispatch) => {
     dispatch(fetchDataBegin());
     fetch(URLPREFIX + "/api/map_preview")
       .then(handleErrors)

@@ -83,9 +83,9 @@ export class PoiMarker extends Component {
           </div>
           <Divider style={{ marginTop: 0, marginBottom: 5 }} />
           <div className="popupText">
-            {info.map((el) => {
+            {info.map((el, count) => {
               return (
-                <div>
+                <div key={count}>
                   <b> {el.title}: </b> {el.value}
                 </div>
               );

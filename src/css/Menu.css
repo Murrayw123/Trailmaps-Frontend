@@ -16,9 +16,11 @@
   font-size: 1.3em;
 }
 
+.ant-menu-item-only-child {
+  padding-left: 0;
+}
+
 .title > div.ant-menu-submenu-title {
-  position: fixed;
-  height: 40px;
   width: 300px;
   z-index: 150;
   margin-top: 0px;
@@ -78,7 +80,6 @@
 }
 
 .info-card {
-  margin-left: 48px;
   width: 250px;
   padding-top: 0px;
 }
@@ -92,6 +93,39 @@
   width: 90%;
 }
 
+.ant-menu-sub.ant-menu-inline > .ant-menu-item {
+  height: initial;
+}
+
 p {
   margin: 0;
+}
+
+.ant-menu-item {
+  white-space: initial;
+}
+
+.ant-menu-inline .ant-menu-item {
+  line-height: initial;
+}
+
+.ant-menu-sub.ant-menu-inline > .ant-menu-item {
+  line-height: initial;
+}
+
+.ant-menu-inline .ant-menu-item {
+  line-height: initial;
+  margin-top: 0;
+}
+
+.distance-calculator .distance-select {
+  margin-bottom: 7px;
+}
+
+.distance-calculator .distance-select {
+  margin-bottom: 10px;
+}
+
+.trail-users .distance-select {
+  margin-bottom: 10px;
 }
