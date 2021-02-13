@@ -3,8 +3,8 @@ import { Rnd as ElevationChartWrapper } from "react-rnd";
 import ElevationChart from "components/ElevationChart";
 import _ from "lodash";
 import { connect } from "react-redux";
-import Icon from "@ant-design/icons";
-import {Button} from "antd";
+import Icon, { DownCircleOutlined, UpCircleOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 
 interface Props {
   customPath: any;
@@ -47,9 +47,8 @@ class ElevationChartComponent extends Component<Props, State> {
             }}
           >
             <ElevationChart />
-            <Icon
+            <DownCircleOutlined
               className="minimise-chart"
-              type="down-circle"
               onClick={() => {
                 this.elevationChartStatus(false);
               }}
@@ -67,7 +66,7 @@ class ElevationChartComponent extends Component<Props, State> {
           >
             <span>
               Show Elevation
-              <Icon className="minimise-chart" type="up-circle" />
+              <UpCircleOutlined className="minimise-chart" />
             </span>
           </Button>
         ) : null}

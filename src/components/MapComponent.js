@@ -29,10 +29,14 @@ import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import PoiMarker from "./PoiMarker";
 import ContextMenu from "./ContextMenuApp";
 import { fetchElevation } from "../redux/requests";
+import {DISTANCE_KEY} from "./Menu";
 
 class MapComponent extends Component {
   state = { context: false, x: 0, y: 0 };
   checkMarkers = (e) => {
+    if (this.props.shouldShowContextMenuStatus) {
+      return;
+    }
     if (e.originalEvent.target["type"] !== "button") {
       this.props.shouldShowContextMenu(false);
     }
@@ -60,7 +64,7 @@ class MapComponent extends Component {
       marker_lat: e.latlng.lat,
       marker_lng: e.latlng.lng,
     };
-    if (!this.props.openKeys.includes("distanceTab")) {
+    if (!this.props.openKeys.includes(DISTANCE_KEY)) {
       this.props.openDistanceTab();
     }
     if (e.startEnd === "start") {
@@ -156,7 +160,7 @@ class MapComponent extends Component {
   filterMarkers = () => {
     //if the marker is in the filtered list
     let validMarkers = [];
-    this.props.poiMarkers.map((marker) => {
+    this.props.poiMarkers.forEach((marker, index) => {
       let business = business_groupings.includes(marker.marker_type);
       let food = food_groupings.includes(marker.marker_type);
       if (
@@ -166,7 +170,7 @@ class MapComponent extends Component {
         this.shouldShowMarker(marker)
       ) {
         validMarkers.push(
-          <PoiMarker marker={marker} onClick={this.onClickMarker} />
+          <PoiMarker key={index} marker={marker} onClick={this.onClickMarker} />
         );
       }
     });
@@ -223,9 +227,13 @@ class MapComponent extends Component {
 
         {showLiveTrailUsers
           ? //Spot users
-            liveTrailUsers.map((trailUser) => {
+            liveTrailUsers.forEach((trailUser, index) => {
               return (
-                <PoiMarker marker={trailUser} onClick={this.onClickMarker} />
+                <PoiMarker
+                  key={index}
+                  marker={trailUser}
+                  onClick={this.onClickMarker}
+                />
               );
             })
           : null}

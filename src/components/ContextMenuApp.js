@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import { Button, Card } from "antd";
 import { connect } from "react-redux";
 import { shouldShowContextMenu, showMarkerAddModal } from "../redux/actions";
-import Icon from "@ant-design/icons";
+import { CloseCircleOutlined, LoadingOutlined } from "@ant-design/icons";
 
 export class ContextMenuApp extends Component {
   state = { loading: true, elevation: 0 };
 
   enableMarkerAdd = (e) => {
-    e.stopPropagation();
     this.props.showMarkerAddModal(true);
   };
 
@@ -26,7 +25,7 @@ export class ContextMenuApp extends Component {
           extra={
             <span>
               <a onClick={this.onClick}>
-                <Icon type="close" />
+                <CloseCircleOutlined />
               </a>
             </span>
           }
@@ -39,15 +38,16 @@ export class ContextMenuApp extends Component {
           </p>
           <p>
             <b>Elevation: </b>
-            {loading ? <Icon type="loading" /> : elevationData + "m"}
+            {loading ? <LoadingOutlined /> : elevationData + "m"}
           </p>
           <Button
             className="marker-add"
             onClick={(e) => {
-              return this.enableMarkerAdd(e);
+              e.stopPropagation();
+              this.enableMarkerAdd(e);
             }}
           >
-            Add Marker Here
+            Add New Marker Here
           </Button>
         </Card>
       </div>
