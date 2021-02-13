@@ -59,7 +59,7 @@ const initialState = {
   allowCustomPath: false,
   sideBarImage: null,
   sideBarBlurb: null,
-  openKeys: ["menu", "sub6"],
+  openKeys: ["menu", "mapMarkerInformation"],
   allMaps: [],
   showLiveTrailUsers: true,
   liveTrailUsers: [],
