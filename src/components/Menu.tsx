@@ -16,28 +16,27 @@ import {
   wipeMarkersAndPath,
   wipeStartMarker,
 } from "../redux/actions";
-import { Button, Card, Divider, Menu, Switch, Tooltip } from "antd";
+import { Menu } from "antd";
 import _ from "lodash";
-import DistanceCalculator from "./DistanceCalculator";
 import DistanceCalculatorForm from "./DistanceCalculatorForm";
 import FilterMarkers from "./Markers";
-import { findPath } from "../helpers/PathCalculator";
-import {
-  CalculatorOutlined,
-  InfoCircleOutlined,
-  QuestionCircleOutlined,
-  SearchOutlined,
-  SelectOutlined,
-  SettingOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { findPath } from "helpers/PathCalculator";
 import { SpotMenuComponent } from "components/SpotMenuComponent";
-import { MapStatsComponent } from "components/MenuComponents/MapStatsComponent";
-import {MapBlurbComponent} from "components/MenuComponents/MapBlurbComponent";
+import { PointOnMap } from "components/MenuComponents/PointOnMapComponent";
+import { MapAndMarkerInfoComponent } from "components/MenuComponents/MapAndMarkerInfoComponent";
+import {
+  DistanceAndElevation,
+  FilterMarkersHeader,
+  LiveTrailUsers,
+  LocatePoint,
+  MapAndMarkerInformation,
+  MapTools,
+} from "components/MenuComponents/Headings";
 
 export const DISTANCE_KEY = "distanceTab";
 
 const SubMenu = Menu.SubMenu;
+const Item = Menu.Item;
 
 class Sider extends React.Component<any, any> {
   dataSelect = (markerid, type, markerType) => {
@@ -153,116 +152,85 @@ class Sider extends React.Component<any, any> {
         key={1}
         className="overlayMenu"
         onOpenChange={this.handleMenuOpen}
-        style={{ width: 300, opacity: 0.9 }}
-        defaultOpenKeys={["menu", "sub6"]}
+        style={{ width: 300 }}
+        defaultOpenKeys={["menu", "mapMarkerInformation"]}
+        selectable={false}
         openKeys={openKeys}
         mode="inline"
+        inlineIndent={15}
       >
-        <SubMenu
-          key="menu"
-          className="title"
-          title={
-            <span>
-              <SettingOutlined style={{ fontSize: "1.4em" }} />
-              <span id="map-tool-heading"> Map Tools</span>
-            </span>
-          }
-        >
-          <Divider style={{ margin: 0 }} />
+        <SubMenu key="menu" className="title" title={<MapTools />}>
           <SubMenu
-            style={{ paddingTop: 40 }}
-            key="sub1"
-            title={
-              <span>
-                <SearchOutlined />
-                <span className="sub-heading">Locate Point on Map</span>
-              </span>
-            }
+            key={"pointOnMap"}
+            title={<LocatePoint />}
+            className={"point-on-map"}
           >
-            <div style={{ marginLeft: 48 }}>
-              <DistanceCalculator
-                placeHolder={"Point on map"}
-                dataSource={poiMarkers}
-                type={"locate"}
-                onSelect={this.dataSelect}
-                value={focusMarker}
-                markerType={"distance"}
+            <Item>
+              <PointOnMap
+                poiMarkers={poiMarkers}
+                dataSelect={this.dataSelect}
+                focusMarker={focusMarker}
               />
-            </div>
+            </Item>
           </SubMenu>
           <SubMenu
             key={DISTANCE_KEY}
-            title={
-              <span>
-                <CalculatorOutlined />
-                <span className="sub-heading">Distance and Elevation</span>
-              </span>
-            }
+            title={<DistanceAndElevation />}
+            className={"distance-calculator"}
           >
-            <DistanceCalculatorForm
-              dataSource={poiMarkers}
-              dataSelect={this.dataSelect}
-              buttonDisabled={this.isButtonDisabled()}
-              submitDistance={this.submitDistance}
-              clearPath={this.clearPath}
-              toggleCustomPath={this.toggleCustomPath}
-            />
+            <Item>
+              <DistanceCalculatorForm
+                dataSource={poiMarkers}
+                dataSelect={this.dataSelect}
+                buttonDisabled={this.isButtonDisabled()}
+                submitDistance={this.submitDistance}
+                clearPath={this.clearPath}
+                toggleCustomPath={this.toggleCustomPath}
+              />
+            </Item>
           </SubMenu>
           <SubMenu
-            className={"filter-option"}
-            key="sub3"
-            title={
-              <span>
-                <SelectOutlined />
-                <span className="sub-heading"> Filter Visible Markers</span>
-              </span>
-            }
+            key={"filterMarkers"}
+            title={<FilterMarkersHeader />}
+            className={"filter-options"}
           >
-            <FilterMarkers
-              mapMarkerTypes={mapMarkerTypes}
-              filterMarkers={this.filterMarkers}
-              currentFilters={filters}
-              style={{ marginLeft: 48, width: 200 }}
-            />
+            <Item>
+              <FilterMarkers
+                mapMarkerTypes={mapMarkerTypes}
+                filterMarkers={this.filterMarkers}
+                currentFilters={filters}
+                style={{ width: 200 }}
+              />
+            </Item>
           </SubMenu>
           <SubMenu
             key="trail-users"
-            title={
-              <span>
-                <UserOutlined />
-                <span className="sub-heading"> Live Trail Users</span>
-              </span>
-            }
+            title={<LiveTrailUsers />}
+            className={"trail-users"}
           >
-            <SpotMenuComponent
-              showLiveTrailUsers={this.toggleShowLiveTrailUsers}
-              focusMarker={focusMarker}
-              liveTrailUsers={liveTrailUsers}
-              dataSelect={this.dataSelect}
-              toggleShowLiveTrailUsers={this.toggleShowLiveTrailUsers}
-            />
+            <Item>
+              <SpotMenuComponent
+                showLiveTrailUsers={this.toggleShowLiveTrailUsers}
+                focusMarker={focusMarker}
+                liveTrailUsers={liveTrailUsers}
+                dataSelect={this.dataSelect}
+                toggleShowLiveTrailUsers={this.toggleShowLiveTrailUsers}
+              />
+            </Item>
           </SubMenu>
           <SubMenu
-            key="sub6"
-            title={
-              <span>
-                <InfoCircleOutlined />
-                <span className="sub-heading">Map & Marker Information</span>
-              </span>
-            }
+            key="mapMarkerInformation"
+            title={<MapAndMarkerInformation />}
+            className={"map-marker-info"}
           >
-            <Card bordered={false} className="info-card">
-              {!_.isEmpty(sideBarImage) &&
-              sideBarImage !== "" &&
-              sideBarImage != null ? (
-                <span>
-                  <img className="map-blurb-img" src={sideBarImage} />
-                </span>
-              ) : null}
-              <Divider className="map-info-divider" />
-              <MapBlurbComponent focusMarker={focusMarker} sideBarBlurb={sideBarBlurb}/>
-              <MapStatsComponent focusMarker={focusMarker} data={data} />
-            </Card>
+            <Item>
+              <MapAndMarkerInfoComponent
+                sideBarImage={sideBarImage}
+                focusMarker={focusMarker}
+                sideBarBlurb={sideBarBlurb}
+                data={data}
+              />
+            </Item>
           </SubMenu>
         </SubMenu>
       </Menu>

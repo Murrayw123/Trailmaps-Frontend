@@ -27,10 +27,6 @@ body {
   background: white;
 }
 
-.ant-select-tree-dropdown {
-  opacity: 0.9;
-}
-
 .recharts-wrapper {
   display: "flex";
   align-items: "center";
@@ -59,7 +55,6 @@ body {
   z-index: 9999;
   bottom: 0;
   background-color: white;
-  opacity: 0.8;
   border: none;
   border-radius: 2px;
   width: 150px;

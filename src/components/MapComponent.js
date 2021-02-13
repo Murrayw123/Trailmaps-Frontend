@@ -29,10 +29,14 @@ import { GeoJSON, Map, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import PoiMarker from "./PoiMarker";
 import ContextMenu from "./ContextMenuApp";
 import { fetchElevation } from "../redux/requests";
+import {DISTANCE_KEY} from "./Menu";
 
 class MapComponent extends Component {
   state = { context: false, x: 0, y: 0 };
   checkMarkers = (e) => {
+    if (this.props.shouldShowContextMenuStatus) {
+      return;
+    }
     if (e.originalEvent.target["type"] !== "button") {
       this.props.shouldShowContextMenu(false);
     }
@@ -60,7 +64,7 @@ class MapComponent extends Component {
       marker_lat: e.latlng.lat,
       marker_lng: e.latlng.lng,
     };
-    if (!this.props.openKeys.includes("distanceTab")) {
+    if (!this.props.openKeys.includes(DISTANCE_KEY)) {
       this.props.openDistanceTab();
     }
     if (e.startEnd === "start") {

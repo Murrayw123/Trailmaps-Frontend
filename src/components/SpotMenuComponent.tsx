@@ -23,7 +23,7 @@ export class SpotMenuComponent extends React.Component<Props, never> {
     } = this.props;
 
     return (
-      <div key={"div"} style={{ marginLeft: 48 }}>
+      <div key={"div"}>
         <Card
           className="filter-trail-users"
           bordered={false}
