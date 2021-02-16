@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import MapComponent from "components/Map";
+import MapComponent from "components/MapHOC";
 import { InfoPopover } from "./InfoPopover";
 import MapSelect from "components/MapSelect";
 import MarkerModal from "components/modal/Modal";

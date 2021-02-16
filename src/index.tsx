@@ -11,6 +11,7 @@ import "./css/LandingPage.css";
 import "./css/MapSwitcher.css";
 import "./css/context-menu.css";
 import "./css/marker-modal.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 import Router from "routing/Router";
 import { dataStore } from "StoreAndServicesSetup";
 

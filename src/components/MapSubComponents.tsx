@@ -10,14 +10,19 @@ import { Marker, GeoJSON } from "react-leaflet";
 export const customPath = (
   customPath: GlobalState["customPath"]
 ): ReactElement => {
-  return (
-    <GeoJSON
-      key={customPath.elevationChartData.length}
-      data={customPath.path}
-      interactive={false}
-      color="red"
-    />
-  );
+  return null;
+  // return (
+  //   <GeoJSONLayer
+  //     data={customPath.path}
+  //     linePaint={{
+  //       "line-width": 3,
+  //       "line-color": "red",
+  //     }}
+  //     sourceOptions={{
+  //       type: "geojson",
+  //     }}
+  //   />
+  // );
 };
 
 export const poiMarkers = (

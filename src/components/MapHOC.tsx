@@ -1,8 +1,6 @@
 import React, { Component, ReactElement } from "react";
 import { connect } from "react-redux";
 import "leaflet/dist/leaflet.css";
-import { GeoJSON, Map as LMap, TileLayer, ZoomControl } from "react-leaflet";
-import { END, START } from "services/MarkerAdd";
 import {
   contextMenuStatus,
   customDistanceMarkerComponent,
@@ -15,6 +13,11 @@ import {
 import { Context, ServicesContext } from "helpers/ServiceInit";
 import { MapData } from "Interfaces/MapData";
 import { GlobalState } from "Interfaces/GlobalState";
+import { MapboxMap } from "components/MapboxComponents/MapboxMap";
+import { END, START } from "services/MarkerAdd";
+import mapboxgl from "mapbox-gl";
+import { Marker } from "react-mapbox-gl";
+import { MapboxMarker } from "components/MapboxComponents/Marker";
 
 interface Props {
   data: MapData;
@@ -34,10 +37,11 @@ interface State {
   rightClickYCoord: number;
 }
 
-const imageryUrl =
-  "https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg70?access_token=pk.eyJ1IjoibXVycmF5dzEyMyIsImEiOiJja2tkZm94OXYwOXRyMndtaXo1bjdlN3YzIn0.JSOACtJHoSLIL3yswen8-A";
+function displayCustomPath(customPath: any): boolean {
+  return Object.keys(customPath).length && customPath.path;
+}
 
-class Map extends Component<Props, State> {
+class MapHOC extends Component<Props, State> {
   public context: Context;
   static contextType = ServicesContext;
 
@@ -52,24 +56,24 @@ class Map extends Component<Props, State> {
     this.context.markerAdd.onMapRightClick(event);
   };
 
-  onMarkerClick = (marker: React.MouseEvent<HTMLElement>): void => {
+  onMarkerClick = (marker: mapboxgl.MapMouseEvent): void => {
     this.context.markerAdd.onMarkerClick(marker);
   };
 
-  checkMarkers = (event: React.MouseEvent<HTMLElement>): void => {
+  checkMarkers = (event: mapboxgl.MapMouseEvent): void => {
     this.context.markerAdd.checkMarkers(event);
   };
 
-  draggableMarkerStart = (event: React.MouseEvent<HTMLElement>): void => {
+  draggableMarkerStart = (event: mapboxgl.MapMouseEvent): void => {
     this.context.markerAdd.createDraggableMarker(event, START);
   };
 
-  draggableMarkerEnd = (event: React.MouseEvent<HTMLElement>): void => {
+  draggableMarkerEnd = (event: mapboxgl.MapMouseEvent): void => {
     this.context.markerAdd.createDraggableMarker(event, END);
   };
 
   customPath = (): ReactElement => {
-    if (shouldDisplayCustomPath(this.props.customPath)) {
+    if (displayCustomPath(this.props.customPath)) {
       return customPath(this.props.customPath);
     } else {
       return null;
@@ -134,38 +138,12 @@ class Map extends Component<Props, State> {
 
   render() {
     const { data, center, zoom } = this.props;
+
     return (
-      <LMap
-        center={center}
-        zoom={zoom}
-        className="map"
-        zoomControl={false}
-        onClick={this.checkMarkers}
-        onContextMenu={this.rightClick}
-      >
-        <ZoomControl position="bottomright" />
-
-        <TileLayer
-          url={imageryUrl}
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
-
-        <GeoJSON interactive={false} data={data.map_track} />
-
-        {this.customPath()}
-
-        {this.poiMarkers()}
-
-        {this.liveTrailUsers()}
-
-        {this.contextMenuStatus()}
-
-        {this.mapMarkerStart()}
-
-        {this.mapMarkerEnd()}
-
-        {this.customDistanceMarker()}
-      </LMap>
+      <>
+        <MapboxMap onClick={this.checkMarkers} />
+        <MapboxMarker key={1} icon={""} position={[115.8605, -31.9505]} />
+      </>
     );
   }
 }
@@ -186,8 +164,4 @@ const mapStateToProps = (state) => ({
   filters: state.filters,
 });
 
-function shouldDisplayCustomPath(customPath: any): boolean {
-  return Object.keys(customPath).length && customPath.path;
-}
-
-export default connect(mapStateToProps)(Map);
+export default connect(mapStateToProps)(MapHOC);
