@@ -1,15 +1,18 @@
 import { Store } from "redux";
 import mapboxgl from "mapbox-gl";
 import { OnClickCallback } from "Interfaces/Types";
+import { Observable } from "helpers/Observer";
 
 export class MapboxMapService {
   private _store: Store;
   private _map: mapboxgl.Map;
+  private _observer: Observable;
   constructor(dataStore: Store) {
     this._store = dataStore;
+    this._observer = new Observable();
   }
 
-  public init(container: HTMLElement): mapboxgl.Map {
+  public init(container: HTMLElement): void {
     const { zoom, center } = this._store.getState();
 
     this._map = new mapboxgl.Map({
@@ -22,7 +25,7 @@ export class MapboxMapService {
     this._addGeoJSONToMap();
     this._addTerrainToMap();
 
-    return this._map;
+    this._observer.publish(this._map);
   }
 
   private _addTerrainToMap(): void {
@@ -66,6 +69,10 @@ export class MapboxMapService {
         },
       });
     });
+  }
+
+  public subscribeToMapReady(fn: (map: mapboxgl.Map) => void): void {
+    this._observer.subscribe(fn);
   }
 
   public setOnClick(callback: OnClickCallback): void {

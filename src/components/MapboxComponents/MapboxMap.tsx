@@ -22,12 +22,14 @@ export class MapboxMap extends React.Component<Props, never> {
   static contextType = ServicesContext;
 
   componentDidMount(): void {
-    const { mapBoxMapService } = this.context;
-
+    const { mapBoxMapService, servicesReady } = this.context;
     mapBoxMapService.init(this._mapContainer);
-    mapBoxMapService.setOnClick((e: mapboxgl.MapMouseEvent) => {
-      e["latlng"] = e.lngLat; // meet existing interface
-      this.props.onClick(e);
+
+    servicesReady(() => {
+      mapBoxMapService.setOnClick((e: mapboxgl.MapMouseEvent) => {
+        e["latlng"] = e.lngLat; // meet existing interface
+        this.props.onClick(e);
+      });
     });
   }
 

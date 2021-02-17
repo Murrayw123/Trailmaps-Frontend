@@ -1,31 +1,15 @@
-import { Component, useContext } from "react";
+import { Component } from "react";
 import { Context, ServicesContext } from "helpers/ServiceInit";
-import mapboxgl, { LngLatLike } from "mapbox-gl";
+import { MapboxMarkerProps } from "Interfaces/Marker";
 
-
-interface Props {
-  icon: string;
-  key: number;
-  position: LngLatLike;
-  draggable?: boolean;
-  className?: string;
-}
-
-// const Marker = (props: Props) => {
-//   const mapboxMapService  = useContext(ServicesContext);
-//   services.
-//
-//   return <></>;
-// };
-
-export class MapboxMarker extends Component<Props, never> {
+export class MapboxMarker extends Component<MapboxMarkerProps, never> {
   public context: Context;
   static contextType = ServicesContext;
 
   componentDidMount(): void {
-    const map = this.context.mapBoxMapService.map;
-    const { position } = this.props;
-    new mapboxgl.Marker().setLngLat(position).addTo(map);
+    this.context.servicesReady(() => {
+      this.context.mapboxMarkerAdd.setMarker(this.props);
+    });
   }
 
   render(): JSX.Element {
