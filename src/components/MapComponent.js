@@ -203,7 +203,7 @@ class MapComponent extends Component {
       shouldShowContextMenuStatus,
     } = this.props;
     const imageryUrl =
-      "https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg70?access_token=pk.eyJ1IjoibXVycmF5dzEyMyIsImEiOiJja2tkZm94OXYwOXRyMndtaXo1bjdlN3YzIn0.JSOACtJHoSLIL3yswen8-A";
+      "https://api.mapbox.com/styles/v1/murrayw123/ckkdfkpan08m317ogw6ebdoli/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibXVycmF5dzEyMyIsImEiOiJja2tkZm94OXYwOXRyMndtaXo1bjdlN3YzIn0.JSOACtJHoSLIL3yswen8-A";
     return (
       <Map
         center={center}
