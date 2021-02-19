@@ -27,10 +27,10 @@ export class ObserverWithInitialNotify implements IObservable {
   private _published = false;
   private _publishedData: unknown = false;
 
-  public subscribe(cb: unknown): void {
+  public subscribe(cb: (data?) => void): void {
     this._subscribers.push(cb);
     if (this._published) {
-      this.publish(this._publishedData);
+      cb(this._publishedData);
     }
   }
   public unsubscribe(cb: unknown): void {

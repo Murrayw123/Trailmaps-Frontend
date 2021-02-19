@@ -1,4 +1,3 @@
-import L from "leaflet";
 import townI from "./icons/town.svg";
 import finishI from "./icons/finish.svg";
 import businessI from "./icons/business.svg";
@@ -37,176 +36,50 @@ export const markerChoices = [
   { id: "warning", name: "Warning" },
 ];
 
-export const start = new L.Icon({
-  iconUrl: startI,
-  iconSize: new L.Point(30, 35),
-  className: null,
-});
-
-export const finish = new L.Icon({
-  iconUrl: finishI,
-  iconSize: new L.Point(30, 35),
-  className: null,
-});
-
-const business = new L.Icon({
-  iconUrl: businessI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-export const bicycle = new L.Icon({
-  iconUrl: bicycleI,
-  iconSize: new L.Point(25, 30),
-  className: "bicycle",
-});
-
-export const walking = new L.Icon({
-  iconUrl: hikingI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-const campSite = new L.Icon({
-  iconUrl: tentI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-const hut = new L.Icon({
-  iconUrl: hutI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-const town = new L.Icon({
-  iconUrl: townI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-const water = new L.Icon({
-  iconUrl: waterI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-const attraction = new L.Icon({
-  iconUrl: attractionI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-const vehicle = new L.Icon({
-  iconUrl: vehicleI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-export const selected = new L.Icon({
-  iconUrl: selectedI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-export const cafe = new L.Icon({
-  iconUrl: cafeI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-export const restaurant = new L.Icon({
-  iconUrl: foodI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-export const lighthouse = new L.Icon({
-  iconUrl: lighthouseI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-export const picnicArea = new L.Icon({
-  iconUrl: picnicI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-export const pub = new L.Icon({
-  iconUrl: pubI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-export const warning = new L.Icon({
-  iconUrl: warningI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-export const taxi = new L.Icon({
-  iconUrl: taxiI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-export const rider = new L.Icon({
-  iconUrl: riderI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
-export const hiker = new L.Icon({
-  iconUrl: hikerI,
-  iconSize: new L.Point(25, 30),
-  className: null,
-});
-
 export function findIcon(type) {
   switch (type) {
     case "start":
-      return start;
+      return startI;
     case "finish":
       return finish;
     case "business":
-      return business;
+      return businessI;
     case "bicycle":
-      return bicycle;
+      return bicycleI;
     case "campsite":
-      return campSite;
+      return tentI;
     case "hut":
-      return hut;
+      return hutI;
     case "town":
-      return town;
+      return townI;
     case "water":
-      return water;
+      return waterI;
     case "attraction":
-      return attraction;
+      return attractionI;
     case "vehicle":
-      return vehicle;
+      return vehicleI;
     case "cafe":
-      return cafe;
+      return cafeI;
     case "restaurant":
-      return restaurant;
+      return restaurantI;
     case "lighthouse":
-      return lighthouse;
+      return lighthouseI;
     case "picnic_area":
-      return picnicArea;
+      return picnicI;
     case "pub":
-      return pub;
+      return pubI;
     case "warning":
       return warning;
     case "problem":
       return warning;
     case "taxi":
-      return taxi;
+      return taxiI;
     case "cyclist":
-      return rider;
+      return riderI;
     case "hiker":
-      return hiker;
+      return hikerI;
     default:
-      return attraction;
+      return attractionI;
   }
 }
 

@@ -1,7 +1,6 @@
 import React, { ReactElement } from "react";
 import PoiMarker from "components/PoiMarker";
 import ContextMenu from "components/ContextMenuApp";
-import { bicycle, finish, start, walking } from "helpers/iconsData";
 import { Marker as IMarker } from "Interfaces/Marker";
 import { OnClickCallback } from "Interfaces/Types";
 import { GlobalState } from "Interfaces/GlobalState";
@@ -58,7 +57,7 @@ export const mapMarkerStart = (
     <Marker
       key={mapMarkerStart.distance}
       position={[mapMarkerStart.marker_lat, mapMarkerStart.marker_lng]}
-      icon={start}
+      icon={""}
       draggable={true}
       onDragEnd={draggableMarkerStart}
       className="map-marker-custom"
@@ -74,7 +73,7 @@ export const mapMarkerEnd = (
     <Marker
       key={mapMarkerEnd.distance}
       position={[mapMarkerEnd.marker_lat, mapMarkerEnd.marker_lng]}
-      icon={finish}
+      icon={""}
       draggable={true}
       onDragEnd={draggableMarkerEnd}
       className="map-marker-custom"
@@ -91,7 +90,7 @@ export const customDistanceMarkerComponent = (
     <Marker
       key={1}
       position={customDistanceMarker}
-      icon={mapType === "cycling" ? bicycle : walking}
+      icon={mapType === "cycling" ? "" : ""}
     />
   );
 };

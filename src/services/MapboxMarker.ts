@@ -1,6 +1,6 @@
 import { MapboxMarkerProps } from "Interfaces/Marker";
 import mapboxgl from "mapbox-gl";
-
+import hut from "helpers/icons/town3.svg";
 export class MapboxMarkerService {
   private _map: mapboxgl.Map;
 
@@ -8,8 +8,7 @@ export class MapboxMarkerService {
     this._map = map;
   }
 
-  public setMarker(props: MapboxMarkerProps): void {
-    console.log("setting a new marker!", props);
+  public setMarker(props: MapboxMarkerProps): mapboxgl.Marker {
     const {
       key,
       position,
@@ -19,20 +18,25 @@ export class MapboxMarkerService {
       onDragStart,
       onDragEnd,
     } = props;
+
+    const markerElement = document.createElement("div");
+    markerElement.className = "marker";
+    markerElement.style.backgroundImage = `url(${hut})`;
+    markerElement.style.width = "60px";
+    markerElement.style.height = "60px";
+
     const newMarker = new mapboxgl.Marker({
+      element: markerElement,
       draggable: draggable,
     })
       .setLngLat(position)
-      .setPopup(
-        new mapboxgl.Popup({ className: className }).setHTML(
-          "<h1> Hello World! </h1>"
-        )
-      )
       .addTo(this._map);
 
     if (draggable) {
       newMarker.on("dragstart", onDragStart);
       newMarker.on("dragend", onDragEnd);
     }
+
+    return newMarker;
   }
 }

@@ -1,11 +1,12 @@
 import { MapData } from "Interfaces/MapData";
+import { Marker } from "Interfaces/Marker";
 
 export interface GlobalState {
   data: MapData;
   loadingTrack: boolean;
   loadingMarkers: boolean;
   error: any;
-  poiMarkers: Array<any>;
+  poiMarkers: Array<Marker>;
   distancePoint: any;
   mapMarkerTypes: Array<any>;
   distance: number;

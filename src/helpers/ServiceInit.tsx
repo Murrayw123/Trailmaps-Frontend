@@ -4,11 +4,7 @@ import { MapInitialiser } from "services/MapInitialiser";
 import { MarkerAddService } from "services/MarkerAdd";
 import { MapboxMapService } from "services/MapboxMap";
 import { MapboxMarkerService } from "services/MapboxMarker";
-import {
-  IObservable,
-  Observable,
-  ObserverWithInitialNotify,
-} from "helpers/Observer";
+import { IObservable, ObserverWithInitialNotify } from "helpers/Observer";
 
 export interface Context {
   mapInitialiser: MapInitialiser;

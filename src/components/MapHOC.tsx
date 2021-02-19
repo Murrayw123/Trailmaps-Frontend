@@ -137,12 +137,13 @@ class MapHOC extends Component<Props, State> {
   };
 
   render() {
+    console.log("rendering the stuff!");
     const { data, center, zoom } = this.props;
 
     return (
       <>
         <MapboxMap onClick={this.checkMarkers} />
-        <MapboxMarker key={1} icon={""} position={[115.8605, -31.9505]} />
+        {this.poiMarkers()}
       </>
     );
   }
