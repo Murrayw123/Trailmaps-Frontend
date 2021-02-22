@@ -46,6 +46,7 @@ export class PoiMarker extends Component {
           onClick={() => {
             this.props.onClick(marker);
           }}
+          hasPopup={true}
         />
       </>
     );

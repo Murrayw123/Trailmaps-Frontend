@@ -109,14 +109,14 @@ export class MarkerAddService {
     }
   }
 
-  public createDraggableMarker(marker: any, startOrEnd: string): void {
+  public createDraggableMarker(dragEvent: any, startOrEnd: string): void {
     const startPointCheckEmpty = _.isEmpty(this._startPoint);
     const endPointCheckEmpty = _.isEmpty(this._endPoint);
 
     const updatedMarker = {
       marker_title: CUSTOM_MAP_POINT,
-      marker_lat: marker.target._latlng.lat,
-      marker_lng: marker.target._latlng.lng,
+      marker_lat: dragEvent.target._lngLat.lat,
+      marker_lng: dragEvent.target._lngLat.lng,
     };
 
     if (startOrEnd === START) {

@@ -1,5 +1,5 @@
 import { MapData } from "Interfaces/MapData";
-import { Marker } from "Interfaces/Marker";
+import {CustomMapPoint, Marker} from "Interfaces/Marker";
 
 export interface GlobalState {
   data: MapData;
@@ -19,7 +19,7 @@ export interface GlobalState {
   startPoint: any;
   endPoint: any;
   focusMarker: any;
-  customDistanceMarker: Array<any>;
+  customDistanceMarker: CustomMapPoint;
   mapMarkerStart: any;
   mapMarkerEnd: any;
   allowCustomPath: boolean;

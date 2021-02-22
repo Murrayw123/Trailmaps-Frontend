@@ -130,9 +130,9 @@ export const storeFocusMarker = (marker) => ({
   payload: marker,
 });
 
-export const setCustomDistanceMarker = (latlng) => ({
+export const setCustomDistanceMarker = (customMapPoint) => ({
   type: SET_CUSTOM_DISTANCE_MARKER,
-  payload: latlng,
+  payload: customMapPoint,
 });
 
 export const wipeMarkersAndPath = () => ({

@@ -1,4 +1,5 @@
 import { LngLatLike } from "mapbox-gl";
+import { OnClickCallback } from "Interfaces/Types";
 
 export interface Marker {
   id: number;
@@ -17,7 +18,14 @@ export interface MapboxMarkerProps {
   position: LngLatLike;
   className?: string;
   draggable?: boolean;
-  onDragStart?: () => void;
-  onDragEnd?: () => void;
+  onDragStart?: OnClickCallback;
+  onDragEnd?: OnClickCallback;
   onClick?: (e: mapboxgl.MapMouseEvent) => void;
+}
+
+export interface CustomMapPoint {
+  marker_lat: number,
+  marker_lng: number,
+  marker_title: string
+  distance?: number
 }

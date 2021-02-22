@@ -15,7 +15,11 @@ class ElevationChart extends Component {
   drawMarker = (event) => {
     if (event.activePayload)
       this.props.dispatch(
-        setCustomDistanceMarker(event.activePayload[0].payload.coords)
+        setCustomDistanceMarker({
+          marker_title: "Distance Marker",
+          marker_lat: event.activePayload[0].payload.coords[0],
+          marker_lng: [event.activePayload[0].payload.coords[1]],
+        })
       );
   };
 

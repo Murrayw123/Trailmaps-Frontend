@@ -129,7 +129,7 @@ class MapHOC extends Component<Props, State> {
 
   customDistanceMarker = (): ReactElement => {
     const { customDistanceMarker, data } = this.props;
-    if (customDistanceMarker.length) {
+    if (customDistanceMarker) {
       return customDistanceMarkerComponent(data.map_type, customDistanceMarker);
     } else {
       return null;
@@ -137,13 +137,15 @@ class MapHOC extends Component<Props, State> {
   };
 
   render() {
-    console.log("rendering the stuff!");
     const { data, center, zoom } = this.props;
 
     return (
       <>
         <MapboxMap onClick={this.checkMarkers} />
         {this.poiMarkers()}
+        {this.mapMarkerStart()}
+        {this.mapMarkerEnd()}
+        {this.customDistanceMarker()}
       </>
     );
   }

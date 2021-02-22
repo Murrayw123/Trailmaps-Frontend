@@ -41,7 +41,7 @@ export function findIcon(type) {
     case "start":
       return startI;
     case "finish":
-      return finish;
+      return finishI;
     case "business":
       return businessI;
     case "bicycle":

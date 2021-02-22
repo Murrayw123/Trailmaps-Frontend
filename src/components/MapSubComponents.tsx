@@ -1,10 +1,16 @@
 import React, { ReactElement } from "react";
 import PoiMarker from "components/PoiMarker";
 import ContextMenu from "components/ContextMenuApp";
-import { Marker as IMarker } from "Interfaces/Marker";
+import { CustomMapPoint, Marker as IMarker } from "Interfaces/Marker";
 import { OnClickCallback } from "Interfaces/Types";
 import { GlobalState } from "Interfaces/GlobalState";
-import { Marker, GeoJSON } from "react-leaflet";
+import { MapboxMarker } from "components/MapboxComponents/Marker";
+import { findIcon } from "helpers/iconsData";
+
+const start = findIcon("start");
+const finish = findIcon("finish");
+const bicycle = findIcon("bicycle");
+const walking = findIcon("walking");
 
 export const customPath = (
   customPath: GlobalState["customPath"]
@@ -50,31 +56,35 @@ export const contextMenuStatus = (
 };
 
 export const mapMarkerStart = (
-  mapMarkerStart: any,
+  mapMarkerStart: CustomMapPoint,
   draggableMarkerStart: OnClickCallback
 ): ReactElement => {
   return (
-    <Marker
+    <MapboxMarker
+      marker={mapMarkerStart}
       key={mapMarkerStart.distance}
-      position={[mapMarkerStart.marker_lat, mapMarkerStart.marker_lng]}
-      icon={""}
+      position={[mapMarkerStart.marker_lng, mapMarkerStart.marker_lat]}
+      icon={start}
+      hasPopup={false}
       draggable={true}
-      onDragEnd={draggableMarkerStart}
+      onDragStart={draggableMarkerStart}
       className="map-marker-custom"
     />
   );
 };
 
 export const mapMarkerEnd = (
-  mapMarkerEnd: any,
+  mapMarkerEnd: CustomMapPoint,
   draggableMarkerEnd: OnClickCallback
 ): ReactElement => {
   return (
-    <Marker
+    <MapboxMarker
+      marker={mapMarkerEnd}
       key={mapMarkerEnd.distance}
-      position={[mapMarkerEnd.marker_lat, mapMarkerEnd.marker_lng]}
-      icon={""}
+      position={[mapMarkerEnd.marker_lng, mapMarkerEnd.marker_lat]}
+      icon={finish}
       draggable={true}
+      hasPopup={false}
       onDragEnd={draggableMarkerEnd}
       className="map-marker-custom"
     />
@@ -83,14 +93,19 @@ export const mapMarkerEnd = (
 
 export const customDistanceMarkerComponent = (
   mapType: string,
-  customDistanceMarker: unknown
+  customDistanceMarker: CustomMapPoint
 ): ReactElement => {
   //custom marker from elevation click hover
   return (
-    <Marker
+    <MapboxMarker
+      marker={customDistanceMarker}
       key={1}
-      position={customDistanceMarker}
-      icon={mapType === "cycling" ? "" : ""}
+      position={[
+        customDistanceMarker.marker_lng,
+        customDistanceMarker.marker_lat,
+      ]}
+      hasPopup={false}
+      icon={mapType === "cycling" ? bicycle : walking}
     />
   );
 };

@@ -60,7 +60,7 @@ const initialState: GlobalState = {
   startPoint: {},
   endPoint: {},
   focusMarker: {},
-  customDistanceMarker: [],
+  customDistanceMarker: null,
   mapMarkerStart: null,
   mapMarkerEnd: null,
   allowCustomPath: false,
