@@ -10,15 +10,7 @@ export class MapboxMarkerService {
   }
 
   public setMarker(props: MapboxMarkerProps): mapboxgl.Marker {
-    const {
-      key,
-      position,
-      icon,
-      draggable = false,
-      className,
-      onDragStart,
-      onDragEnd,
-    } = props;
+    const { position, icon, draggable = false, onDragStart, onDragEnd } = props;
 
     const markerElement = createMapBoxElement(icon);
 

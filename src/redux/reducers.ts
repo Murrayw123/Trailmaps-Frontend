@@ -62,7 +62,7 @@ const initialState: GlobalState = {
   focusMarker: {},
   customDistanceMarker: null,
   mapMarkerStart: null,
-  mapMarkerEnd: null,
+  mapMarkerFinish: null,
   allowCustomPath: false,
   sideBarImage: null,
   sideBarBlurb: null,
@@ -144,7 +144,7 @@ export default function dataReducer(state = initialState, action) {
     case ADD_MAP_MARKER_END:
       return {
         ...state,
-        mapMarkerEnd: action.payload,
+        mapMarkerFinish: action.payload,
       };
     case CALC_DISTANCE:
       return {
@@ -219,7 +219,7 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         mapMarkerStart: null,
-        mapMarkerEnd: null,
+        mapMarkerFinish: null,
         customPath: {},
         customDistance: [],
         startPoint: {},
@@ -230,7 +230,7 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         mapMarkerStart: null,
-        mapMarkerEnd: null,
+        mapMarkerFinish: null,
       };
 
     case WIPE_START_MARKER:
@@ -242,7 +242,7 @@ export default function dataReducer(state = initialState, action) {
     case WIPE_END_MARKER:
       return {
         ...state,
-        mapMarkerEnd: null,
+        mapMarkerFinish: null,
       };
 
     case ALLOW_CUSTOM_PATH:

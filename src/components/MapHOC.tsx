@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import "leaflet/dist/leaflet.css";
 import {
   contextMenuStatus,
-  customDistanceMarkerComponent,
   customPath,
   liveTrailUsers,
-  mapMarkerEnd,
+  mapMarkerFinish,
   mapMarkerStart,
   poiMarkers,
 } from "./MapSubComponents";
@@ -14,10 +13,9 @@ import { Context, ServicesContext } from "helpers/ServiceInit";
 import { MapData } from "Interfaces/MapData";
 import { GlobalState } from "Interfaces/GlobalState";
 import { MapboxMap } from "components/MapboxComponents/MapboxMap";
-import { END, START } from "services/MarkerAdd";
+import { FINISH, START } from "services/MarkerAdd";
 import mapboxgl from "mapbox-gl";
-import { Marker } from "react-mapbox-gl";
-import { MapboxMarker } from "components/MapboxComponents/Marker";
+import CustomDistanceMarker from "components/CustomDistanceMarker";
 
 interface Props {
   data: MapData;
@@ -28,8 +26,7 @@ interface Props {
   liveTrailUsers: GlobalState["liveTrailUsers"];
   shouldShowContextMenuStatus: GlobalState["shouldShowContextMenuStatus"];
   mapMarkerStart: GlobalState["mapMarkerStart"];
-  mapMarkerEnd: GlobalState["mapMarkerEnd"];
-  customDistanceMarker: GlobalState["customDistanceMarker"];
+  mapMarkerFinish: GlobalState["mapMarkerFinish"];
 }
 
 interface State {
@@ -65,11 +62,11 @@ class MapHOC extends Component<Props, State> {
   };
 
   draggableMarkerStart = (event: mapboxgl.MapMouseEvent): void => {
-    this.context.markerAdd.createDraggableMarker(event, START);
+    this.context.markerAdd.draggableMarker(event, START);
   };
 
-  draggableMarkerEnd = (event: mapboxgl.MapMouseEvent): void => {
-    this.context.markerAdd.createDraggableMarker(event, END);
+  draggableMarkerFinish = (event: mapboxgl.MapMouseEvent): void => {
+    this.context.markerAdd.draggableMarker(event, FINISH);
   };
 
   customPath = (): ReactElement => {
@@ -117,35 +114,25 @@ class MapHOC extends Component<Props, State> {
     }
   };
 
-  mapMarkerEnd = (): ReactElement => {
-    if (this.props.mapMarkerEnd) {
-      return mapMarkerEnd(this.props.mapMarkerEnd, (e) => {
-        this.draggableMarkerEnd(e);
+  mapMarkerFinish = (): ReactElement => {
+    if (this.props.mapMarkerFinish) {
+      return mapMarkerFinish(this.props.mapMarkerFinish, (e) => {
+        this.draggableMarkerFinish(e);
       });
     } else {
       return null;
     }
   };
 
-  customDistanceMarker = (): ReactElement => {
-    const { customDistanceMarker, data } = this.props;
-    if (customDistanceMarker) {
-      return customDistanceMarkerComponent(data.map_type, customDistanceMarker);
-    } else {
-      return null;
-    }
-  };
-
   render() {
-    const { data, center, zoom } = this.props;
-
     return (
       <>
         <MapboxMap onClick={this.checkMarkers} />
         {this.poiMarkers()}
         {this.mapMarkerStart()}
-        {this.mapMarkerEnd()}
-        {this.customDistanceMarker()}
+        {this.mapMarkerFinish()}
+        {this.customPath()}
+        <CustomDistanceMarker />
       </>
     );
   }
@@ -156,9 +143,8 @@ const mapStateToProps = (state) => ({
   data: state.data,
   center: state.center,
   zoom: state.zoom,
-  customDistanceMarker: state.customDistanceMarker,
   mapMarkerStart: state.mapMarkerStart,
-  mapMarkerEnd: state.mapMarkerEnd,
+  mapMarkerFinish: state.mapMarkerFinish,
   liveTrailUsers: state.liveTrailUsers,
   showLiveTrailUsers: state.showLiveTrailUsers,
   shouldShowContextMenuStatus: state.shouldShowContextMenuStatus,

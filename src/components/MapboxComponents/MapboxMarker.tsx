@@ -38,17 +38,14 @@ export class MapboxMarker extends Component<Props, never> {
   }
 
   componentWillUnmount(): void {
-    this._marker.remove();
-  }
-
-  shouldUpdateMarker(): boolean {
-    const { marker } = this.props;
-    return !!this._marker && !!marker.marker_lat && !!marker.marker_lng;
+    if (this._marker) {
+      this._marker.remove();
+    }
   }
 
   render(): JSX.Element {
     const { marker } = this.props;
-    if (this.shouldUpdateMarker()) {
+    if (this._marker) {
       this._marker.setLngLat([marker.marker_lng, marker.marker_lat]);
     }
     return null;

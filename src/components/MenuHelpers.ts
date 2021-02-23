@@ -14,7 +14,7 @@ const DISTANCE = "distance";
 const LIVETRAILUSER = "liveTrailUser";
 const LOCATE = "locate";
 const START = "start";
-const END = "end";
+const FINISH = "end";
 
 export const selectMarker = (
   type: string,
@@ -32,7 +32,7 @@ export const selectMarker = (
     dispatch(wipeStartMarker());
     dispatch(setStartPoint(focusedMarker));
   }
-  if (type === END) {
+  if (type === FINISH) {
     dispatch(wipeEndMarker());
     dispatch(setEndPoint(focusedMarker));
   }

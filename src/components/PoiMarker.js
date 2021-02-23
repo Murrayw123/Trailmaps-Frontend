@@ -9,7 +9,7 @@ import {
   wipeStartMarker,
 } from "../redux/actions";
 import { findIcon } from "../helpers/iconsData";
-import { MapboxMarker } from "./MapboxComponents/Marker";
+import { MapboxMarker } from "./MapboxComponents/MapboxMarker";
 
 export class PoiMarker extends Component {
   markerClick = (point) => {

@@ -23,7 +23,7 @@ import { fetchElevation } from "redux/requests";
 const BUTTON = "button";
 const CUSTOM_MAP_POINT = "Custom Map Point";
 export const START = "start";
-export const END = "end";
+export const FINISH = "end";
 const DISTANCE_TAB = "distanceTab";
 
 const TRAIL_BUSINESSES = "trail businesses";
@@ -81,7 +81,7 @@ export class MarkerAddService {
         e.startEnd = START;
         this._addCustomMarker(e);
       } else if (endPointCheckEmpty) {
-        e.startEnd = END;
+        e.startEnd = FINISH;
         this._addCustomMarker(e);
       } else {
         e.startEnd = START;
@@ -109,7 +109,7 @@ export class MarkerAddService {
     }
   }
 
-  public createDraggableMarker(dragEvent: any, startOrEnd: string): void {
+  public draggableMarker(dragEvent: any, startOrEnd: string): void {
     const startPointCheckEmpty = _.isEmpty(this._startPoint);
     const endPointCheckEmpty = _.isEmpty(this._endPoint);
 

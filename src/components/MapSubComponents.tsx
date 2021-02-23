@@ -4,8 +4,9 @@ import ContextMenu from "components/ContextMenuApp";
 import { CustomMapPoint, Marker as IMarker } from "Interfaces/Marker";
 import { OnClickCallback } from "Interfaces/Types";
 import { GlobalState } from "Interfaces/GlobalState";
-import { MapboxMarker } from "components/MapboxComponents/Marker";
+import { MapboxMarker } from "components/MapboxComponents/MapboxMarker";
 import { findIcon } from "helpers/iconsData";
+import { MapboxGeoJSON } from "components/MapboxComponents/MapboxGeoJSON";
 
 const start = findIcon("start");
 const finish = findIcon("finish");
@@ -15,19 +16,7 @@ const walking = findIcon("walking");
 export const customPath = (
   customPath: GlobalState["customPath"]
 ): ReactElement => {
-  return null;
-  // return (
-  //   <GeoJSONLayer
-  //     data={customPath.path}
-  //     linePaint={{
-  //       "line-width": 3,
-  //       "line-color": "red",
-  //     }}
-  //     sourceOptions={{
-  //       type: "geojson",
-  //     }}
-  //   />
-  // );
+  return <MapboxGeoJSON path={customPath.path} color={"red"} />;
 };
 
 export const poiMarkers = (
@@ -57,7 +46,7 @@ export const contextMenuStatus = (
 
 export const mapMarkerStart = (
   mapMarkerStart: CustomMapPoint,
-  draggableMarkerStart: OnClickCallback
+  draggableMarkerCallback: OnClickCallback
 ): ReactElement => {
   return (
     <MapboxMarker
@@ -67,25 +56,27 @@ export const mapMarkerStart = (
       icon={start}
       hasPopup={false}
       draggable={true}
-      onDragStart={draggableMarkerStart}
+      onDragStart={draggableMarkerCallback}
+      onDragEnd={draggableMarkerCallback}
       className="map-marker-custom"
     />
   );
 };
 
-export const mapMarkerEnd = (
-  mapMarkerEnd: CustomMapPoint,
-  draggableMarkerEnd: OnClickCallback
+export const mapMarkerFinish = (
+  mapMarkerFinish: CustomMapPoint,
+  draggableMarkerCallback: OnClickCallback
 ): ReactElement => {
   return (
     <MapboxMarker
-      marker={mapMarkerEnd}
-      key={mapMarkerEnd.distance}
-      position={[mapMarkerEnd.marker_lng, mapMarkerEnd.marker_lat]}
+      marker={mapMarkerFinish}
+      key={mapMarkerFinish.distance}
+      position={[mapMarkerFinish.marker_lng, mapMarkerFinish.marker_lat]}
       icon={finish}
       draggable={true}
       hasPopup={false}
-      onDragEnd={draggableMarkerEnd}
+      onDragStart={draggableMarkerCallback}
+      onDragEnd={draggableMarkerCallback}
       className="map-marker-custom"
     />
   );

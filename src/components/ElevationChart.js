@@ -24,7 +24,7 @@ class ElevationChart extends Component {
   };
 
   wipeMarker = () => {
-    this.props.dispatch(setCustomDistanceMarker([]));
+    this.props.dispatch(setCustomDistanceMarker(null));
   };
 
   render() {
