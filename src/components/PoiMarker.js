@@ -27,12 +27,17 @@ export class PoiMarker extends Component {
   };
 
   switchIcon = (marker) => {
-    if (this.props.startPoint === marker || this.props.endPoint === marker) {
-      return selected;
+    if (this.isStartOrEndMarker(marker)) {
+      return findIcon("selected");
     } else {
       return findIcon(marker.marker_type);
     }
   };
+
+  isStartOrEndMarker = (marker) => {
+    return this.props.startPoint === marker || this.props.endPoint === marker;
+  };
+
   render() {
     const { marker } = this.props;
     const icon = this.switchIcon(marker);
@@ -46,7 +51,7 @@ export class PoiMarker extends Component {
           onClick={() => {
             this.props.onClick(marker);
           }}
-          hasPopup={true}
+          hasPopup={!this.isStartOrEndMarker(marker)}
         />
       </>
     );

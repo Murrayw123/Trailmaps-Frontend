@@ -14,7 +14,7 @@ export interface GlobalState {
   customDistance: Array<any>;
   customPath: any;
   zoom: number;
-  center: number;
+  center: [number, number];
   filters: Array<any>;
   startPoint: any;
   endPoint: any;

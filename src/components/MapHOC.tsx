@@ -1,5 +1,4 @@
 import React, { Component, ReactElement } from "react";
-import { connect } from "react-redux";
 import "leaflet/dist/leaflet.css";
 import {
   contextMenuStatus,
@@ -16,6 +15,7 @@ import { MapboxMap } from "components/MapboxComponents/MapboxMap";
 import { FINISH, START } from "services/MarkerAdd";
 import mapboxgl from "mapbox-gl";
 import CustomDistanceMarker from "components/CustomDistanceMarker";
+import { connect } from "react-redux";
 
 interface Props {
   data: MapData;
@@ -44,10 +44,10 @@ class MapHOC extends Component<Props, State> {
 
   state = { rightClickXCoord: 0, rightClickYCoord: 0 };
 
-  rightClick = (event) => {
+  rightClick = (event: mapboxgl.MapMouseEvent) => {
     this.setState({
-      rightClickXCoord: event.containerPoint.x,
-      rightClickYCoord: event.containerPoint.y,
+      rightClickXCoord: event.point.x,
+      rightClickYCoord: event.point.y,
     });
 
     this.context.markerAdd.onMapRightClick(event);
@@ -127,11 +127,15 @@ class MapHOC extends Component<Props, State> {
   render() {
     return (
       <>
-        <MapboxMap onClick={this.checkMarkers} />
+        <MapboxMap
+          onClick={this.checkMarkers}
+          onContextMenu={this.rightClick}
+        />
         {this.poiMarkers()}
         {this.mapMarkerStart()}
         {this.mapMarkerFinish()}
         {this.customPath()}
+        {this.contextMenuStatus()}
         <CustomDistanceMarker />
       </>
     );

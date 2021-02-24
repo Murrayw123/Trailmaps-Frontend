@@ -29,10 +29,6 @@ const DISTANCE_TAB = "distanceTab";
 const TRAIL_BUSINESSES = "trail businesses";
 const DRINKS_DINING = "drinks & dining";
 
-interface eventWithLatLong extends MouseEvent {
-  latlng: { lat: number; lng: number };
-}
-
 export class MarkerAddService {
   private _store: GlobalStateStore;
   private _allowCustomPath: boolean;
@@ -141,16 +137,16 @@ export class MarkerAddService {
     this._store.dispatch(storeCustomTrack(pathAndDistance));
   }
 
-  public onMapRightClick(event: eventWithLatLong): void {
+  public onMapRightClick(event: mapboxgl.MapMouseEvent): void {
     this._store.dispatch(
       setLatLngFromContextClick({
-        lat: event.latlng.lat,
-        lng: event.latlng.lng,
+        lat: event.lngLat.lat,
+        lng: event.lngLat.lng,
       })
     );
 
     this._store.dispatch<any>(
-      fetchElevation(event.latlng.lat, event.latlng.lng)
+      fetchElevation(event.lngLat.lat, event.lngLat.lng)
     );
 
     this._store.dispatch(shouldShowContextMenu(true));

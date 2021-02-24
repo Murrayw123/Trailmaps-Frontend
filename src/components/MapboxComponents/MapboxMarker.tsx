@@ -43,10 +43,19 @@ export class MapboxMarker extends Component<Props, never> {
     }
   }
 
-  render(): JSX.Element {
+  updateMarker(): void {
     const { marker } = this.props;
+
+    this._marker.setLngLat([marker.marker_lng, marker.marker_lat]);
+    this._marker.setLngLat([marker.marker_lng, marker.marker_lat]);
+
+    const markerElement = this._marker.getElement();
+    markerElement.style.backgroundImage = `url(${this.props.icon})`;
+  }
+
+  render(): JSX.Element {
     if (this._marker) {
-      this._marker.setLngLat([marker.marker_lng, marker.marker_lat]);
+      this.updateMarker();
     }
     return null;
   }

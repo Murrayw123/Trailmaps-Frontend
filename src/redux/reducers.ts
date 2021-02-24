@@ -55,7 +55,7 @@ const initialState: GlobalState = {
   customDistance: [],
   customPath: {},
   zoom: 10,
-  center: 0,
+  center: [0, 0],
   filters: [],
   startPoint: {},
   endPoint: {},

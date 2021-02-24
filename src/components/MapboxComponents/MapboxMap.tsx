@@ -1,8 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import mapboxgl from "mapbox-gl";
 import "components/MapboxComponents/MapboxMap.css";
 import { OnClickCallback } from "Interfaces/Types";
 import { Context, ServicesContext } from "helpers/ServiceInit";
+import { GlobalState } from "Interfaces/GlobalState";
+import { connect } from "react-redux";
 
 // TODO - hacky workaround for the Babel Issue
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -13,9 +15,12 @@ mapboxgl.accessToken =
 
 interface Props {
   onClick: OnClickCallback;
+  onContextMenu: OnClickCallback;
+  zoom: GlobalState["zoom"];
+  center: GlobalState["center"];
 }
 
-export class MapboxMap extends React.Component<Props, never> {
+class Map extends Component<Props, never> {
   private _mapContainer: HTMLElement;
 
   public context: Context;
@@ -30,10 +35,16 @@ export class MapboxMap extends React.Component<Props, never> {
         e["latlng"] = e.lngLat; // meet existing interface
         this.props.onClick(e);
       });
+
+      mapBoxMapService.setOnContextMenu((e: mapboxgl.MapMouseEvent) => {
+        e["latlng"] = e.lngLat; // meet existing interface
+        this.props.onContextMenu(e);
+      });
     });
   }
 
   render(): JSX.Element {
+    this.context.mapBoxMapService.updateMap();
     return (
       <>
         <div ref={(el) => (this._mapContainer = el)} className="mapContainer" />
@@ -41,3 +52,10 @@ export class MapboxMap extends React.Component<Props, never> {
     );
   }
 }
+
+const mapStateToProps = (state: GlobalState) => ({
+  center: state.center,
+  zoom: state.zoom,
+});
+
+export const MapboxMap = connect(mapStateToProps)(Map);

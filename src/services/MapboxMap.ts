@@ -17,7 +17,7 @@ export class MapboxMapService {
 
     this._map = new mapboxgl.Map({
       container: container,
-      style: "mapbox://styles/mapbox/streets-v11",
+      style: "mapbox://styles/murrayw123/ckkdfkpan08m317ogw6ebdoli",
       center: center.reverse(),
       zoom: zoom,
     });
@@ -71,8 +71,19 @@ export class MapboxMapService {
     });
   }
 
+  public updateMap(): void {
+    if (this._map) {
+      this._map.setCenter(this._store.getState().center.reverse());
+      this._map.setZoom(this._store.getState().zoom);
+    }
+  }
+
   public subscribeToMapReady(fn: (map: mapboxgl.Map) => void): void {
     this._observer.subscribe(fn);
+  }
+
+  public setOnContextMenu(callback: OnClickCallback): void {
+    this._map.on("contextmenu", callback);
   }
 
   public setOnClick(callback: OnClickCallback): void {

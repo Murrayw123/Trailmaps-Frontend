@@ -78,6 +78,8 @@ export function findIcon(type) {
       return riderI;
     case "hiker":
       return hikerI;
+    case "selected":
+      return selectedI;
     default:
       return attractionI;
   }
