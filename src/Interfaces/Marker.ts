@@ -20,12 +20,12 @@ export interface MapboxMarkerProps {
   draggable?: boolean;
   onDragStart?: OnClickCallback;
   onDragEnd?: OnClickCallback;
-  onClick?: (e: mapboxgl.MapMouseEvent) => void;
+  onClick?: (e: MouseEvent) => void;
 }
 
 export interface CustomMapPoint {
-  marker_lat: number,
-  marker_lng: number,
-  marker_title: string
-  distance?: number
+  marker_lat: number;
+  marker_lng: number;
+  marker_title: string;
+  distance?: number;
 }

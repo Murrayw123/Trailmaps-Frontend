@@ -10,9 +10,20 @@ export class MapboxMarkerService {
   }
 
   public setMarker(props: MapboxMarkerProps): mapboxgl.Marker {
-    const { position, icon, draggable = false, onDragStart, onDragEnd } = props;
+    const {
+      position,
+      icon,
+      draggable = false,
+      onDragStart,
+      onDragEnd,
+      onClick,
+    } = props;
 
     const markerElement = createMapBoxElement(icon);
+
+    markerElement.onclick = (e) => {
+      onClick(e);
+    };
 
     const newMarker = new mapboxgl.Marker({
       element: markerElement,
@@ -20,6 +31,10 @@ export class MapboxMarkerService {
     })
       .setLngLat(position)
       .addTo(this._map);
+
+    // newMarker.on("click", () => {
+    //   debugger;
+    // });
 
     if (draggable) {
       newMarker.on("dragstart", onDragStart);

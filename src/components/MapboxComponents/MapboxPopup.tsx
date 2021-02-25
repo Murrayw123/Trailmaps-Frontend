@@ -5,13 +5,24 @@ import { faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from "antd";
 import { Marker } from "Interfaces/Marker";
 import "components/MapboxComponents/Popup.css";
-import { Textfit } from "react-textfit";
 
 interface Props {
   title: string;
   info: Marker["marker_info"];
-  onClick: React.MouseEvent;
+  onClick: any;
 }
+
+const titleSize = (titleLength: number): number => {
+  if (titleLength < 8) {
+    return 24;
+  }
+  if (titleLength > 8 && titleLength < 12) {
+    return 20;
+  }
+  if (titleLength > 12) {
+    return 14;
+  }
+};
 
 export class MapboxPopup extends Component<Props, never> {
   render(): JSX.Element {
@@ -20,27 +31,21 @@ export class MapboxPopup extends Component<Props, never> {
     return (
       <>
         <div className="titleDiv">
-          <Textfit style={{ width: 120, height: 30 }} className="title-parent">
-            <h1> {title} </h1>
-          </Textfit>
+          <h1 style={{ fontSize: titleSize(title.length) }}> {title} </h1>
           <div className="titleSpan">
-            <a>
-              <FontAwesomeIcon
-                icon={faFlag}
-                className="startFlag"
-                // onClick={() => {
-                //   this.markerClick("startPoint");
-                // }}
-              />
+            <a
+              onClick={() => {
+                onClick("startPoint");
+              }}
+            >
+              <FontAwesomeIcon icon={faFlag} className="startFlag" />
             </a>
-            <a>
-              <FontAwesomeIcon
-                icon={faFlagCheckered}
-                className="startFlag"
-                // onClick={() => {
-                //   this.markerClick("endPoint");
-                // }}
-              />
+            <a
+              onClick={() => {
+                return onClick("endPoint");
+              }}
+            >
+              <FontAwesomeIcon icon={faFlagCheckered} className="startFlag" />
             </a>
           </div>
         </div>

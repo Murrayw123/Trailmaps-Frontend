@@ -9,6 +9,7 @@ import { MapboxPopup } from "components/MapboxComponents/MapboxPopup";
 interface Props extends MapboxMarkerProps {
   marker: Partial<Marker>;
   hasPopup: boolean;
+  onPopupClick?: any;
 }
 
 export class MapboxMarker extends Component<Props, never> {
@@ -18,7 +19,7 @@ export class MapboxMarker extends Component<Props, never> {
   private _marker: mapboxgl.Marker;
 
   componentDidMount(): void {
-    const { marker, hasPopup } = this.props;
+    const { marker, hasPopup, onPopupClick } = this.props;
     this.context.servicesReady(() => {
       this._marker = this.context.mapboxMarkerAdd.setMarker(this.props);
 
@@ -29,7 +30,7 @@ export class MapboxMarker extends Component<Props, never> {
 
       if (hasPopup) {
         ReactDOM.render(
-          <MapboxPopup info={info} onClick={null} title={title} />,
+          <MapboxPopup info={info} onClick={onPopupClick} title={title} />,
           placeholder
         );
 
