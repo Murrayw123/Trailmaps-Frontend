@@ -1,5 +1,4 @@
 import React, { Component, ReactElement } from "react";
-import "leaflet/dist/leaflet.css";
 import {
   contextMenuStatus,
   customPath,

@@ -3,7 +3,8 @@ import { Context, ServicesContext } from "helpers/ServiceInit";
 import { MapboxMarkerProps, Marker } from "Interfaces/Marker";
 import ReactDOM from "react-dom";
 import mapboxgl from "mapbox-gl";
-import { Popup } from "components/Popup";
+import "./MapboxMarker.css";
+import { MapboxPopup } from "components/MapboxComponents/MapboxPopup";
 
 interface Props extends MapboxMarkerProps {
   marker: Partial<Marker>;
@@ -24,14 +25,17 @@ export class MapboxMarker extends Component<Props, never> {
       const info = marker.marker_info;
       const title = marker.marker_title;
       const placeholder = document.createElement("div");
+      placeholder.className = "popup";
 
       if (hasPopup) {
         ReactDOM.render(
-          <Popup title={title} info={info} onClick={null} />,
+          <MapboxPopup info={info} onClick={null} title={title} />,
           placeholder
         );
 
-        const popup = new mapboxgl.Popup().setDOMContent(placeholder);
+        const popup = new mapboxgl.Popup({
+          focusAfterOpen: false,
+        }).setDOMContent(placeholder);
         this._marker.setPopup(popup);
       }
     });

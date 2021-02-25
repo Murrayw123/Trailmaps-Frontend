@@ -3,30 +3,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFlag } from "@fortawesome/free-regular-svg-icons";
 import { faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from "antd";
+import { Marker } from "Interfaces/Marker";
+import "components/MapboxComponents/Popup.css";
 import { Textfit } from "react-textfit";
 
-import ReactDOM from "react-dom";
-import { Marker } from "Interfaces/Marker";
-import { Context, ServicesContext } from "helpers/ServiceInit";
-import mapboxgl from "mapbox-gl";
-
 interface Props {
-  poiMarker: Marker;
-  lng: number;
-  lat: number;
+  title: string;
+  info: Marker["marker_info"];
+  onClick: React.MouseEvent;
 }
 
 export class MapboxPopup extends Component<Props, never> {
-  public context: Context;
-  static contextType = ServicesContext;
+  render(): JSX.Element {
+    const { title, info, onClick } = this.props;
 
-  componentDidMount(): void {
-    const { poiMarker, lng, lat } = this.props;
-    const info = poiMarker.marker_info;
-    const title = poiMarker.marker_title;
-    const placeholder = document.createElement("div");
-
-    ReactDOM.render(
+    return (
       <>
         <div className="titleDiv">
           <Textfit style={{ width: 120, height: 30 }} className="title-parent">
@@ -63,17 +54,7 @@ export class MapboxPopup extends Component<Props, never> {
             );
           })}
         </div>
-      </>,
-      placeholder
+      </>
     );
-
-    new mapboxgl.Popup({ offset: 25 })
-      .setDOMContent(placeholder)
-      .setLngLat({ lng: lng, lat: lat })
-      .addTo(this.context.mapBoxMapService.map);
-  }
-
-  render(): JSX.Element {
-    return null;
   }
 }

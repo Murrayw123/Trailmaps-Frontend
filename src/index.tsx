@@ -2,7 +2,6 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import "../node_modules/antd/dist/antd.css";
-import "leaflet/dist/leaflet.css";
 import "./css/App.css";
 import "./css/Menu.css";
 import "./css/MapComponent.css";

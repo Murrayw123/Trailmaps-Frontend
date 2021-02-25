@@ -20,6 +20,7 @@ export class MapboxMapService {
       style: "mapbox://styles/murrayw123/ckkdfkpan08m317ogw6ebdoli",
       center: center.reverse(),
       zoom: zoom,
+
     });
 
     this._addGeoJSONToMap();
