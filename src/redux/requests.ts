@@ -1,6 +1,5 @@
 import { URLPREFIX } from "config";
 import * as _ from "lodash";
-import { business_groupings, food_groupings } from "helpers/iconsData";
 import {
   changeElevationData,
   changeSideBarData,

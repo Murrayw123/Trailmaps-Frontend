@@ -49,7 +49,6 @@ export class PoiMarker extends Component {
           marker={marker}
           icon={icon}
           onClick={() => {
-            console.log("click event!)");
             this.props.onClick(marker);
           }}
           onPopupClick={this.markerClick}

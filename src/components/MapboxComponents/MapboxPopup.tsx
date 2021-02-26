@@ -22,6 +22,7 @@ const titleSize = (titleLength: number): number => {
   if (titleLength > 12) {
     return 14;
   }
+  return 14;
 };
 
 export class MapboxPopup extends Component<Props, never> {
