@@ -1,8 +1,13 @@
 import React from "react";
-import {connect} from "react-redux";
-import {Button, Card, Divider, Switch, Tooltip} from "antd";
+import { connect } from "react-redux";
+import { Button, Card, Divider, Switch, Tooltip } from "antd";
 import DistanceCalculator from "./DistanceCalculator";
-import {CalculatorOutlined, DeleteOutlined, QuestionCircleOutlined,} from "@ant-design/icons";
+import {
+  CalculatorOutlined,
+  DeleteOutlined,
+  QuestionCircleOutlined,
+} from "@ant-design/icons";
+import "./DistanceCalculator.css"
 
 class DistanceCalculatorForm extends React.Component {
   render() {
@@ -41,7 +46,7 @@ class DistanceCalculatorForm extends React.Component {
           icon={<CalculatorOutlined />}
           type="primary"
           htmlType="submit"
-          className="login-form-button"
+          className="login-form-button distance-calc-button"
           onClick={submitDistance}
         >
           Calculate
@@ -62,7 +67,9 @@ class DistanceCalculatorForm extends React.Component {
           <span>
             Custom Path Creation
             <Tooltip title="Click on the map to define a custom start and end point ">
-              <QuestionCircleOutlined style={{ paddingLeft: 4, fontSize: 12 }} />
+              <QuestionCircleOutlined
+                style={{ paddingLeft: 4, fontSize: 12 }}
+              />
             </Tooltip>
             <Switch
               size="small"

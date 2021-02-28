@@ -20,7 +20,7 @@ export interface MapboxMarkerProps {
   draggable?: boolean;
   onDragStart?: OnClickCallback;
   onDragEnd?: OnClickCallback;
-  onClick?: (e: MouseEvent) => void;
+  onClick: (e: MouseEvent) => void;
 }
 
 export interface CustomMapPoint {

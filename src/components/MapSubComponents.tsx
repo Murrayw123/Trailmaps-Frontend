@@ -59,6 +59,7 @@ export const mapMarkerStart = (
       onDragStart={draggableMarkerCallback}
       onDragEnd={draggableMarkerCallback}
       className="map-marker-custom"
+      onClick={() => null}
     />
   );
 };
@@ -78,6 +79,7 @@ export const mapMarkerFinish = (
       onDragStart={draggableMarkerCallback}
       onDragEnd={draggableMarkerCallback}
       className="map-marker-custom"
+      onClick={() => null}
     />
   );
 };
@@ -97,6 +99,7 @@ export const customDistanceMarkerComponent = (
       ]}
       hasPopup={false}
       icon={mapType === "cycling" ? bicycle : walking}
+      onClick={() => null}
     />
   );
 };

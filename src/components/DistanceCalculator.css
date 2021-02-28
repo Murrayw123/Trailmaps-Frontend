@@ -1,0 +1,21 @@
+.distance-calc-button {
+  width: 100px;
+  padding: 0;
+  margin: 0;
+}
+
+.clear-path {
+  width: 96px;
+}
+
+.clear-path .anticon-delete {
+    margin: 0;
+}
+
+.distance-calc-button .anticon-calculator {
+  margin: 0;
+}
+
+.distance-calc-button .ant-menu-item .anticon {
+  margin-right: 0;
+}

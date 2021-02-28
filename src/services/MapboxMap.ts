@@ -2,6 +2,7 @@ import { Store } from "redux";
 import mapboxgl from "mapbox-gl";
 import { OnClickCallback } from "Interfaces/Types";
 import { Observable } from "helpers/Observer";
+import { mapPitched } from "redux/actions";
 
 export class MapboxMapService {
   private _store: Store;
@@ -20,13 +21,23 @@ export class MapboxMapService {
       style: "mapbox://styles/murrayw123/ckkdfkpan08m317ogw6ebdoli",
       center: center.reverse(),
       zoom: zoom,
-
     });
 
     this._addGeoJSONToMap();
     this._addTerrainToMap();
+    this._setIsPitched();
 
     this._observer.publish(this._map);
+  }
+
+  private _setIsPitched(): void {
+    this._map.on("pitchend", () => {
+      if (this._map.getPitch() !== 0) {
+        this._store.dispatch(mapPitched(true));
+      } else {
+        this._store.dispatch(mapPitched(false));
+      }
+    });
   }
 
   private _addTerrainToMap(): void {
@@ -66,7 +77,7 @@ export class MapboxMapService {
         layout: {},
         paint: {
           "line-width": 3,
-          "line-color": "blue",
+          "line-color": "#3388ff",
         },
       });
     });
@@ -93,5 +104,10 @@ export class MapboxMapService {
 
   public get map(): mapboxgl.Map {
     return this._map;
+  }
+
+  public setPitch(pitch: number): void {
+    this._map.setPitch(pitch);
+    this._store.dispatch(mapPitched(!!pitch));
   }
 }

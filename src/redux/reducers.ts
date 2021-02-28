@@ -19,6 +19,7 @@ import {
   FILTER_TRAIL_MARKERS,
   FIND_TRAIL_MARKERS,
   LAT_LNG_FROM_CONTEXT,
+  MAP_PITCHED,
   OPEN_DISTANCE_TAB,
   SET_CUSTOM_DISTANCE_MARKER,
   SET_END_POINT,
@@ -77,6 +78,7 @@ const initialState: GlobalState = {
   fetchElevationLoading: true,
   elevationData: 0,
   mapMarkers: null,
+  mapPitched: false,
 };
 
 export default function dataReducer(state = initialState, action) {
@@ -306,6 +308,12 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         elevationData: action.payload,
+      };
+
+    case MAP_PITCHED:
+      return {
+        ...state,
+        mapPitched: action.payload,
       };
   }
 }

@@ -135,6 +135,7 @@ class MapHOC extends Component<Props, State> {
         {this.mapMarkerFinish()}
         {this.customPath()}
         {this.contextMenuStatus()}
+        {this.liveTrailUsers()}
         <CustomDistanceMarker />
       </>
     );

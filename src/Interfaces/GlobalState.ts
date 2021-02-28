@@ -36,4 +36,5 @@ export interface GlobalState {
   fetchElevationLoading: boolean;
   elevationData: number;
   mapMarkers: any;
+  mapPitched: boolean;
 }

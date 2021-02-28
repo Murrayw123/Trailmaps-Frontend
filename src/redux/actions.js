@@ -32,6 +32,7 @@ export const LAT_LNG_FROM_CONTEXT = "LAT_LNG_FROM_CONTEXT";
 export const SHOULD_SHOW_CONTEXT_MENU = "SHOULD_SHOW_CONTEXT_MENU";
 export const FETCH_ELEVATION_LOADING = "FETCH_ELEVATION_LOADING";
 export const CHANGE_ELEVATION_DATA = "CHANGE_ELEVATION_DATA";
+export const MAP_PITCHED = "MAP_PITCHED";
 
 // Handle HTTP errors since fetch won't.
 export function handleErrors(response) {
@@ -198,4 +199,9 @@ export const fetchElevationLoading = (bool) => ({
 export const changeElevationData = (data) => ({
   type: CHANGE_ELEVATION_DATA,
   payload: data,
+});
+
+export const mapPitched = (bool) => ({
+  type: MAP_PITCHED,
+  payload: bool,
 });
