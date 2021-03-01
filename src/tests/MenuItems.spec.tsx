@@ -2,7 +2,7 @@ import React from "react";
 import { configure, mount } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import { applyMiddleware, createStore, Store } from "redux";
-import dataReducer from "../redux/reducers";
+import dataReducer from "redux/reducers";
 import thunk from "redux-thunk";
 import { Services, ServicesContext } from "helpers/ServiceInit";
 import { Provider } from "react-redux";
