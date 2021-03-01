@@ -3,7 +3,7 @@ import { Rnd as ElevationChartWrapper } from "react-rnd";
 import ElevationChart from "components/ElevationChart";
 import _ from "lodash";
 import { connect } from "react-redux";
-import Icon, { DownCircleOutlined, UpCircleOutlined } from "@ant-design/icons";
+import { DownCircleOutlined, UpCircleOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 
 interface Props {

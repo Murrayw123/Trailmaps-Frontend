@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import MapComponent from "./MapComponent";
+import MapComponent from "components/MapHOC";
 import { InfoPopover } from "./InfoPopover";
 import MapSelect from "components/MapSelect";
 import MarkerModal from "components/modal/Modal";
 import Sider from "components/Menu";
 import { Context, ServicesContext } from "helpers/ServiceInit";
 import { ElevationChartHOC } from "components/ElevationChartsHOC";
+import { MapTerrainButton } from "components/TerrainButton";
 
 interface Props {
   loadingTrack: boolean;
@@ -24,6 +25,14 @@ class MapParentComponent extends Component<Props, Record<string, never>> {
     );
   }
 
+  setPitch(setPitched: boolean): void {
+    if (setPitched) {
+      this.context.mapBoxMapService.setPitch(60);
+    } else {
+      this.context.mapBoxMapService.setPitch(0);
+    }
+  }
+
   componentWillUnmount() {
     this.context.mapInitialiser.destroy();
   }
@@ -36,6 +45,7 @@ class MapParentComponent extends Component<Props, Record<string, never>> {
       return (
         <div className="map">
           <MapSelect parentNode={"map"} />
+          <MapTerrainButton setPitched={(pitched) => this.setPitch(pitched)} />
           <MapComponent />
           {shouldShowModal ? <MarkerModal /> : null}
           <Sider />

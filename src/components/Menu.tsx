@@ -2,20 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import {
   allowCustomPath,
-  changeFocusPoint,
-  changeZoomLevel,
   filterTrailMarkers,
   setEndPoint,
   setOpenMenus,
   setStartPoint,
   storeCustomTrack,
-  storeFocusMarker,
   toggleLiveTrailUsers,
-  wipeEndMarker,
   wipeMarkers,
   wipeMarkersAndPath,
-  wipeStartMarker,
-} from "../redux/actions";
+} from "redux/actions";
 import { Menu } from "antd";
 import _ from "lodash";
 import DistanceCalculatorForm from "./DistanceCalculatorForm";
@@ -32,43 +27,23 @@ import {
   MapAndMarkerInformation,
   MapTools,
 } from "components/MenuComponents/Headings";
+import { findMarker, selectMarker } from "components/MenuHelpers";
 
 export const DISTANCE_KEY = "distanceTab";
 
 const SubMenu = Menu.SubMenu;
 const Item = Menu.Item;
 
-class Sider extends React.Component<any, any> {
-  dataSelect = (markerid, type, markerType) => {
-    let newFocus;
-    if (markerType === "distance") {
-      newFocus = this.props.poiMarkers.find((el) => {
-        return el.id === parseInt(markerid);
-      });
-    }
-    if (markerType === "liveTrailUser") {
-      newFocus = this.props.liveTrailUsers.find((el) => {
-        return el.id === parseInt(markerid);
-      });
-    }
-    if (type === "locate") {
-      this.props.dispatch(changeZoomLevel(13));
-      this.props.dispatch(
-        changeFocusPoint([newFocus.marker_lat, newFocus.marker_lng])
-      );
-      this.props.dispatch(storeFocusMarker(newFocus));
-    } else if (type === "start") {
-      this.props.dispatch(wipeStartMarker());
-      this.props.dispatch(setStartPoint(newFocus));
-    } else {
-      this.props.dispatch(wipeEndMarker());
-      this.props.dispatch(setEndPoint(newFocus));
-    }
+class SidebarMenu extends React.Component<any, any> {
+  dataSelect = (markerId: string, type: string, markerType: string): void => {
+    const { poiMarkers, liveTrailUsers, dispatch } = this.props;
+    const marker = findMarker(markerType, poiMarkers, markerId, liveTrailUsers);
+    return selectMarker(type, dispatch, marker);
   };
 
   submitDistance = (e) => {
     e.preventDefault();
-    const pathAndDistance = this.calculateInfo();
+    const pathAndDistance = this.findCustomRoute();
     this.props.dispatch(storeCustomTrack(pathAndDistance));
   };
 
@@ -77,7 +52,7 @@ class Sider extends React.Component<any, any> {
     this.props.dispatch(wipeMarkersAndPath());
   };
 
-  calculateInfo = () => {
+  findCustomRoute = () => {
     //deals with custom route finding
     const pathObj = [
       {
@@ -93,12 +68,11 @@ class Sider extends React.Component<any, any> {
         },
       },
     ];
-    const pathAndDistance = findPath(
+    return findPath(
       this.props.data.map_track,
       pathObj[0].start,
       pathObj[1].finish
     );
-    return pathAndDistance;
   };
 
   filterMarkers = (markers) => {
@@ -123,12 +97,7 @@ class Sider extends React.Component<any, any> {
   isButtonDisabled = () => {
     const startEmpty = _.isEmpty(this.props.startPoint);
     const endEmpty = _.isEmpty(this.props.endPoint);
-    if (startEmpty || endEmpty) {
-      return true;
-    } else {
-      //both are not empty
-      return false;
-    }
+    return !!(startEmpty || endEmpty);
   };
 
   handleMenuOpen = (menuKeys) => {
@@ -170,6 +139,7 @@ class Sider extends React.Component<any, any> {
                 poiMarkers={poiMarkers}
                 dataSelect={this.dataSelect}
                 focusMarker={focusMarker}
+                dispatch={this.props.dispatch}
               />
             </Item>
           </SubMenu>
@@ -256,4 +226,4 @@ const mapStateToProps = (state) => ({
   focusTrailUser: state.focusTrailUser,
 });
 
-export default connect(mapStateToProps)(Sider);
+export default connect(mapStateToProps)(SidebarMenu);

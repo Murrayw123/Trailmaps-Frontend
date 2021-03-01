@@ -36,8 +36,11 @@ function findDistance(path) {
         }
         chartData.push({
           elevation: path[i][2],
-          distance: customDistance,
-          coords: [path[i][1], path[i][0]],
+          distance: parseFloat(customDistance.toFixed(3)),
+          coords: [
+            parseFloat(path[i][1].toFixed(4)),
+            parseFloat(path[i][0].toFixed(4)),
+          ],
         });
       } else {
         customDistance = 0;
@@ -73,6 +76,7 @@ function closest(geoJsonPath, start, finish) {
     lineString,
     point([finish.marker_lng, finish.marker_lat])
   );
+
   return { closestStart: closestStart, closestFinish };
 }
 
@@ -111,9 +115,18 @@ export function findPath(geoJsonPath, start, finish) {
       elevationLoss: 0,
     };
   }
+
+  // add our actual destination to the path. Use the elevation from the previous point, it's probably good enough ;)
+  path.path.push([
+    finish.marker_lng,
+    finish.marker_lat,
+    path.path[path.path.length - 1][2],
+  ]);
+
   let customDistance = findDistance(path.path);
   //returns a linestring so leaflet can use it as a geojson layer
   let linestring = lineString(path.path);
+
   return {
     path: linestring,
     distance: customDistance.distance,
