@@ -36,8 +36,11 @@ function findDistance(path) {
         }
         chartData.push({
           elevation: path[i][2],
-          distance: customDistance,
-          coords: [path[i][1], path[i][0]],
+          distance: parseFloat(customDistance.toFixed(3)),
+          coords: [
+            parseFloat(path[i][1].toFixed(4)),
+            parseFloat(path[i][0].toFixed(4)),
+          ],
         });
       } else {
         customDistance = 0;
@@ -123,6 +126,7 @@ export function findPath(geoJsonPath, start, finish) {
   let customDistance = findDistance(path.path);
   //returns a linestring so leaflet can use it as a geojson layer
   let linestring = lineString(path.path);
+
   return {
     path: linestring,
     distance: customDistance.distance,

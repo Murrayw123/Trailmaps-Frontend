@@ -7,7 +7,7 @@ import {
   DeleteOutlined,
   QuestionCircleOutlined,
 } from "@ant-design/icons";
-import "./DistanceCalculator.css"
+import "./DistanceCalculator.css";
 
 class DistanceCalculatorForm extends React.Component {
   render() {
@@ -51,7 +51,7 @@ class DistanceCalculatorForm extends React.Component {
         >
           Calculate
         </Button>
-        {customPath.path ? (
+        {customPath?.path ? (
           <Button
             icon={<DeleteOutlined />}
             type="default"
@@ -80,7 +80,7 @@ class DistanceCalculatorForm extends React.Component {
           </span>
         </Card>
         <Divider style={{ marginTop: 0 }} className="distance-divider" />
-        {customPath.path ? (
+        {customPath?.path ? (
           <Card bordered={false} style={{ width: 250 }}>
             <p>
               <b> Distance: </b>

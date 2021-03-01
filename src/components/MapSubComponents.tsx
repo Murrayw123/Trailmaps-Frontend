@@ -13,10 +13,10 @@ const finish = findIcon("finish");
 const bicycle = findIcon("bicycle");
 const walking = findIcon("walking");
 
-export const customPath = (
+export const generateCustomPath = (
   customPath: GlobalState["customPath"]
 ): ReactElement => {
-  return <MapboxGeoJSON path={customPath.path} color={"red"} />;
+  return <MapboxGeoJSON path={customPath?.path} color={"red"} />;
 };
 
 export const poiMarkers = (

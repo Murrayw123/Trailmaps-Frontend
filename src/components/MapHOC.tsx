@@ -1,7 +1,6 @@
 import React, { Component, ReactElement } from "react";
 import {
   contextMenuStatus,
-  customPath,
   liveTrailUsers,
   mapMarkerFinish,
   mapMarkerStart,
@@ -15,6 +14,7 @@ import { FINISH, START } from "services/MarkerAdd";
 import mapboxgl from "mapbox-gl";
 import CustomDistanceMarker from "components/CustomDistanceMarker";
 import { connect } from "react-redux";
+import { CustomPath } from "components/CustomPath";
 
 interface Props {
   data: MapData;
@@ -31,10 +31,6 @@ interface Props {
 interface State {
   rightClickXCoord: number;
   rightClickYCoord: number;
-}
-
-function displayCustomPath(customPath: any): boolean {
-  return Object.keys(customPath).length && customPath.path;
 }
 
 class MapHOC extends Component<Props, State> {
@@ -66,14 +62,6 @@ class MapHOC extends Component<Props, State> {
 
   draggableMarkerFinish = (event: mapboxgl.MapMouseEvent): void => {
     this.context.markerAdd.draggableMarker(event, FINISH);
-  };
-
-  customPath = (): ReactElement => {
-    if (displayCustomPath(this.props.customPath)) {
-      return customPath(this.props.customPath);
-    } else {
-      return null;
-    }
   };
 
   poiMarkers = (): Array<ReactElement> => {
@@ -133,9 +121,9 @@ class MapHOC extends Component<Props, State> {
         {this.poiMarkers()}
         {this.mapMarkerStart()}
         {this.mapMarkerFinish()}
-        {this.customPath()}
         {this.contextMenuStatus()}
         {this.liveTrailUsers()}
+        <CustomPath />
         <CustomDistanceMarker />
       </>
     );
@@ -143,7 +131,6 @@ class MapHOC extends Component<Props, State> {
 }
 
 const mapStateToProps = (state) => ({
-  customPath: state.customPath,
   data: state.data,
   center: state.center,
   zoom: state.zoom,

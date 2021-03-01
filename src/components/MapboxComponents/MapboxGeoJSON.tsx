@@ -1,9 +1,11 @@
 import { Component } from "react";
 import { Context, ServicesContext } from "helpers/ServiceInit";
+import { GlobalState } from "Interfaces/GlobalState";
+import mapboxgl from "mapbox-gl";
 
 interface Props {
   color: string;
-  path: mapboxgl.MapboxGeoJSONFeature;
+  path: GlobalState["customPath"]["path"];
 }
 
 export class MapboxGeoJSON extends Component<Props, never> {
@@ -22,7 +24,7 @@ export class MapboxGeoJSON extends Component<Props, never> {
 
     this._map.addSource("customPath", {
       type: "geojson",
-      data: path,
+      data: (path as unknown) as any,
     });
 
     this._map.addLayer({

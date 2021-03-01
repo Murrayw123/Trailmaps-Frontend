@@ -1,5 +1,7 @@
 import { MapData } from "Interfaces/MapData";
 import { CustomMapPoint, Marker } from "Interfaces/Marker";
+import mapboxgl from "mapbox-gl";
+import {CustomPath} from "Interfaces/CustomPath";
 
 export interface GlobalState {
   data: MapData;
@@ -12,7 +14,7 @@ export interface GlobalState {
   distance: number;
   elevation: Array<any>;
   customDistance: Array<any>;
-  customPath: any;
+  customPath: CustomPath;
   zoom: number;
   center: [number, number];
   filters: Array<any>;

@@ -54,8 +54,8 @@ export class MapboxMarker extends Component<Props, never> {
     this._marker.setLngLat([marker.marker_lng, marker.marker_lat]);
     this._marker.setLngLat([marker.marker_lng, marker.marker_lat]);
 
-    const markerElement = this._marker.getElement();
-    markerElement.style.backgroundImage = `url(${this.props.icon})`;
+    // const markerElement = this._marker.getElement();
+    // markerElement.style.backgroundImage = `url(${this.props.icon})`;
   }
 
   render(): JSX.Element {
