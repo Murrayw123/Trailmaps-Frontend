@@ -8,7 +8,6 @@ import { Services, ServicesContext } from "helpers/ServiceInit";
 import { Provider } from "react-redux";
 import { MapHOC } from "components/MapParent";
 import { server } from "tests/mock-api/server";
-
 describe("should load some markers", () => {
   let store: Store;
   let services: Services;
