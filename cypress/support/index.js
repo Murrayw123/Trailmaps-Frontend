@@ -1,14 +1,7 @@
-// ***********************************************************
-// This example support/index.js is processed and
-// loaded automatically before your test files.
-//
-// This is a great place to put global configuration and
-// behavior that modifies Cypress.
-//
-// You can change the location of this file or turn off
-// automatically serving support files with the
-// 'supportFile' configuration option.
-//
-// You can read more here:
-// https://on.cypress.io/configuration
-// ***********************************************************
+beforeEach(() => {
+  cy.intercept("GET", "/api/maps/mundabiddi", { fixture: "mundabiddi.json" });
+  cy.intercept("GET", "/api/markers*", { fixture: "markers.json" });
+  cy.intercept("POST", "/api/submit_marker/*", {});
+  cy.intercept("GET", "/api/map_preview", { fixture: "map_preview.json" });
+  cy.intercept("GET", "/api/spotuserswithlocation", []);
+});

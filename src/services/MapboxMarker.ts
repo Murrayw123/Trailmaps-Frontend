@@ -1,4 +1,3 @@
-import { MapboxMarkerProps } from "Interfaces/Marker";
 import mapboxgl from "mapbox-gl";
 import { createMapBoxElement } from "services/helpers";
 import { MapBoxMarkerReactWrapperProps } from "components/MapboxComponents/MapboxMarker";
@@ -22,7 +21,12 @@ export class MapboxMarkerService {
     } = props;
 
     const markerElement = createMapBoxElement(icon);
-    markerElement.className = marker.marker_type;
+    markerElement.classList.add(marker.marker_type);
+
+    // add the title in, remove spaces
+    markerElement.classList.add(
+      marker.marker_title.replace(/ /g, "").toLowerCase()
+    );
 
     markerElement.onclick = (e) => {
       onClick(e);
