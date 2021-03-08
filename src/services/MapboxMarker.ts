@@ -1,6 +1,7 @@
 import { MapboxMarkerProps } from "Interfaces/Marker";
 import mapboxgl from "mapbox-gl";
 import { createMapBoxElement } from "services/helpers";
+import { MapBoxMarkerReactWrapperProps } from "components/MapboxComponents/MapboxMarker";
 
 export class MapboxMarkerService {
   private _map: mapboxgl.Map;
@@ -9,7 +10,7 @@ export class MapboxMarkerService {
     this._map = map;
   }
 
-  public setMarker(props: MapboxMarkerProps): mapboxgl.Marker {
+  public setMarker(props: MapBoxMarkerReactWrapperProps): mapboxgl.Marker {
     const {
       position,
       icon,
@@ -17,9 +18,11 @@ export class MapboxMarkerService {
       onDragStart,
       onDragEnd,
       onClick,
+      marker,
     } = props;
 
     const markerElement = createMapBoxElement(icon);
+    markerElement.className = marker.marker_type;
 
     markerElement.onclick = (e) => {
       onClick(e);
@@ -31,10 +34,6 @@ export class MapboxMarkerService {
     })
       .setLngLat(position)
       .addTo(this._map);
-
-    // newMarker.on("click", () => {
-    //   debugger;
-    // });
 
     if (draggable) {
       newMarker.on("dragstart", onDragStart);
