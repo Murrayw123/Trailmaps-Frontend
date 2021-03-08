@@ -6,13 +6,13 @@ import mapboxgl from "mapbox-gl";
 import "./MapboxMarker.css";
 import { MapboxPopup } from "components/MapboxComponents/MapboxPopup";
 
-interface Props extends MapboxMarkerProps {
+export interface MapBoxMarkerReactWrapperProps extends MapboxMarkerProps {
   marker: Partial<Marker>;
   hasPopup: boolean;
   onPopupClick?: any;
 }
 
-export class MapboxMarker extends Component<Props, never> {
+export class MapboxMarker extends Component<MapBoxMarkerReactWrapperProps, never> {
   public context: Context;
   static contextType = ServicesContext;
 
@@ -53,9 +53,6 @@ export class MapboxMarker extends Component<Props, never> {
 
     this._marker.setLngLat([marker.marker_lng, marker.marker_lat]);
     this._marker.setLngLat([marker.marker_lng, marker.marker_lat]);
-
-    // const markerElement = this._marker.getElement();
-    // markerElement.style.backgroundImage = `url(${this.props.icon})`;
   }
 
   render(): JSX.Element {

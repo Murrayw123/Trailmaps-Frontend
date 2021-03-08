@@ -9,9 +9,10 @@ import {
   Tooltip,
   Upload,
 } from "antd";
-import Icon, { QuestionCircleOutlined } from "@ant-design/icons";
+import { QuestionCircleOutlined } from "@ant-design/icons";
 import { markerChoices } from "helpers/iconsData";
-import TextArea from "antd/es/input/TextArea";
+
+const { TextArea } = Input;
 
 interface Props {
   onCancel: any;
