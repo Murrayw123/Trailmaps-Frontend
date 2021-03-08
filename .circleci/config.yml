@@ -5,8 +5,8 @@ orbs:
   # or the latest version 1.x.x using "@1" syntax
   cypress: cypress-io/cypress@1
 workflows:
-  build:
+  Test:
     jobs:
       - cypress/run:
           start: npm start
-          wait-on: 'http://localhost:4200'
+          wait-on: 'http://localhost:3000'
