@@ -1,4 +1,4 @@
-import {TEST_PORT} from "./config";
+import { TEST_PORT } from "./config";
 
 describe("maps: ", () => {
   it("Munda Biddi - should display only towns or huts", () => {
@@ -11,7 +11,7 @@ describe("maps: ", () => {
   });
 
   it("should load a context menu on right click", () => {
-    cy.visit("http://localhost:3000/maps/mundabiddi");
+    cy.visit(`http://0.0.0.0:${TEST_PORT}/maps/mundabiddi`);
     const map = cy.get(".mapboxgl-canvas");
     map.rightclick();
 
