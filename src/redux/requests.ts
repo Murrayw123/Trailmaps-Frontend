@@ -43,7 +43,9 @@ export function fetchData(mapString: string): (dispatch: Dispatch) => void {
   return async (dispatch) => {
     try {
       dispatch(fetchDataBegin());
-      const res = await fetch(URLPREFIX + "/api/maps/" + mapString);
+      const res = await fetch(
+        "http://localhost:8000" + "/api/maps/" + mapString
+      );
       const json = await res.json();
       const clone = _.cloneDeep(json);
       const filters = [];
@@ -66,7 +68,7 @@ export function fetchMarkers(mapString: string): (dispatch: Dispatch) => void {
     try {
       dispatch(fetchDataBegin());
       const result = await fetch(
-        URLPREFIX + "/api/markers?map_alias=" + mapString
+        "http://localhost:8000" + "/api/markers?map_alias=" + mapString
       );
       const markers = await result.json();
       const mapMarkerTypes = processMarkerGroupings(markers);
@@ -88,15 +90,17 @@ export function postNewMarker(formData: unknown): Promise<boolean> {
     },
     body: JSON.stringify(formData),
   };
-  return fetch(URLPREFIX + "/api/submit_marker", settings).then((response) => {
-    return response.status === 201;
-  });
+  return fetch("http://localhost:8000" + "/api/submit_marker", settings).then(
+    (response) => {
+      return response.status === 201;
+    }
+  );
 }
 
 export function fetchOtherMaps() {
   return (dispatch: Dispatch) => {
     dispatch(fetchDataBegin());
-    fetch(URLPREFIX + "/api/map_preview")
+    fetch("http://localhost:8000" + "/api/map_preview")
       .then(handleErrors)
       .then((res) => res.json())
       .then((data) => {
@@ -112,7 +116,11 @@ export function fetchOtherMaps() {
 export function fetchTrailUsers(mapString) {
   return (dispatch) => {
     dispatch(fetchDataBegin());
-    fetch(URLPREFIX + "/api/spotuserswithlocation?map_alias=" + mapString)
+    fetch(
+      "http://localhost:8000" +
+        "/api/spotuserswithlocation?map_alias=" +
+        mapString
+    )
       .then(handleErrors)
       .then((res) => res.json())
       .then((json) => {
