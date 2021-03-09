@@ -56,7 +56,7 @@
     "start-server-and-test": "1.12.0"
   },
   "scripts": {
-    "start:ci": "WDS_SOCKET_HOST=localhost WDS_SOCKET_PORT=3000 TEST=true react-scripts start",
+    "start:ci": "WDS_SOCKET_HOST=localhost WDS_SOCKET_PORT=3000 REACT_APP_TEST=true react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

@@ -3,6 +3,5 @@ export const isDevEnvironment = () => {
 };
 
 export const isTestEnvironment = () => {
-  console.debug("TEST123", process.env.TEST);
-  return process.env.TEST === "true";
+  return process.env.REACT_APP_TEST === "true";
 };
