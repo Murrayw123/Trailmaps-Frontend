@@ -1,4 +1,4 @@
-# to use orbs, must use version >= 2.1 
+# to use orbs, must use version >= 2.1
 version: 2.1
 orbs:
   # import Cypress orb by specifying an exact version x.y.z
@@ -7,6 +7,4 @@ orbs:
 workflows:
   Test:
     jobs:
-      - cypress/run:
-          start: npm run ci:test
-          wait-on: 'http://0.0.0.0:80'
+      - cypress/run
