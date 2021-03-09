@@ -1,6 +1,6 @@
 describe("distance calculator: ", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/maps/mundabiddi");
+    cy.visit("http://0.0.0.0:80/maps/mundabiddi");
 
     cy.get(".mundaring").click();
     cy.get(".startFlag").click();
