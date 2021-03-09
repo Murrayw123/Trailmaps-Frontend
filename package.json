@@ -63,7 +63,7 @@
     "test:cypress": "cypress run",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "eject": "react-scripts eject",
-    "ci:test": "start-server-and-test start-test:ci http://locahost:3000 test:cypress"
+    "ci:test": "start-server-and-test start-test:ci http-get://localhost:3000/main.js test:cypress"
   },
   "browserslist": [
     ">0.2%",
