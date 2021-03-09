@@ -1,5 +1,14 @@
-import { isDevEnvironment } from "./utilities";
+import { isCIEnvironment, isDevEnvironment } from "./utilities";
 
-export const URLPREFIX = isDevEnvironment()
-  ? process.env.REACT_APP_URLPREFIX
-  : "https://trailmaps.site";
+const environment = () => {
+  if (isDevEnvironment()) {
+    return process.env.REACT_APP_URLPREFIX;
+  }
+  if (isCIEnvironment()) {
+    // being intercepted anyway
+    return "http://localhost:8000";
+  }
+  return "";
+};
+
+export const URLPREFIX = environment();

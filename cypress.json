@@ -1,5 +1,9 @@
 {
   "viewportWidth": 1000,
   "viewportHeight": 900,
-  "projectId": "gx1tig"
+  "projectId": "gx1tig",
+  "retries": {
+    "runMode": 3,
+    "openMode": 0
+  }
 }
