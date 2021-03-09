@@ -9,4 +9,4 @@ export const mapStyles = [
 
 export const URLPREFIX = isDevEnvironment()
   ? process.env.REACT_APP_URLPREFIX
-  : "";
+  : "https://trailmaps.site:8000";
