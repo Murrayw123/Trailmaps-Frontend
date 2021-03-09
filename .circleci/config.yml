@@ -9,4 +9,3 @@ workflows:
     jobs:
       - cypress/run:
           start: npm run ci:test
-          wait-on: "http://0.0.0.0:80"
