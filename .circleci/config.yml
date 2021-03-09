@@ -8,5 +8,5 @@ workflows:
   Test:
     jobs:
       - cypress/run:
-          start: npm ci:test
+          start: npm run ci:test
           wait-on: 'http://localhost:3000'
