@@ -1,14 +1,14 @@
-import { isDevEnvironment, isProdEnvironment } from "./utilities";
+import { isDevEnvironment, isTestEnvironment } from "./utilities";
 
 const environment = () => {
   if (isDevEnvironment()) {
     return process.env.REACT_APP_URLPREFIX;
   }
-  if (isProdEnvironment()) {
+  if (isTestEnvironment()) {
     // being intercepted anyway
-    return "";
+    return "http://localhost:8000";
   }
-  return "http://localhost:8000";
+  return ""
 };
 
 export const URLPREFIX = environment();
