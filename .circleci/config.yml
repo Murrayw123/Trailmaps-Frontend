@@ -8,7 +8,7 @@ workflows:
   Test:
     jobs:
       - cypress/run:
-          start: npm start
+          start: npm run start:ci
           wait-on: "http://localhost:3000"
           record: true
           debug: "cypress:*"
