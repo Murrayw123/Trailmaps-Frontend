@@ -21,7 +21,7 @@ class MapParentComponent extends Component<Props, Record<string, never>> {
 
   async componentDidMount() {
     await this.context.mapInitialiser.init(
-      window.location.pathname.substring(6)
+      window.location.pathname.substring(6) || "mundabiddi"
     );
   }
 
