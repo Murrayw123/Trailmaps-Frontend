@@ -57,7 +57,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-test:ci": "react-scripts start",
+    "start-test:ci": "HOST=0.0.0.0 PORT=3000 ./node_modules/.bin/react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:cypress": "npx cypress run",
