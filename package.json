@@ -57,13 +57,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-test:ci": "HOST=0.0.0.0 PORT=3000 ./node_modules/.bin/react-scripts start",
+    "start-test:ci": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:cypress": "cypress run",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "eject": "react-scripts eject",
-    "ci:test": "start-server-and-test start-test:ci http://locahost:3000 test:cypress"
+    "ci:test": "start-server-and-test start http://0.0.0.0:80 test:cypress"
   },
   "browserslist": [
     ">0.2%",
