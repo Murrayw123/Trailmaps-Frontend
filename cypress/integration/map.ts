@@ -1,6 +1,8 @@
+import {TEST_PORT} from "./config";
+
 describe("maps: ", () => {
   it("Munda Biddi - should display only towns or huts", () => {
-    cy.visit("http://localhost:3000/maps/mundabiddi");
+    cy.visit(`http://0.0.0.0:${TEST_PORT}/maps/mundabiddi`);
 
     cy.get(".mapboxgl-marker").should("satisfy", ($el) => {
       const classList = Array.from($el[0].classList);
