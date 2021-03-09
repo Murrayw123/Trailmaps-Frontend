@@ -20,7 +20,9 @@ class MapParentComponent extends Component<Props, Record<string, never>> {
   static contextType = ServicesContext;
 
   async componentDidMount() {
-    await this.context.mapInitialiser.init("mundabiddi");
+    await this.context.mapInitialiser.init(
+      window.location.pathname.substring(6)
+    );
   }
 
   setPitch(setPitched: boolean): void {

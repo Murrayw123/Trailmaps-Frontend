@@ -60,7 +60,7 @@
     "start-test:ci": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "test:cypress": "cypress run",
+    "test:cypress": "DEBUG=cypress:* cypress run",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "eject": "react-scripts eject",
     "ci:test": "start-server-and-test start http://127.0.0.1:3000 test:cypress"
