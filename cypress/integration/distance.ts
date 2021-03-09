@@ -1,8 +1,7 @@
-import { TEST_PORT } from "./config";
 
 describe("distance calculator: ", () => {
   beforeEach(() => {
-    cy.visit(`http://0.0.0.0:${TEST_PORT}/maps/mundabiddi`);
+    cy.visit(`http://0.0.0.0:3000/maps/mundabiddi`);
 
     cy.get(".mundaring").click();
     cy.get(".startFlag").click();
