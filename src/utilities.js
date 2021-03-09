@@ -3,5 +3,5 @@ export const isDevEnvironment = () => {
 };
 
 export const isTestEnvironment = () => {
-  return process.env.REACT_APP_TEST === "true";
+  return process.env.REACT_APP_TEST === "1";
 };
