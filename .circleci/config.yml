@@ -1,13 +1,33 @@
 # to use orbs, must use version >= 2.1
 version: 2.1
 orbs:
-  # import Cypress orb by specifying an exact version x.y.z
-  # or the latest version 1.x.x using "@1" syntax
   cypress: cypress-io/cypress@1
+  aws-s3: circleci/aws-s3@1.0.11
+  node: circleci/node@4.2.0
+
 workflows:
-  Test:
+  test:
     jobs:
       - cypress/run:
-          start: npm start
-          wait-on: 'http://localhost'
+          start: npm run start:ci
+          wait-on: "http://localhost:3000"
+          record: true
+  build_and_push:
+    jobs:
+#      - cypress/run:
+#            start: npm run start:ci
+#            wait-on: "http://localhost:3000"
+#            record: true
+      - build:
+#          requires:
+#            - cypress/run
+          steps:
+            - run: npm run build
+            - persist_to_workspace:
+              root: .
+              paths: .
+      - aws-s3/copy:
+          from: build/*
+          to: 's3://trailmaps.link'
+
 
