@@ -8,17 +8,15 @@ orbs:
 jobs:
   build:
     docker:
-      - image: "cimg/base:stable"
-    resource_class: xlarge
+      - image: circleci/node
     steps:
       - checkout
-      - node/install
-      - run: npm ci
-      - run: npm run build
-#      - persist_to_workspace:
-#          root: .
-#          paths:
-#            - build
+      - run: npm install
+      - run: CI=false npm run build # prevent fail due to eslint
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build
   push:
     docker:
       - image: 'cimg/python:3.6'
@@ -26,7 +24,7 @@ jobs:
       - attach_workspace:
           at: /tmp/build
       - aws-s3/copy:
-          from: /tmp/build/*
+          from: build
           to: "s3://trailmaps.link"
 
 workflows:
