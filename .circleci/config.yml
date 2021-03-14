@@ -23,8 +23,8 @@ jobs:
     steps:
       - attach_workspace:
           at: build
-      - aws-s3/sync:
-          from: build
+      - aws-s3/copy:
+          from: build/*
           to: "s3://trailmaps.link"
 
 workflows:
