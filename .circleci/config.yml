@@ -5,29 +5,41 @@ orbs:
   aws-s3: circleci/aws-s3@1.0.11
   node: circleci/node@4.2.0
 
+jobs:
+  build:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - checkout
+      - node/install
+      - run: npm ci
+      - run: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build
+  push:
+    docker:
+      - image: 'cimg/python:3.6'
+    steps:
+      - attach_workspace:
+          at: /tmp/build
+      - aws-s3/copy:
+          from: /tmp/build/*
+          to: "s3://trailmaps.link"
+
 workflows:
+  build_and_push:
+    jobs:
+      - cypress/run:
+          start: npm run start:ci
+          wait-on: "http://localhost:3000"
+          record: true
+      - build
+      - push
   test:
     jobs:
       - cypress/run:
           start: npm run start:ci
           wait-on: "http://localhost:3000"
           record: true
-  build_and_push:
-    jobs:
-#      - cypress/run:
-#            start: npm run start:ci
-#            wait-on: "http://localhost:3000"
-#            record: true
-      - build:
-#          requires:
-#            - cypress/run
-          steps:
-            - run: npm run build
-            - persist_to_workspace:
-              root: .
-              paths: .
-      - aws-s3/copy:
-          from: build/*
-          to: 's3://trailmaps.link'
-
-
