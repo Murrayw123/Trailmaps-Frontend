@@ -32,7 +32,7 @@ workflows:
   build_and_push:
     jobs:
       - cypress/run:
-          start: npm run start:ci
+          start: npm run ci:test
           wait-on: "http://localhost:3000"
           record: true
       - build

@@ -57,7 +57,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-test:ci": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:cypress": "cypress run",
