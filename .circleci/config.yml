@@ -40,6 +40,10 @@ workflows:
   test:
     jobs:
       - cypress/run:
+          filters: # using regex filters requires the entire branch to match
+            branches:
+              only: # only branches matching the below regex filters will run
+                - dev
           start: npm run start:ci
           wait-on: "http://localhost:3000"
           record: true
