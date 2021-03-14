@@ -25,7 +25,7 @@ jobs:
           at: build
       - aws-s3/sync:
           from: build/*
-          to: "s3://trailmaps.link"
+          to: "s3://trailmaps-link"
 
 workflows:
   build_and_push:
