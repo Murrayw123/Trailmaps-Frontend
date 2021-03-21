@@ -28,7 +28,7 @@ push: &push
         at: build
     - aws-s3/sync:
         from: build/*
-        to: << "parameters.push_to" >>
+        to: "s3://trailmaps-link"
 
 jobs:
   build:
