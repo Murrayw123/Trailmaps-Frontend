@@ -53,9 +53,9 @@ workflows:
       - build:
           <<: *dev_only
           requires:
-            - cypress/run
+            - 'cypress/run'
       - push:
           <<: *dev_only
-          push_to: 's3://trailmaps-link'
           requires:
             - build
+          push_to: 's3://trailmaps-link'
