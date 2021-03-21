@@ -1,12 +1,14 @@
-import { isDevEnvironment } from "./utilities";
+import { isDevEnvironment, isTestEnvironment } from "./utilities";
 
-export const mapStyles = [
-  { key: "darkmatter", pretty: "Dark Matter - (dark theme)" },
-  { key: "basic", pretty: "Basic" },
-  { key: "positron", pretty: "Positron - (greyscale)" },
-  { key: "topo", pretty: "Topographical" },
-];
+const environment = () => {
+  if (isTestEnvironment()) {
+    // being intercepted anyway
+    return "http://localhost:8000";
+  }
+  if (isDevEnvironment()) {
+    return process.env.REACT_APP_URLPREFIX;
+  }
+  return "";
+};
 
-export const URLPREFIX = isDevEnvironment()
-  ? process.env.REACT_APP_URLPREFIX
-  : "";
+export const URLPREFIX = environment();
