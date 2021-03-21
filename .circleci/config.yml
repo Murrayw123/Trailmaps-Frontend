@@ -12,7 +12,7 @@ dev_only: &dev_only
 
 run_cypress: &run_cypress
   <<: *dev_only
-  start: npm run start
+  start: npm run start:ci
   wait-on: "http://localhost:3000"
   record: true
 
