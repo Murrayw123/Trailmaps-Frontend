@@ -12,7 +12,7 @@ dev_only: &dev_only
 
 run_cypress: &run_cypress
   <<: *dev_only
-  start: npm run start:ci
+  start: npm run start
   wait-on: "http://localhost:3000"
   record: true
 
@@ -52,6 +52,8 @@ workflows:
           <<: *run_cypress
       - build:
           <<: *dev_only
+          requires:
+            - cypress/run
       - push:
           <<: *dev_only
           push_to: "s3://trailmaps-link"
