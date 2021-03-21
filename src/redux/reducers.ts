@@ -19,6 +19,7 @@ import {
   FILTER_TRAIL_MARKERS,
   FIND_TRAIL_MARKERS,
   LAT_LNG_FROM_CONTEXT,
+  MAP_PITCHED,
   OPEN_DISTANCE_TAB,
   SET_CUSTOM_DISTANCE_MARKER,
   SET_END_POINT,
@@ -32,11 +33,18 @@ import {
   WIPE_END_MARKER,
   WIPE_MARKERS,
   WIPE_MARKERS_AND_PATH,
-  WIPE_START_MARKER
-} from "./actions";
+  WIPE_START_MARKER,
+} from "redux/actions";
+import { Store } from "redux";
+import { MapData } from "Interfaces/MapData";
+import { GlobalState } from "Interfaces/GlobalState";
 
-const initialState = {
-  data: [],
+export interface GlobalStateStore extends Store {
+  getState: () => GlobalState;
+}
+
+const initialState: GlobalState = {
+  data: {} as MapData,
   loadingTrack: true,
   loadingMarkers: true,
   error: null,
@@ -46,16 +54,16 @@ const initialState = {
   distance: 0,
   elevation: [],
   customDistance: [],
-  customPath: {},
+  customPath: null,
   zoom: 10,
-  center: 0,
+  center: [0, 0],
   filters: [],
   startPoint: {},
   endPoint: {},
   focusMarker: {},
-  customDistanceMarker: [],
+  customDistanceMarker: null,
   mapMarkerStart: null,
-  mapMarkerEnd: null,
+  mapMarkerFinish: null,
   allowCustomPath: false,
   sideBarImage: null,
   sideBarBlurb: null,
@@ -68,7 +76,9 @@ const initialState = {
   latLngFromContext: { lat: 0, lng: 0 },
   shouldShowContextMenuStatus: false,
   fetchElevationLoading: true,
-  elevationData: 0
+  elevationData: 0,
+  mapMarkers: null,
+  mapPitched: false,
 };
 
 export default function dataReducer(state = initialState, action) {
@@ -77,7 +87,7 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       };
 
     case FETCH_DATA_SUCCESS:
@@ -87,36 +97,36 @@ export default function dataReducer(state = initialState, action) {
         data: action.payload.initMapInfo,
         center: [
           action.payload.initMapInfo.startpointlat,
-          action.payload.initMapInfo.startpointlng
+          action.payload.initMapInfo.startpointlng,
         ],
-        filters: action.payload.initMapInfo.filters
+        filters: action.payload.initMapInfo.filters,
       };
 
     case FETCH_MARKERS_SUCCESS:
       return {
         ...state,
         loadingMarkers: false,
-        poiMarkers: action.payload.markers
+        poiMarkers: action.payload.markers,
       };
 
     case FETCH_MAPS_SUCCESS:
       return {
         ...state,
-        allMaps: action.payload.maps
+        allMaps: action.payload.maps,
       };
 
     case FETCH_USERS_SUCCESS:
       return {
         ...state,
         loadingMarkers: false,
-        liveTrailUsers: action.payload.users
+        liveTrailUsers: action.payload.users,
       };
 
     case FETCH_USERS_FAILURE:
       return {
         ...state,
         error: action.payload.error,
-        liveTrailUsers: []
+        liveTrailUsers: [],
       };
 
     case FETCH_DATA_FAILURE:
@@ -124,29 +134,29 @@ export default function dataReducer(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        data: []
+        data: [],
       };
 
     case ADD_MAP_MARKER_START:
       return {
         ...state,
-        mapMarkerStart: action.payload
+        mapMarkerStart: action.payload,
       };
 
     case ADD_MAP_MARKER_END:
       return {
         ...state,
-        mapMarkerEnd: action.payload
+        mapMarkerFinish: action.payload,
       };
     case CALC_DISTANCE:
       return {
         ...state,
-        customDistance: [...state.customDistance, action.payload]
+        customDistance: [...state.customDistance, action.payload],
       };
     case CALC_ELEVATION:
       return {
         ...state,
-        mapMarkers: [...state.mapMarkers, action.payload]
+        mapMarkers: [...state.mapMarkers, action.payload],
       };
     case STORE_CUSTOM_TRACK:
       return {
@@ -156,110 +166,110 @@ export default function dataReducer(state = initialState, action) {
           distance: action.payload.distance,
           elevationGain: action.payload.elevationGain,
           elevationLoss: action.payload.elevationLoss,
-          elevationChartData: action.payload.chartData
-        }
+          elevationChartData: action.payload.chartData,
+        },
       };
     case CHANGE_ZOOM_LEVEL:
       return {
         ...state,
-        zoom: action.payload
+        zoom: action.payload,
       };
 
     case CHANGE_FOCUS_POINT:
       return {
         ...state,
-        center: action.payload
+        center: action.payload,
       };
 
     case FIND_TRAIL_MARKERS:
       return {
         ...state,
-        mapMarkerTypes: action.payload
+        mapMarkerTypes: action.payload,
       };
 
     case FILTER_TRAIL_MARKERS:
       return {
         ...state,
-        filters: action.payload
+        filters: action.payload,
       };
 
     case SET_START_POINT:
       return {
         ...state,
-        startPoint: action.payload
+        startPoint: action.payload,
       };
 
     case SET_END_POINT:
       return {
         ...state,
-        endPoint: action.payload
+        endPoint: action.payload,
       };
 
     case STORE_FOCUS_MARKER:
       return {
         ...state,
-        focusMarker: action.payload
+        focusMarker: action.payload,
       };
 
     case SET_CUSTOM_DISTANCE_MARKER:
       return {
         ...state,
-        customDistanceMarker: action.payload
+        customDistanceMarker: action.payload,
       };
 
     case WIPE_MARKERS_AND_PATH:
       return {
         ...state,
         mapMarkerStart: null,
-        mapMarkerEnd: null,
+        mapMarkerFinish: null,
         customPath: {},
         customDistance: [],
         startPoint: {},
-        endPoint: {}
+        endPoint: {},
       };
 
     case WIPE_MARKERS:
       return {
         ...state,
         mapMarkerStart: null,
-        mapMarkerEnd: null
+        mapMarkerFinish: null,
       };
 
     case WIPE_START_MARKER:
       return {
         ...state,
-        mapMarkerStart: null
+        mapMarkerStart: null,
       };
 
     case WIPE_END_MARKER:
       return {
         ...state,
-        mapMarkerEnd: null
+        mapMarkerFinish: null,
       };
 
     case ALLOW_CUSTOM_PATH:
       return {
         ...state,
-        allowCustomPath: action.payload
+        allowCustomPath: action.payload,
       };
 
     case CHANGE_SIDEBAR_DATA:
       return {
         ...state,
         sideBarImage: action.payload.image,
-        sideBarBlurb: action.payload.blurb
+        sideBarBlurb: action.payload.blurb,
       };
 
     case SET_OPEN_MENUS:
       return {
         ...state,
-        openKeys: action.payload
+        openKeys: action.payload,
       };
 
     case OPEN_DISTANCE_TAB:
       return {
         ...state,
-        openKeys: [...state.openKeys, "distanceTab"]
+        openKeys: [...state.openKeys, "distanceTab"],
       };
     default:
       return state;
@@ -267,37 +277,43 @@ export default function dataReducer(state = initialState, action) {
     case TOGGLE_LIVE_TRAIL_USERS:
       return {
         ...state,
-        showLiveTrailUsers: action.payload
+        showLiveTrailUsers: action.payload,
       };
 
     case SHOW_MARKER_ADD_MODAL:
       return {
         ...state,
-        shouldShowModal: action.payload
+        shouldShowModal: action.payload,
       };
 
     case LAT_LNG_FROM_CONTEXT:
       return {
         ...state,
-        latLngFromContext: action.payload
+        latLngFromContext: action.payload,
       };
 
     case SHOULD_SHOW_CONTEXT_MENU:
       return {
         ...state,
-        shouldShowContextMenuStatus: action.payload
+        shouldShowContextMenuStatus: action.payload,
       };
 
     case FETCH_ELEVATION_LOADING:
       return {
         ...state,
-        fetchElevationLoading: action.payload
+        fetchElevationLoading: action.payload,
       };
 
     case CHANGE_ELEVATION_DATA:
       return {
         ...state,
-        elevationData: action.payload
+        elevationData: action.payload,
+      };
+
+    case MAP_PITCHED:
+      return {
+        ...state,
+        mapPitched: action.payload,
       };
   }
 }

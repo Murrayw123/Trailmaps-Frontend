@@ -30,6 +30,8 @@ export class PointOnMap extends React.Component<Props, never> {
           onSelect={dataSelect}
           value={focusMarker}
           markerType={"distance"}
+          inputDirty={null}
+          mode={null}
         />
         <Divider style={{ marginTop: 11, marginBottom: 11 }} />
         <LocateLatLong onChange={this.onLatLngChanged} />

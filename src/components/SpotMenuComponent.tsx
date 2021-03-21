@@ -51,6 +51,8 @@ export class SpotMenuComponent extends React.Component<Props, never> {
           onSelect={dataSelect}
           value={_.has(focusMarker, "gps_locations") ? focusMarker : null}
           markerType={"liveTrailUser"}
+          inputDirty={null}
+          mode={null}
         />
         <Button href={"https://forms.gle/ajMvSzBzQg83XE5F7"} target={"_blank"}>
           Link a GPS Tracker
