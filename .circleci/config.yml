@@ -28,7 +28,7 @@ push: &push
         at: build
     - aws-s3/sync:
         from: build/*
-        to: "s3://trailmaps.link"
+        to: "http://trailmaps-link.s3-website-ap-southeast-2.amazonaws.com"
 
 jobs:
   build:
@@ -52,11 +52,11 @@ workflows:
 #          <<: *run_cypress
       - build:
           <<: *dev_only
-          requires:
-            - cypress/run
+#          requires:
+#            - cypress/run
       - push:
           <<: *dev_only
           push_to: "s3://trailmaps-link"
           requires:
             - build
-            - cypress/run
+#            - cypress/run
