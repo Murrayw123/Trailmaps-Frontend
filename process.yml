@@ -1,0 +1,193 @@
+# Orb 'cypress-io/cypress@1' resolved to 'cypress-io/cypress@1.27.0'
+# Orb 'circleci/aws-s3@1.0.11' resolved to 'circleci/aws-s3@1.0.11'
+# Orb 'circleci/node@4.2.0' resolved to 'circleci/node@4.2.0'
+version: 2
+jobs:
+  build:
+    docker:
+    - image: circleci/node
+    steps:
+    - checkout
+    - run:
+        command: npm install
+    - run:
+        command: CI=false npm run build
+    - persist_to_workspace:
+        root: .
+        paths:
+        - build
+  push:
+    docker:
+    - image: cimg/python:3.6
+    steps:
+    - attach_workspace:
+        at: /tmp/build
+    - run:
+        name: Install AWS CLI
+        command: |
+          export PIP=$(which pip pip3 | head -1)
+          if [[ -n $PIP ]]; then
+            if which sudo > /dev/null; then
+              sudo $PIP install awscli --upgrade
+            else
+              # This installs the AWS CLI to ~/.local/bin. Make sure that ~/.local/bin is in your $PATH.
+              $PIP install awscli --upgrade --user
+            fi
+          elif [[ $(which unzip curl | wc -l) -eq 2 ]]; then
+            cd
+            curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+            unzip awscli-bundle.zip
+            if which sudo > /dev/null; then
+              sudo ~/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+            else
+              # This installs the AWS CLI to the default location (~/.local/lib/aws) and create a symbolic link (symlink) at ~/bin/aws. Make sure that ~/bin is in your $PATH.
+              awscli-bundle/install -b ~/bin/aws
+            fi
+            rm -rf awscli-bundle*
+            cd -
+          else
+            echo "Unable to install AWS CLI. Please install pip."
+            exit 1
+          fi
+    - run:
+        name: Configure AWS Access Key ID
+        command: |
+          aws configure set aws_access_key_id \
+          $AWS_ACCESS_KEY_ID \
+          --profile default
+    - run:
+        name: Configure AWS Secret Access Key
+        command: |
+          aws configure set aws_secret_access_key \
+          $AWS_SECRET_ACCESS_KEY \
+          --profile default
+    - run:
+        name: Configure AWS default region
+        command: |
+          aws configure set region $AWS_REGION \
+          --profile default
+    - run:
+        name: S3 Copy /tmp/build/* -> s3://trailmaps.link
+        command: aws s3 cp /tmp/build/* s3://trailmaps.link
+  cypress/run:
+    docker:
+    - image: cypress/base:10
+    parallelism: 1
+    environment:
+    - CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
+    steps:
+    - run:
+        command: echo "Assuming dependencies were installed using cypress/install job"
+    - attach_workspace:
+        at: ~/
+    - checkout
+    - restore_cache:
+        keys:
+        - cache-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
+    - run:
+        name: Install
+        working_directory: ''
+        command: "if [[ ! -z \"\" ]]; then\n  echo \"Installing using custom command\"\n  echo \"\"\n  \nelif [ \"false\" = \"true\" ]; then\n  echo \"Installing using Yarn\"\n  yarn install --frozen-lockfile\nelif [ ! -e ./package-lock.json ]; then\n  echo \"The Cypress orb uses 'npm ci' to install 'node_modules', which requires a 'package-lock.json'.\"\n  echo \"A 'package-lock.json' file was not found. Please run 'npm install' in your project,\"\n  echo \"and commit 'package-lock.json' to your repo.\"\n  exit 1\nelse\n  echo \"Installing dependencies using NPM ci\"\n  npm ci\nfi\n"
+    - run:
+        name: Verify Cypress
+        command: npx cypress verify
+        working_directory: ''
+    - save_cache:
+        key: cache-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
+        paths:
+        - ~/.npm
+        - ~/.cache
+    - persist_to_workspace:
+        root: ~/
+        paths:
+        - project
+        - .cache/Cypress
+    - run:
+        name: Start
+        command: npm run start:ci
+        background: true
+        working_directory: ''
+    - run:
+        name: Wait-on http://localhost:3000
+        command: npx wait-on http://localhost:3000
+    - run:
+        name: Run Cypress tests
+        no_output_timeout: 10m
+        command: |
+          npx cypress run \
+             \
+             \
+             \
+             \
+             --record \
+               \
+               \
+               \
+               \
+        working_directory: ''
+workflows:
+  build_and_push:
+    jobs:
+    - build
+    - push:
+        requires:
+        - build
+  test:
+    jobs:
+    - cypress/run:
+        filters:
+          branches:
+            only:
+            - dev
+  version: 2
+
+# Original config.yml file:
+# # to use orbs, must use version >= 2.1
+# defaults: &defaults
+#   docker:
+# 
+# version: 2.1
+# orbs:
+#   cypress: cypress-io/cypress@1
+#   aws-s3: circleci/aws-s3@1.0.11
+#   node: circleci/node@4.2.0
+# 
+# jobs:
+#   build:
+#     docker:
+#       - image: circleci/node
+#     steps:
+#       - checkout
+#       - run: npm install
+#       - run: CI=false npm run build # prevent fail due to eslint
+#       - persist_to_workspace:
+#           root: .
+#           paths:
+#             - build
+#   push:
+#     docker:
+#       - image: 'cimg/python:3.6'
+#     steps:
+#       - attach_workspace:
+#           at: /tmp/build
+#       - aws-s3/copy:
+#           from: /tmp/build/*
+#           to: \"s3://trailmaps.link\"
+# 
+# workflows:
+#   build_and_push:
+#     jobs:
+#       - build
+#       - push:
+#           requires:
+#             - build
+#   test:
+#     jobs:
+#       - cypress/run:
+#           filters: # using regex filters requires the entire branch to match
+#             branches:
+#               only: # only branches matching the below regex filters will run
+#                 - dev
+#           start: npm run start:ci
+#           wait-on: \"http://localhost:3000\"
+#           record: true
