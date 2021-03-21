@@ -39,14 +39,17 @@ export class MapboxPopup extends Component<Props, never> {
                 onClick("startPoint");
               }}
             >
-              <FontAwesomeIcon icon={faFlag} className="startFlag" />
+              <FontAwesomeIcon icon={faFlag} className="flag startFlag" />
             </a>
             <a
               onClick={() => {
                 return onClick("endPoint");
               }}
             >
-              <FontAwesomeIcon icon={faFlagCheckered} className="startFlag" />
+              <FontAwesomeIcon
+                icon={faFlagCheckered}
+                className="flag endFlag"
+              />
             </a>
           </div>
         </div>

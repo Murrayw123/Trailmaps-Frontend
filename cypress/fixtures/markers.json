@@ -1,0 +1,1707 @@
+
+[
+    {
+        "id": 8,
+        "marker_type": "town",
+        "marker_lat": -33.358257,
+        "marker_lng": 116.157565,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "Coles Woolworths"
+            },
+            {
+                "title": "Public Transport",
+                "value": "TransWA Coach"
+            },
+            {
+                "title": "Bike Shops",
+                "value": "Crank'n Cycles"
+            }
+        ],
+        "marker_title": "Collie",
+        "marker_blurb": "Collie, located in dense jarrah forest near the junction of the Collie and Harris Rivers, is home to around 9,500 residents. It is large enough to offer the services expected of a regional centre but small enough to retain its country charm. The town offers a range of shopping facilities (Coles, Woolworths, Target) as well as medical resources (including doctors, dentists and chiropractors) and, importantly a great bike shop, Crank'n Cycles!",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 9,
+        "marker_type": "town",
+        "marker_lat": -33.482877,
+        "marker_lng": 115.72775,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "General Store"
+            },
+            {
+                "title": "Bike Shops",
+                "value": "None"
+            },
+            {
+                "title": "Public Transport",
+                "value": "TransWA Coach"
+            }
+        ],
+        "marker_title": "Boyanup",
+        "marker_blurb": "Boyanup is only a couple kilometres from the Trail. It is a small picturesque town of around 600 residents. If you’re in need of a good pub meal it’s worth the detour. There are also a few small stores where you can top up on snacks.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 13,
+        "marker_type": "town",
+        "marker_lat": -34.102243,
+        "marker_lng": 115.977267,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "General Store"
+            },
+            {
+                "title": "Accomodation",
+                "value": "School bunkhouse"
+            },
+            {
+                "title": "Public Transport ",
+                "value": "None"
+            }
+        ],
+        "marker_title": "Donnelly Village",
+        "marker_blurb": "This historic mill town marks the halfway point of the Munda Biddi Trail. The mill itself, which closed in 1978, is dilapidated yet the Donnelly Mill worker's cottages became a holiday destination. Enjoy a coffee on the verandah of the General Store and get to know the locals – a large number of very tame kangaroos and emus. In late spring this area comes alive with colour and cyclists will be amazed at the variety of flowering plants. Photo: Elite Air Imagery ",
+        "default_image": "https://res.cloudinary.com/dqlvslhyi/image/upload/v1546345352/o7czeqozo9ptktzenqtt.jpg",
+        "is_approved": true
+    },
+    {
+        "id": 15,
+        "marker_type": "town",
+        "marker_lat": -34.445287,
+        "marker_lng": 116.03385,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "IGA"
+            },
+            {
+                "title": "Public Transport",
+                "value": "TransWA Coach"
+            },
+            {
+                "title": "Accomodation",
+                "value": "Backpackers"
+            },
+            {
+                "title": "Bike Shops",
+                "value": "None"
+            }
+        ],
+        "marker_title": "Pemberton",
+        "marker_blurb": "Picturesque Pemberton, situated in a valley surrounded by the karri forests of the Gloucester and Pemberton Forest Park, is home to fewer than 1000 people. The pretty timber town, which enjoys a cool climate and has a good variety of attractions, is worth planning to stay an extra day or two in. Aside from cycling, Pemberton offers hiking, swimming, bird watching, canoeing and 4WD tours.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 11,
+        "marker_type": "town",
+        "marker_lat": -33.795633,
+        "marker_lng": 115.66638,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "None"
+            },
+            {
+                "title": "Accomodation",
+                "value": "Community House"
+            },
+            {
+                "title": "Public Transport",
+                "value": "None"
+            }
+        ],
+        "marker_title": "Jarrahwood",
+        "marker_blurb": "Jarrahwood, named for the Jarrah Wood and Sawmills Company which operated a private railway to Wonnerup, has a very small population of probably less than 50 people. There are no shops or services in town. The southern terminus of Section 4 is the Nala Mia hut. Photo: Elite Air Imagery",
+        "default_image": "https://res.cloudinary.com/dqlvslhyi/image/upload/v1546346410/rxhspexatgu9fkvvfdg4.jpg",
+        "is_approved": true
+    },
+    {
+        "id": 12,
+        "marker_type": "town",
+        "marker_lat": -33.97633,
+        "marker_lng": 115.765487,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "IGA"
+            },
+            {
+                "title": "Accomodation",
+                "value": "Caravan Park"
+            },
+            {
+                "title": "Public Transport",
+                "value": "TransWA Coach"
+            },
+            {
+                "title": "Bike Shops",
+                "value": "Melo Velo"
+            }
+        ],
+        "marker_title": "Nannup",
+        "marker_blurb": "On the banks of the Blackwood River, the beautiful Nannup townsite is home to fewer than 1000 people. A great place to find out what there is to do in this quaint little town is the Nannup Visitors Centre (the Trail passes it). The town has shopping facilities, a gemstone museum, cafes and accommodation and, often known as the Garden Village, its beautiful private and public gardens are a great way to experience the wildflowers.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 2,
+        "marker_type": "town",
+        "marker_lat": -31.904236,
+        "marker_lng": 116.165525,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "Coles Woolworths"
+            },
+            {
+                "title": "Bike Shops",
+                "value": "None"
+            },
+            {
+                "title": "Public Transport",
+                "value": "Midland Train Line - Railway Reserves Trail"
+            }
+        ],
+        "marker_title": "Mundaring",
+        "marker_blurb": "On the outskirts of the Perth Metro Area lie the Perth Hills and the town of Mundaring; the northern terminus of the Munda Biddi Trail. Here you can enjoy the region’s art, history and culture and visit the engineering feat that is the Mundaring Weir. Tourist attractions include Lake Leschenaultia and Karakamia Wildlife Sanctuary. The Trail starts at the Mundaring Community Sculpture Park where sculptures are set among golden wattles, gum trees and wildflowers. The Mundaring Visitor Centre is nearby and, not only does it sell Munda Biddi Trail maps but is a great source of information on other cycling trails in the area.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 14,
+        "marker_type": "town",
+        "marker_lat": -34.241379,
+        "marker_lng": 116.146527,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "Woolworths, IGA"
+            },
+            {
+                "title": "Bike Shops",
+                "value": "SportsPower"
+            },
+            {
+                "title": "Public Transport",
+                "value": "TransWA Coach"
+            },
+            {
+                "title": "Accomodation",
+                "value": "Backpackers, Caravan Park"
+            }
+        ],
+        "marker_title": "Manjimup",
+        "marker_blurb": "Manjimup, set in tall tree country with its majestic karri and jarrah trees, it is the southern terminus of Stage 5. The town has a population of around 5,000 residents and is the regional centre for the Warren and Blackwood Valleys. It provides all the facilities you would expect from a town this size, including a small regional airport.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 32,
+        "marker_type": "hut",
+        "marker_lat": -34.902475,
+        "marker_lng": 117.264517,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Water",
+                "value": "Untreated tank water"
+            }
+        ],
+        "marker_title": "Jinung Beigabup",
+        "marker_blurb": "The purpose-built Munda Biddi campsites contain a sleeping shelter that holds 20-25 people, several tent sites, a composting toilet (bring your toilet paper!), two rainwater tanks, picnic tables and a bike storage shelter. Please note that Munda Biddi campsites are campfire-free.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 7,
+        "marker_type": "town",
+        "marker_lat": -32.71363,
+        "marker_lng": 116.061123,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "food",
+                "value": "IGA"
+            },
+            {
+                "title": "My Recommendations",
+                "value": "Blue Wren Cafe"
+            },
+            {
+                "title": "Bike shops",
+                "value": "None"
+            },
+            {
+                "title": "Public Transport",
+                "value": "None"
+            }
+        ],
+        "marker_title": "Dwellingup",
+        "marker_blurb": "The charming historic town of Dwellingup is on the Trail between Jarrahdale and Nanga (Section 2). It is nestled between the South Dandalup and Murray Rivers in the stunning jarrah forest of the Darling Range. In addition to cycling the Trail, the town offers a vast range of outdoor activities including fishing, camping, hiking, 4WD-ing, canoeing and white water rafting and plays hosts to one of Western Australia's largest mountain bike races, the Dwellingup 100.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 23,
+        "marker_type": "hut",
+        "marker_lat": -32.531428,
+        "marker_lng": 116.008844,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Water",
+                "value": "Untreated tank water"
+            }
+        ],
+        "marker_title": "Dandalup",
+        "marker_blurb": "The purpose-built Munda Biddi campsites contain a sleeping shelter that holds 20-25 people, several tent sites, a composting toilet (bring your toilet paper!), two rainwater tanks, picnic tables and a bike storage shelter. Please note that Munda Biddi campsites are campfire-free.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 3,
+        "marker_type": "town",
+        "marker_lat": -32.33691,
+        "marker_lng": 116.064912,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food ",
+                "value": "General store, Post Office"
+            },
+            {
+                "title": "Accomodation",
+                "value": "Nurses Quarters"
+            }
+        ],
+        "marker_title": "Jarrahdale",
+        "marker_blurb": "Jarrahdale is a small historic town set in the jarrah forests of the Darling Range and is one of the State’s oldest settlements. With a population of little over 1000 residents, the town has few facilities. It does, however, host a general store, cafe and some accommodation. The town marks the end of Section 1 and the beginning of Section 2, this is where Map 2 starts.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 17,
+        "marker_type": "town",
+        "marker_lat": -34.62916,
+        "marker_lng": 116.123663,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "General Store"
+            },
+            {
+                "title": "Bike Shop",
+                "value": "None"
+            },
+            {
+                "title": "Public Transport",
+                "value": "None"
+            }
+        ],
+        "marker_title": "Northcliffe",
+        "marker_blurb": "Northcliffe is a 41km ride along the Trail from Pemberton and is the southern terminus of Stage 6. It hosts a population of fewer than 1000 residents and has the unique distinction of being the only town founded in WA specifically for the First World War Group Settlement Scheme. There is an old fashioned country, community spirit that is still alive in Northcliffe, which has existed since the early settlement days.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 18,
+        "marker_type": "town",
+        "marker_lat": -34.975459,
+        "marker_lng": 116.730627,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "IGA, General Store"
+            },
+            {
+                "title": "Bike Shop",
+                "value": "None"
+            },
+            {
+                "title": "Accomodation",
+                "value": "Backpackers"
+            },
+            {
+                "title": "Public Transport",
+                "value": "TransWA"
+            }
+        ],
+        "marker_title": "Walpole",
+        "marker_blurb": "The small town of Walpole, encompassed by the Walpole-Nornalup National Park and the Walpole-Nornalup Inlet System, is home to around 500 residents. Of the many inlets along the south coast of Western Australia, none is more beautiful than the magnificent sheet of water that makes up the Walpole and Nornalup Inlets, the only marine park on the south coast",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 19,
+        "marker_type": "town",
+        "marker_lat": -34.959882,
+        "marker_lng": 117.354902,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "IGA"
+            },
+            {
+                "title": "Public Transport",
+                "value": "TransWA Coach"
+            },
+            {
+                "title": "Bike shop",
+                "value": "None"
+            },
+            {
+                "title": "Accomodation",
+                "value": "Backpackers"
+            }
+        ],
+        "marker_title": "Denmark",
+        "marker_blurb": "The South coast town of Demark is home to around 2,500 residents and boasts a range of cafés, exhibitions, wineries, walk trails, wildflowers and whale watching experiences. It has all the facilities of a medium sized country town. A great place to equip yourself with local information is the Denmark Visitor Centre, which is just off the Trail at the junction of South Coast Highway and Ocean Beach Road",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 20,
+        "marker_type": "town",
+        "marker_lat": -35.027797,
+        "marker_lng": 117.88566,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "Coles Woolworths IGA"
+            },
+            {
+                "title": "Bike shops",
+                "value": "Bobs, Impulse, Passmore Cycles"
+            },
+            {
+                "title": "Public Transport",
+                "value": "TransWA Coach"
+            },
+            {
+                "title": "Accomodation",
+                "value": "Backpackers"
+            }
+        ],
+        "marker_title": "Albany",
+        "marker_blurb": "Port city Albany is the oldest permanently settled town in Western Australia, pre-dating Perth and Fremantle by over two years. It has a population of over 30,000 residents making it the sixth largest population centre in Western Australia. It has all the facilities you would expect of a town this size, including bike equipment stores.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 10,
+        "marker_type": "town",
+        "marker_lat": -33.575712,
+        "marker_lng": 115.8239,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "IGA"
+            },
+            {
+                "title": "Public Transport",
+                "value": "TransWA Coach"
+            }
+        ],
+        "marker_title": "Donnybrook",
+        "marker_blurb": "Sitting alongside the scenic Preston River, Donnybrook, known as the apple capital of the South West, is around 5km from the Trail and 48km form Nglang Boodja hut. It is set on a backdrop of seasonal displays such as spring blossoms, breathtaking wildflower displays, lush native forests and extraordinary autumn overtures. The town has much to offer including great food, wine, historical buildings, and the “biggest free entry fun park” in Australia.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 25,
+        "marker_type": "hut",
+        "marker_lat": -33.146807,
+        "marker_lng": 116.024515,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Water",
+                "value": "Untreated tank water"
+            }
+        ],
+        "marker_title": "Yarri",
+        "marker_blurb": "The purpose-built Munda Biddi campsites contain a sleeping shelter that holds 20-25 people, several tent sites, a composting toilet (bring your toilet paper!), two rainwater tanks, picnic tables and a bike storage shelter. Please note that Munda Biddi campsites are campfire-free.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 24,
+        "marker_type": "hut",
+        "marker_lat": -32.862427,
+        "marker_lng": 116.1071,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Water",
+                "value": "Untreated tank water"
+            }
+        ],
+        "marker_title": "Bidjar Ngoulin",
+        "marker_blurb": "The purpose-built Munda Biddi campsites contain a sleeping shelter that holds 20-25 people, several tent sites, a composting toilet (bring your toilet paper!), two rainwater tanks, picnic tables and a bike storage shelter. Please note that Munda Biddi campsites are campfire-free.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 27,
+        "marker_type": "hut",
+        "marker_lat": -33.79646,
+        "marker_lng": 115.667215,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Water",
+                "value": "Untreated tank water"
+            }
+        ],
+        "marker_title": "Nala Mia",
+        "marker_blurb": "The purpose-built Munda Biddi campsites contain a sleeping shelter that holds 20-25 people, several tent sites, a composting toilet (bring your toilet paper!), two rainwater tanks, picnic tables and a bike storage shelter. Please note that Munda Biddi campsites are campfire-free.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 31,
+        "marker_type": "hut",
+        "marker_lat": -34.845732,
+        "marker_lng": 116.941399,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Water",
+                "value": "Untreated tank water"
+            }
+        ],
+        "marker_title": "Booner Mundak",
+        "marker_blurb": "The purpose-built Munda Biddi campsites contain a sleeping shelter that holds 20-25 people, several tent sites, a composting toilet (bring your toilet paper!), two rainwater tanks, picnic tables and a bike storage shelter. Please note that Munda Biddi campsites are campfire-free.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 30,
+        "marker_type": "hut",
+        "marker_lat": -34.868416,
+        "marker_lng": 116.755471,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Water",
+                "value": "Untreated tank water"
+            }
+        ],
+        "marker_title": "Kwokralup Beela",
+        "marker_blurb": "The purpose-built Munda Biddi campsites contain a sleeping shelter that holds 20-25 people, several tent sites, a composting toilet (bring your toilet paper!), two rainwater tanks, picnic tables and a bike storage shelter. Please note that Munda Biddi campsites are campfire-free.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 26,
+        "marker_type": "hut",
+        "marker_lat": -33.409987,
+        "marker_lng": 115.927613,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Water",
+                "value": "Untreated tank water"
+            }
+        ],
+        "marker_title": "Nglang Boodja",
+        "marker_blurb": "The purpose-built Munda Biddi campsites contain a sleeping shelter that holds 20-25 people, several tent sites, a composting toilet (bring your toilet paper!), two rainwater tanks, picnic tables and a bike storage shelter. Please note that Munda Biddi campsites are campfire-free.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 22,
+        "marker_type": "hut",
+        "marker_lat": -32.302577,
+        "marker_lng": 116.173085,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Water",
+                "value": "Untreated tank water"
+            }
+        ],
+        "marker_title": "Wungong",
+        "marker_blurb": "The purpose-built Munda Biddi campsites contain a sleeping shelter that holds 20-25 people, several tent sites, a composting toilet (bring your toilet paper!), two rainwater tanks, picnic tables and a bike storage shelter. Please note that Munda Biddi campsites are campfire-free.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 21,
+        "marker_type": "hut",
+        "marker_lat": -32.095168,
+        "marker_lng": 116.163603,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Water",
+                "value": "Untreated tank water"
+            }
+        ],
+        "marker_title": "Carinyah",
+        "marker_blurb": "The purpose-built Munda Biddi campsites contain a sleeping shelter that holds 20-25 people, several tent sites, a composting toilet (bring your toilet paper!), two rainwater tanks, picnic tables and a bike storage shelter. Please note that Munda Biddi campsites are campfire-free. Photo: Elite Air Imagery",
+        "default_image": "https://res.cloudinary.com/dqlvslhyi/image/upload/v1546346106/c9toavrxpaspbrmbwwmz.jpg",
+        "is_approved": true
+    },
+    {
+        "id": 84,
+        "marker_type": "vehicle",
+        "marker_lat": -34.101404,
+        "marker_lng": 115.97371,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Donnelly Mill",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 28,
+        "marker_type": "hut",
+        "marker_lat": -34.232255,
+        "marker_lng": 115.952663,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Water",
+                "value": "Untreated tank water"
+            }
+        ],
+        "marker_title": "Karta Burnu",
+        "marker_blurb": "The purpose-built Munda Biddi campsites contain a sleeping shelter that holds 20-25 people, several tent sites, a composting toilet (bring your toilet paper!), two rainwater tanks, picnic tables and a bike storage shelter. Please note that Munda Biddi campsites are campfire-free. Photo: Elite Air Imagery",
+        "default_image": "https://res.cloudinary.com/dqlvslhyi/image/upload/v1546345838/pn08dtm6pkylglpnnfvh.jpg",
+        "is_approved": true
+    },
+    {
+        "id": 86,
+        "marker_type": "vehicle",
+        "marker_lat": -34.213865,
+        "marker_lng": 115.94117,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Glenoran Pool",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 72,
+        "marker_type": "vehicle",
+        "marker_lat": -31.904198,
+        "marker_lng": 116.165444,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Mundaring Weir Park",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 91,
+        "marker_type": "vehicle",
+        "marker_lat": -34.509713,
+        "marker_lng": 116.104169,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "River Road Bridge",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 61,
+        "marker_type": "vehicle",
+        "marker_lat": -33.047288,
+        "marker_lng": 116.012135,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Stromlo Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 63,
+        "marker_type": "vehicle",
+        "marker_lat": -33.258655,
+        "marker_lng": 116.032769,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Gastaldo Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 65,
+        "marker_type": "vehicle",
+        "marker_lat": -33.384374,
+        "marker_lng": 115.939183,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "River Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 51,
+        "marker_type": "vehicle",
+        "marker_lat": -32.085155,
+        "marker_lng": 116.157857,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Dale Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 67,
+        "marker_type": "vehicle",
+        "marker_lat": -33.438014,
+        "marker_lng": 115.845074,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Ferguson Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 53,
+        "marker_type": "vehicle",
+        "marker_lat": -32.359569,
+        "marker_lng": 116.10853,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Balmoral Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 52,
+        "marker_type": "vehicle",
+        "marker_lat": -32.251654,
+        "marker_lng": 116.1905,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Canning River Bridge",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 54,
+        "marker_type": "vehicle",
+        "marker_lat": -32.416444,
+        "marker_lng": 116.04174,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Kingsbury Drive",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 70,
+        "marker_type": "vehicle",
+        "marker_lat": -33.582955,
+        "marker_lng": 115.79192,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Gavins Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 79,
+        "marker_type": "vehicle",
+        "marker_lat": -32.033367,
+        "marker_lng": 116.137218,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Pickering Brook Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 85,
+        "marker_type": "vehicle",
+        "marker_lat": -34.198622,
+        "marker_lng": 115.943309,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Greens Island",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 82,
+        "marker_type": "vehicle",
+        "marker_lat": -33.976283,
+        "marker_lng": 115.762099,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Nannup",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 73,
+        "marker_type": "vehicle",
+        "marker_lat": -33.211598,
+        "marker_lng": 115.991296,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Mornington Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 75,
+        "marker_type": "vehicle",
+        "marker_lat": -33.434792,
+        "marker_lng": 115.843565,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Richards Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 77,
+        "marker_type": "vehicle",
+        "marker_lat": -33.745485,
+        "marker_lng": 115.779235,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Claymore Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 78,
+        "marker_type": "vehicle",
+        "marker_lat": -33.795848,
+        "marker_lng": 115.665972,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Jarrahwood Mill Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 68,
+        "marker_type": "vehicle",
+        "marker_lat": -33.464481,
+        "marker_lng": 115.79472,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Boyanup Ferguson Rd",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 89,
+        "marker_type": "vehicle",
+        "marker_lat": -34.304762,
+        "marker_lng": 116.201689,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Black Georges Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 88,
+        "marker_type": "vehicle",
+        "marker_lat": -34.242549,
+        "marker_lng": 116.145811,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Manjimup",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 87,
+        "marker_type": "vehicle",
+        "marker_lat": -34.24485,
+        "marker_lng": 116.08584,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Deanmill",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 90,
+        "marker_type": "vehicle",
+        "marker_lat": -34.448642,
+        "marker_lng": 116.055152,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Gloucester Tree",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 93,
+        "marker_type": "vehicle",
+        "marker_lat": -34.678852,
+        "marker_lng": 116.252177,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Moore Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 95,
+        "marker_type": "vehicle",
+        "marker_lat": -34.822005,
+        "marker_lng": 116.787046,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Mount Frankland",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 94,
+        "marker_type": "vehicle",
+        "marker_lat": -34.816974,
+        "marker_lng": 116.59127,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Beardmore Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 81,
+        "marker_type": "vehicle",
+        "marker_lat": -33.882944,
+        "marker_lng": 115.68022,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Cambray Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 80,
+        "marker_type": "vehicle",
+        "marker_lat": -33.835813,
+        "marker_lng": 115.662125,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Baker Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 71,
+        "marker_type": "vehicle",
+        "marker_lat": -32.004954,
+        "marker_lng": 116.131446,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Lockwood Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 74,
+        "marker_type": "vehicle",
+        "marker_lat": -33.284326,
+        "marker_lng": 116.082507,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Mornington Road N",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 55,
+        "marker_type": "vehicle",
+        "marker_lat": -32.445459,
+        "marker_lng": 116.025803,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Gobby Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 60,
+        "marker_type": "vehicle",
+        "marker_lat": -33.014333,
+        "marker_lng": 116.025829,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Clarke Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 66,
+        "marker_type": "vehicle",
+        "marker_lat": -33.423338,
+        "marker_lng": 115.920385,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Pile Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 58,
+        "marker_type": "vehicle",
+        "marker_lat": -32.631272,
+        "marker_lng": 116.006256,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Turner Hill MTB",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 69,
+        "marker_type": "vehicle",
+        "marker_lat": -33.561963,
+        "marker_lng": 115.78743,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "South West Highway",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 56,
+        "marker_type": "vehicle",
+        "marker_lat": -32.500397,
+        "marker_lng": 116.014514,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Scarp Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 76,
+        "marker_type": "vehicle",
+        "marker_lat": -33.65754,
+        "marker_lng": 115.749361,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Vernon Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 64,
+        "marker_type": "vehicle",
+        "marker_lat": -33.307877,
+        "marker_lng": 116.00681,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Gastaldo Road 2",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 104,
+        "marker_type": "vehicle",
+        "marker_lat": -35.010869,
+        "marker_lng": 117.736,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Elleker",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 59,
+        "marker_type": "vehicle",
+        "marker_lat": -32.905481,
+        "marker_lng": 116.081983,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Nanga Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 57,
+        "marker_type": "vehicle",
+        "marker_lat": -32.623801,
+        "marker_lng": 116.027092,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Del Park Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 92,
+        "marker_type": "vehicle",
+        "marker_lat": -34.624048,
+        "marker_lng": 116.13592,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Hollowbut Picnic Site",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 97,
+        "marker_type": "vehicle",
+        "marker_lat": -34.982179,
+        "marker_lng": 116.888059,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Valley of The Giants",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 96,
+        "marker_type": "vehicle",
+        "marker_lat": -34.90619,
+        "marker_lng": 116.714351,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "North Walpole Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 99,
+        "marker_type": "vehicle",
+        "marker_lat": -34.858263,
+        "marker_lng": 117.25874,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Mount Lindesay Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 98,
+        "marker_type": "vehicle",
+        "marker_lat": -34.847633,
+        "marker_lng": 117.0408,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Nornalup Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 101,
+        "marker_type": "vehicle",
+        "marker_lat": -34.964966,
+        "marker_lng": 117.46352,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Keith Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 100,
+        "marker_type": "vehicle",
+        "marker_lat": -35.02286,
+        "marker_lng": 117.23716,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Greens Pool",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 103,
+        "marker_type": "vehicle",
+        "marker_lat": -35.026093,
+        "marker_lng": 117.64928,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Torbay",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 102,
+        "marker_type": "vehicle",
+        "marker_lat": -35.014364,
+        "marker_lng": 117.524299,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Lower Denmark Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 83,
+        "marker_type": "vehicle",
+        "marker_lat": -34.047544,
+        "marker_lng": 115.923524,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Gold Gully Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 62,
+        "marker_type": "vehicle",
+        "marker_lat": -33.104654,
+        "marker_lng": 116.112675,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Type",
+                "value": "Authorised Vehicle Access Point"
+            }
+        ],
+        "marker_title": "Harvey Quindanning Road",
+        "marker_blurb": "If an access point is not shown here  then it is likely that it is not a permitted vehicle access point. It may be a restricted road or a closed quarantined road within a Disease Risk Area where vehicles are not permitted. ",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 105,
+        "marker_type": "town",
+        "marker_lat": -35.0167,
+        "marker_lng": 117.7167,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Food",
+                "value": "General Store"
+            }
+        ],
+        "marker_title": "Elleker",
+        "marker_blurb": "Small townsite near Albany that includes several houses, a general store, oval, town hall, railway siding as mentioned and a telephone booth.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 342,
+        "marker_type": "campsite",
+        "marker_lat": -33.30675,
+        "marker_lng": 116.01251,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Information",
+                "value": "Self contained campsite. A good option for those cyclists wanting to bypass Collie"
+            }
+        ],
+        "marker_title": "Crystal Valley Outpost",
+        "marker_blurb": "Made from recycled timber and tin, our Outcamp is designed primarily for cyclists undertaking the Mundabiddi Bike Trail which winds past our gate or a \"country get away\" short stay for people who want simplicity (there is no TV) and to be out and about exploring - walking, bike riding, water skiing or visiting wineries etc during the day. The accommodations are basic but comfortable. Single bunk beds - 3 rooms sleep 6.\n\nhttps://www.stayz.com.au/holiday-rental/p9092885?adultsCount=1&arrival=2019-08-10&departure=2019-08-11",
+        "default_image": "http://res.cloudinary.com/dqlvslhyi/image/upload/v1562486854/iwmtuuj4rpiedtglcbzu.jpg",
+        "is_approved": true
+    },
+    {
+        "id": 337,
+        "marker_type": "attraction",
+        "marker_lat": -32.98865,
+        "marker_lng": 115.97898,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Information",
+                "value": "Lake Brockman (Also known as Logue Brooke Dam)"
+            }
+        ],
+        "marker_title": "Lake Brockman",
+        "marker_blurb": "Lake Brockman (Also known as Logue Brooke Dam)",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 338,
+        "marker_type": "pub",
+        "marker_lat": -32.03806,
+        "marker_lng": 116.13414,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Information",
+                "value": "sit down lunch "
+            }
+        ],
+        "marker_title": "Core Cider House",
+        "marker_blurb": "A great place to break day one up with a sit down lunch and maybe a sneaky cider",
+        "default_image": null,
+        "is_approved": true
+    },
+    {
+        "id": 343,
+        "marker_type": "attraction",
+        "marker_lat": -32.65614,
+        "marker_lng": 115.97185,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Information",
+                "value": "Pool"
+            }
+        ],
+        "marker_title": "Oakley",
+        "marker_blurb": "Pool",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 344,
+        "marker_type": "attraction",
+        "marker_lat": -32.6532,
+        "marker_lng": 115.98018,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Information",
+                "value": "Oakley Dam turnoff "
+            }
+        ],
+        "marker_title": "Oakley Dam turnoff",
+        "marker_blurb": "Oakley Dam turnoff",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 345,
+        "marker_type": "campsite",
+        "marker_lat": -32.70176,
+        "marker_lng": 116.02446,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Information",
+                "value": "Marrinup Track"
+            }
+        ],
+        "marker_title": "MArrinup Campsite",
+        "marker_blurb": "Medium Track",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 346,
+        "marker_type": "vehicle",
+        "marker_lat": -33.00427,
+        "marker_lng": 115.95987,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Information",
+                "value": "Road crossing"
+            }
+        ],
+        "marker_title": "Logue Brook Dam road crossing",
+        "marker_blurb": "Road crossing",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 348,
+        "marker_type": "campsite",
+        "marker_lat": -33.00371,
+        "marker_lng": 115.97312,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Information",
+                "value": "Paid campsite and shop"
+            }
+        ],
+        "marker_title": "Lake Brockman Tourist Park",
+        "marker_blurb": "Paid campsite and shop",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 29,
+        "marker_type": "hut",
+        "marker_lat": -34.712903,
+        "marker_lng": 116.467045,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Water",
+                "value": "Untreated tank water"
+            }
+        ],
+        "marker_title": "Yirra Kartta",
+        "marker_blurb": "The purpose-built Munda Biddi campsites contain a sleeping shelter that holds 20-25 people, several tent sites, a composting toilet (bring your toilet paper!), two rainwater tanks, picnic tables and a bike storage shelter. Please note that Munda Biddi campsites are campfire-free.",
+        "default_image": "",
+        "is_approved": true
+    },
+    {
+        "id": 361,
+        "marker_type": "campsite",
+        "marker_lat": -34.4355,
+        "marker_lng": 116.25052,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Information",
+                "value": "Drinking water, Camp kitchen, Pizza oven!"
+            }
+        ],
+        "marker_title": "Quinninup Eco Tourist Park",
+        "marker_blurb": "Quinninup Tourist and Caravan Park is set amongst the tall trees of the South West of Western Australia. It has a large drive-through grassed caravan and campsites, nine metre roads (no backing up), five-star toilet block with disabled and baby facilities. We are pet-friendly and welcome large groups and also large Rigs. We have great drinking water and a dump site. There is a great camp kitchen, now with a pizza oven!",
+        "default_image": null,
+        "is_approved": true
+    },
+    {
+        "id": 362,
+        "marker_type": "campsite",
+        "marker_lat": -31.95435,
+        "marker_lng": 116.1766,
+        "map": 1,
+        "marker_info": [
+            {
+                "title": "Information",
+                "value": "hot showers, camp kitchen"
+            }
+        ],
+        "marker_title": "Perth Hills Discovery Center",
+        "marker_blurb": "The Perth Hills Discovery Centre, operated by Nearer to Nature, is located only 40 minutes drive from Perth on Allen Road and 6km from Mundaring. The camp ground is a wonderful place to get away from it all without having to travel too far, perfect for a quick weekend away.",
+        "default_image": null,
+        "is_approved": true
+    }
+]

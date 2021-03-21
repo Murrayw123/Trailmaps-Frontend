@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import PoiMarker from "components/PoiMarker";
 import ContextMenu from "components/ContextMenuApp";
-import { CustomMapPoint, Marker as IMarker } from "Interfaces/Marker";
+import { CustomMapPoint, Marker, Marker as IMarker } from "Interfaces/Marker";
 import { OnClickCallback } from "Interfaces/Types";
 import { GlobalState } from "Interfaces/GlobalState";
 import { MapboxMarker } from "components/MapboxComponents/MapboxMarker";
@@ -91,7 +91,7 @@ export const customDistanceMarkerComponent = (
   //custom marker from elevation click hover
   return (
     <MapboxMarker
-      marker={customDistanceMarker}
+      marker={customDistanceMarker as Marker}
       key={1}
       position={[
         customDistanceMarker.marker_lng,
