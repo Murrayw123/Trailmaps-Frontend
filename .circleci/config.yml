@@ -37,22 +37,21 @@ jobs:
     docker:
       - image: circleci/node
     steps:
-      - checkout
-      - run: npm install
-      - run: CI=false npm run build # prevent fail due to eslint
-      - persist_to_workspace:
-          root: .
-          paths:
-            - build
+      - run: mkdir B && touch B/myfile.txt
+#      - run: CI=false npm run build # prevent fail due to eslint
+#      - persist_to_workspace:
+#          root: .
+#          paths:
+#            - build
   push:
     <<: *push
 
 workflows:
   build_and_push_dev:
     jobs:
-      - cypress/run:
-          <<: *run_cypress
-          name: test
+#      - cypress/run:
+#          <<: *run_cypress
+#          name: test
       - build:
           <<: *dev_only
           requires:
