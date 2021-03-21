@@ -12,9 +12,11 @@ dev_only: &dev_only
 
 run_cypress: &run_cypress
   <<: *dev_only
-  start: npm run start:ci
-  wait-on: 'http://localhost:3000'
-  record: true
+#  start: npm run start:ci
+#  wait-on: 'http://localhost:3000'
+#  record: true
+  command: echo "Hello world"
+
 
 push: &push
   docker:
@@ -49,7 +51,7 @@ workflows:
   build_and_push_dev:
     jobs:
       - cypress/run:
-#          <<: *run_cypress
+          <<: *run_cypress
           name: test
       - build:
           <<: *dev_only
