@@ -5,6 +5,31 @@ orbs:
   aws-s3: circleci/aws-s3@1.0.11
   node: circleci/node@4.2.0
 
+dev_only: &dev_only
+  filters:
+    branches:
+      only: dev
+
+run_cypress: &run_cypress
+  <<: *dev_only
+  start: npm run start:ci
+  wait-on: "http://localhost:3000"
+  record: true
+
+push: &push
+  docker:
+    - image: 'cimg/python:3.6'
+  parameters:
+    push_to:
+      type: string
+      default: "s3://trailmaps-link"
+  steps:
+    - attach_workspace:
+        at: build
+    - aws-s3/sync:
+        from: build/*
+        to: "<<parameters.push_to>>"
+
 jobs:
   build:
     docker:
@@ -18,29 +43,18 @@ jobs:
           paths:
             - build
   push:
-    docker:
-      - image: 'cimg/python:3.6'
-    steps:
-      - attach_workspace:
-          at: build
-      - aws-s3/sync:
-          from: build/*
-          to: "s3://trailmaps-link"
+    <<: *push
 
 workflows:
-  build_and_push:
-    jobs:
-      - build
-      - push:
-          requires:
-            - build
-  test:
+  build_and_push_dev:
     jobs:
       - cypress/run:
-          filters: # using regex filters requires the entire branch to match
-            branches:
-              only: # only branches matching the below regex filters will run
-                - dev
-          start: npm run start:ci
-          wait-on: "http://localhost:3000"
-          record: true
+          <<: *run_cypress
+      - build:
+          <<: *dev_only
+      - push:
+          <<: *dev_only
+          push_to: "s3://trailmaps-link"
+          requires:
+            - build
+            - cypress/run
