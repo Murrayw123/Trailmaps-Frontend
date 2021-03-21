@@ -48,8 +48,8 @@ jobs:
 workflows:
   build_and_push_dev:
     jobs:
-#      - cypress/run:
-#          <<: *run_cypress
+      - cypress/run:
+          <<: *run_cypress
       - build:
           <<: *dev_only
 #          requires:
