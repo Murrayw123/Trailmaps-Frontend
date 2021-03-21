@@ -21,16 +21,16 @@ run_cypress: &run_cypress
 push: &push
   docker:
     - image: 'cimg/python:3.6'
-  parameters:
-    push_to:
-      type: string
-      default: 's3://trailmaps-link'
+#  parameters:
+#    push_to:
+#      type: string
+#      default: 's3://trailmaps-link'
   steps:
     - attach_workspace:
         at: build
     - aws-s3/sync:
         from: build/*
-        to: "<< parameters.push_to >>"
+        to: 's3://trailmaps-link'
 
 jobs:
   build:
@@ -61,4 +61,3 @@ workflows:
           <<: *dev_only
           requires:
             - build
-          push_to: 's3://trailmaps-link'
