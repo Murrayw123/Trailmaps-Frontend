@@ -28,7 +28,7 @@ push: &push
         at: build
     - aws-s3/sync:
         from: build/*
-        to: "http://trailmaps-link.s3-website-ap-southeast-2.amazonaws.com"
+        to: 's3://trailmaps-link'
 
 jobs:
   build:
