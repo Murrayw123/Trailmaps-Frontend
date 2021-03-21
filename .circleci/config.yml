@@ -49,7 +49,7 @@ workflows:
   build_and_push_dev:
     jobs:
       - cypress/run:
-          <<: *run_cypress
+#          <<: *run_cypress
           name: test
       - build:
           <<: *dev_only
