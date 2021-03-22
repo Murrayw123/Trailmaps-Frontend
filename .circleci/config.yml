@@ -37,12 +37,11 @@ jobs:
     docker:
       - image: circleci/node
     steps:
-      - run: mkdir build && touch build/myfile.txt
-#      - run: CI=false npm run build # prevent fail due to eslint
-#      - persist_to_workspace:
-#          root: .
-#          paths:
-#            - build
+      - run: CI=false npm run build # prevent fail due to eslint
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build
   push:
     <<: *push
 
