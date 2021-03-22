@@ -27,7 +27,7 @@ push: &push
     - attach_workspace:
         at: build
     - aws-s3/sync:
-        from: build/*
+        from: build/
         to: "<< parameters.push_to >>"
 
 jobs:
