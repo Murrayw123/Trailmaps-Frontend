@@ -28,7 +28,7 @@ push: &push
         at: build
     - aws-s3/copy:
         from: build/
-        arguments: '--recursive'
+        arguments: "--recursive --exclude '.cache/*'"
         to: "<< parameters.push_to >>"
 
 jobs:
