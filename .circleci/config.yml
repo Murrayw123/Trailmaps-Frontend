@@ -12,31 +12,31 @@ dev_only: &dev_only
 
 run_cypress: &run_cypress
   <<: *dev_only
-#  start: npm run start:ci
-#  wait-on: 'http://localhost:3000'
-#  record: true
-  command: echo "Hello world"
-
+  start: npm run start:ci
+  wait-on: 'http://localhost:3000'
+  record: true
 
 push: &push
   docker:
     - image: 'cimg/python:3.6'
-#  parameters:
-#    push_to:
-#      type: string
-#      default: 's3://trailmaps-link'
+  parameters:
+    push_to:
+      type: string
+      default: 's3://trailmaps-link'
   steps:
     - attach_workspace:
         at: build
     - aws-s3/sync:
         from: build/*
-        to: 's3://trailmaps-link'
+        to: "<< parameters.push_to >>"
 
 jobs:
   build:
     docker:
       - image: circleci/node
     steps:
+      - checkout
+      - run: npm install
       - run: CI=false npm run build # prevent fail due to eslint
       - persist_to_workspace:
           root: .
@@ -54,8 +54,9 @@ workflows:
       - build:
           <<: *dev_only
 #          requires:
-#            - test
+#            - 'cypress/run'
       - push:
           <<: *dev_only
           requires:
             - build
+          push_to: 's3://trailmaps-link'
