@@ -26,8 +26,9 @@ push: &push
   steps:
     - attach_workspace:
         at: build
-    - aws-s3/sync:
+    - aws-s3/copy:
         from: build/
+        arguments: '--recursive'
         to: "<< parameters.push_to >>"
 
 jobs:
