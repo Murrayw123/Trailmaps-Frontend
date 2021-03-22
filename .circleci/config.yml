@@ -50,11 +50,10 @@ workflows:
     jobs:
       - cypress/run:
           <<: *run_cypress
-          name: test
       - build:
           <<: *dev_only
-#          requires:
-#            - 'cypress/run'
+          requires:
+            - cypress/run
       - push:
           <<: *dev_only
           requires:
