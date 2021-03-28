@@ -69,7 +69,7 @@ class SidebarMenu extends React.Component<any, any> {
       },
     ];
     return findPath(
-      this.props.data.map_track,
+      this.props.data.track,
       pathObj[0].start,
       pathObj[1].finish
     );

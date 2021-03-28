@@ -7,7 +7,7 @@ import {
   poiMarkers,
 } from "./MapSubComponents";
 import { Context, ServicesContext } from "helpers/ServiceInit";
-import { MapData } from "Interfaces/MapData";
+import { IMapData } from "Interfaces/IMapData";
 import { GlobalState } from "Interfaces/GlobalState";
 import { MapboxMap } from "components/MapboxComponents/MapboxMap";
 import { FINISH, START } from "services/MarkerAdd";
@@ -17,7 +17,7 @@ import { connect } from "react-redux";
 import { CustomPath } from "components/CustomPath";
 
 interface Props {
-  data: MapData;
+  data: IMapData;
   center: GlobalState["center"];
   zoom: GlobalState["zoom"];
   customPath: GlobalState["customPath"];

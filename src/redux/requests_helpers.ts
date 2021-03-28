@@ -1,5 +1,12 @@
 import { business_groupings, food_groupings } from "helpers/iconsData";
 import { Marker } from "Interfaces/Marker";
+import { Dispatch } from "redux";
+import {
+  changeSideBarData,
+  changeZoomLevel,
+  fetchDataSuccess,
+} from "redux/actions";
+import { MapData } from "objects/MapData";
 
 export function processMarkerGroupings(markers: Array<Marker>): Array<string> {
   const mapMarkerTypes = [];
@@ -23,4 +30,10 @@ export function processMarkerGroupings(markers: Array<Marker>): Array<string> {
     }
   });
   return mapMarkerTypes;
+}
+
+export function startMap(dispatch: Dispatch, mapData: MapData): void {
+  dispatch(changeZoomLevel(mapData.zoomLevel));
+  dispatch(changeSideBarData(mapData.blurb, mapData.defaultImage));
+  dispatch(fetchDataSuccess(mapData));
 }

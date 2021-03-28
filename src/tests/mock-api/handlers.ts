@@ -6,10 +6,10 @@ const map = rest.get("/api/maps/mundabiddi", (req, res, ctx) => {
       {
         id: 1,
         map_name: "Munda Biddi",
-        map_alias: "mundabiddi",
-        map_type: "cycling",
+        alias: "mundabiddi",
+        type: "cycling",
         default_filters: [{"type": "town"}],
-        map_track: {
+        track: {
           type: "FeatureCollection",
           features: [
             {
@@ -142,20 +142,16 @@ const mapPreview = rest.get("api/map_preview", async (req, res, ctx) => {
       {
         id: 1,
         map_name: "Munda Biddi",
-        map_alias: "mundabiddi",
-        map_type: "cycling",
-        walking: false,
-        cycling: true,
-        horseriding: false,
+        alias: "mundabiddi",
+        type: "cycling",
+        allowed_transport: ["cycling"]
       },
       {
         id: 2,
         map_name: "Cape to Cape",
-        map_alias: "capetocape",
-        map_type: "bushwalking",
-        walking: true,
-        cycling: false,
-        horseriding: false,
+        alias: "capetocape",
+        type: "bushwalking",
+        allowed_transport: ["walking"]
       },
     ])
   );

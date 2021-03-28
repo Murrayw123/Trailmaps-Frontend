@@ -11,7 +11,7 @@ export class MapSelect extends Component {
     let children = [];
     this.props.allMaps.map(map => {
       if (map[type]) {
-        children.push({ value: map.map_alias, label: map.map_name });
+        children.push({ value: map.alias, label: map.map_name });
       }
     });
     return children;
@@ -38,8 +38,8 @@ export class MapSelect extends Component {
           this.props.data.map_name
             ? this.props.data.map_name +
               " | " +
-              this.props.data.map_type.charAt(0).toUpperCase() +
-              this.props.data.map_type.slice(1)
+              this.props.data.type.charAt(0).toUpperCase() +
+              this.props.data.type.slice(1)
             : "Please Select"
         }
         size={"large"}

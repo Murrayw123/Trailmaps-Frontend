@@ -1,12 +1,8 @@
 import { URLPREFIX } from "config";
-import * as _ from "lodash";
 import {
   changeElevationData,
-  changeSideBarData,
-  changeZoomLevel,
   fetchDataBegin,
   fetchDataError,
-  fetchDataSuccess,
   fetchElevationLoading,
   fetchMapsSuccess,
   fetchMarkerSuccess,
@@ -15,7 +11,8 @@ import {
   handleErrors,
 } from "./actions";
 import { Dispatch } from "redux";
-import { processMarkerGroupings } from "redux/requests_helpers";
+import { processMarkerGroupings, startMap } from "redux/requests_helpers";
+import { MapData } from "objects/MapData";
 
 export function fetchElevation(
   lat: number,
@@ -39,24 +36,24 @@ export function fetchElevation(
   };
 }
 
-export function fetchData(mapString: string): (dispatch: Dispatch) => void {
+export function fetchInitialMapData(
+  mapString: string
+): (dispatch: Dispatch) => void {
   return async (dispatch) => {
     try {
       dispatch(fetchDataBegin());
-      const res = await fetch(URLPREFIX + "/api/maps/" + mapString);
-      const json = await res.json();
-      const clone = _.cloneDeep(json);
-      const filters = [];
-      clone.default_filters.forEach((filter) => filters.push(filter.type));
-      clone.filters = filters;
-      dispatch(changeZoomLevel(clone.zoom_level));
-      dispatch(changeSideBarData(clone.map_blurb, clone.default_image));
-      dispatch(fetchDataSuccess(clone));
-      return clone;
+      // fetch the map info
+      const mapRes = await fetch(URLPREFIX + "/api/maps/" + mapString);
+      const mapDataResource = await mapRes.json();
+      // use that to fetch the json from aws
+      const mapTrackRes = await fetch(mapDataResource.track);
+      const mapTrack = await mapTrackRes.json();
+      // create the object
+      const mapData = new MapData(mapDataResource, mapTrack);
+      return startMap(dispatch, mapData);
     } catch (e) {
       console.error(e, "MapInfo");
-      dispatch(fetchDataError(e));
-      return e;
+      return dispatch(fetchDataError(e));
     }
   };
 }
@@ -65,9 +62,7 @@ export function fetchMarkers(mapString: string): (dispatch: Dispatch) => void {
   return async (dispatch) => {
     try {
       dispatch(fetchDataBegin());
-      const result = await fetch(
-        URLPREFIX + "/api/markers?map_alias=" + mapString
-      );
+      const result = await fetch(URLPREFIX + "/api/markers?alias=" + mapString);
       const markers = await result.json();
       const mapMarkerTypes = processMarkerGroupings(markers);
       dispatch(findTrailMarker(mapMarkerTypes));
@@ -112,7 +107,7 @@ export function fetchOtherMaps() {
 export function fetchTrailUsers(mapString) {
   return (dispatch) => {
     dispatch(fetchDataBegin());
-    fetch(URLPREFIX + "/api/spotuserswithlocation?map_alias=" + mapString)
+    fetch(URLPREFIX + "/api/spotuserswithlocation?alias=" + mapString)
       .then(handleErrors)
       .then((res) => res.json())
       .then((json) => {

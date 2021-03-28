@@ -2,37 +2,29 @@
   {
     "id": 2,
     "map_name": "Cape to Cape",
-    "map_alias": "capetocape",
-    "map_type": "bushwalking",
-    "walking": true,
-    "cycling": false,
-    "horseriding": false
+    "alias": "capetocape",
+    "type": "bushwalking",
+    "allowed_transport": ["walking"]
   },
   {
     "id": 3,
     "map_name": "Camino Salvado",
-    "map_alias": "caminosalvado",
-    "map_type": "bushwalking",
-    "walking": true,
-    "cycling": true,
-    "horseriding": false
+    "alias": "caminosalvado",
+    "type": "bushwalking",
+    "allowed_transport": ["cycling","walking"]
   },
   {
     "id": 4,
     "map_name": "Bibbulmun Track",
-    "map_alias": "bibbulmun",
-    "map_type": "bushwalking",
-    "walking": true,
-    "cycling": false,
-    "horseriding": false
+    "alias": "bibbulmun",
+    "type": "bushwalking",
+    "allowed_transport": ["walking"]
   },
   {
     "id": 1,
     "map_name": "Munda Biddi",
-    "map_alias": "mundabiddi",
-    "map_type": "cycling",
-    "walking": false,
-    "cycling": true,
-    "horseriding": false
+    "alias": "mundabiddi",
+    "type": "cycling",
+    "allowed_transport": ["cycling"]
   }
 ]

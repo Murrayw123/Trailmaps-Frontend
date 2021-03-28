@@ -62,7 +62,7 @@ export class MapboxMapService {
   }
 
   private _addGeoJSONToMap(): void {
-    const geoJSON = this._store.getState().data.map_track;
+    const geoJSON = this._store.getState().data.track;
 
     this._map.on("load", () => {
       this._map.addSource("mainTrack", {

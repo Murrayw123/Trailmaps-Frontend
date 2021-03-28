@@ -14,8 +14,8 @@ export class MapStatsComponent extends React.Component<Props, never> {
       <div>
         <Divider className="map-info-divider" />
         <div key={"divider"}>
-          {!_.isEmpty(data.map_stats) && _.isEmpty(focusMarker)
-            ? data.map_stats.map((el) => {
+          {!_.isEmpty(data.stats) && _.isEmpty(focusMarker)
+            ? data.stats.map((el) => {
                 return (
                   <div key={el.key}>
                     <b>{el.key}</b> : {el.value}

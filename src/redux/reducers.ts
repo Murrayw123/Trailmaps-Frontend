@@ -36,7 +36,7 @@ import {
   WIPE_START_MARKER,
 } from "redux/actions";
 import { Store } from "redux";
-import { MapData } from "Interfaces/MapData";
+import { IMapData } from "Interfaces/IMapData";
 import { GlobalState } from "Interfaces/GlobalState";
 
 export interface GlobalStateStore extends Store {
@@ -44,7 +44,7 @@ export interface GlobalStateStore extends Store {
 }
 
 const initialState: GlobalState = {
-  data: {} as MapData,
+  data: {} as IMapData,
   loadingTrack: true,
   loadingMarkers: true,
   error: null,
@@ -96,8 +96,8 @@ export default function dataReducer(state = initialState, action) {
         loadingTrack: false,
         data: action.payload.initMapInfo,
         center: [
-          action.payload.initMapInfo.startpointlat,
-          action.payload.initMapInfo.startpointlng,
+          action.payload.initMapInfo.start_point_lat,
+          action.payload.initMapInfo.start_point_lng,
         ],
         filters: action.payload.initMapInfo.filters,
       };

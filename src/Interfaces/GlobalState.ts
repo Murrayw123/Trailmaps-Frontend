@@ -1,10 +1,10 @@
-import { MapData } from "Interfaces/MapData";
+import { IMapData } from "Interfaces/IMapData";
 import { CustomMapPoint, Marker } from "Interfaces/Marker";
 import mapboxgl from "mapbox-gl";
 import {CustomPath} from "Interfaces/CustomPath";
 
 export interface GlobalState {
-  data: MapData;
+  data: IMapData;
   loadingTrack: boolean;
   loadingMarkers: boolean;
   error: any;

@@ -130,7 +130,7 @@ export class MarkerAddService {
 
   private _updatePath(): void {
     const pathAndDistance = findPath(
-      this._data.map_track,
+      this._data.track,
       this._startPoint,
       this._endPoint
     );
