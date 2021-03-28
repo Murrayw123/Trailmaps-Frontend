@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import { Cascader } from "antd";
 
 export class MapSelect extends Component {
-  onMapSelect = value => {
+  onMapSelect = (value) => {
     window.location.href = "/maps/" + value[1];
   };
 
-  buildChildren = type => {
+  buildChildren = (type) => {
     let children = [];
-    this.props.allMaps.map(map => {
+    this.props.allMaps.map((map) => {
       if (map[type]) {
         children.push({ value: map.alias, label: map.map_name });
       }
@@ -21,13 +21,13 @@ export class MapSelect extends Component {
       {
         value: "cycling",
         label: "Cycling",
-        children: this.buildChildren("cycling")
+        children: this.buildChildren("cycling"),
       },
       {
         value: "walking",
         label: "Bushwalking",
-        children: this.buildChildren("walking")
-      }
+        children: this.buildChildren("walking"),
+      },
     ];
     return (
       <Cascader
@@ -51,9 +51,9 @@ export class MapSelect extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   data: state.data,
-  allMaps: state.allMaps
+  allMaps: state.allMaps,
 });
 
 export default connect(mapStateToProps)(MapSelect);

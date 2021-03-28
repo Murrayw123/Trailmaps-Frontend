@@ -1,7 +1,6 @@
 import { IMapData } from "Interfaces/IMapData";
 import { CustomMapPoint, Marker } from "Interfaces/Marker";
-import mapboxgl from "mapbox-gl";
-import {CustomPath} from "Interfaces/CustomPath";
+import { CustomPath } from "Interfaces/CustomPath";
 
 export interface GlobalState {
   data: IMapData;

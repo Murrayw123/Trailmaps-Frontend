@@ -5,7 +5,7 @@ import { MapBoxMarkerReactWrapperProps } from "components/MapboxComponents/Mapbo
 export class MapboxMarkerService {
   private _map: mapboxgl.Map;
 
-  init(map: mapboxgl.Map) {
+  init(map: mapboxgl.Map): void {
     this._map = map;
   }
 

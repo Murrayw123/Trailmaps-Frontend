@@ -1,7 +1,6 @@
 import { Popover } from "antd";
-import { Component } from "react";
-import React from "react";
-import Icon, {InfoCircleFilled, InfoCircleOutlined} from "@ant-design/icons";
+import React, { Component } from "react";
+import { InfoCircleFilled } from "@ant-design/icons";
 
 export class InfoPopover extends Component {
   content = (
