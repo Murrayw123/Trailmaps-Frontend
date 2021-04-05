@@ -24,7 +24,7 @@ export const selectMarker = (
   if (type === LOCATE) {
     dispatch(changeZoomLevel(13));
     dispatch(
-      changeFocusPoint([focusedMarker.marker_lat, focusedMarker.marker_lng])
+      changeFocusPoint([focusedMarker.lat, focusedMarker.lng])
     );
     dispatch(storeFocusMarker(focusedMarker));
   }

@@ -21,6 +21,10 @@ export class MapData {
     return this._resource.default_image;
   }
 
+  get name(): string {
+    return this._resource.name
+  }
+
   get id(): number {
     return this._resource.id;
   }
@@ -37,7 +41,7 @@ export class MapData {
     return this._resource.stats;
   }
 
-  get track(): JSON {
+  get track(): any {
     return this._geoJsonTrack;
   }
 
@@ -45,15 +49,14 @@ export class MapData {
     return this._resource.type;
   }
 
-  get startPoint(): [number, number] {
-    return [this._resource.start_point_lat, this._resource.start_point_lng];
+  get startPoint(): { lat: number; lng: number } {
+    return {
+      lat: this._resource.start_point_lat,
+      lng: this._resource.start_point_lng,
+    };
   }
 
   get zoomLevel(): number {
     return this._resource.zoom_level;
-  }
-
-  get allowedTransport(): Array<string> {
-    return this._resource.allowed_transport;
   }
 }

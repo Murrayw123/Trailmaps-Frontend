@@ -3,9 +3,10 @@ import mapboxgl from "mapbox-gl";
 import { OnClickCallback } from "Interfaces/Types";
 import { Observable } from "helpers/Observer";
 import { mapPitched } from "redux/actions";
+import { IStore } from "Interfaces/GlobalState";
 
 export class MapboxMapService {
-  private _store: Store;
+  private _store: IStore;
   private _map: mapboxgl.Map;
   private _observer: Observable;
   constructor(dataStore: Store) {
@@ -19,7 +20,7 @@ export class MapboxMapService {
     this._map = new mapboxgl.Map({
       container: container,
       style: "mapbox://styles/murrayw123/ckkdfkpan08m317ogw6ebdoli",
-      center: center.reverse(),
+      center: center,
       zoom: zoom,
     });
 
@@ -62,7 +63,7 @@ export class MapboxMapService {
   }
 
   private _addGeoJSONToMap(): void {
-    const geoJSON = this._store.getState().data.track;
+    const geoJSON = this._store.getState().mapData.track;
 
     this._map.on("load", () => {
       this._map.addSource("mainTrack", {
@@ -85,7 +86,7 @@ export class MapboxMapService {
 
   public updateMap(): void {
     if (this._map) {
-      this._map.setCenter(this._store.getState().center.reverse());
+      this._map.setCenter(this._store.getState().center);
       this._map.setZoom(this._store.getState().zoom);
     }
   }

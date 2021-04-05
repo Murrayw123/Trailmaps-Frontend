@@ -131,18 +131,18 @@ export function fetchTrailUsers(mapString) {
               );
               data.push({
                 id: trail_user.id,
-                marker_type: trail_user.user_type,
-                marker_lat: trail_user.locations[0].latitude,
-                marker_lng: trail_user.locations[0].longitude,
+                type: trail_user.user_type,
+                lat: trail_user.locations[0].latitude,
+                lng: trail_user.locations[0].longitude,
                 default_image: trail_user.user_picture,
-                marker_blurb: trail_user.user_blurb,
-                marker_info: [
+                blurb: trail_user.user_blurb,
+                info: [
                   {
                     title: "Latest GPS Location Timestamp",
                     value: date.toString(),
                   },
                 ],
-                marker_title: trail_user.user_name,
+                title: trail_user.user_name,
                 gps_locations: trail_user.locations,
               });
             }

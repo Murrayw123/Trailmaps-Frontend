@@ -36,7 +36,7 @@ export class MarkerAddService {
   private _endPoint: GlobalState["endPoint"];
   private _poiMarkers: GlobalState["poiMarkers"];
   private _openKeys: GlobalState["openKeys"];
-  private _data: GlobalState["data"];
+  private _mapData: GlobalState["mapData"];
   private _focusMarker: GlobalState["focusMarker"];
   private _filters: GlobalState["filters"];
   private _shouldShowContextMenuStatus: GlobalState["shouldShowContextMenuStatus"];
@@ -56,7 +56,7 @@ export class MarkerAddService {
       this._openKeys = state.openKeys;
 
       this._filters = state.filters;
-      this._data = state.data;
+      this._mapData = state.mapData;
     });
   }
 
@@ -89,9 +89,9 @@ export class MarkerAddService {
 
   private _addCustomMarker(e: any): void {
     const newMarker = {
-      marker_title: CUSTOM_MAP_POINT,
-      marker_lat: e.latlng.lat,
-      marker_lng: e.latlng.lng,
+      title: CUSTOM_MAP_POINT,
+      lat: e.latlng.lat,
+      lng: e.latlng.lng,
     };
     if (!this._openKeys.includes(DISTANCE_TAB)) {
       this._store.dispatch(openDistanceTab());
@@ -110,9 +110,9 @@ export class MarkerAddService {
     const endPointCheckEmpty = _.isEmpty(this._endPoint);
 
     const updatedMarker = {
-      marker_title: CUSTOM_MAP_POINT,
-      marker_lat: dragEvent.target._lngLat.lat,
-      marker_lng: dragEvent.target._lngLat.lng,
+      title: CUSTOM_MAP_POINT,
+      lat: dragEvent.target._lngLat.lat,
+      lng: dragEvent.target._lngLat.lng,
     };
 
     if (startOrEnd === START) {
@@ -130,7 +130,7 @@ export class MarkerAddService {
 
   private _updatePath(): void {
     const pathAndDistance = findPath(
-      this._data.track,
+      this._mapData.track,
       this._startPoint,
       this._endPoint
     );
@@ -155,7 +155,7 @@ export class MarkerAddService {
   public onMarkerClick(marker: any): void {
     this._store.dispatch(storeFocusMarker(marker));
     this._store.dispatch(
-      changeSideBarData(marker.marker_blurb, marker.default_image)
+      changeSideBarData(marker.blurb, marker.default_image)
     );
   }
 
@@ -164,11 +164,11 @@ export class MarkerAddService {
   }
 
   private _shouldShowMarker(marker: Marker): boolean {
-    const business = business_groupings.includes(marker.marker_type);
-    const food = food_groupings.includes(marker.marker_type);
+    const business = business_groupings.includes(marker.type);
+    const food = food_groupings.includes(marker.type);
 
     if (
-      this._filters.includes(marker.marker_type) ||
+      this._filters.includes(marker.type) ||
       (business && this._filters.includes(TRAIL_BUSINESSES)) ||
       (food && this._filters.includes(DRINKS_DINING))
     ) {
@@ -176,7 +176,7 @@ export class MarkerAddService {
     }
 
     if (!_.isEmpty(this._startPoint)) {
-      if (this._startPoint.marker_id === marker.id) {
+      if (this._startPoint.id === marker.id) {
         return true;
       }
     }
@@ -188,7 +188,7 @@ export class MarkerAddService {
     if (!_.isEmpty(this._focusMarker)) {
       if (
         (this._focusMarker.id === marker.id &&
-          this._filters.includes(this._focusMarker.marker_type)) ||
+          this._filters.includes(this._focusMarker.type)) ||
         (business && this._filters.includes(TRAIL_BUSINESSES)) ||
         (food && this._filters.includes(DRINKS_DINING))
       ) {

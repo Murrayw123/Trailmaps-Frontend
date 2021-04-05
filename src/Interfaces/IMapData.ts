@@ -1,4 +1,4 @@
-export type MapDataStats = Array<{ key: string; value: string }>
+export type MapDataStats = Array<{ key: string; value: string }>;
 
 export interface IMapData {
   default_filters: Array<{ type: string }>;
@@ -12,5 +12,5 @@ export interface IMapData {
   start_point_lat: number;
   start_point_lng: number;
   zoom_level: number;
-  allowed_transport: Array<string>;
+  name: string;
 }

@@ -8,7 +8,7 @@ import "components/MapboxComponents/Popup.css";
 
 interface Props {
   title: string;
-  info: Marker["marker_info"];
+  info: Marker["info"];
   onClick: any;
 }
 

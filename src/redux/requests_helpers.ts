@@ -12,21 +12,21 @@ export function processMarkerGroupings(markers: Array<Marker>): Array<string> {
   const mapMarkerTypes = [];
   markers.forEach((marker) => {
     if (
-      food_groupings.includes(marker.marker_type) &&
+      food_groupings.includes(marker.type) &&
       !mapMarkerTypes.includes("drinks & dining")
     ) {
       mapMarkerTypes.push("drinks & dining");
     } else if (
-      business_groupings.includes(marker.marker_type) &&
+      business_groupings.includes(marker.type) &&
       !mapMarkerTypes.includes("trail businesses")
     ) {
       mapMarkerTypes.push("trail businesses");
     } else if (
-      !mapMarkerTypes.includes(marker.marker_type) &&
-      !business_groupings.includes(marker.marker_type) &&
-      !food_groupings.includes(marker.marker_type)
+      !mapMarkerTypes.includes(marker.type) &&
+      !business_groupings.includes(marker.type) &&
+      !food_groupings.includes(marker.type)
     ) {
-      mapMarkerTypes.push(marker.marker_type);
+      mapMarkerTypes.push(marker.type);
     }
   });
   return mapMarkerTypes;

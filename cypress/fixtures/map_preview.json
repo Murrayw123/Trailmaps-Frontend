@@ -3,28 +3,24 @@
     "id": 2,
     "map_name": "Cape to Cape",
     "alias": "capetocape",
-    "type": "bushwalking",
-    "allowed_transport": ["walking"]
+    "type": "bushwalking"
   },
   {
     "id": 3,
     "map_name": "Camino Salvado",
     "alias": "caminosalvado",
-    "type": "bushwalking",
-    "allowed_transport": ["cycling","walking"]
+    "type": "bushwalking"
   },
   {
     "id": 4,
     "map_name": "Bibbulmun Track",
     "alias": "bibbulmun",
-    "type": "bushwalking",
-    "allowed_transport": ["walking"]
+    "type": "bushwalking"
   },
   {
     "id": 1,
     "map_name": "Munda Biddi",
     "alias": "mundabiddi",
-    "type": "cycling",
-    "allowed_transport": ["cycling"]
+    "type": "cycling"
   }
 ]

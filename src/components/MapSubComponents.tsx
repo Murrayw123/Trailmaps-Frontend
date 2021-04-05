@@ -52,7 +52,7 @@ export const mapMarkerStart = (
     <MapboxMarker
       marker={mapMarkerStart}
       key={mapMarkerStart.distance}
-      position={[mapMarkerStart.marker_lng, mapMarkerStart.marker_lat]}
+      position={[mapMarkerStart.lng, mapMarkerStart.lat]}
       icon={start}
       hasPopup={false}
       draggable={true}
@@ -72,7 +72,7 @@ export const mapMarkerFinish = (
     <MapboxMarker
       marker={mapMarkerFinish}
       key={mapMarkerFinish.distance}
-      position={[mapMarkerFinish.marker_lng, mapMarkerFinish.marker_lat]}
+      position={[mapMarkerFinish.lng, mapMarkerFinish.lat]}
       icon={finish}
       draggable={true}
       hasPopup={false}
@@ -94,8 +94,8 @@ export const customDistanceMarkerComponent = (
       marker={customDistanceMarker as Marker}
       key={1}
       position={[
-        customDistanceMarker.marker_lng,
-        customDistanceMarker.marker_lat,
+        customDistanceMarker.lng,
+        customDistanceMarker.lat,
       ]}
       hasPopup={false}
       icon={mapType === "cycling" ? bicycle : walking}
