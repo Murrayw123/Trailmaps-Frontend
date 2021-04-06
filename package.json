@@ -56,9 +56,11 @@
     "start-server-and-test": "1.12.0"
   },
   "scripts": {
-    "start:ci": "WDS_SOCKET_HOST=localhost WDS_SOCKET_PORT=3000 REACT_APP_TEST=1 react-scripts start",
+    "start:ci": "WDS_SOCKET_HOST=localhost WDS_SOCKET_PORT=3000 REACT_APP_URLPREFIX='http://localhost:8000' react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build_dev": "REACT_APP_URLPREFIX='https://api.trailmaps.link' react-scripts build",
+    "build_prod": "REACT_APP_URLPREFIX='https://api.trailmaps.site' react-scripts build",
     "test": "react-scripts test",
     "test:cypress": "cypress run",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",

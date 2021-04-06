@@ -1,4 +1,3 @@
-import { URLPREFIX } from "config";
 import {
   changeElevationData,
   fetchDataBegin,
@@ -14,6 +13,8 @@ import {
 import { Dispatch } from "redux";
 import { processMarkerGroupings, startMap } from "redux/requests_helpers";
 import { MapData } from "objects/MapData";
+
+const URLPREFIX = process.env.REACT_APP_URLPREFIX;
 
 export function fetchElevation(
   lat: number,
