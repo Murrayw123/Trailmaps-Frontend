@@ -28,13 +28,30 @@ import {
   MapTools,
 } from "components/MenuComponents/Headings";
 import { findMarker, selectMarker } from "components/MenuHelpers";
+import { GlobalState } from "Interfaces/GlobalState";
+import { Dispatch } from "redux";
 
 export const DISTANCE_KEY = "distanceTab";
 
 const SubMenu = Menu.SubMenu;
 const Item = Menu.Item;
 
-class SidebarMenu extends React.Component<any, any> {
+interface Props {
+  mapData: GlobalState["mapData"];
+  poiMarkers: GlobalState["poiMarkers"];
+  liveTrailUsers: GlobalState["liveTrailUsers"];
+  dispatch: Dispatch;
+  startPoint: GlobalState["startPoint"];
+  endPoint: GlobalState["endPoint"];
+  sideBarImage: GlobalState["sideBarImage"];
+  mapMarkerTypes: GlobalState["mapMarkerTypes"];
+  sideBarBlurb: GlobalState["sideBarBlurb"];
+  focusMarker: GlobalState["focusMarker"];
+  filters: GlobalState["filters"];
+  openKeys: GlobalState["openKeys"];
+}
+
+class SidebarMenu extends React.Component<Props, any> {
   dataSelect = (markerId: string, type: string, markerType: string): void => {
     const { poiMarkers, liveTrailUsers, dispatch } = this.props;
     const marker = findMarker(markerType, poiMarkers, markerId, liveTrailUsers);
@@ -57,19 +74,19 @@ class SidebarMenu extends React.Component<any, any> {
     const pathObj = [
       {
         start: {
-          marker_lat: this.props.startPoint.marker_lat,
-          marker_lng: this.props.startPoint.marker_lng,
+          lat: this.props.startPoint.lat,
+          lng: this.props.startPoint.lng,
         },
       },
       {
         finish: {
-          marker_lat: this.props.endPoint.marker_lat,
-          marker_lng: this.props.endPoint.marker_lng,
+          lat: this.props.endPoint.lat,
+          lng: this.props.endPoint.lng,
         },
       },
     ];
     return findPath(
-      this.props.data.map_track,
+      this.props.mapData.track,
       pathObj[0].start,
       pathObj[1].finish
     );
@@ -81,10 +98,10 @@ class SidebarMenu extends React.Component<any, any> {
 
   toggleCustomPath = (bool) => {
     this.props.dispatch(wipeMarkers());
-    if (this.props.startPoint.marker_title === "Custom Map Point") {
+    if (this.props.startPoint.title === "Custom Map Point") {
       this.props.dispatch(setStartPoint({}));
     }
-    if (this.props.endPoint.marker_title === "Custom Map Point") {
+    if (this.props.endPoint.title === "Custom Map Point") {
       this.props.dispatch(setEndPoint({}));
     }
     this.props.dispatch(allowCustomPath(bool));
@@ -106,7 +123,7 @@ class SidebarMenu extends React.Component<any, any> {
 
   render() {
     const {
-      data,
+      mapData,
       poiMarkers,
       mapMarkerTypes,
       sideBarImage,
@@ -198,7 +215,7 @@ class SidebarMenu extends React.Component<any, any> {
                 sideBarImage={sideBarImage}
                 focusMarker={focusMarker}
                 sideBarBlurb={sideBarBlurb}
-                data={data}
+                mapData={mapData}
               />
             </Item>
           </SubMenu>
@@ -208,12 +225,11 @@ class SidebarMenu extends React.Component<any, any> {
   }
 }
 
-const mapStateToProps = (state) => ({
-  data: state.data,
+const mapStateToProps = (state: GlobalState) => ({
+  mapData: state.mapData,
   poiMarkers: state.poiMarkers,
   mapMarkerTypes: state.mapMarkerTypes,
   customPath: state.customPath,
-  terrain: state.terrain,
   startPoint: state.startPoint,
   endPoint: state.endPoint,
   focusMarker: state.focusMarker,

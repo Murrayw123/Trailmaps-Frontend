@@ -36,15 +36,16 @@ import {
   WIPE_START_MARKER,
 } from "redux/actions";
 import { Store } from "redux";
-import { MapData } from "Interfaces/MapData";
 import { GlobalState } from "Interfaces/GlobalState";
+import { MapData } from "objects/MapData";
+import { Marker } from "Interfaces/Marker";
 
 export interface GlobalStateStore extends Store {
   getState: () => GlobalState;
 }
 
 const initialState: GlobalState = {
-  data: {} as MapData,
+  mapData: {} as MapData,
   loadingTrack: true,
   loadingMarkers: true,
   error: null,
@@ -56,10 +57,10 @@ const initialState: GlobalState = {
   customDistance: [],
   customPath: null,
   zoom: 10,
-  center: [0, 0],
+  center: { lat: 0, lng: 0 },
   filters: [],
-  startPoint: {},
-  endPoint: {},
+  startPoint: {} as Marker,
+  endPoint: {} as Marker,
   focusMarker: {},
   customDistanceMarker: null,
   mapMarkerStart: null,
@@ -91,15 +92,13 @@ export default function dataReducer(state = initialState, action) {
       };
 
     case FETCH_DATA_SUCCESS:
+      const mapData: MapData = action.payload.initMapInfo;
       return {
         ...state,
         loadingTrack: false,
-        data: action.payload.initMapInfo,
-        center: [
-          action.payload.initMapInfo.startpointlat,
-          action.payload.initMapInfo.startpointlng,
-        ],
-        filters: action.payload.initMapInfo.filters,
+        mapData: mapData,
+        center: mapData.startPoint,
+        filters: mapData.filters,
       };
 
     case FETCH_MARKERS_SUCCESS:
@@ -134,7 +133,7 @@ export default function dataReducer(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        data: [],
+        mapData: {},
       };
 
     case ADD_MAP_MARKER_START:

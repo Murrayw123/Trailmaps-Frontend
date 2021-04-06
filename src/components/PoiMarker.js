@@ -30,7 +30,7 @@ export class PoiMarker extends Component {
     if (this.isStartOrEndMarker(marker)) {
       return findIcon("selected");
     } else {
-      return findIcon(marker.marker_type);
+      return findIcon(marker.type);
     }
   };
 
@@ -45,7 +45,7 @@ export class PoiMarker extends Component {
       <>
         <MapboxMarker
           key={marker.id}
-          position={[marker.marker_lng, marker.marker_lat]}
+          position={[marker.lng, marker.lat]}
           marker={marker}
           icon={icon}
           onClick={() => {

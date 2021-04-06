@@ -3,12 +3,12 @@ import { OnClickCallback } from "Interfaces/Types";
 
 export interface Marker {
   id: number;
-  marker_type: string;
-  marker_lat: number;
-  marker_lng: number;
-  marker_info: Array<{ title: string; value: string }>;
-  marker_title: string;
-  marker_blurb: string;
+  type: string;
+  lat: number;
+  lng: number;
+  info: Array<{ title: string; value: string }>;
+  title: string;
+  blurb: string;
   default_image: string;
 }
 
@@ -24,8 +24,8 @@ export interface MapboxMarkerProps {
 }
 
 export interface CustomMapPoint {
-  marker_lat: number;
-  marker_lng: number;
-  marker_title: string;
+  lat: number;
+  lng: number;
+  title: string;
   distance?: number;
 }

@@ -1,10 +1,11 @@
-import { MapData } from "Interfaces/MapData";
 import { CustomMapPoint, Marker } from "Interfaces/Marker";
-import mapboxgl from "mapbox-gl";
-import {CustomPath} from "Interfaces/CustomPath";
+import { CustomPath } from "Interfaces/CustomPath";
+import { MapData } from "objects/MapData";
+import { Store } from "redux";
+import { AllMaps } from "Interfaces/AllMaps";
 
 export interface GlobalState {
-  data: MapData;
+  mapData: MapData;
   loadingTrack: boolean;
   loadingMarkers: boolean;
   error: any;
@@ -16,10 +17,10 @@ export interface GlobalState {
   customDistance: Array<any>;
   customPath: CustomPath;
   zoom: number;
-  center: [number, number];
+  center: { lat: number; lng: number };
   filters: Array<any>;
-  startPoint: any;
-  endPoint: any;
+  startPoint: Marker;
+  endPoint: Marker;
   focusMarker: any;
   customDistanceMarker: CustomMapPoint;
   mapMarkerStart: CustomMapPoint;
@@ -28,7 +29,7 @@ export interface GlobalState {
   sideBarImage: any;
   sideBarBlurb: any;
   openKeys: Array<string>;
-  allMaps: Array<any>;
+  allMaps: AllMaps;
   showLiveTrailUsers: boolean;
   liveTrailUsers: Array<any>;
   focusTrailUser: Array<any>;
@@ -39,4 +40,8 @@ export interface GlobalState {
   elevationData: number;
   mapMarkers: any;
   mapPitched: boolean;
+}
+
+export interface IStore extends Store {
+  getState: () => GlobalState;
 }

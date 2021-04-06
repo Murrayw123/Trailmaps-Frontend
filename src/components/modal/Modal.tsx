@@ -24,11 +24,11 @@ export const MarkerModal: React.FC<Props> = ({ lat, lng, dispatch, data }) => {
   const handleCreate = async () => {
     dispatch(shouldShowContextMenu(false));
     form.validateFields().then(async (values) => {
-      values.marker_lat = parseFloat(values.lat);
-      values.marker_lng = parseFloat(values.lng);
+      values.lat = parseFloat(values.lat);
+      values.lng = parseFloat(values.lng);
       values.map = data.id;
-      values.marker_info = [
-        { title: "Information", value: values.marker_info },
+      values.info = [
+        { title: "Information", value: values.info },
       ];
       if (values.default_image) {
         values.default_image = values.default_image[0].response.url;

@@ -1,21 +1,20 @@
-import { URLPREFIX } from "config";
-import * as _ from "lodash";
 import {
   changeElevationData,
-  changeSideBarData,
-  changeZoomLevel,
   fetchDataBegin,
   fetchDataError,
-  fetchDataSuccess,
   fetchElevationLoading,
   fetchMapsSuccess,
   fetchMarkerSuccess,
+  fetchUsersFailure,
   fetchUsersSuccess,
   findTrailMarker,
   handleErrors,
 } from "./actions";
 import { Dispatch } from "redux";
-import { processMarkerGroupings } from "redux/requests_helpers";
+import { processMarkerGroupings, startMap } from "redux/requests_helpers";
+import { MapData } from "objects/MapData";
+
+const URLPREFIX = process.env.REACT_APP_URLPREFIX;
 
 export function fetchElevation(
   lat: number,
@@ -39,24 +38,24 @@ export function fetchElevation(
   };
 }
 
-export function fetchData(mapString: string): (dispatch: Dispatch) => void {
+export function fetchInitialMapData(
+  mapString: string
+): (dispatch: Dispatch) => void {
   return async (dispatch) => {
     try {
       dispatch(fetchDataBegin());
-      const res = await fetch(URLPREFIX + "/api/maps/" + mapString);
-      const json = await res.json();
-      const clone = _.cloneDeep(json);
-      const filters = [];
-      clone.default_filters.forEach((filter) => filters.push(filter.type));
-      clone.filters = filters;
-      dispatch(changeZoomLevel(clone.zoom_level));
-      dispatch(changeSideBarData(clone.map_blurb, clone.default_image));
-      dispatch(fetchDataSuccess(clone));
-      return clone;
+      // fetch the map info
+      const mapRes = await fetch(URLPREFIX + "/api/maps/" + mapString);
+      const mapDataResource = await mapRes.json();
+      // use that to fetch the json from aws
+      const mapTrackRes = await fetch(mapDataResource.track);
+      const mapTrack = await mapTrackRes.json();
+      // create the object
+      const mapData = new MapData(mapDataResource, mapTrack);
+      return startMap(dispatch, mapData);
     } catch (e) {
       console.error(e, "MapInfo");
-      dispatch(fetchDataError(e));
-      return e;
+      return dispatch(fetchDataError(e));
     }
   };
 }
@@ -65,9 +64,7 @@ export function fetchMarkers(mapString: string): (dispatch: Dispatch) => void {
   return async (dispatch) => {
     try {
       dispatch(fetchDataBegin());
-      const result = await fetch(
-        URLPREFIX + "/api/markers?map_alias=" + mapString
-      );
+      const result = await fetch(URLPREFIX + "/api/markers?alias=" + mapString);
       const markers = await result.json();
       const mapMarkerTypes = processMarkerGroupings(markers);
       dispatch(findTrailMarker(mapMarkerTypes));
@@ -112,7 +109,7 @@ export function fetchOtherMaps() {
 export function fetchTrailUsers(mapString) {
   return (dispatch) => {
     dispatch(fetchDataBegin());
-    fetch(URLPREFIX + "/api/spotuserswithlocation?map_alias=" + mapString)
+    fetch(URLPREFIX + "/api/spot_users_with_location?alias=" + mapString)
       .then(handleErrors)
       .then((res) => res.json())
       .then((json) => {
@@ -136,18 +133,18 @@ export function fetchTrailUsers(mapString) {
               );
               data.push({
                 id: trail_user.id,
-                marker_type: trail_user.user_type,
-                marker_lat: trail_user.locations[0].latitude,
-                marker_lng: trail_user.locations[0].longitude,
+                type: trail_user.user_type,
+                lat: trail_user.locations[0].latitude,
+                lng: trail_user.locations[0].longitude,
                 default_image: trail_user.user_picture,
-                marker_blurb: trail_user.user_blurb,
-                marker_info: [
+                blurb: trail_user.user_blurb,
+                info: [
                   {
                     title: "Latest GPS Location Timestamp",
                     value: date.toString(),
                   },
                 ],
-                marker_title: trail_user.user_name,
+                title: trail_user.user_name,
                 gps_locations: trail_user.locations,
               });
             }
@@ -160,7 +157,7 @@ export function fetchTrailUsers(mapString) {
       })
       .catch((error) => {
         console.error(error, "Trail Users");
-        dispatch(fetchDataError(error));
+        dispatch(fetchUsersFailure(error));
       });
   };
 }
