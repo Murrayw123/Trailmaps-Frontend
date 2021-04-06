@@ -38,7 +38,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: CI=false npm run build # prevent fail due to eslint
+      - run: CI=false npm run build_dev # prevent fail due to eslint
       - persist_to_workspace:
           root: .
           paths:
