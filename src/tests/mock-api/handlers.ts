@@ -164,7 +164,7 @@ const spotLocations = rest.get("/spotlocations", async (req, res, ctx) => {
 });
 
 const spotUsersWithLocation = rest.get(
-  "/spotuserswithlocation",
+  "/spot_users_with_location",
   async (req, res, ctx) => {
     return res(ctx.json([]));
   }

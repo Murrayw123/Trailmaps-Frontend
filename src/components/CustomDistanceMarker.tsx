@@ -24,8 +24,8 @@ class CustomDistanceMarker extends Component<Props, never> {
   }
 }
 
-const mapStateToProps = (state) => ({
-  data: state.data,
+const mapStateToProps = (state: GlobalState) => ({
+  mapData: state.mapData,
   customDistanceMarker: state.customDistanceMarker,
 });
 

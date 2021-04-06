@@ -6,6 +6,7 @@ import {
   fetchElevationLoading,
   fetchMapsSuccess,
   fetchMarkerSuccess,
+  fetchUsersFailure,
   fetchUsersSuccess,
   findTrailMarker,
   handleErrors,
@@ -107,7 +108,7 @@ export function fetchOtherMaps() {
 export function fetchTrailUsers(mapString) {
   return (dispatch) => {
     dispatch(fetchDataBegin());
-    fetch(URLPREFIX + "/api/spotuserswithlocation?alias=" + mapString)
+    fetch(URLPREFIX + "/api/spot_users_with_location?alias=" + mapString)
       .then(handleErrors)
       .then((res) => res.json())
       .then((json) => {
@@ -155,7 +156,7 @@ export function fetchTrailUsers(mapString) {
       })
       .catch((error) => {
         console.error(error, "Trail Users");
-        dispatch(fetchDataError(error));
+        dispatch(fetchUsersFailure(error));
       });
   };
 }

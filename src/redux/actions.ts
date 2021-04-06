@@ -73,6 +73,11 @@ export const fetchUsersSuccess = (users) => ({
   payload: { users },
 });
 
+export const fetchUsersFailure = (users) => ({
+  type: FETCH_USERS_FAILURE,
+  payload: { users },
+});
+
 export const addMapMarkerStart = (marker) => ({
   type: ADD_MAP_MARKER_START,
   payload: marker,

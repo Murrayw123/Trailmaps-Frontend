@@ -93,7 +93,6 @@ export default function dataReducer(state = initialState, action) {
 
     case FETCH_DATA_SUCCESS:
       const mapData: MapData = action.payload.initMapInfo;
-
       return {
         ...state,
         loadingTrack: false,
@@ -134,7 +133,7 @@ export default function dataReducer(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        mapData: [],
+        mapData: {},
       };
 
     case ADD_MAP_MARKER_START:

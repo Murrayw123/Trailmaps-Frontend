@@ -2,21 +2,26 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Cascader } from "antd";
 import { GlobalState } from "Interfaces/GlobalState";
+import { capitalize } from "lodash";
 
 interface Props {
   allMaps: GlobalState["allMaps"];
   mapData: GlobalState["mapData"];
 }
 
+const WALKING = "walking";
+const CYCLING = "cycling";
+const BOTH = "both";
+
 export class MapSelect extends Component<Props, never> {
   onMapSelect = (value) => {
     window.location.href = "/maps/" + value[1];
   };
 
-  buildChildren = (type) => {
+  buildChildren = (type: string): Array<{ value: string; label: string }> => {
     const children = [];
-    this.props.allMaps.map((map) => {
-      if (map[type]) {
+    this.props.allMaps.forEach((map) => {
+      if (map.type === type || map.type === BOTH) {
         children.push({ value: map.alias, label: map.name });
       }
     });
@@ -24,7 +29,7 @@ export class MapSelect extends Component<Props, never> {
   };
 
   buildPlaceHolder = (): string => {
-    return this.props.mapData
+    return this.props.mapData.name
       ? this.props.mapData.name +
           " | " +
           this.props.mapData.type.charAt(0).toUpperCase() +
@@ -35,14 +40,14 @@ export class MapSelect extends Component<Props, never> {
   render() {
     const options = [
       {
-        value: "cycling",
-        label: "Cycling",
-        children: this.buildChildren("cycling"),
+        value: CYCLING,
+        label: capitalize(CYCLING),
+        children: this.buildChildren(CYCLING),
       },
       {
-        value: "walking",
-        label: "Bushwalking",
-        children: this.buildChildren("walking"),
+        value: WALKING,
+        label: capitalize(WALKING),
+        children: this.buildChildren(WALKING),
       },
     ];
     return (
@@ -62,8 +67,8 @@ export class MapSelect extends Component<Props, never> {
   }
 }
 
-const mapStateToProps = (state) => ({
-  data: state.data,
+const mapStateToProps = (state: GlobalState) => ({
+  mapData: state.mapData,
   allMaps: state.allMaps,
 });
 
