@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 (mapboxgl as any).workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
-mapboxgl.accessToken = process.env["REACT_APP_MAPBOX_API_KEY "];
+mapboxgl.accessToken = process.env["REACT_APP_MAPBOX_API_KEY"];
 
 interface Props {
   onClick: OnClickCallback;
