@@ -50,8 +50,7 @@
     "turf-point": "^2.0.1",
     "typescript": "^4.0.3",
     "worker-loader": "^3.0.8",
-    "yarn": "^1.13.0",
-
+    "yarn": "^1.13.0"
   },
   "scripts": {
     "start:ci": "WDS_SOCKET_HOST=localhost WDS_SOCKET_PORT=3000 REACT_APP_URLPREFIX='http://localhost:8000' react-scripts start",
