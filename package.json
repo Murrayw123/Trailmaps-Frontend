@@ -53,7 +53,7 @@
     "yarn": "^1.13.0"
   },
   "scripts": {
-    "start:ci": "WDS_SOCKET_HOST=localhost WDS_SOCKET_PORT=3000 REACT_APP_URLPREFIX='http://localhost:8000' react-scripts start",
+    "start:ci": "env-cmd -f .env.test react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build_dev": "env-cmd -f .env.development react-scripts build",
