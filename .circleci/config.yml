@@ -57,19 +57,19 @@ jobs:
 workflows:
   build_and_push_dev:
     jobs:
-      - cypress/run:
-          <<: *run_cypress
-          name: test
-      - build:
-          <<: *dev_only
-          requires:
-            - test
+#      - cypress/run:
+#          <<: *run_cypress
+#          name: test
+#      - build:
+#          <<: *dev_only
+#          requires:
+#            - test
       - invalidate_cache:
           <<: *dev_only
-          requires:
-            - build
-      - push:
-          <<: *dev_only
-          requires:
-            - build
-          push_to: 's3://trailmaps-link'
+#          requires:
+#            - build
+#      - push:
+#          <<: *dev_only
+#          requires:
+#            - build
+#          push_to: 's3://trailmaps-link'
