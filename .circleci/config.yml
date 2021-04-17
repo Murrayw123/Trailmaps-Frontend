@@ -49,7 +49,7 @@ jobs:
   invalidate_cache:
     executor: aws-cli/default
     steps:
-      - run: aws cloudfront create-invalidation --distribution-id E1V65HY2IKCCVL --paths /\*
+      - run: cloudfront create-invalidation --distribution-id E1V65HY2IKCCVL --paths /\*
 
 workflows:
   build_and_push_dev:
