@@ -1,4 +1,3 @@
-# to use orbs, must use version >= 2.1
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
@@ -10,6 +9,11 @@ dev_only: &dev_only
   filters:
     branches:
       only: dev
+
+master_only: &master_only
+  filters:
+    branches:
+      only: master
 
 run_cypress: &run_cypress
   <<: *dev_only
@@ -48,14 +52,18 @@ jobs:
     <<: *push
   invalidate_cache:
     executor: aws-cli/default
+    parameters:
+      distribution_id:
+        type: string
+        default: ''
     steps:
       - checkout
       - aws-cli/setup:
           profile-name: default
-      - run: aws cloudfront create-invalidation --distribution-id E1V65HY2IKCCVL --paths /\*
+      - run: aws cloudfront create-invalidation --distribution-id << parameters.distribution_id >> --paths /\*
 
 workflows:
-  build_and_push_dev:
+  deploy_dev:
     jobs:
       - cypress/run:
           <<: *run_cypress
@@ -68,8 +76,29 @@ workflows:
           <<: *dev_only
           requires:
             - build
+          distribution_id: E1V65HY2IKCCVL
       - push:
           <<: *dev_only
           requires:
             - build
           push_to: 's3://trailmaps-link'
+
+  deploy_prod:
+    jobs:
+      - cypress/run:
+          <<: *run_cypress
+          name: test
+      - build:
+          <<: *master_only
+          requires:
+            - test
+      - invalidate_cache:
+          <<: *master_only
+          requires:
+            - build
+          distribution_id: E1V65HY2IKCCVL
+      - push:
+          <<: *master_only
+          requires:
+            - build
+          push_to: 's3://trailmaps-site'
