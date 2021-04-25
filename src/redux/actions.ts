@@ -1,3 +1,5 @@
+import { MapData } from "objects/MapData";
+
 export const FETCH_DATA_BEGIN = "FETCH_PRODUCTS_BEGIN";
 export const FETCH_DATA_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
 export const FETCH_MARKERS_SUCCESS = "FETCH_MARKERS_SUCCESS";
@@ -46,7 +48,7 @@ export const fetchDataBegin = () => ({
   type: FETCH_DATA_BEGIN,
 });
 
-export const fetchDataSuccess = (initMapInfo) => ({
+export const fetchDataSuccess = (initMapInfo: MapData) => ({
   type: FETCH_DATA_SUCCESS,
   payload: { initMapInfo },
 });
@@ -68,6 +70,11 @@ export const fetchDataError = (error) => ({
 
 export const fetchUsersSuccess = (users) => ({
   type: FETCH_USERS_SUCCESS,
+  payload: { users },
+});
+
+export const fetchUsersFailure = (users) => ({
+  type: FETCH_USERS_FAILURE,
   payload: { users },
 });
 

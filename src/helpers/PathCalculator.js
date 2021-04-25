@@ -69,12 +69,12 @@ function closest(geoJsonPath, start, finish) {
   //find the closest start point from mouse click to GEOJSON line
   let closestStart = nearestPointOnLine(
     lineString,
-    point([start.marker_lng, start.marker_lat])
+    point([start.lng, start.lat])
   );
 
   let closestFinish = nearestPointOnLine(
     lineString,
-    point([finish.marker_lng, finish.marker_lat])
+    point([finish.lng, finish.lat])
   );
 
   return { closestStart: closestStart, closestFinish };
@@ -118,8 +118,8 @@ export function findPath(geoJsonPath, start, finish) {
 
   // add our actual destination to the path. Use the elevation from the previous point, it's probably good enough ;)
   path.path.push([
-    finish.marker_lng,
-    finish.marker_lat,
+    finish.lng,
+    finish.lat,
     path.path[path.path.length - 1][2],
   ]);
 

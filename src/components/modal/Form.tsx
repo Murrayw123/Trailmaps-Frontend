@@ -51,7 +51,7 @@ export const MarkerCreateForm: React.FC<Props> = ({
     >
       <Form layout="vertical" form={form}>
         <Item
-          name={"marker_title"}
+          name={"title"}
           rules={[
             {
               required: true,
@@ -88,7 +88,7 @@ export const MarkerCreateForm: React.FC<Props> = ({
           </Item>
         </span>
         <Item
-          name={"marker_type"}
+          name={"type"}
           rules={[
             {
               required: true,
@@ -121,7 +121,7 @@ export const MarkerCreateForm: React.FC<Props> = ({
           </Select>
         </Item>
         <Item
-          name={"marker_info"}
+          name={"info"}
           rules={[
             {
               required: true,
@@ -140,7 +140,7 @@ export const MarkerCreateForm: React.FC<Props> = ({
           <TextArea rows={2} />
         </Item>
         <Item
-          name={"marker_blurb"}
+          name={"blurb"}
           rules={[
             {
               required: true,

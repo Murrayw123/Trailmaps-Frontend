@@ -1,7 +1,7 @@
 import { Store } from "redux";
 import { Dispatch } from "helpers/types";
 import {
-  fetchData,
+  fetchInitialMapData,
   fetchMarkers,
   fetchOtherMaps,
   fetchTrailUsers,
@@ -24,7 +24,7 @@ export class MapInitialiser {
 
   public async init(map: string): Promise<void> {
     if (!this._initialised) {
-      await this._store.dispatch(fetchData(map));
+      await this._store.dispatch(fetchInitialMapData(map));
       await this._store.dispatch(fetchMarkers(map));
       await this._store.dispatch(fetchOtherMaps());
       await this._store.dispatch(fetchTrailUsers(map));

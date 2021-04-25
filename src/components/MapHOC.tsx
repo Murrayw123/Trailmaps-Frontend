@@ -7,7 +7,6 @@ import {
   poiMarkers,
 } from "./MapSubComponents";
 import { Context, ServicesContext } from "helpers/ServiceInit";
-import { MapData } from "Interfaces/MapData";
 import { GlobalState } from "Interfaces/GlobalState";
 import { MapboxMap } from "components/MapboxComponents/MapboxMap";
 import { FINISH, START } from "services/MarkerAdd";
@@ -15,12 +14,9 @@ import mapboxgl from "mapbox-gl";
 import CustomDistanceMarker from "components/CustomDistanceMarker";
 import { connect } from "react-redux";
 import { CustomPath } from "components/CustomPath";
+import { MapData } from "objects/MapData";
 
 interface Props {
-  data: MapData;
-  center: GlobalState["center"];
-  zoom: GlobalState["zoom"];
-  customPath: GlobalState["customPath"];
   showLiveTrailUsers: GlobalState["showLiveTrailUsers"];
   liveTrailUsers: GlobalState["liveTrailUsers"];
   shouldShowContextMenuStatus: GlobalState["shouldShowContextMenuStatus"];
@@ -48,8 +44,8 @@ class MapHOC extends Component<Props, State> {
     this.context.markerAdd.onMapRightClick(event);
   };
 
-  onMarkerClick = (marker: mapboxgl.MapMouseEvent): void => {
-    this.context.markerAdd.onMarkerClick(marker);
+  onMarkerClick = (markerEvent: mapboxgl.MapMouseEvent): void => {
+    this.context.markerAdd.onMarkerClick(markerEvent);
   };
 
   checkMarkers = (event: mapboxgl.MapMouseEvent): void => {
@@ -130,10 +126,7 @@ class MapHOC extends Component<Props, State> {
   }
 }
 
-const mapStateToProps = (state) => ({
-  data: state.data,
-  center: state.center,
-  zoom: state.zoom,
+const mapStateToProps = (state: GlobalState) => ({
   mapMarkerStart: state.mapMarkerStart,
   mapMarkerFinish: state.mapMarkerFinish,
   liveTrailUsers: state.liveTrailUsers,

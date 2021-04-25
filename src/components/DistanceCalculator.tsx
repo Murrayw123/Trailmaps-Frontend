@@ -29,7 +29,7 @@ class DistanceCalculator extends Component<Props, never> {
       placeHolder,
     } = this.props;
     const options = dataSource.map((poi) => ({
-      label: poi.marker_title,
+      label: poi.title,
       value: poi.id,
     }));
     return (
@@ -45,7 +45,7 @@ class DistanceCalculator extends Component<Props, never> {
           onSelect={(e) => {
             onSelect(e, type, markerType);
           }}
-          value={value ? value.marker_title : null}
+          value={value ? value.title : null}
           options={options}
         />
       </>

@@ -12,7 +12,7 @@ export class MapBlurbComponent extends React.Component<Props, never> {
     return (
       <p style={{ marginRight: 20 }}>
         <b> Information: </b>
-        {_.isEmpty(focusMarker) ? sideBarBlurb : focusMarker.marker_blurb}
+        {_.isEmpty(focusMarker) ? sideBarBlurb : focusMarker.blurb}
       </p>
     );
   }

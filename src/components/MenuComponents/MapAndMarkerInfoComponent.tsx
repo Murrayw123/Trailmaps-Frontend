@@ -3,17 +3,18 @@ import { MapBlurbComponent } from "components/MenuComponents/MapBlurbComponent";
 import { MapStatsComponent } from "components/MenuComponents/MapStatsComponent";
 import React from "react";
 import * as _ from "lodash";
+import { GlobalState } from "Interfaces/GlobalState";
 
 interface Props {
   sideBarImage: string;
-  focusMarker: unknown;
+  focusMarker: GlobalState["focusMarker"];
   sideBarBlurb: string;
-  data: unknown;
+  mapData: GlobalState["mapData"];
 }
 
 export class MapAndMarkerInfoComponent extends React.Component<Props, never> {
   render() {
-    const { sideBarImage, focusMarker, data, sideBarBlurb } = this.props;
+    const { sideBarImage, focusMarker, mapData, sideBarBlurb } = this.props;
 
     return (
       <Card bordered={false} className="info-card">
@@ -29,7 +30,7 @@ export class MapAndMarkerInfoComponent extends React.Component<Props, never> {
           focusMarker={focusMarker}
           sideBarBlurb={sideBarBlurb}
         />
-        <MapStatsComponent focusMarker={focusMarker} data={data} />
+        <MapStatsComponent focusMarker={focusMarker} mapData={mapData} />
       </Card>
     );
   }

@@ -23,8 +23,8 @@ export class MapboxMarker extends Component<MapBoxMarkerReactWrapperProps, never
     this.context.servicesReady(() => {
       this._marker = this.context.mapboxMarkerAdd.setMarker(this.props);
 
-      const info = marker.marker_info;
-      const title = marker.marker_title;
+      const info = marker.info;
+      const title = marker.title;
       const placeholder = document.createElement("div");
       placeholder.className = "popup";
 
@@ -51,8 +51,8 @@ export class MapboxMarker extends Component<MapBoxMarkerReactWrapperProps, never
   updateMarker(): void {
     const { marker } = this.props;
 
-    this._marker.setLngLat([marker.marker_lng, marker.marker_lat]);
-    this._marker.setLngLat([marker.marker_lng, marker.marker_lat]);
+    this._marker.setLngLat([marker.lng, marker.lat]);
+    this._marker.setLngLat([marker.lng, marker.lat]);
   }
 
   render(): JSX.Element {

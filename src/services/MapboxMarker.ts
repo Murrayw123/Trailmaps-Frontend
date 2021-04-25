@@ -5,7 +5,7 @@ import { MapBoxMarkerReactWrapperProps } from "components/MapboxComponents/Mapbo
 export class MapboxMarkerService {
   private _map: mapboxgl.Map;
 
-  init(map: mapboxgl.Map) {
+  init(map: mapboxgl.Map): void {
     this._map = map;
   }
 
@@ -21,11 +21,11 @@ export class MapboxMarkerService {
     } = props;
 
     const markerElement = createMapBoxElement(icon);
-    markerElement.classList.add(marker.marker_type);
+    markerElement.classList.add(marker.type);
 
     // add the title in, remove spaces
     markerElement.classList.add(
-      marker.marker_title.replace(/ /g, "").toLowerCase()
+      marker.title.replace(/ /g, "").toLowerCase()
     );
 
     markerElement.onclick = (e) => {
