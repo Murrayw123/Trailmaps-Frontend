@@ -87,7 +87,7 @@ workflows:
   deploy_prod:
     jobs:
       - cypress/run:
-          <<: *dev_only
+          <<: *master_only
           <<: *run_cypress
           name: test
       - build:
