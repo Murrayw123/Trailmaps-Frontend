@@ -40,10 +40,14 @@ jobs:
   build:
     docker:
       - image: circleci/node
+    parameters:
+      build_command:
+        type: string
+        default: ''
     steps:
       - checkout
       - run: npm install
-      - run: CI=false npm run build_dev # prevent fail due to eslint
+      - run: CI=false << parameters.build_command >> # prevent fail due to eslint
       - persist_to_workspace:
           root: .
           paths:
@@ -73,11 +77,12 @@ workflows:
           <<: *dev_only
           requires:
             - test
+          build_command: npm run build_dev
       - invalidate_cache:
           <<: *dev_only
           requires:
             - build
-          distribution_id: E1V65HY2IKCCVL
+          distribution_id: E312A5GIQSDGC2
       - push:
           <<: *dev_only
           requires:
@@ -94,6 +99,7 @@ workflows:
           <<: *master_only
           requires:
             - test
+          build_command: npm run build_prod
       - invalidate_cache:
           <<: *master_only
           requires:
