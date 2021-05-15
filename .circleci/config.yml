@@ -104,7 +104,7 @@ workflows:
           <<: *master_only
           requires:
             - build
-          distribution_id: E1V65HY2IKCCVL
+          distribution_id: E1WUZVCMER8SAR
       - push:
           <<: *master_only
           requires:
