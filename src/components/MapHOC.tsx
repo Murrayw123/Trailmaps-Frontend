@@ -14,7 +14,6 @@ import mapboxgl from "mapbox-gl";
 import CustomDistanceMarker from "components/CustomDistanceMarker";
 import { connect } from "react-redux";
 import { CustomPath } from "components/CustomPath";
-import { MapData } from "objects/MapData";
 
 interface Props {
   showLiveTrailUsers: GlobalState["showLiveTrailUsers"];

@@ -77,9 +77,8 @@
     "@types/jest": "^26.0.20",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "cypress": "^6.6.0",
-    "enzyme": "^3.11.0",
-    "ts-jest": "^26.4.4",
     "start-server-and-test": "1.12.0",
-    "env-cmd": "^10.1.0"
+    "env-cmd": "^10.1.0",
+    "ts-jest": "^26.4.4"
   }
 }
