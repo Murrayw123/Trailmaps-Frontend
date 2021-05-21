@@ -4,11 +4,14 @@ import { MapBoxMarkerReactWrapperProps } from "components/MapboxComponents/Mapbo
 
 export class MapboxMarkerService {
   private _map: mapboxgl.Map;
+  private _markers: Array<mapboxgl.Marker>;
 
   init(map: mapboxgl.Map): void {
     this._map = map;
+    this._markers = [];
   }
 
+  // TODO - sort out the whole popup thing
   public setMarker(props: MapBoxMarkerReactWrapperProps): mapboxgl.Marker {
     const {
       position,
@@ -22,15 +25,8 @@ export class MapboxMarkerService {
 
     const markerElement = createMapBoxElement(icon);
     markerElement.classList.add(marker.type);
-
     // add the title in, remove spaces
-    markerElement.classList.add(
-      marker.title.replace(/ /g, "").toLowerCase()
-    );
-
-    markerElement.onclick = (e) => {
-      onClick(e);
-    };
+    markerElement.classList.add(marker.title.replace(/ /g, "").toLowerCase());
 
     const newMarker = new mapboxgl.Marker({
       element: markerElement,
@@ -44,6 +40,23 @@ export class MapboxMarkerService {
       newMarker.on("dragend", onDragEnd);
     }
 
+    markerElement.onclick = (e) => {
+      e.stopPropagation();
+      this._disableAllPopups();
+      newMarker.togglePopup();
+      onClick(e);
+    };
+
+    this._markers.push(newMarker);
+
     return newMarker;
+  }
+
+  private _disableAllPopups() {
+    this._markers.forEach((marker) => {
+      if (marker.getPopup()?.isOpen()) {
+        marker.togglePopup();
+      }
+    });
   }
 }
