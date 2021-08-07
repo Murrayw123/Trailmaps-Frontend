@@ -1,63 +1,13 @@
-import distance from "@turf/distance";
 import along from "@turf/along";
 import { lineString, multiLineString, point } from "@turf/helpers";
 import combine from "@turf/combine";
 import _ from "lodash";
 import PathFinder from "@murrayw123/geojsonpathfinderamended/index";
 import { nearestPointOnLine } from "./closest-point";
+import { DistanceElevationCalculator } from "./DistanceElevationCalculator";
 
 export function findPointAlongLine(path, distance) {
   return along(path, distance);
-}
-
-function findDistance(path) {
-  let customDistance = 0;
-  let chartData = [];
-  let elevationGain = 0;
-  let elevationLoss = 0;
-  let i;
-  if (path.length > 1) {
-    for (i = 0; i < path.length; i++) {
-      if (path[i - 1]) {
-        customDistance += distance(path[i - 1], path[i]);
-        let absLossOrGain = 0;
-        if (i > 0 && i % 11 === 0) {
-          //sample every 11th point
-          absLossOrGain = Math.abs(path[i][2] - path[i - 11][2]);
-          if (absLossOrGain > 5) {
-            //filter out the noise
-            if (path[i - 11][2] < path[i][2]) {
-              //if the previous point is lower than the current point, it's elevation gain, otherwise it's elevation loss
-              elevationGain += absLossOrGain;
-            } else {
-              elevationLoss += absLossOrGain;
-            }
-          }
-        }
-        chartData.push({
-          elevation: path[i][2],
-          distance: parseFloat(customDistance.toFixed(3)),
-          coords: [
-            parseFloat(path[i][1].toFixed(4)),
-            parseFloat(path[i][0].toFixed(4)),
-          ],
-        });
-      } else {
-        customDistance = 0;
-        chartData.push({
-          elevation: path[i][2],
-          distance: customDistance,
-          coords: [path[i][1], path[i][0]],
-        });
-      }
-    }
-  }
-  return {
-    distance: customDistance,
-    chartData: chartData,
-    elevationGain: elevationGain,
-    elevationLoss: elevationLoss,
-  };
 }
 
 function closest(geoJsonPath, start, finish) {
@@ -117,13 +67,11 @@ export function findPath(geoJsonPath, start, finish) {
   }
 
   // add our actual destination to the path. Use the elevation from the previous point, it's probably good enough ;)
-  path.path.push([
-    finish.lng,
-    finish.lat,
-    path.path[path.path.length - 1][2],
-  ]);
+  path.path.push([finish.lng, finish.lat, path.path[path.path.length - 1][2]]);
 
-  let customDistance = findDistance(path.path);
+  let customDistance = new DistanceElevationCalculator(
+    path.path
+  ).calculatePathAndElevation();
   //returns a linestring so leaflet can use it as a geojson layer
   let linestring = lineString(path.path);
 

@@ -2,7 +2,6 @@ import townI from "./icons/town.svg";
 import finishI from "./icons/finish.svg";
 import businessI from "./icons/business.svg";
 import bicycleI from "./icons/bicycle.svg";
-import hikingI from "./icons/hiking.svg";
 import tentI from "./icons/tent.svg";
 import hutI from "./icons/hut.svg";
 import waterI from "./icons/water.svg";
@@ -10,11 +9,9 @@ import attractionI from "./icons/attraction.svg";
 import vehicleI from "./icons/vehicle.svg";
 import selectedI from "./icons/selected.svg";
 import cafeI from "./icons/cafe.svg";
-import foodI from "./icons/food.svg";
 import lighthouseI from "./icons/lighthouse.svg";
 import picnicI from "./icons/picnic.svg";
 import pubI from "./icons/pub.svg";
-import warningI from "./icons/warning.svg";
 import taxiI from "./icons/taxi.svg";
 import riderI from "./icons/rider.svg";
 import hikerI from "./icons/hiker.svg";
@@ -37,6 +34,7 @@ export const markerChoices = [
 ];
 
 export function findIcon(type) {
+  console.log(type);
   switch (type) {
     case "start":
       return startI;
@@ -76,7 +74,7 @@ export function findIcon(type) {
       return taxiI;
     case "cyclist":
       return riderI;
-    case "hiker":
+    case "walking":
       return hikerI;
     case "selected":
       return selectedI;

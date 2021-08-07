@@ -15,9 +15,9 @@ master_only: &master_only
     branches:
       only: master
 
-run_cypress: &run_cypress
+run_tests: &run_tests
   <<: *dev_only
-  start: npm run start:ci
+  start: npm run test && npm run start:ci
   wait-on: 'http://localhost:3000'
   record: true
 
@@ -71,7 +71,7 @@ workflows:
     jobs:
       - cypress/run:
           <<: *dev_only
-          <<: *run_cypress
+          <<: *run_tests
           name: test
       - build:
           <<: *dev_only
@@ -93,7 +93,7 @@ workflows:
     jobs:
       - cypress/run:
           <<: *master_only
-          <<: *run_cypress
+          <<: *run_tests
           name: test
       - build:
           <<: *master_only
