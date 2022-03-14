@@ -17,7 +17,7 @@ interface Props {
 
 const checkForIFrame = () => {
   const iFramed = window.self !== window.top;
-  if (process.env["CI"]) {
+  if (!process.env["REACT_APP_ALLOW_DISABLE_IFRAME"]) {
     return;
   }
   if (!iFramed && window.location.pathname.substring(6) === "mundabiddi") {
