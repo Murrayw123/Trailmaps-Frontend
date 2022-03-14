@@ -39,7 +39,8 @@ class MapParentComponent extends Component<Props, Record<string, never>> {
 
   render() {
     const { loadingTrack, loadingMarkers, shouldShowModal } = this.props;
-    console.log("referrer", parent.document.referrer);
+    console.log("referrer", window.location);
+    console.log("referrer", window.parent.location.href);
 
     if (loadingTrack || loadingMarkers) {
       return <div>Loading...</div>;
