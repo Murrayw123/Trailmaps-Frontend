@@ -15,6 +15,17 @@ interface Props {
   shouldShowModal: boolean;
 }
 
+const checkForIFrame = () => {
+  const iFramed = window.self !== window.top;
+  if (process.env["CI"]) {
+    return;
+  }
+  if (!iFramed && window.location.pathname.substring(6) === "mundabiddi") {
+    window.location.href =
+      "https://www.mundabiddi.org.au/pages/biddi-clubhouse";
+  }
+};
+
 class MapParentComponent extends Component<Props, Record<string, never>> {
   public context: Context;
   static contextType = ServicesContext;
@@ -39,15 +50,6 @@ class MapParentComponent extends Component<Props, Record<string, never>> {
 
   render() {
     const { loadingTrack, loadingMarkers, shouldShowModal } = this.props;
-    const iFramed = window.self !== window.top;
-    if (
-      !iFramed &&
-      window.location.pathname.substring(6) === "mundabiddi" &&
-      process.env["REACT_APP_ALLOW_DISABLE_IFRAME"]
-    ) {
-      window.location.href =
-        "https://www.mundabiddi.org.au/pages/biddi-clubhouse";
-    }
 
     if (loadingTrack || loadingMarkers) {
       return <div>Loading...</div>;
