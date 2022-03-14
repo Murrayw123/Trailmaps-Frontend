@@ -91,10 +91,10 @@ workflows:
 
   deploy_prod:
     jobs:
-      - cypress/run:
-          <<: *master_only
-          <<: *run_tests
-          name: test
+#      - cypress/run:
+#          <<: *master_only
+#          <<: *run_tests
+#          name: test
       - build:
           <<: *master_only
           requires:
