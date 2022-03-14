@@ -40,7 +40,11 @@ class MapParentComponent extends Component<Props, Record<string, never>> {
   render() {
     const { loadingTrack, loadingMarkers, shouldShowModal } = this.props;
     const iFramed = window.self !== window.top;
-    if (!iFramed && window.location.pathname.substring(6) === "mundabiddi") {
+    if (
+      !iFramed &&
+      window.location.pathname.substring(6) === "mundabiddi" &&
+      process.env["REACT_APP_ALLOW_DISABLE_IFRAME"]
+    ) {
       window.location.href =
         "https://www.mundabiddi.org.au/pages/biddi-clubhouse";
     }
