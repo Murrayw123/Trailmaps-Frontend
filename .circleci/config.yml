@@ -97,8 +97,8 @@ workflows:
 #          name: test
       - build:
           <<: *master_only
-          requires:
-            - test
+#          requires:
+#            - test
           build_command: npm run build_prod
       - invalidate_cache:
           <<: *master_only
