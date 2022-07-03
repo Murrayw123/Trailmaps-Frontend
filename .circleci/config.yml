@@ -39,7 +39,7 @@ push: &push
 jobs:
   build:
     docker:
-      - image: circleci/node
+      - image: cimg/node:14.19.2
     parameters:
       build_command:
         type: string
