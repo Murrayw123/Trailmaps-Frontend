@@ -50,7 +50,7 @@ class MapParentComponent extends Component<Props, Record<string, never>> {
 
   render() {
     const { loadingTrack, loadingMarkers, shouldShowModal } = this.props;
-    checkForIFrame();
+    // checkForIFrame();
 
     if (loadingTrack || loadingMarkers) {
       return <div>Loading...</div>;
